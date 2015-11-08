@@ -1,0 +1,617 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="目录结构参照FHS2.3，鸟哥. 并简单介绍硬盘的结构">
+
+<title>linux文件目录结构</title>
+
+<!-- favicon -->
+<link rel="shortcut icon" href="./favicon.ico" type="image/icon">
+<link rel="icon" href="./favicon.ico" type="/image/icon">
+<link rel="stylesheet" type="text/css" href="/stylesheets/base.css">
+<link rel="stylesheet" type="text/css" href="/stylesheets/simplePagination.css">
+
+<script type="text/javascript" src="/javascripts/jquery.js"></script>
+
+<!--[if lt IE 9]>
+<script src="/javascripts/html5shiv.js"></script>
+<![endif]-->
+
+    <link rel="stylesheet" type="text/css" href="/stylesheets/markdownreader.css">
+<link rel="stylesheet" type="text/css" href="/stylesheets/pygments_monokai.css">
+<link rel="stylesheet" type="text/css" href="/stylesheets/code_block.css">
+</head>
+
+<body>
+    <header id="l-header">
+    <div class="container">
+        <div class="row logo">
+            <div class="col-lg-7">
+                <h1>SanDow</h1>
+            </div>
+
+
+            <div class="col-lg-5">
+                <p>On the way to death</p>
+                <p>On the way of learning</p>
+            </div>
+        </div>
+
+        <div class="row navicon">
+            <a href=""><i class="fa fa-navicon"></i></a>
+        </div>
+
+        <div class="row navbar">
+            <nav class="col-lg-8 col-md-8 col-xs-12">
+                <ul class="row">
+                    <li class="col-lg-3"><a href="/">HOME</a></li>
+                    <li class="col-lg-3">
+                        <ul class="subnav">
+                            <a href="javascript:void(0)">POST</a>
+                            <li><a href="/category">CATEGORY</a></li>
+                            <li><a href="/tag">TAG</a></li>
+                        </ul>
+                    </li>
+                    <li class="col-lg-3"><a href="/about">ABOUT</a></li>
+                    <li class="col-lg-3"><a href="/building">PLAY GROUND</a></li>
+                </ul>
+            </nav>
+
+            <div class="search col-lg-4 col-md-4 col-xs-12">
+                <label for="search"></label>
+                <input id="search" name="serach" type="text" placeholder="Dummy Search">
+                <i class="fa fa-search"></i>
+            </div>
+        </div>
+    </div>
+</header>
+
+    <div class="container">
+        <div class="row">
+            <div id="markdown-container" class="col-lg-9">
+                <header>
+                    <p id="postTitle">linux文件目录结构</p>
+                    
+                    <ul class="tags clearfix">
+                        
+                    </ul>
+                    
+                    <p id="postMeta">posted on 15 Oct 2015 under category <a href="/category/">linux</a></p>
+
+                </header>
+
+                <ul>
+<li>文件目录结构
+{:toc}</li>
+</ul>
+
+<h2 id="linux-文件系统大览">Linux 文件系统大览</h2>
+
+<p>linux下的所有的目录都是按照一定的类别有规律的组织和命名，每个目录数据可以跨越不同的磁盘分区或者不同的磁盘设备，所有目录都可以按两个类别来分：静态的与动态的，或者可共享的与不可共享的。可共享一个用户储存的文件可以被其它用户查看。静态的文件包括binaries, libraries, documenttation和其它在超级管理员不更改的情况下处于不变的文件。</p>
+
+<table><thead>
+<tr>
+<th style="text-align: left"></th>
+<th style="text-align: left">Shareable</th>
+<th style="text-align: left">unshareable</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">static</td>
+<td style="text-align: left">/usr</td>
+<td style="text-align: left">/etc</td>
+</tr>
+<tr>
+<td style="text-align: left"></td>
+<td style="text-align: left">/opt</td>
+<td style="text-align: left">/boot</td>
+</tr>
+<tr>
+<td style="text-align: left">variable</td>
+<td style="text-align: left">/var/mail</td>
+<td style="text-align: left">/var/rum</td>
+</tr>
+<tr>
+<td style="text-align: left"></td>
+<td style="text-align: left">/var/spool/news</td>
+<td style="text-align: left">/var/lock</td>
+</tr>
+</tbody></table>
+
+<p>Linux 系统的所有目录是一个有层次的倒着的树状目录结构，&quot;／&quot;  根是所有目录的起点可以用   </p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">$ tree -L 1 /
+</code></pre></div>
+<p>|<strong>/bin</strong> | Essential command binaries 存放着所有用户都可以用的二进制命令.<br>
+|<strong>/boot</strong> | Static files of the boot loader 内核及系统引导程序所需的文件目录.<br>
+|<strong>/dev</strong> |  Device files.<br>
+|<strong>/etc</strong> | Host-specific system configuration,配置文件的默认路径.<br>
+|<strong>/lib/lib64</strong> | Essential shared libraries and kernel modules,库文件的目录.<br>
+|<strong>/lost+found</strong> | 系统突然崩溃突然关机，系统产生的一些文件碎片在这里  fsck检查修复
+|<strong>/media</strong> | Mount point for removeable media.<br>
+|<strong>/mnt</strong> | Mount point for mounting a filesystem temporarily,文件系统的临时挂载点.
+|<strong>/opt</strong> | Add-on application software packages，可选的第三方软件的安装目录.<br>
+|<strong>/proc</strong> | Kernel and process information virtual filesystem,内核与进程信息的虚拟文件系统.<br>
+|<strong>/root</strong> | Home directory for the root user (optional), 超级管理员的家目录.<br>
+|<strong>/home</strong> | User home directories (optional)，普通用户的家目录.<br>
+|<strong>/sbin</strong> | Essential system binaries,系统二进制命令文件.<br>
+|<strong>/srv</strong> | Data for services provided by this system.<br>
+|<strong>/tmp</strong> | Temporary files 临时文件存放目录.<br>
+|<strong>/usr</strong> | Secondary hierarchy 第二层次结构, 存放系统程序以及用户安装程序的目录.<br>
+|<strong>/var</strong> | Variable data 可变的数据.  </p>
+
+<hr>
+
+<h3 id="一些简单的补充">一些简单的补充</h3>
+
+<ul>
+<li><p>/bin  存放着一些所有用户都可以用的二进制命令
+这个目录下面存放着的命令有：cat, chgrp, chmod, chown, cp, date, dd, df, dmesg, echo, false, hostaname, kill, ln, login, ls, mkdir, mknod, more, mount, mv, ps, pwd, rm, rmdir, sed, sh, stty, su, sync, true, umount, uname.</p></li>
+<li><p>/sbin 存放着只允许超级管理员才可以用的二进制命令，还可以存放在/usr/sbin /usr/local/sbin<br>
+sbin 包含了一些系统启动，修复命令。</p></li>
+<li><p>/boot 是linux 内核及系统引导程序所需的文件目录。安装系统分区时一般先分/boot 100－200M 可以用<code>du -sh /boot</code>来查看大小  </p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">du -sh /boot
+#39M     /boot
+</code></pre></div></li>
+</ul>
+
+<hr>
+
+<h2 id="etc-host-specific-system-configuration">/etc Host-specific system configuration</h2>
+
+<p>这个层次结构包含程序的配置文件，它必须是静态的不允许执行的二进制文件, 如果相应的子系统被安装，那么下面的文件或者符号链接必须在/etc下面  </p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">File</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">csh.login</td>
+<td style="text-align: left">Systemwide initialization file for C shell logins</td>
+</tr>
+<tr>
+<td style="text-align: left"><strong>exports</strong></td>
+<td style="text-align: left">NFS filesystem access control list</td>
+</tr>
+<tr>
+<td style="text-align: left"><strong>fstab</strong></td>
+<td style="text-align: left">Static information about filesystems开机自动挂载文件</td>
+</tr>
+<tr>
+<td style="text-align: left"><strong>ftpusers</strong></td>
+<td style="text-align: left">FTP daemon user access control list</td>
+</tr>
+<tr>
+<td style="text-align: left"><strong>gateways</strong></td>
+<td style="text-align: left">File which lists gateways for routed</td>
+</tr>
+<tr>
+<td style="text-align: left">gettydefs</td>
+<td style="text-align: left">Speed and terminal settings used by getty</td>
+</tr>
+<tr>
+<td style="text-align: left"><strong>group</strong></td>
+<td style="text-align: left">User group file</td>
+</tr>
+<tr>
+<td style="text-align: left">host.conf</td>
+<td style="text-align: left">Resolver configuration file</td>
+</tr>
+<tr>
+<td style="text-align: left"><strong>hosts</strong></td>
+<td style="text-align: left">Static information about host names</td>
+</tr>
+<tr>
+<td style="text-align: left">hosts.allow</td>
+<td style="text-align: left">Host access file for TCP wrappers</td>
+</tr>
+<tr>
+<td style="text-align: left">hosts.deny</td>
+<td style="text-align: left">Host access file for TCP wrappers</td>
+</tr>
+<tr>
+<td style="text-align: left">hosts.equiv</td>
+<td style="text-align: left">List of trusted hosts for rlogin, rsh, rcp</td>
+</tr>
+<tr>
+<td style="text-align: left">hosts.lpd</td>
+<td style="text-align: left">List of trusted hosts for lpd</td>
+</tr>
+<tr>
+<td style="text-align: left">inetd.conf</td>
+<td style="text-align: left">Configuration file for inetd</td>
+</tr>
+<tr>
+<td style="text-align: left"><strong>inittab</strong></td>
+<td style="text-align: left">Configuration file for init</td>
+</tr>
+<tr>
+<td style="text-align: left"><strong>issue</strong></td>
+<td style="text-align: left">Pre-login message and identification file</td>
+</tr>
+<tr>
+<td style="text-align: left">ld.so.conf</td>
+<td style="text-align: left">List of extra directories to search for shared libraries</td>
+</tr>
+<tr>
+<td style="text-align: left"><strong>motd</strong></td>
+<td style="text-align: left">Post-login message of the day file 文件</td>
+</tr>
+<tr>
+<td style="text-align: left"><strong>mtab</strong></td>
+<td style="text-align: left">Dynamic information about filesystems</td>
+</tr>
+<tr>
+<td style="text-align: left">mtools.conf</td>
+<td style="text-align: left">Configuration file for mtools</td>
+</tr>
+<tr>
+<td style="text-align: left"><strong>networks</strong></td>
+<td style="text-align: left">Static information about network names</td>
+</tr>
+<tr>
+<td style="text-align: left"><strong>passwd</strong></td>
+<td style="text-align: left">The password file</td>
+</tr>
+<tr>
+<td style="text-align: left">printcap</td>
+<td style="text-align: left">The lpd printer capability database</td>
+</tr>
+<tr>
+<td style="text-align: left"><strong>profile</strong></td>
+<td style="text-align: left">Systemwide initialization file for sh shell logins 全局的环境变量配置文件</td>
+</tr>
+<tr>
+<td style="text-align: left">protocols</td>
+<td style="text-align: left">IP protocol listing</td>
+</tr>
+<tr>
+<td style="text-align: left">resolv.conf</td>
+<td style="text-align: left">Resolver configuration file</td>
+</tr>
+<tr>
+<td style="text-align: left">rpc</td>
+<td style="text-align: left">RPC protocol listing</td>
+</tr>
+<tr>
+<td style="text-align: left"><strong>securetty</strong></td>
+<td style="text-align: left">TTY access control for root login</td>
+</tr>
+<tr>
+<td style="text-align: left">services</td>
+<td style="text-align: left">Port names for network services</td>
+</tr>
+<tr>
+<td style="text-align: left"><strong>shells</strong></td>
+<td style="text-align: left">Pathnames of valid login shells</td>
+</tr>
+<tr>
+<td style="text-align: left">syslog.conf</td>
+<td style="text-align: left">Configuration file for syslogd</td>
+</tr>
+<tr>
+<td style="text-align: left"><strong>rc.local</strong></td>
+<td style="text-align: left">用于存放开机自启动程序命令的文件。</td>
+</tr>
+<tr>
+<td style="text-align: left">basrc</td>
+<td style="text-align: left">对所有用户生效的全局变量</td>
+</tr>
+</tbody></table>
+
+<hr>
+
+<h2 id="the-var-hierarchy">The /var Hierarchy</h2>
+
+<p>/var　下面存放着可变的数据文件，他们包括spool directories，administrative and logging data, transient and temporary files. /var下面的文件有些是可共享的比如/var/mail, /var/cache/man,/var/cache/fonts, /var/spool/news,有些是不可共享的：/var/log, /var/lock, /var/run.   </p>
+
+<p>　　/var is specified here in order to make it possible to mount /usr read-only. Everything that once went into /usr that is written to during system operation (as opposed to installation and software maintenance) must be in /var.<br>
+  　If /var cannot be made a separate partition, it is often preferable to move /var out of the root partition and into the /usr partition. (This is sometimes done to reduce the size of the root partition or when space runs low in the root partition.) However, /var must not be linked to /usr because this makes separation of /usr and /var　more difficult and is likely to create a naming conflict. Instead, link /var to /usr/var.<br>
+　　Applications must generally not add directories to the top level of /var. Such directories should only be added if　they have some system-wide implication, and in consultation with the FHS mailing list.  </p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Directory</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">cache</td>
+<td style="text-align: left">Application cache data 应用程序缓存数据。这些数据是在本地生成的一个耗时的I/O或计算结果。应用程序必须能够再生或恢复数据。缓存的文件可以被删除而不导致数据丢失。</td>
+</tr>
+<tr>
+<td style="text-align: left">lib</td>
+<td style="text-align: left">Variable state information 系统正常运行时要改变的文件.</td>
+</tr>
+<tr>
+<td style="text-align: left">local</td>
+<td style="text-align: left">Variable data for /usr/local</td>
+</tr>
+<tr>
+<td style="text-align: left">lock</td>
+<td style="text-align: left">Lock files</td>
+</tr>
+<tr>
+<td style="text-align: left">log</td>
+<td style="text-align: left">Log files and directories 各种程序的Log文件，特别是login   (/var/log/wtmp log所有到系统的登录和注销) 和syslog (/var/log/messages 里存储所有核心和系统程序信息. /var/log 里的文件经常不确定地增长，应该定期清除.</td>
+</tr>
+<tr>
+<td style="text-align: left">log/lastlog</td>
+<td style="text-align: left">record of last login of each user</td>
+</tr>
+<tr>
+<td style="text-align: left">log/messages</td>
+<td style="text-align: left">system messages from syslogd 日志信息，按周自动轮询</td>
+</tr>
+<tr>
+<td style="text-align: left">log/wtmp</td>
+<td style="text-align: left">record of all logins and logouts</td>
+</tr>
+<tr>
+<td style="text-align: left">log/secure</td>
+<td style="text-align: left">记录登陆系统存取信息的文件，不管认证成功还是认证失败都会记录</td>
+</tr>
+<tr>
+<td style="text-align: left">opt</td>
+<td style="text-align: left">Variable data for /opt</td>
+</tr>
+<tr>
+<td style="text-align: left">run</td>
+<td style="text-align: left">Data relevant to running processes保存到下次引导前有效的关于系统的信息文件.例如， /var/run/utmp 包含当前登录的用户的信息.</td>
+</tr>
+<tr>
+<td style="text-align: left">spool</td>
+<td style="text-align: left">Application spool data</td>
+</tr>
+<tr>
+<td style="text-align: left">tmp</td>
+<td style="text-align: left">Temporary files preserved between system reboots</td>
+</tr>
+</tbody></table>
+
+<hr>
+
+<h3 id="log　文件下的文件详细介绍">log　文件下的文件详细介绍</h3>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Directory</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left"><strong>messages</strong></td>
+<td style="text-align: left">包括整体系统信息，其中也包含系统启动期间的日志。此外mail, cron, daemon, kern和auth等内容也记录在messages日志中。</td>
+</tr>
+<tr>
+<td style="text-align: left"><strong>dmesg</strong></td>
+<td style="text-align: left">包含内核缓冲信息（kernel ring buffer）。在系统启动时，会在屏幕上显示许多与硬件有关的信息。可以用dmesg查看它们。</td>
+</tr>
+<tr>
+<td style="text-align: left">auth.log</td>
+<td style="text-align: left">包含系统授权信息，包括用户登录和使用的权限机制等。</td>
+</tr>
+<tr>
+<td style="text-align: left">boot.log</td>
+<td style="text-align: left">包含系统启动时的日志。</td>
+</tr>
+<tr>
+<td style="text-align: left">daemon.log</td>
+<td style="text-align: left">包含各种系统后台守护进程日志信息。</td>
+</tr>
+<tr>
+<td style="text-align: left">dpkg.log</td>
+<td style="text-align: left">包括安装或dpkg命令清除软件包的日志。</td>
+</tr>
+<tr>
+<td style="text-align: left"><strong>kern.log</strong></td>
+<td style="text-align: left">包含内核产生的日志，有助于在定制内核时解决问题。</td>
+</tr>
+<tr>
+<td style="text-align: left">lastlog</td>
+<td style="text-align: left">记录所有用户的最近信息。这不是一个ASCII文件，因此需要用lastlog命令查看内容</td>
+</tr>
+<tr>
+<td style="text-align: left">user.log</td>
+<td style="text-align: left">记录所有等级用户信息的日志。</td>
+</tr>
+<tr>
+<td style="text-align: left">alternatives.log</td>
+<td style="text-align: left">更新替代信息都记录在这个文件中。</td>
+</tr>
+<tr>
+<td style="text-align: left">btmp</td>
+<td style="text-align: left">记录所有失败登录信息。使用last命令可以查看btmp文件。例如，”last -f /var/log/btmp \</td>
+</tr>
+<tr>
+<td style="text-align: left">anaconda.log</td>
+<td style="text-align: left">在安装Linux时，所有安装信息都储存在这个文件中。</td>
+</tr>
+<tr>
+<td style="text-align: left"><strong>secure</strong></td>
+<td style="text-align: left">包含验证和授权方面信息。例如，sshd会将所有信息记录（其中包括失败登录）在这里。</td>
+</tr>
+<tr>
+<td style="text-align: left">wtmp ,utmp</td>
+<td style="text-align: left">包含登录信息。使用wtmp可以找出谁正在登陆进入系统，谁使用命令显示这个文件或信息等。</td>
+</tr>
+<tr>
+<td style="text-align: left">faillog</td>
+<td style="text-align: left">包含用户登录失败信息。此外，错误登录命令也会记录在本文件中。</td>
+</tr>
+</tbody></table>
+
+<hr>
+
+<h2 id="dev-devices-and-special-files">/dev : Devices and special files</h2>
+
+<p>The following devices must exist under /dev.</p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Directory</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">null</td>
+<td style="text-align: left">All data written to this device is discarded. A read from this device will return an EOF condition.</td>
+</tr>
+<tr>
+<td style="text-align: left">zero</td>
+<td style="text-align: left">This device is a source of zeroed out data. All data written to this device is discarded. A read from this device will return as many bytes containing the value zero as was requested.</td>
+</tr>
+<tr>
+<td style="text-align: left">tty</td>
+<td style="text-align: left">This device is a synonym for the controlling terminal of a process. Once this device is opened, all reads and writes will behave as if the actual controlling terminal device had been opened.</td>
+</tr>
+</tbody></table>
+
+<h3 id="普及硬盘的基础知识">普及硬盘的基础知识</h3>
+
+<p>　　　 在linux下面每个设备都被当成一个文件来对待，因硬盘接口的不同对应于/dev下面的文件名也不同下面表格可以拿来参考对照</p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">设备　</th>
+<th style="text-align: left">设备在linux内的文件名</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">IDE硬盘　　　　　　　　</td>
+<td style="text-align: left">/dev/hd[a-d]</td>
+</tr>
+<tr>
+<td style="text-align: left">scsi, stat, usb硬盘</td>
+<td style="text-align: left">/dev/sd[a-p]</td>
+</tr>
+<tr>
+<td style="text-align: left">U盘　　　　　　</td>
+<td style="text-align: left">/dev/sd[a-p]</td>
+</tr>
+<tr>
+<td style="text-align: left">软驱</td>
+<td style="text-align: left">/dev/fd[0-1]</td>
+</tr>
+<tr>
+<td style="text-align: left">CD ROM</td>
+<td style="text-align: left">/dev/cdrom</td>
+</tr>
+</tbody></table>
+
+<p>　　硬盘由许多盘片，机械手臂，磁头与主轴马达所组成，实际的数据都写在盘片上，　而读写主要通过机械手臂可伸展让读取头在盘片上面进行读写操作. 盘片上，以圆心以放射状的方式分割出最小的存储单位叫扇区(sector)，每个扇区512bytes,扇区所组成的圆叫磁道（track)，在所胡盘片上面的同一个磁道可以组成柱面(cylinder)，柱面也是一般我们分割硬盘的最小单位了。硬盘大小计算方式 head * cylinder * sector * 512 bytes<br>
+　　　　
+    每个硬盘的第一扇区都非常重要，主要记录了两个重要的信息：主引导分区(master boot record, MBR)，可以安装引导加载程序的地方，有446bytes。　分区表（partiion table），记录了整块硬盘分区的状态有64bytes,因为只有６４bytes所以只能存放４个分区，这四个分区被称为主(primary)分区或者扩展(extended)分区,　而扩展分区本身不不能被拿来格式化，可以在扩展分区上继续做分区，这些分区被称为逻辑(logical）分区。在linux系统中对应的文件名前四个预留给主分区或者扩展分区，逻辑分区必须从５开始，如图<br>
+<img src="/images/deviec-partition.png" alt="device partition"><br>
+这里p1对应linux文件中的 /dev/hda1。 p2对应 /dev/hda2。 l1　对应 /dev/hda5。 l2　对应 /dev/hda6 等。</p>
+
+<p>　　在/dev里面的设备，系统里的设备默认情况是无法访问的，需要进行挂载才可访问，比如如果需要访问/dev/sda1,就需要用一个入口与之关联,比如关联到／mnt 便需要用mount命令把sda1挂载到/mnt  </p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">mount -t ext4 /dev/sda1 /mnt
+</code></pre></div>
+<p>这里/mnt被挂载的目录就叫挂载点可以用 <code>df -h</code> 来查看系统的分区情况,可以是通过配置/etc/fstab实现开机自动挂载  </p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">df -h
+#Filesystem      Size  Used Avail Use% Mounted on
+#/dev/sda3       6.6G  1.7G  4.6G  28% /
+#tmpfs           491M     0  491M   0% /dev/shm
+#/dev/sda1       190M   40M  141M  22% /boot
+</code></pre></div>
+<p>如果需要取消挂载，便可以用 <code>umount</code> 命令. 这里需要退出到/mnt后才能操作</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">umount /mnt
+</code></pre></div>
+<p>/proc     内核与进程信息的的虚拟文件系统
+     /proc/meminfo
+     /proc/cpuinfo</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">     /proc/loadavg
+     内核：/proc/sys/net/ipv4/ip_forward对应/etc/sysctl.conf里的配置。
+</code></pre></div>
+<p>/var/spool/crom/root  定时任务的配置文件
+/var/spool/clientmpqueue </p>
+
+<p>/proc/sys/net/ipv4</p>
+
+            </div>
+
+            <div id="markdown-outline" class="col-lg-3">
+            </div>
+
+            <div id="disqus_thread"></div>
+<script>
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+     */
+    /*
+    var disqus_config = function () {
+        this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() {  // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        
+        s.src = '//magdre.disqus.com/embed.js';
+        
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
+        </div>
+    </div>
+
+    
+<footer id="l-footer">
+    <div class="container">
+        <div class="row">
+            <div id="contact" class="col-lg-6 col-lg-offset-1 col-md-6 col-md-offset-1 col-sm-9">
+                <h3>CONTACT</h3>
+                <div class="row">
+                    <address id="address" class="col-lg-6 col-md-6 col-sm-6">
+                        China 北京 <br>
+                        海淀, 10000<br>
+                        上地<br>
+                        <br>
+                    </address>
+
+                    <ul class="col-lg-6 col-md-6 col-sm-6">
+                        <li class="qq"><i class="fa fa-qq"></i> &nbsp;&nbsp;921070747</li>
+                        <li class="email"><i class="fa fa-envelope"></i> <a href="mailto:j.k.yulei@gmail.com"> &nbsp;&nbsp;j.k.yulei@gmail.com</a></li>
+                        <li class="tel"><i class="fa fa-mobile"></i> <a href="tel:18010073860">&nbsp;&nbsp; 18010073860</a></li>
+                        <li class="github"><i class="fa fa-github"></i> <a href="http://www.github.com/magdre"> &nbsp;&nbsp;http://www.github.com/magdre</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div id="rss" class="col-lg-2 col-md-2 col-sm-2">
+                    <h3>SUBSCRIBE<br></h3>
+                <a href="feed.xml">
+                    <i class="rss fa fa-rss-square"></i>
+                </a>
+            </div>
+        </div>
+
+        <p id="legal">
+            Copyright (c) 2015 sandow | Powered by <a href="http://jekyllrb.com">Jekyll</a> &amp; <a href="http://github.com">GitHub</a> | designed &amp; build by <a href="http://unifreak.github.io">UniFreak</a>
+        </p>
+    </div>
+</footer>
+
+<script type="text/javascript" src="/javascripts/base.js"></script>
+<!--
+
+<!-- 百度统计 -->
+<script type="text/javascript" src="/javascripts/baidu_statistics.js"></script>
+
+-->
+
+
+    <script type="text/javascript" src="/javascripts/markdownreader.js"></script>
+</body>
+</html>

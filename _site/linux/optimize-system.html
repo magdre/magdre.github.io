@@ -1,0 +1,203 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="SELinux,iptables,SSH,系统字符集,文件描述符,服务器时间同步">
+
+<title>优化系统</title>
+
+<!-- favicon -->
+<link rel="shortcut icon" href="./favicon.ico" type="image/icon">
+<link rel="icon" href="./favicon.ico" type="/image/icon">
+<link rel="stylesheet" type="text/css" href="/stylesheets/base.css">
+<link rel="stylesheet" type="text/css" href="/stylesheets/simplePagination.css">
+
+<script type="text/javascript" src="/javascripts/jquery.js"></script>
+
+<!--[if lt IE 9]>
+<script src="/javascripts/html5shiv.js"></script>
+<![endif]-->
+
+    <link rel="stylesheet" type="text/css" href="/stylesheets/markdownreader.css">
+<link rel="stylesheet" type="text/css" href="/stylesheets/pygments_monokai.css">
+<link rel="stylesheet" type="text/css" href="/stylesheets/code_block.css">
+</head>
+
+<body>
+    <header id="l-header">
+    <div class="container">
+        <div class="row logo">
+            <div class="col-lg-7">
+                <h1>SanDow</h1>
+            </div>
+
+
+            <div class="col-lg-5">
+                <p>On the way to death</p>
+                <p>On the way of learning</p>
+            </div>
+        </div>
+
+        <div class="row navicon">
+            <a href=""><i class="fa fa-navicon"></i></a>
+        </div>
+
+        <div class="row navbar">
+            <nav class="col-lg-8 col-md-8 col-xs-12">
+                <ul class="row">
+                    <li class="col-lg-3"><a href="/">HOME</a></li>
+                    <li class="col-lg-3">
+                        <ul class="subnav">
+                            <a href="javascript:void(0)">POST</a>
+                            <li><a href="/category">CATEGORY</a></li>
+                            <li><a href="/tag">TAG</a></li>
+                        </ul>
+                    </li>
+                    <li class="col-lg-3"><a href="/about">ABOUT</a></li>
+                    <li class="col-lg-3"><a href="/building">PLAY GROUND</a></li>
+                </ul>
+            </nav>
+
+            <div class="search col-lg-4 col-md-4 col-xs-12">
+                <label for="search"></label>
+                <input id="search" name="serach" type="text" placeholder="Dummy Search">
+                <i class="fa fa-search"></i>
+            </div>
+        </div>
+    </div>
+</header>
+
+    <div class="container">
+        <div class="row">
+            <div id="markdown-container" class="col-lg-9">
+                <header>
+                    <p id="postTitle">优化系统</p>
+                    
+                    <ul class="tags clearfix">
+                        
+                    </ul>
+                    
+                    <p id="postMeta">posted on 20 Oct 2015 under category <a href="/category/">linux</a></p>
+
+                </header>
+
+                <ul>
+<li>content
+{:toc}</li>
+</ul>
+
+<hr>
+
+<p>本文对系统做出视频优化， 针对刚入门linux的人来说了解其如何配置是必要的，之后在需要的时候也可适当配置。</p>
+
+<hr>
+
+<h2 id="selinux">SELinux</h2>
+
+<p>SELinux（Security-enhanced linux）是美国国家安全局（nsa）对于强制访问控制的实现，是linux历史上最杰出的新安全子系统。 但因为控制太严格，生产环境不用它，使用其他的安全手段。现在有关配置文件放在 /etc/selinux/config 下</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">$ cat /etc/selinux/config 
+
+# This file controls the state of SELinux on the system.
+# SELINUX= can take one of these three values:
+#     enforcing - SELinux security policy is enforced.
+#     permissive - SELinux prints warnings instead of enforcing.
+#     disabled - No SELinux policy is loaded.
+SELINUX=disabled
+# SELINUXTYPE= can take one of these two values:
+#     targeted - Targeted processes are protected,
+#     mls - Multi Level Security protection.
+SELINUXTYPE=targeted 
+</code></pre></div>
+<p>由此可以看到SELinux 用三个值， enforcing， permissive， disabled。
+* enforcing 就是如果你违反了策略，你就无法继续操作下去。
+* Permissive 就是selinux 有效， 但即使你违反了策略的也会让你继续操作，但是把你违反的内容记录下来。
+* disabled 就是关闭selinux </p>
+
+<p>SELINUXTYPE 主要有两大类，
+* targeted 是红帽
+*</p>
+
+            </div>
+
+            <div id="markdown-outline" class="col-lg-3">
+            </div>
+
+            <div id="disqus_thread"></div>
+<script>
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+     */
+    /*
+    var disqus_config = function () {
+        this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() {  // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        
+        s.src = '//magdre.disqus.com/embed.js';
+        
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
+        </div>
+    </div>
+
+    
+<footer id="l-footer">
+    <div class="container">
+        <div class="row">
+            <div id="contact" class="col-lg-6 col-lg-offset-1 col-md-6 col-md-offset-1 col-sm-9">
+                <h3>CONTACT</h3>
+                <div class="row">
+                    <address id="address" class="col-lg-6 col-md-6 col-sm-6">
+                        China 北京 <br>
+                        海淀, 10000<br>
+                        上地<br>
+                        <br>
+                    </address>
+
+                    <ul class="col-lg-6 col-md-6 col-sm-6">
+                        <li class="qq"><i class="fa fa-qq"></i> &nbsp;&nbsp;921070747</li>
+                        <li class="email"><i class="fa fa-envelope"></i> <a href="mailto:j.k.yulei@gmail.com"> &nbsp;&nbsp;j.k.yulei@gmail.com</a></li>
+                        <li class="tel"><i class="fa fa-mobile"></i> <a href="tel:18010073860">&nbsp;&nbsp; 18010073860</a></li>
+                        <li class="github"><i class="fa fa-github"></i> <a href="http://www.github.com/magdre"> &nbsp;&nbsp;http://www.github.com/magdre</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div id="rss" class="col-lg-2 col-md-2 col-sm-2">
+                    <h3>SUBSCRIBE<br></h3>
+                <a href="feed.xml">
+                    <i class="rss fa fa-rss-square"></i>
+                </a>
+            </div>
+        </div>
+
+        <p id="legal">
+            Copyright (c) 2015 sandow | Powered by <a href="http://jekyllrb.com">Jekyll</a> &amp; <a href="http://github.com">GitHub</a> | designed &amp; build by <a href="http://unifreak.github.io">UniFreak</a>
+        </p>
+    </div>
+</footer>
+
+<script type="text/javascript" src="/javascripts/base.js"></script>
+<!--
+
+<!-- 百度统计 -->
+<script type="text/javascript" src="/javascripts/baidu_statistics.js"></script>
+
+-->
+
+
+    <script type="text/javascript" src="/javascripts/markdownreader.js"></script>
+</body>
+</html>

@@ -1,0 +1,649 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="主要介绍一些linux系统是基本的文件管理命令 diff vimdiff more less head tail cat xargs seq cut wc chattr lsattr stat chgrp chown chmod which whereis touch ">
+
+<title>linux文件管理命令</title>
+
+<!-- favicon -->
+<link rel="shortcut icon" href="./favicon.ico" type="image/icon">
+<link rel="icon" href="./favicon.ico" type="/image/icon">
+<link rel="stylesheet" type="text/css" href="/stylesheets/base.css">
+<link rel="stylesheet" type="text/css" href="/stylesheets/simplePagination.css">
+
+<script type="text/javascript" src="/javascripts/jquery.js"></script>
+
+<!--[if lt IE 9]>
+<script src="/javascripts/html5shiv.js"></script>
+<![endif]-->
+
+    <link rel="stylesheet" type="text/css" href="/stylesheets/markdownreader.css">
+<link rel="stylesheet" type="text/css" href="/stylesheets/pygments_monokai.css">
+<link rel="stylesheet" type="text/css" href="/stylesheets/code_block.css">
+</head>
+
+<body>
+    <header id="l-header">
+    <div class="container">
+        <div class="row logo">
+            <div class="col-lg-7">
+                <h1>SanDow</h1>
+            </div>
+
+
+            <div class="col-lg-5">
+                <p>On the way to death</p>
+                <p>On the way of learning</p>
+            </div>
+        </div>
+
+        <div class="row navicon">
+            <a href=""><i class="fa fa-navicon"></i></a>
+        </div>
+
+        <div class="row navbar">
+            <nav class="col-lg-8 col-md-8 col-xs-12">
+                <ul class="row">
+                    <li class="col-lg-3"><a href="/">HOME</a></li>
+                    <li class="col-lg-3">
+                        <ul class="subnav">
+                            <a href="javascript:void(0)">POST</a>
+                            <li><a href="/category">CATEGORY</a></li>
+                            <li><a href="/tag">TAG</a></li>
+                        </ul>
+                    </li>
+                    <li class="col-lg-3"><a href="/about">ABOUT</a></li>
+                    <li class="col-lg-3"><a href="/building">PLAY GROUND</a></li>
+                </ul>
+            </nav>
+
+            <div class="search col-lg-4 col-md-4 col-xs-12">
+                <label for="search"></label>
+                <input id="search" name="serach" type="text" placeholder="Dummy Search">
+                <i class="fa fa-search"></i>
+            </div>
+        </div>
+    </div>
+</header>
+
+    <div class="container">
+        <div class="row">
+            <div id="markdown-container" class="col-lg-9">
+                <header>
+                    <p id="postTitle">linux文件管理命令</p>
+                    
+                    <ul class="tags clearfix">
+                        
+                        <li><i class="fa fa-tag"></i> linux</li>
+                        
+                    </ul>
+                    
+                    <p id="postMeta">posted on 11 Oct 2015 under category <a href="/category/">linux</a></p>
+
+                </header>
+
+                <hr>
+
+<h2 id="diff-逐行比较两个文件">diff,逐行比较两个文件</h2>
+
+<p><strong>描述</strong>：, 以逐行的方式比较给定的两个文本文件的不同处</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">$ diff a.txt b.txt 
+1c1
+&lt; 123456
+---
+&gt; 123457
+</code></pre></div>
+<p><strong>参数</strong>： </p>
+
+<ul>
+<li>-b, --ignore-space-change 不检查空格字符的不同</li>
+<li>-B, --ignore-blank-lines 不检查空白行</li>
+<li>-i, --ignore-case 不检查大小写的不同</li>
+<li>-I, --ignore-matching-lines=RE  忽略RE的匹配</li>
+<li>-w, --ignore-all-space  忽略全部空格字符</li>
+</ul>
+
+<p><strong>语法</strong></p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">diff [OPTION]... FILES
+</code></pre></div>
+<hr>
+
+<h2 id="vimdiff-用vim比较多个文件">vimdiff, 用VIM比较多个文件</h2>
+
+<p><strong>描述</strong>：用vim编辑器同时打开两到四个不同版本的文件，并且在不同之处高亮显示  </p>
+
+<p><strong>语法</strong><br>
+```
+vimdiff [options] file1 file2 [file3 [file4]]</p>
+
+<h2 id=">```</h2>
+
+<h2 id="more，交互式查看文件内容">more，交互式查看文件内容</h2>
+
+<p><strong>描述</strong>：用来查看一个文本文件的内容，当填满一屏后停下，可以用快捷键来控制显示内容  </p>
+
+<p><strong>快捷键</strong>： </p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">快捷键</th>
+<th style="text-align: left">功能</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">&lt;空格键&gt; 或 f</td>
+<td style="text-align: left">显示下一屏文本</td>
+</tr>
+<tr>
+<td style="text-align: left">&lt;回车键&gt;</td>
+<td style="text-align: left">显示下 1 行文本</td>
+</tr>
+<tr>
+<td style="text-align: left">d 或 ctrl-D</td>
+<td style="text-align: left">滚动 k 行 初始</td>
+</tr>
+<tr>
+<td style="text-align: left">b 或 ctrl-B</td>
+<td style="text-align: left">跳过上面 1 屏文本</td>
+</tr>
+<tr>
+<td style="text-align: left">&#39;</td>
+<td style="text-align: left">转到上次搜索开始处</td>
+</tr>
+<tr>
+<td style="text-align: left">=</td>
+<td style="text-align: left">显示当前行号</td>
+</tr>
+<tr>
+<td style="text-align: left">/&lt;正则表达式&gt;</td>
+<td style="text-align: left">搜索正则表达式第 1 次出现处 less下会高亮显示</td>
+</tr>
+<tr>
+<td style="text-align: left">n</td>
+<td style="text-align: left">搜索前一正则表达式下次出现处</td>
+</tr>
+<tr>
+<td style="text-align: left">!&lt;cmd&gt; 或 :!&lt;cmd&gt;</td>
+<td style="text-align: left">在子 shell 中执行 <cmd> 命令</td>
+</tr>
+<tr>
+<td style="text-align: left">v</td>
+<td style="text-align: left">在当前行启动 /usr/bin/vi</td>
+</tr>
+<tr>
+<td style="text-align: left">.</td>
+<td style="text-align: left">重复前一命令</td>
+</tr>
+</tbody></table>
+
+<hr>
+
+<h2 id="less-比more功能更强大的内容查看">less, 比more功能更强大的内容查看</h2>
+
+<p><strong>描述</strong>： less 和more非常像，但是less支持用户向前向后浏览文件，可以用pageup，pagedown 来上下翻页。</p>
+
+<p><strong>快捷键</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">快捷键</th>
+<th style="text-align: left">功能</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">/pattern</td>
+<td style="text-align: left">Search forward for (N-th) matching line 向后搜索</td>
+</tr>
+<tr>
+<td style="text-align: left">?pattern</td>
+<td style="text-align: left">Search backward for (N-th) matching line 向前搜索</td>
+</tr>
+<tr>
+<td style="text-align: left">&amp;pattern</td>
+<td style="text-align: left">Display only matching lines 只显示匹配到的行</td>
+</tr>
+<tr>
+<td style="text-align: left">n</td>
+<td style="text-align: left">Repeat previous search (for N-th occurrence) 重复前面的搜索（向后搜）</td>
+</tr>
+<tr>
+<td style="text-align: left">N</td>
+<td style="text-align: left">Repeat previous search in reverse direction 重复前面的搜索（向前搜）</td>
+</tr>
+<tr>
+<td style="text-align: left">-N</td>
+<td style="text-align: left">显示行号</td>
+</tr>
+<tr>
+<td style="text-align: left">-i</td>
+<td style="text-align: left">搜索时忽略大小写</td>
+</tr>
+</tbody></table>
+
+<hr>
+
+<h2 id="head，查看文件前10行内容">head，查看文件前10行内容</h2>
+
+<p><strong>描述</strong>：打印出文件的前10（默认）行内容</p>
+
+<p><strong>参数</strong>： </p>
+
+<ul>
+<li>-c, --bytes=[-]K  打印出前K字节</li>
+<li>-n, --lines=[-]K  打印出前K行</li>
+</ul>
+
+<p><strong>语法</strong></p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">head [OPTION]... [FILE]...
+</code></pre></div>
+<hr>
+
+<h2 id="tail，查看文件后10行内容">tail，查看文件后10行内容</h2>
+
+<p><strong>描述</strong>： , 打印文件最后10行的内容</p>
+
+<p><strong>参数</strong>： 同head<br>
+<strong>语法</strong></p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">tail [OPTION]... [FILE]... 
+</code></pre></div>
+<h2 id="cat，查看文件内容">cat，查看文件内容</h2>
+
+<p><strong>描述</strong>： 连接文件并打印到标准输出设备上，用来显示文件的内容，内容会全部显示。  </p>
+
+<p><strong>参数</strong>：</p>
+
+<ul>
+<li>-n 从1开始显示行号<br></li>
+</ul>
+
+<p><strong>语法</strong></p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">cat [OPTION]... [FILE]...
+</code></pre></div>
+<p>cat 也可以用来进行输入内容到指定文件，事实上这是&quot;&lt;, &lt;&lt;, &gt;&gt;, &gt;&quot;的功能， </p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">$ cat &gt;&gt;/data/boy/oldboy.txt &lt;&lt;\EOF
+I am study linux；
+EOF
+</code></pre></div>
+<p>两个EOF可以被两个其它任意内容替换第一个EOF前的\在命令行内需要删除，但是必须相同。上面命令的意思是把I am study linux输入到oldboy.txt里</p>
+
+<hr>
+
+<h2 id="xargs，将标准输入转成命令参数">xargs，将标准输入转成命令参数</h2>
+
+<p><strong>描述</strong>：  将标准输入数据转换成命令行参数。 也可能将单行或者多行文件输入转换成其它格式。</p>
+
+<p><strong>参数</strong>： </p>
+
+<ul>
+<li>-n 指定每一行显示的内容的数量</li>
+<li>-d 指定以什么为分隔符</li>
+</ul>
+
+<p><strong>举例</strong></p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">$ echo &quot;nameXnameXnameXname&quot; | xargs -dX -n2
+name name
+name name
+$ find /tmp -name core -type f -print | xargs /bin/rm -f
+</code></pre></div>
+<hr>
+
+<h2 id="seq，打印序列">seq，打印序列</h2>
+
+<p><strong>描述</strong>： 打印从first到last步找为increment连续的整数</p>
+
+<p><strong>参数</strong>： </p>
+
+<ul>
+<li>-f, --format=FORMAT   使用printf样式的浮点格式</li>
+<li>-s, --separator=STRING  指定分隔符 (default: \n)</li>
+<li>-w, --equal-width   在前面添加0,使得数字宽度相同</li>
+</ul>
+
+<p><strong>语法</strong></p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">seq [OPTION]... LAST
+seq [OPTION]... FIRST LAST
+seq [OPTION]... FIRST INCREMENT LAST
+</code></pre></div>
+<p><strong>举例</strong></p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">$ seq -s &#39;&lt; &#39; 10
+$ seq -s &#39;&lt; &#39; 10 |xargs -n 3 
+</code></pre></div>
+<h2 id="cut，删除行中指定部分">cut，删除行中指定部分</h2>
+
+<p><strong>描述</strong>： 删除行中的指定部分，还可以连接文件 <code>cut f1 f2 &gt;f3</code> 便是把f1, f2的内容连接起来输入到f3</p>
+
+<p><strong>参数</strong>：</p>
+
+<ul>
+<li>-b: 仅显示行中指定范围字节(bytes)</li>
+<li>-c: 仅显示行中指定范围的字符(characters)</li>
+<li>-d: 指定分隔符(delimiter)，用指定分隔符来替换TAB(默认）</li>
+<li>-f: 只选择指定的范围，</li>
+</ul>
+
+<p><strong>语法</strong></p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">cut OPTION... [FILE]...
+</code></pre></div>
+<p><strong>举例</strong></p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">$ who
+sandow   pts/0        2015-10-21 09:36 (10.0.0.1)
+sandow   pts/1        2015-10-21 11:27 (10.0.0.1)
+
+$ who |cut -b -5,10
+sandop
+sandop
+</code></pre></div>
+<p>可以看到-5就是从开关显示到第五，同理5-, 在取英文的时候 -b -c都一样，但是取中文的话只能用-c，用-b便会出现乱码，因为中文一个字占两个字节。</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">$ cat /etc/passwd|head -5
+root:x:0:0:root:/root:/bin/bash
+bin:x:1:1:bin:/bin:/sbin/nologin
+daemon:x:2:2:daemon:/sbin:/sbin/nologin
+adm:x:3:4:adm:/var/adm:/sbin/nologin
+lp:x:4:7:lp:/var/spool/lpd:/sbin/nologin
+
+$ cat /etc/passwd|head -5|cut -d : -f 1
+root
+bin
+daemon
+adm
+lp
+</code></pre></div>
+<p>用-d来指定分隔符后便可以用-f来取出指定范围的内容了，事实上就是取第几列，其中1也可以用上面的情况比如-3 ; 2-4 ; 5- ; 4,7。</p>
+
+<h2 id="wc-统计文件行字数，字节数">wc, 统计文件行字数，字节数</h2>
+
+<p><strong>描述</strong>：print newline, word, and byte counts for each file 统计指定文件中的行数，字数，字节数，并将结果显示输出。如果文件名为“-”那么会从标准输入设备读取数据。</p>
+
+<p><strong>参数</strong>： </p>
+
+<ul>
+<li>-l 只显示行数，</li>
+<li>-w 只显示字数</li>
+<li>-c 只显示字节数 （bytes)</li>
+<li>-m 只显示字符数 (character)</li>
+</ul>
+
+<p><strong>语法</strong></p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">wc [OPTION]... [FILE]...
+wc [OPTION]... --files0-from=F
+</code></pre></div>
+<p><strong>举例</strong></p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">$ cat /etc/passwd |wc
+     26      38    1154
+$ cat /etc/passwd |wc -l
+26
+$ cat /etc/passwd |wc -w
+38
+$ cat /etc/passwd |wc -c
+1154
+</code></pre></div>
+<hr>
+
+<h2 id="chattr-修改文件属性">chattr, 修改文件属性</h2>
+
+<p><strong>描述</strong>：change file attributes修改linux文件系统里的文件属性<br>
+<strong>语法</strong>: </p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">chattr [ -RVf ] +-=[acdeijstuADST] [ -v version ] [ mode ] files...
+</code></pre></div>
+<p>+是给文件增加属性，-是移除文件属性，=是更新指定属性  ‘acdeijstuADST’ 的各自意思是 append only (a), compressed  (c),  no  dump  (d),  extent  format  (e),     immutable (i), data journalling (j), secure deletion (s), no tail-merging (t), undeletable (u), no atime updates (A),  synchronous  directory updates  (D),  synchronous  updates (S), and top of directory hierarchy(T).  </p>
+
+<p>A 文件或者目录的atime不可修改，这是预防手提电脑I/O错误的发生<br>
+ c 设定文件是否通过内核自动压缩后储存<br>
+ d 设定文件不能成为dump程序的备份目标<br>
+ i 设定文件不允许被修改删除，设定链接。<br>
+ u 预防意外删除文件，虽然删除但还是在磁盘中
+ s 保密性删除文件或目录， 硬盘空间被全部收回</p>
+
+<p><strong>参数</strong>：   </p>
+
+<ul>
+<li>-R 递归创建文件属性</li>
+</ul>
+
+<p><strong>举例</strong> </p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">chattr +i /etc/passwd /etc/shadow /etc/group /etc/gshadow /etc/inittab
+lsattr /etc/passwd
+----i--------e- /etc/passwd
+</code></pre></div>
+<hr>
+
+<h2 id="lsattr-查看文件属性">lsattr 查看文件属性</h2>
+
+<p><strong>描述</strong>：list file attributes on a Linux second extended file system 列出linux  EXT2文件系统的属性<br>
+<strong>语法</strong>：</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">lsattr [ -RVadv ] [ files...  ]   
+</code></pre></div>
+<p><strong>参数</strong>：</p>
+
+<ul>
+<li>-R     Recursively list attributes of directories and their contents.递归显示目录以及其包含内容的属性</li>
+<li>-V     Display the program version.显示程序版本</li>
+<li>-a     List all files in directories, including files that start with &#39;.&#39; 列出所有目录下的文件，包括以.开头的文件</li>
+</ul>
+
+<p><strong>举例</strong></p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">$ lsattr a.txt 
+-------A-----e- a.txt
+</code></pre></div>
+<hr>
+
+<h2 id="stat-查看文件权限属性">stat, 查看文件权限属性</h2>
+
+<p><strong>描述</strong>：display file or file system status 显示文件或者文件系统的状态，包括I-node里的所有信息。</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">$ stat a.txt
+  File: &quot;a.txt&quot;
+  Size: 21          Blocks: 8          IO Block: 4096   普通文件
+Device: 803h/2051d  Inode: 162831      Links: 1
+Access: (0645/-rw-r--r-x)  Uid: (  501/  sandow)   Gid: (  501/  sandow)
+Access: 2015-10-21 11:26:22.160688313 +0800
+Modify: 2015-10-21 11:26:17.751689045 +0800
+Change: 2015-10-21 13:02:52.982024877 +0800
+</code></pre></div>
+<p><strong>参数</strong>： </p>
+
+<ul>
+<li>-L follow links 支持符号链接</li>
+<li>-f display file system status instead of file status显示文件系统而不是文件状态</li>
+<li>-c 指定需要显示的信息</li>
+<li>-t 以简洁方式输出信息</li>
+</ul>
+
+<p><strong>语法</strong></p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">stat [OPTION]... FILE...
+</code></pre></div>
+<p><strong>举例</strong></p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">$ stat -c %a a.txt
+645
+</code></pre></div>
+<p>-c后面的格式
+%a     access rights in octal 用数字来显示文件的权限（645）<br>
+%A     access rights in human readable form(-rw-r--r-x)<br>
+%b     number of blocks allocated (see %B)<br>
+%B     the size in bytes of each block reported by %b<br>
+%C     SELinux security context string<br>
+%d     device number in decimal (2051)<br>
+%D     device number in hex (803)<br>
+%F     file type  (普通文件)<br>
+%g     group ID of owner(组ID)<br>
+%G     group name of owner(组名)<br>
+%h     number of hard links<br>
+%i     inode number<br>
+%N     quoted file name with dereference if symbolic link<br>
+%s     total size, in bytes<br>
+%u     user ID of owner<br>
+%U     user name of owner<br>
+%w     time of file birth, human-readable; - if unknown<br>
+%W     time of file birth, seconds since Epoch; 0 if unknown<br>
+%x     time of last access, human-readable<br>
+%X     time of last access, seconds since Epoch<br>
+%y     time of last data modification, human-readable<br>
+%Z     time of last status change, seconds since Epoch  </p>
+
+<hr>
+
+<h2 id="chgrp-修改文件属组">chgrp, 修改文件属组</h2>
+
+<p><strong>描述</strong>：Change  the  group of each FILE to GROUP.  更改每个文件的GROUP</p>
+
+<p><strong>参数</strong>： </p>
+
+<ul>
+<li>-c, --changes  like verbose but report only when a change is made</li>
+</ul>
+
+<p><strong>语法</strong></p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">chgrp [OPTION]... GROUP FILE...
+chgrp [OPTION]... --reference=RFILE FILE...
+</code></pre></div>
+<p><strong>举例</strong></p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">chgrp staff /u
+          #Change the group of /u to &quot;staff&quot;.
+
+chgrp -hR staff /u
+          #Change the group of /u and subfiles to &quot;staff&quot;.
+</code></pre></div>
+<h2 id="chown-修改文件属主与组">chown, 修改文件属主与组</h2>
+
+<p><strong>描述</strong>：change file owner and group 更改文件的所有者以及文件所属组
+同时变更时需要用<code>:</code>来分隔</p>
+
+<h2 id="chmod-修改文件权限">chmod, 修改文件权限</h2>
+
+<p><strong>描述</strong>：change file mode bits 更改文件的权限，文件有读取写入，执行3种权限（rwx），用<code>stat -c %A a.txt</code>命令里的所看到的内容，第一个字符是文件类型，2-4字符为所有者的权限，5-7是所属组的权限，8-10为其它用户的权限。各缩写必须能够记住 u(user), g(group), o(other), a(all), r(read, 4), w(write, 2), x(execute, 1) -(无权限，0）</p>
+
+<p><strong>参数</strong>： </p>
+
+<ul>
+<li>-c, --changes 效果类似 -v ，但仅回报更改的部分</li>
+<li>-v，--verbose 显示指令执行过程</li>
+<li>-R, --recursive</li>
+<li>-reference=(参考文件或目录) 把指定文件或目录的所属组全部设定和参考文件或目录的所属组相同<br></li>
+</ul>
+
+<p><strong>语法</strong></p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">chmod [OPTION]... MODE[,MODE]... FILE...
+chmod [OPTION]... OCTAL-MODE FILE...
+chmod [OPTION]... --reference=RFILE FILE...
+</code></pre></div>
+<h2 id="which-显示命令绝对路径">which, 显示命令绝对路径</h2>
+
+<p><strong>描述</strong>：shows the full path of (shell) commands 显示命令的绝对路径</p>
+
+<p><strong>语法</strong></p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">which [options] [--] programname [...]
+</code></pre></div>
+<h2 id="whereis，与which类似">whereis，与which类似</h2>
+
+<p><strong>描述</strong>： whereis 只能用于程序名的搜索， 会从数据库中查找数据，find是遍历硬盘来查找。</p>
+
+<p><strong>语法</strong></p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">whereis [-bmsu] [-BMS directory...  -f] filename...
+</code></pre></div>
+<h2 id="touch-修改文件时间戳">touch, 修改文件时间戳</h2>
+
+<p><strong>描述</strong>：Change file timestamps更改文件的时间戳，若不加参数-c -h，文件不存在便会创建一个文件。<br>
+<strong>语法</strong>:  </p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">touch [OPTION]... FILE..
+</code></pre></div>
+<p><strong>参数</strong>：   </p>
+
+<ul>
+<li>-a        change only the access time 改变档案的读取时间记录</li>
+<li>-m         change only the modification time 改变档案的修改时间记录</li>
+<li>-c, --no-create       do not create any files</li>
+<li>-d, --date=STRING         parse STRING and use it instead of current time</li>
+<li>-r, --reference=FILE      use this file times instead of current time</li>
+<li>-t STAMP      use [[CC]YY]MMDDhhmm[.ss] instead of current time</li>
+</ul>
+
+<p><strong>举例</strong></p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">touch testfile
+    修改文件的时间属性(若不存在)； 创建名为”testfile”的新空白文件
+touch /tmp/stu{1..12}.txt
+    批量创建多个文件
+</code></pre></div>
+            </div>
+
+            <div id="markdown-outline" class="col-lg-3">
+            </div>
+
+            <div id="disqus_thread"></div>
+<script>
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+     */
+    /*
+    var disqus_config = function () {
+        this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() {  // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        
+        s.src = '//magdre.disqus.com/embed.js';
+        
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
+        </div>
+    </div>
+
+    
+<footer id="l-footer">
+    <div class="container">
+        <div class="row">
+            <div id="contact" class="col-lg-6 col-lg-offset-1 col-md-6 col-md-offset-1 col-sm-9">
+                <h3>CONTACT</h3>
+                <div class="row">
+                    <address id="address" class="col-lg-6 col-md-6 col-sm-6">
+                        China 北京 <br>
+                        海淀, 10000<br>
+                        上地<br>
+                        <br>
+                    </address>
+
+                    <ul class="col-lg-6 col-md-6 col-sm-6">
+                        <li class="qq"><i class="fa fa-qq"></i> &nbsp;&nbsp;921070747</li>
+                        <li class="email"><i class="fa fa-envelope"></i> <a href="mailto:j.k.yulei@gmail.com"> &nbsp;&nbsp;j.k.yulei@gmail.com</a></li>
+                        <li class="tel"><i class="fa fa-mobile"></i> <a href="tel:18010073860">&nbsp;&nbsp; 18010073860</a></li>
+                        <li class="github"><i class="fa fa-github"></i> <a href="http://www.github.com/magdre"> &nbsp;&nbsp;http://www.github.com/magdre</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div id="rss" class="col-lg-2 col-md-2 col-sm-2">
+                    <h3>SUBSCRIBE<br></h3>
+                <a href="feed.xml">
+                    <i class="rss fa fa-rss-square"></i>
+                </a>
+            </div>
+        </div>
+
+        <p id="legal">
+            Copyright (c) 2015 sandow | Powered by <a href="http://jekyllrb.com">Jekyll</a> &amp; <a href="http://github.com">GitHub</a> | designed &amp; build by <a href="http://unifreak.github.io">UniFreak</a>
+        </p>
+    </div>
+</footer>
+
+<script type="text/javascript" src="/javascripts/base.js"></script>
+<!--
+
+<!-- 百度统计 -->
+<script type="text/javascript" src="/javascripts/baidu_statistics.js"></script>
+
+-->
+
+
+    <script type="text/javascript" src="/javascripts/markdownreader.js"></script>
+</body>
+</html>

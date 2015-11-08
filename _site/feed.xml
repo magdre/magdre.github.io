@@ -1,0 +1,1561 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>sandow | Another yet unique freak is showing a freakshow</title>
+    <description>sandow&#39;s personal weblog, on coding or such stuff</description>
+    <link>/</link>
+    <atom:link href="/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Sun, 08 Nov 2015 22:22:20 +0800</pubDate>
+    <lastBuildDate>Sun, 08 Nov 2015 22:22:20 +0800</lastBuildDate>
+    <generator>Jekyll v3.0.0</generator>
+    
+      <item>
+        <title>python基础</title>
+        <description>&lt;ul&gt;
+&lt;li&gt;content
+{:toc}&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr&gt;
+
+&lt;ol&gt;
+&lt;li&gt;在一个列表中去除出现次数为1的数字。给定例子有[1,2,3,1,3], [3,4,5,7,4,7].&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;方法一&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;def checkio(data):
+    data1 = []
+    for element in data:
+        if data.count(element) &amp;gt; 1:
+            data1.append(element)
+    return data1
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;方法二&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;def checkio(data):
+    return [x for x in data if data.count(x) &amp;gt; 1]
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;方法三&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;checkio = lambda data: [x for x in data if data.count(x)&amp;gt;1]
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ol&gt;
+&lt;li&gt;找出列表中位数, （如果长度为奇数那么就是中间那个数字，如果是偶数便是中间两个的平均数）&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+        <pubDate>Tue, 20 Oct 2015 02:06:05 +0800</pubDate>
+        <link>/python/learning-python-checkio</link>
+        <guid isPermaLink="true">/python/learning-python-checkio</guid>
+        
+        
+        <category>python</category>
+        
+      </item>
+    
+      <item>
+        <title>优化系统</title>
+        <description>&lt;ul&gt;
+&lt;li&gt;content
+{:toc}&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr&gt;
+
+&lt;p&gt;本文对系统做出视频优化， 针对刚入门linux的人来说了解其如何配置是必要的，之后在需要的时候也可适当配置。&lt;/p&gt;
+
+&lt;hr&gt;
+
+&lt;h2 id=&quot;selinux&quot;&gt;SELinux&lt;/h2&gt;
+
+&lt;p&gt;SELinux（Security-enhanced linux）是美国国家安全局（nsa）对于强制访问控制的实现，是linux历史上最杰出的新安全子系统。 但因为控制太严格，生产环境不用它，使用其他的安全手段。现在有关配置文件放在 /etc/selinux/config 下&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;$ cat /etc/selinux/config 
+
+# This file controls the state of SELinux on the system.
+# SELINUX= can take one of these three values:
+#     enforcing - SELinux security policy is enforced.
+#     permissive - SELinux prints warnings instead of enforcing.
+#     disabled - No SELinux policy is loaded.
+SELINUX=disabled
+# SELINUXTYPE= can take one of these two values:
+#     targeted - Targeted processes are protected,
+#     mls - Multi Level Security protection.
+SELINUXTYPE=targeted 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;由此可以看到SELinux 用三个值， enforcing， permissive， disabled。
+* enforcing 就是如果你违反了策略，你就无法继续操作下去。
+* Permissive 就是selinux 有效， 但即使你违反了策略的也会让你继续操作，但是把你违反的内容记录下来。
+* disabled 就是关闭selinux &lt;/p&gt;
+
+&lt;p&gt;SELINUXTYPE 主要有两大类，
+* targeted 是红帽
+*&lt;/p&gt;
+</description>
+        <pubDate>Tue, 20 Oct 2015 02:06:05 +0800</pubDate>
+        <link>/linux/optimize-system</link>
+        <guid isPermaLink="true">/linux/optimize-system</guid>
+        
+        
+        <category>linux</category>
+        
+      </item>
+    
+      <item>
+        <title>在ubuntu下面安装centos</title>
+        <description>&lt;ul&gt;
+&lt;li&gt;content
+{:toc}&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;之前在windows环境下在VMWARE里安装过一次CentOs,因自己在windows下搭建编程环境过于麻烦，昨日脑袋一发热便把window直接换成了Ubuntu，且在Ubuntu, 并安装VM用来搭建服务器测试环境。  &lt;/p&gt;
+
+&lt;hr&gt;
+
+&lt;h2 id=&quot;安装vmware&quot;&gt;安装VMWARE&lt;/h2&gt;
+
+&lt;p&gt;有关在ubuntu下安装vmware的教程可以参见&lt;a href=&quot;http://www.linuxtechi.com/install-vmware-workstation-11-on-ubuntu-linux/&quot;&gt;How To Install VMware Workstation 11 On Ubuntu Linux&lt;/a&gt;下面主要列出关键步骤  &lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;从官网下载vmware &lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;$ wget https://download3.vmware.com/software/wkst/file/VMware-Workstation-Full-11.0.0-2305329.x86_64.bundle
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;在脚本包上设置执行命令&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;$ chmod a+x VMware-Workstation-Full-11.0.0-2305329.x86_64.bundle
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;执行脚本开始安装&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;$ sudo ./VMware-Workstation-Full-11.0.0-2305329.x86_64.bundle
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;然后便是图形化界面的按照自己的意愿下一步下一步就OK，要注意记住HTTP port是443. 但是安装之后打开程序创建虚拟网卡时出错，一个解决办法是把vmnet.tar替换掉，链接之后附上。然后顺利进入vmware，接下来便可以安装centos了。&lt;/p&gt;
+
+&lt;hr&gt;
+
+&lt;h2 id=&quot;安装centos&quot;&gt;安装centos&lt;/h2&gt;
+
+&lt;p&gt;新建虚拟机，载入ISO，开机。进入安装界面后前几项都按照默认既可。在which type of installation would you like里选择create  custom layout. 对磁盘进行分区
+首先可以给/boot以及swap分区&lt;/p&gt;
+
+&lt;p&gt;|:----------|:--------|
+| /boot 存放引导程序| 100-200M|
+| swap 虚拟内存     | 物理内存&lt;8G，SWAP就实际内存*1.5,物理内存&gt;8G，SWAP就 8G|&lt;/p&gt;
+
+&lt;p&gt;后面按不同的场景来划分利剩余的空间&lt;/p&gt;
+
+&lt;table&gt;&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&quot;text-align: left&quot;&gt;生产场景&lt;/th&gt;
+&lt;th style=&quot;text-align: left&quot;&gt;对剩余空间的分配方案&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;集群的节点分区方法&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;把剩余的数据都给根（/）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;重要数据的业务：存储，数据库&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;根（/）给50-200G，剩余给/data 存放数据用&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;门户网站，大型企业&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;/  根 给50-200G，剩余的预留&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+
+&lt;p&gt;自己因为是测试环境，所以分区便把其它都给了根。校正，swap本来要给他1024的，结果只给了200  &lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/format-dives.jpg&quot; alt=&quot;format-divers&quot;&gt;  &lt;/p&gt;
+
+&lt;p&gt;格式代后便进入选包环节，选择minimal-customize now。 我们以最小化为仅选择四个包见下图。  &lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/format-divers1.jpg&quot; alt=&quot;format-divers&quot;&gt;&lt;br&gt;
+&lt;img src=&quot;/images/selection-package1.jpg&quot; alt=&quot;selection-package1&quot;&gt;&lt;br&gt;
+&lt;img src=&quot;/images/selection-package2.jpg&quot; alt=&quot;selection-package2&quot;&gt;  &lt;/p&gt;
+
+&lt;hr&gt;
+
+&lt;h2 id=&quot;配置网络&quot;&gt;配置网络&lt;/h2&gt;
+
+&lt;p&gt;在centos里配置网络,这里需要说明的是，&lt;strong&gt;在centos里配置的网段必须与VM里的网段一样&lt;/strong&gt;。可以在edit &amp;gt; virtual network edit里面查看并配置因为我选择的是nat网络，所以这里只需要配置vmnet8既可配置见下图之后进入.  &lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/ubuntu-vmnet8-setting.jpg&quot; alt=&quot;vmware-vmnet8-setting&quot;&gt;  &lt;/p&gt;
+
+&lt;p&gt;然后在ubuntu,系统设置-网络里对vmnet8做进一步配置见下图。  &lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/vmware-vmnet8-setting.jpg&quot; alt=&quot;ubuntu-vmnet8-setting&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;进入centos里输入 &lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;vi /etc/sysconfig/network-scripts/ifcfg-eth0 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;对centos网卡进行配置  &lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/centos-networking-setting.png&quot; alt=&quot;centos-networking-setting&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;之后便可以顺利上网了。&lt;/p&gt;
+</description>
+        <pubDate>Tue, 20 Oct 2015 02:06:05 +0800</pubDate>
+        <link>/ubuntu/install-centos-onubuntu</link>
+        <guid isPermaLink="true">/ubuntu/install-centos-onubuntu</guid>
+        
+        
+        <category>ubuntu</category>
+        
+      </item>
+    
+      <item>
+        <title>在ubuntu下面安装SSH客户端PAC Manager</title>
+        <description>&lt;h2 id=&quot;安装pac-manager&quot;&gt;安装PAC Manager&lt;/h2&gt;
+
+&lt;p&gt;近日开始放弃WIN10转而用Ubuntu，原因很简单，因为自己在搭建环境的时候在windows下相当不顺手，而且总出错，每个包都需要自己一个个下一个个安装，累了，真的累了。果断换成Ubuntu,一行命令便可搞定所有问题。 上一次说到在Ubuntu里面安装了VMware但是如果用Terminal输入命令&lt;code&gt;ssh -p22 sandow@10.0.0.19&lt;/code&gt; 这样连接虽然是完全OK的，但每天都这样输也是个麻烦事，如果用alias做了别名后又不能连别的IP，而且还不能批量管理多个虚拟机，百度搜到有一个Ubuntu下的CRT，但是官网已经不支持下载更何况要怎么破解呢。后来发现了一个替代CRT的程序，那就是PAC Manager 下面便记录下是如何安装并且使用之的。  &lt;/p&gt;
+
+&lt;p&gt;首先去官网下载PAC manage &lt;img src=&quot;http://sourceforge.net/projects/pacmanager/&quot; alt=&quot;PAC Manager官网&quot;&gt;
+下载下来后是*.deb这样的格式，需要用下面命令来安装PAC，&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;sudo dpkg -i pac-*.deb
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;发现提示错误，提示信息显示依赖关系未被配置，&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;(正在读取数据库 ... 系统当前共安装有 199158 个文件和目录。)
+正准备解包 pac-4.5.5.5-all.deb  ...
+正在将 pac (4.5.5.5) 解包到 (4.5.3.2) 上 ...
+dpkg: 依赖关系问题使得 pac 的配置工作不能继续：
+ pac 依赖于 libgtk2-unique-perl；然而：
+  未安装软件包 libgtk2-unique-perl。
+
+dpkg: 处理软件包 pac (--install)时出错：
+ 依赖关系问题 - 仍未被配置
+正在处理用于 man-db (2.7.0.2-5) 的触发器 ...
+正在处理用于 gnome-menus (3.10.1-0ubuntu5) 的触发器 ...
+正在处理用于 desktop-file-utils (0.22-1ubuntu3) 的触发器 ...
+正在处理用于 bamfdaemon (0.5.1+15.04.20150202-0ubuntu1) 的触发器 ...
+Rebuilding /usr/share/applications/bamf-2.index...
+正在处理用于 mime-support (3.58ubuntu1) 的触发器 ...
+在处理时有错误发生：
+ pac
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;这个怎么整呢，可能是还有很多支持包未安装，&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;sudo apt-get -f install
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;将会看到下面信息：&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;将会安装下列额外的软件包：
+  libgtk2-unique-perl libunique-1.0-0
+下列【新】软件包将被安装：
+  libgtk2-unique-perl libunique-1.0-0
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;这时便可以修复依赖关系。但如果出现错误完法可能需要清理下包了&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;sudo apt-get -f clean
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;然后再执行上面的命令，完美解决问题，等安装完成后便输入&lt;code&gt;pac&lt;/code&gt;便可以进入PAC Manager界面了。之后若PAC用的顺手再来谈PAC的的心得。&lt;/p&gt;
+</description>
+        <pubDate>Mon, 19 Oct 2015 20:06:05 +0800</pubDate>
+        <link>/ubuntu/install-crt-inubuntu</link>
+        <guid isPermaLink="true">/ubuntu/install-crt-inubuntu</guid>
+        
+        
+        <category>ubuntu</category>
+        
+      </item>
+    
+      <item>
+        <title>文件属性详细介绍</title>
+        <description>&lt;ul&gt;
+&lt;li&gt;content
+{:toc}&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;在linux 系统下一切皆文件,而文件的属性众多,所以本文便对文件属性做简单介绍,我们知道可以用 &lt;code&gt;ls -lhi&lt;/code&gt;  查看文件的信息,下面是所有内容.&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;$ ll -ih
+total 52K
+7079756 drwxrwxr-x 11 sandow sandow 4096 10月 18 02:44 magdre.github.io
+7079693 drwxrwxr-x  3 sandow sandow 4096 10月 23 21:42 sorcesPicture
+7341765 drwxrwxr-x  3 sandow sandow 4096 10月 23 21:51 video
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;第一列都有不同的含义, 第一列为索引节点, 第二列第一个字符为文件类型,后面三为所属主权限,再后面三为所属组权限,然后是其它用户权限. 第三列为硬链接数, 第四列第五列为属主与所归属组. 然后是文件大小, 文件修改时间, 文件名.&lt;/p&gt;
+
+&lt;h2 id=&quot;索引节点-inode-index-node&quot;&gt;索引节点(inode, index node)&lt;/h2&gt;
+
+&lt;p&gt;我们知道硬盘的最小存储单位叫做&amp;quot;扇区&amp;quot;（Sector）。每个扇区储存512字节, 操作系统读取硬盘的时候，不会一个个扇区地读取，这样效率太低，而是一次性连续读取多个扇区，即一次性读取一个&amp;quot;块&amp;quot;（block）。这种由多个扇区组成的&amp;quot;块&amp;quot;，是文件存取的最小单位。&amp;quot;块&amp;quot;的大小，最常见的是4KB，即连续八个 sector组成一个 block。文件数据都储存在&amp;quot;块&amp;quot;中，那么很显然，我们还必须找到一个地方储存文件的元信息，比如文件的创建者、文件的创建日期、文件的大小等等。这种储存文件元信息的区域就叫做inode，中文译名为&amp;quot;索引节点&amp;quot;。&lt;/p&gt;
+
+&lt;p&gt;inode在centos6中存储空间为256字节/每个. 存放的内容是文件属性信息有: user ID, Group ID, 文件读写执行权限,文件的时间戳, 文件数据block的位置(指向文件实体的指针). (ls -lhi 除文件名外所有内容) . &lt;/p&gt;
+
+&lt;p&gt;上面信息中的第一列便是索引节点, 下面是查看block 与 inode 的大小&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;$ dumpe2fs /dev/sda1 |egrep -i &amp;#39;block size|inode size&amp;#39;
+dumpe2fs 1.41.12 (17-May-2010)
+Block size:              1024
+Inode size:           128
+
+$ df -ih            #inodes
+Filesystem     Inodes IUsed IFree IUse% Mounted on
+/dev/sda3        434K   66K  369K   16% /
+tmpfs            123K     1  123K    1% /dev/shm
+/dev/sda1         50K    39   50K    1% /boot
+
+$ df
+Filesystem     1K-blocks    Used Available Use% Mounted on
+/dev/sda3        6866948 1794980   4716488  28% /
+tmpfs             502384       0    502384   0% /dev/shm
+/dev/sda1         194241   40464    143537  22% /boot
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;可以用stat来查看索引节点的内容&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;$ stat a.txt
+File: `a.txt&amp;#39;
+Size: 36              Blocks: 8          IO Block: 4096   regular file
+Device: 803h/2051d      Inode: 161530      Links: 1
+Access: (0644/-rw-r--r--)  Uid: (    0/    root)   Gid: (    0/    root)
+Access: 2015-10-05 18:00:33.344105948 +0800
+Modify: 2015-10-05 18:00:29.382086843 +0800
+Change: 2015-10-05 18:00:29.382086843 +0800
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;总结:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;磁盘格式他ext4文件系统后会生成一定数量的inode和block,&lt;/li&gt;
+&lt;li&gt;inode是索引节点,主要用来存放文件的属性,以及作为文件的索引(指向文件的实体)&lt;/li&gt;
+&lt;li&gt;ext3/ext4文件系统的block存放的是文件的实际内容&lt;/li&gt;
+&lt;li&gt;indoe是一块存储空间,centos6非启动分区inode是默认大小256字节, centos5是128&lt;/li&gt;
+&lt;li&gt;inode 是一串数字,不同的文件对应的inode(一串数字),在文件系统里是唯一的&lt;/li&gt;
+&lt;li&gt;inode相同的文件,互为硬链接文件&lt;/li&gt;
+&lt;li&gt;一个文件创建后至少要占用一个inode 和一个block&lt;/li&gt;
+&lt;li&gt;block的大小一般有1k,2k,4k几种其中引导分区等为1k,其他的普通分区为4k(c6)&lt;/li&gt;
+&lt;li&gt;如果一个文件很大,可能占多个block,如果文件很小,至少占一个block并且剩余空间浪费了.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;一个文件可能占用多个block,每读一个block就会消耗一次磁盘i/o,如果要提升磁盘IO性能,那么要尽可能一次性读取数据尽量的多.
+一个block只能存放一个文件的内容,无论内容有多小,如果block4K,那存放1k的文件,剩余3K就浪费了
+ex3/ex4一般都默认为4k&lt;/p&gt;
+
+&lt;p&gt;一个100M(100000K)的磁盘分区不,分别写放1K的文件或者写入1M的文件,分别可以写多少个?&lt;br&gt;
+ 答: 1) Inode是存放文件属性信息的，默认大小128byte(c58)，256byte(c64)。 2) Block 是存放文件实际内容的，默认大小1K（boot）或4K（非系统分区默认给4K）。3)  一个文件至少要占用一个inode及一个block。4)  默认分区常规情况下，inode数量是足够的。而block数量消耗的会更快。&lt;/p&gt;
+
+&lt;p&gt;由于inode号码与文件名分离，这种机制导致了一些Unix/Linux系统特有的现象。  &lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;有时，文件名包含特殊字符，无法正常删除。这时，直接删除inode节点，就能起到删除文件的作用。&lt;/li&gt;
+&lt;li&gt;移动文件或重命名文件，只是改变文件名，不影响inode号码。&lt;/li&gt;
+&lt;li&gt;打开一个文件以后，系统就以inode号码来识别这个文件，不再考虑文件名。因此，通常来说，系统无法从inode号码得知文件名。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;在一台配置较低的Linux服务器（内存、硬盘比较小）的/data分区内创建文件时，系统提示磁盘空间不足，用df -h命令查看了一下磁盘使用情况，发现/data分区只使用了66%，还有12G的剩余空间，按理说不会出现这种问题。 后来用df -i查看了一下/data分区的索引节点(inode)，发现已经用满(IUsed=100%)，导致系统无法创建新目录和文件。&lt;br&gt;
+&lt;em&gt;原因&lt;/em&gt;:　/data/cache目录中存在数量非常多的小字节缓存文件，占用的Block不多，但是占用了大量的inode。&lt;br&gt;
+&lt;em&gt;解决方案&lt;/em&gt;：  &lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;删除/data/cache目录中的部分文件，释放出/data分区的一部分inode。&lt;br&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;用软连接将空闲分区/opt中的newcache目录连接到/data/cache，使用/opt分区的inode来缓解/data分区inode不足的问题：  &lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;ln -s /opt/newcache /data/cache 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;hr&gt;
+
+&lt;h2 id=&quot;文件类型&quot;&gt;文件类型&lt;/h2&gt;
+
+&lt;p&gt;在 linux 下面一切此后文件,而常用的文件类型可以有有下面几种&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;b      block (buffered) special 块设备文件, 硬盘,光驱,磁盘等&lt;/li&gt;
+&lt;li&gt;c      character (unbuffered) special 字符设备文件, 串口设备&lt;/li&gt;
+&lt;li&gt;d      directory  目录&lt;/li&gt;
+&lt;li&gt;f      regular file 普通文件(-) 可以为ASCII text 纯文件文件, 也可以是二进制文件(executable),还可以是数据格式的文件(data)&lt;/li&gt;
+&lt;li&gt;l      symbolic link 符号链接文件&lt;/li&gt;
+&lt;li&gt;s      socket&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;hr&gt;
+
+&lt;h2 id=&quot;文件权限&quot;&gt;文件权限&lt;/h2&gt;
+
+&lt;p&gt;在linux下每一个文件都有非常多的属性与权限，下面只针对文件的权限做简单介绍。上面第二列的从第二个字符起类似&lt;strong&gt;rwxrwxr-x&lt;/strong&gt;便是文件的权限， 其中rwx分别为(read, write, execute)的缩写，代表数字为 4,2,1 改变权限可以用 &lt;code&gt;chmod 644 somefile&lt;/code&gt; 变更。在这里需要注意只有root或者所属主才有变更文件权限的权力 。  &lt;/p&gt;
+
+&lt;p&gt;创建一个文件或者目录的默认权限由umask控制。在不更改的情况下，创建文件默认权限为644,创建目录的默认权限为755. 我们可以用 &lt;code&gt;umask 22&lt;/code&gt;来更改  &lt;/p&gt;
+
+&lt;h3 id=&quot;rwx针对普通文件&quot;&gt;rwx针对普通文件&lt;/h3&gt;
+
+&lt;ol&gt;
+&lt;li&gt;r 拥有读取\阅读文件内容的权限;&lt;/li&gt;
+&lt;li&gt;w 拥有新增，修改文件内容的权限; 
+
+&lt;ul&gt;
+&lt;li&gt;如果没有r vi会提示无法编辑（可以强制编辑），echo 可以重定向或者追加;&lt;/li&gt;
+&lt;li&gt;删除文件的权限受父目录的权限控制，和文件本身无关。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;x 可执行，表示拥有执行文件的权限
+
+&lt;ul&gt;
+&lt;li&gt;文件本身要能够执行 &lt;/li&gt;
+&lt;li&gt;普通用户同时还需要拥有r的权限才可能执行&lt;/li&gt;
+&lt;li&gt;root只要有x的权限就能执行&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;rwx针对目录&quot;&gt;rwx针对目录&lt;/h3&gt;
+
+&lt;ol&gt;
+&lt;li&gt;r 表示拥有浏览目录下面及子目录的权限即ls dir
+
+&lt;ul&gt;
+&lt;li&gt;如果没有x权限，不能进到目录里，&lt;/li&gt;
+&lt;li&gt;如果没有x权限，ls列表可以看到所有文件名，但是会提示无权访问目录下文件&lt;/li&gt;
+&lt;li&gt;ls -l 所胡的属性会带有问号，会提示无权访问目录下文件&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;w  表示拥有增加删除或者修改目录内文件名的权限 需要有x（可以进入）&lt;/li&gt;
+&lt;li&gt;x 表示拥有进入目录的权限，但如果没有r无法列表文件及目录，没有w无法新建和删除，&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;特殊权限位（了解）&quot;&gt;特殊权限位（了解）&lt;/h3&gt;
+
+&lt;p&gt;特殊权限位有三个 &lt;/p&gt;
+
+&lt;p&gt;|名称|符号表示 | 代表数字|
+|suid| s  S | 4   |&lt;br&gt;
+|sgid |s S  |  2  |
+|sticky|t T | 1  |&lt;/p&gt;
+
+&lt;p&gt;注意这里的Ss Tt的区别是当所属主，或者所属组，或者其它用户拥有权限时便为小写st，无执行权限时便为大写ST， 沾滞位只能用ROOT来删除或创建。被创建的目录，任何用户可以在该目录下可以创建文件目录，但不能查看其它用户的内容，（/tmp）  &lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;chmod (4000|2000|1000) /bin/rm  
+chmod (u|g|o)+(s|t )
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;suid  权限位，针对所属主权限位，主要对二进制命令附加权限，使得执行该命令时拥有和root一样高的权限。suid的权限仅在程序命令执行过程中有效，执行结束结束。以下仅是一个例子，请忘掉rm这个命令。  &lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;chmod 4755 /bin/rm
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;sgid 是针对用户组权限位的。
+对于文件，sgid 仅对二进制的命令程序有效，二进制命令或程序需要有可执行权限，任意用户执行命令， 可以获得该命令程序执行期间所属组的权限。&lt;br&gt;
+对于目录sgid 创建一个目录，要求在其 目录下创建的文件或目录的group继承该目录组  &lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;chmod 2755 /home/admins/
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;以下命令用来查找拥有特殊属性的文件&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;find / -perm 4755 -type f 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;hr&gt;
+
+&lt;h2 id=&quot;用户与组&quot;&gt;用户与组&lt;/h2&gt;
+
+&lt;p&gt;Linux 多用户多任务&lt;/p&gt;
+
+&lt;p&gt;Linux 系统中用户分角色的,用记的角色是通过UID和GID识别的,特别是UID,UID是唯一标识一个系统用户的账号&lt;/p&gt;
+
+&lt;p&gt;user identify UID
+group identify GID&lt;/p&gt;
+
+&lt;p&gt;超级用户,root GID UID 均为0,  &lt;/p&gt;
+
+&lt;p&gt;1-499 虚拟用户
+500及以上为普通用户.&lt;/p&gt;
+
+&lt;h2 id=&quot;软硬链接&quot;&gt;软硬链接&lt;/h2&gt;
+
+&lt;h3 id=&quot;hard-ling-硬链接&quot;&gt;hard ling 硬链接&lt;/h3&gt;
+
+&lt;p&gt;硬链接是通过索引节点inode 来进行对文件block进行链接,来访问文件内容，也就是说如果文件内容变更了，通过多个硬链接都可以查看到文件的block，且内容一样，删除其中一个硬链接不是影响到文件的block，只有把该文件的所有硬链接删除，以及文件的block删除后文件才真正的删除。在linux系统中,多个文件名可以指向同一个索引节点是正常且允许的，具有相同的inode的文件互为硬链接&lt;br&gt;
+硬链接可以用&lt;code&gt;ln 源文件  硬链接文件&lt;/code&gt; 即可创建硬链接.对于静态文件(没有进程正在调用的文件)来讲,当对硬链接数为 0(i_link) 时文件被删除. 可以用&lt;code&gt;lsof |grep deleted&lt;/code&gt;  查看删除的数据  &lt;/p&gt;
+
+&lt;h3 id=&quot;symbolic-links-软链接&quot;&gt;symbolic links 软链接&lt;/h3&gt;
+
+&lt;p&gt;symbolic links or soft likn  软链接或符号链接. 软链接的文件类型是l, 这个文件中包含有软链接指向另一源文件的位置信息内容.  &lt;/p&gt;
+
+&lt;p&gt;通过读取软链接里的原文件绝对路径的源文件名来访问原文件.删除源文件,软件链接文件依然存在,但无法防问源文件内容, 但在原位置重新创建一个文件,软链接可继续访问此文件.软链接文件拥有不同的Inode，而且在查看文件时，其最后会指向所链接的实际文件路径。  &lt;/p&gt;
+
+&lt;p&gt;ln -s  [源文件] [链接文件]&lt;/p&gt;
+
+&lt;p&gt;注意目录硬链接无法跨越文件系统,但可以创建软链接, 工作中经常用到的是给目录创建软链接.&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;$ ll 
+total 0
+$ ll -aih
+total 8.0K
+169682 drwxr-xr-x  2 root root 4.0K Oct 16 23:12 .
+129285 dr-xr-x---. 3 root root 4.0K Oct 16 23:12 ..
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;以点(.)开头为隐藏文件, &lt;code&gt;ls -a&lt;/code&gt; 可以查看到隐藏文件. 创建一个目录,目录下面默认有两个文件(.)与(..) 点与当前目录互为硬链接. (..)与上一级目录互为硬链接. 且文件名在上一级目录的block里面.&lt;/p&gt;
+
+&lt;h2 id=&quot;时间&quot;&gt;时间&lt;/h2&gt;
+
+&lt;p&gt;文件属性中有三种时间&lt;/p&gt;
+
+&lt;p&gt;|access  访问时间  | 对应find -atime|
+|modify  修改时间 ls 默认显示修改时间| 对应 find -mtime|
+|change  改变属性权限|对应 find -ctime|
+可以主用--time-style 来修改ls显示的时间样式,可以项有long-iso,  full-iso&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;ls -l --time-style=long-iso 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2 id=&quot;通配符&quot;&gt;通配符&lt;/h2&gt;
+
+&lt;p&gt;普通命令都可以用的特殊符号，不同的通配符有不同的意义，现在简单介绍在linux中不同的通配符的不同意义。&lt;/p&gt;
+
+&lt;table&gt;&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&quot;text-align: left&quot;&gt;符号&lt;/th&gt;
+&lt;th style=&quot;text-align: left&quot;&gt;意义&lt;/th&gt;
+&lt;th style=&quot;text-align: left&quot;&gt;符号&lt;/th&gt;
+&lt;th style=&quot;text-align: left&quot;&gt;意义&lt;/th&gt;
+&lt;th style=&quot;text-align: left&quot;&gt;符号&lt;/th&gt;
+&lt;th style=&quot;text-align: left&quot;&gt;意义&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;*&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;所有&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;?&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;代表一个字符&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;;&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;命令分隔符&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;#&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;注释&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;\&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;管道&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;～&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;-&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;上一次目录&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;$&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;调用变量&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;/&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;路径分隔符&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;&amp;gt;  &amp;gt;&amp;gt;&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;重定向，追加重定向&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;&amp;lt;  &amp;lt;&amp;lt;&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;输入重定向，追加输入重定向&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;{}&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;内容序列&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;&amp;#39;&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;无变量转换功能&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;&amp;quot;&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;里面变量可以转换&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;`(反引号)&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;把里面内容当做命令执行&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+
+&lt;p&gt;简单举例&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;mkdir /etc/{bbc, blog}
+echo {a..z}
+
+a=1
+printf &amp;quot;$a\n&amp;quot;     #输出是1
+printf &amp;#39;$a\n&amp;#39;     #输出结果是 $a
+echo `date`       #输出结果是当时时间长格式
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+        <pubDate>Sat, 17 Oct 2015 07:06:05 +0800</pubDate>
+        <link>/linux/file-attribute</link>
+        <guid isPermaLink="true">/linux/file-attribute</guid>
+        
+        
+        <category>linux</category>
+        
+      </item>
+    
+      <item>
+        <title>试着在里观看音视频</title>
+        <description>&lt;p&gt;轻松一刻  &lt;/p&gt;
+
+&lt;hr&gt;
+
+&lt;audio src=&quot;/images/Colbie_Caillat_Try.wma&quot; controls preload&gt;&lt;/audio&gt; 
+
+&lt;hr&gt;
+
+&lt;video id=&quot;video&quot; controls=&quot;&quot; preload=&quot;none&quot;  class=&quot;video_pos&quot; poster=&quot;http://media.w3.org/2010/05/sintel/poster.png&quot; &gt;
+      &lt;source id=&quot;mp4&quot; src=&quot;http://media.w3.org/2010/05/sintel/trailer.mp4&quot; type=&quot;video/mp4&quot;&gt;
+      &lt;source id=&quot;webm&quot; src=&quot;http://media.w3.org/2010/05/sintel/trailer.webm&quot; type=&quot;video/webm&quot;&gt;
+      &lt;source id=&quot;ogv&quot; src=&quot;http://media.w3.org/2010/05/sintel/trailer.ogv&quot; type=&quot;video/ogg&quot;&gt;
+      &lt;p&gt;Your user agent does not support the HTML5 Video element.&lt;/p&gt;
+    &lt;/video&gt;
+
+&lt;hr&gt;
+
+&lt;iframe width=&quot;420&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/-8fv1CUqJBA&quot; frameborder=&quot;0&quot; allowfullscreen&gt;&lt;/iframe&gt;
+
+&lt;hr&gt;
+
+&lt;video id=&quot;video&quot; controls=&quot;&quot; preload=&quot;none&quot;  class=&quot;video_pos&quot; poster=&quot;/images/shot0004.png&quot; &gt;
+      &lt;source id=&quot;mp4&quot; src=&quot;/images/the-godfather-speaksoftlylove.mp4&quot; type=&quot;video/mp4&quot;&gt;
+      &lt;p&gt;Your user agent does not support the HTML5 Video element.&lt;/p&gt;
+    &lt;/video&gt;
+</description>
+        <pubDate>Fri, 16 Oct 2015 04:06:05 +0800</pubDate>
+        <link>/movie/test-plogin-mp3-mp4</link>
+        <guid isPermaLink="true">/movie/test-plogin-mp3-mp4</guid>
+        
+        
+        <category>movie</category>
+        
+      </item>
+    
+      <item>
+        <title>linux文件目录结构</title>
+        <description>&lt;ul&gt;
+&lt;li&gt;文件目录结构
+{:toc}&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;linux-文件系统大览&quot;&gt;Linux 文件系统大览&lt;/h2&gt;
+
+&lt;p&gt;linux下的所有的目录都是按照一定的类别有规律的组织和命名，每个目录数据可以跨越不同的磁盘分区或者不同的磁盘设备，所有目录都可以按两个类别来分：静态的与动态的，或者可共享的与不可共享的。可共享一个用户储存的文件可以被其它用户查看。静态的文件包括binaries, libraries, documenttation和其它在超级管理员不更改的情况下处于不变的文件。&lt;/p&gt;
+
+&lt;table&gt;&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&quot;text-align: left&quot;&gt;&lt;/th&gt;
+&lt;th style=&quot;text-align: left&quot;&gt;Shareable&lt;/th&gt;
+&lt;th style=&quot;text-align: left&quot;&gt;unshareable&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;static&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;/usr&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;/etc&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;/opt&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;/boot&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;variable&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;/var/mail&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;/var/rum&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;/var/spool/news&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;/var/lock&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+
+&lt;p&gt;Linux 系统的所有目录是一个有层次的倒着的树状目录结构，&amp;quot;／&amp;quot;  根是所有目录的起点可以用   &lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;$ tree -L 1 /
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;|&lt;strong&gt;/bin&lt;/strong&gt; | Essential command binaries 存放着所有用户都可以用的二进制命令.&lt;br&gt;
+|&lt;strong&gt;/boot&lt;/strong&gt; | Static files of the boot loader 内核及系统引导程序所需的文件目录.&lt;br&gt;
+|&lt;strong&gt;/dev&lt;/strong&gt; |  Device files.&lt;br&gt;
+|&lt;strong&gt;/etc&lt;/strong&gt; | Host-specific system configuration,配置文件的默认路径.&lt;br&gt;
+|&lt;strong&gt;/lib/lib64&lt;/strong&gt; | Essential shared libraries and kernel modules,库文件的目录.&lt;br&gt;
+|&lt;strong&gt;/lost+found&lt;/strong&gt; | 系统突然崩溃突然关机，系统产生的一些文件碎片在这里  fsck检查修复
+|&lt;strong&gt;/media&lt;/strong&gt; | Mount point for removeable media.&lt;br&gt;
+|&lt;strong&gt;/mnt&lt;/strong&gt; | Mount point for mounting a filesystem temporarily,文件系统的临时挂载点.
+|&lt;strong&gt;/opt&lt;/strong&gt; | Add-on application software packages，可选的第三方软件的安装目录.&lt;br&gt;
+|&lt;strong&gt;/proc&lt;/strong&gt; | Kernel and process information virtual filesystem,内核与进程信息的虚拟文件系统.&lt;br&gt;
+|&lt;strong&gt;/root&lt;/strong&gt; | Home directory for the root user (optional), 超级管理员的家目录.&lt;br&gt;
+|&lt;strong&gt;/home&lt;/strong&gt; | User home directories (optional)，普通用户的家目录.&lt;br&gt;
+|&lt;strong&gt;/sbin&lt;/strong&gt; | Essential system binaries,系统二进制命令文件.&lt;br&gt;
+|&lt;strong&gt;/srv&lt;/strong&gt; | Data for services provided by this system.&lt;br&gt;
+|&lt;strong&gt;/tmp&lt;/strong&gt; | Temporary files 临时文件存放目录.&lt;br&gt;
+|&lt;strong&gt;/usr&lt;/strong&gt; | Secondary hierarchy 第二层次结构, 存放系统程序以及用户安装程序的目录.&lt;br&gt;
+|&lt;strong&gt;/var&lt;/strong&gt; | Variable data 可变的数据.  &lt;/p&gt;
+
+&lt;hr&gt;
+
+&lt;h3 id=&quot;一些简单的补充&quot;&gt;一些简单的补充&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;/bin  存放着一些所有用户都可以用的二进制命令
+这个目录下面存放着的命令有：cat, chgrp, chmod, chown, cp, date, dd, df, dmesg, echo, false, hostaname, kill, ln, login, ls, mkdir, mknod, more, mount, mv, ps, pwd, rm, rmdir, sed, sh, stty, su, sync, true, umount, uname.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;/sbin 存放着只允许超级管理员才可以用的二进制命令，还可以存放在/usr/sbin /usr/local/sbin&lt;br&gt;
+sbin 包含了一些系统启动，修复命令。&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;/boot 是linux 内核及系统引导程序所需的文件目录。安装系统分区时一般先分/boot 100－200M 可以用&lt;code&gt;du -sh /boot&lt;/code&gt;来查看大小  &lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;du -sh /boot
+#39M     /boot
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr&gt;
+
+&lt;h2 id=&quot;etc-host-specific-system-configuration&quot;&gt;/etc Host-specific system configuration&lt;/h2&gt;
+
+&lt;p&gt;这个层次结构包含程序的配置文件，它必须是静态的不允许执行的二进制文件, 如果相应的子系统被安装，那么下面的文件或者符号链接必须在/etc下面  &lt;/p&gt;
+
+&lt;table&gt;&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&quot;text-align: left&quot;&gt;File&lt;/th&gt;
+&lt;th style=&quot;text-align: left&quot;&gt;Description&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;csh.login&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;Systemwide initialization file for C shell logins&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;&lt;strong&gt;exports&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;NFS filesystem access control list&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;&lt;strong&gt;fstab&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;Static information about filesystems开机自动挂载文件&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;&lt;strong&gt;ftpusers&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;FTP daemon user access control list&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;&lt;strong&gt;gateways&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;File which lists gateways for routed&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;gettydefs&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;Speed and terminal settings used by getty&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;&lt;strong&gt;group&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;User group file&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;host.conf&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;Resolver configuration file&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;&lt;strong&gt;hosts&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;Static information about host names&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;hosts.allow&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;Host access file for TCP wrappers&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;hosts.deny&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;Host access file for TCP wrappers&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;hosts.equiv&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;List of trusted hosts for rlogin, rsh, rcp&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;hosts.lpd&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;List of trusted hosts for lpd&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;inetd.conf&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;Configuration file for inetd&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;&lt;strong&gt;inittab&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;Configuration file for init&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;&lt;strong&gt;issue&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;Pre-login message and identification file&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;ld.so.conf&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;List of extra directories to search for shared libraries&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;&lt;strong&gt;motd&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;Post-login message of the day file 文件&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;&lt;strong&gt;mtab&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;Dynamic information about filesystems&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;mtools.conf&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;Configuration file for mtools&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;&lt;strong&gt;networks&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;Static information about network names&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;&lt;strong&gt;passwd&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;The password file&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;printcap&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;The lpd printer capability database&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;&lt;strong&gt;profile&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;Systemwide initialization file for sh shell logins 全局的环境变量配置文件&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;protocols&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;IP protocol listing&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;resolv.conf&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;Resolver configuration file&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;rpc&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;RPC protocol listing&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;&lt;strong&gt;securetty&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;TTY access control for root login&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;services&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;Port names for network services&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;&lt;strong&gt;shells&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;Pathnames of valid login shells&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;syslog.conf&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;Configuration file for syslogd&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;&lt;strong&gt;rc.local&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;用于存放开机自启动程序命令的文件。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;basrc&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;对所有用户生效的全局变量&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+
+&lt;hr&gt;
+
+&lt;h2 id=&quot;the-var-hierarchy&quot;&gt;The /var Hierarchy&lt;/h2&gt;
+
+&lt;p&gt;/var　下面存放着可变的数据文件，他们包括spool directories，administrative and logging data, transient and temporary files. /var下面的文件有些是可共享的比如/var/mail, /var/cache/man,/var/cache/fonts, /var/spool/news,有些是不可共享的：/var/log, /var/lock, /var/run.   &lt;/p&gt;
+
+&lt;p&gt;　　/var is specified here in order to make it possible to mount /usr read-only. Everything that once went into /usr that is written to during system operation (as opposed to installation and software maintenance) must be in /var.&lt;br&gt;
+  　If /var cannot be made a separate partition, it is often preferable to move /var out of the root partition and into the /usr partition. (This is sometimes done to reduce the size of the root partition or when space runs low in the root partition.) However, /var must not be linked to /usr because this makes separation of /usr and /var　more difficult and is likely to create a naming conflict. Instead, link /var to /usr/var.&lt;br&gt;
+　　Applications must generally not add directories to the top level of /var. Such directories should only be added if　they have some system-wide implication, and in consultation with the FHS mailing list.  &lt;/p&gt;
+
+&lt;table&gt;&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&quot;text-align: left&quot;&gt;Directory&lt;/th&gt;
+&lt;th style=&quot;text-align: left&quot;&gt;Description&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;cache&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;Application cache data 应用程序缓存数据。这些数据是在本地生成的一个耗时的I/O或计算结果。应用程序必须能够再生或恢复数据。缓存的文件可以被删除而不导致数据丢失。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;lib&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;Variable state information 系统正常运行时要改变的文件.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;local&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;Variable data for /usr/local&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;lock&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;Lock files&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;log&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;Log files and directories 各种程序的Log文件，特别是login   (/var/log/wtmp log所有到系统的登录和注销) 和syslog (/var/log/messages 里存储所有核心和系统程序信息. /var/log 里的文件经常不确定地增长，应该定期清除.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;log/lastlog&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;record of last login of each user&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;log/messages&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;system messages from syslogd 日志信息，按周自动轮询&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;log/wtmp&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;record of all logins and logouts&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;log/secure&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;记录登陆系统存取信息的文件，不管认证成功还是认证失败都会记录&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;opt&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;Variable data for /opt&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;run&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;Data relevant to running processes保存到下次引导前有效的关于系统的信息文件.例如， /var/run/utmp 包含当前登录的用户的信息.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;spool&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;Application spool data&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;tmp&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;Temporary files preserved between system reboots&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+
+&lt;hr&gt;
+
+&lt;h3 id=&quot;log　文件下的文件详细介绍&quot;&gt;log　文件下的文件详细介绍&lt;/h3&gt;
+
+&lt;table&gt;&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&quot;text-align: left&quot;&gt;Directory&lt;/th&gt;
+&lt;th style=&quot;text-align: left&quot;&gt;Description&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;&lt;strong&gt;messages&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;包括整体系统信息，其中也包含系统启动期间的日志。此外mail, cron, daemon, kern和auth等内容也记录在messages日志中。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;&lt;strong&gt;dmesg&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;包含内核缓冲信息（kernel ring buffer）。在系统启动时，会在屏幕上显示许多与硬件有关的信息。可以用dmesg查看它们。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;auth.log&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;包含系统授权信息，包括用户登录和使用的权限机制等。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;boot.log&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;包含系统启动时的日志。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;daemon.log&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;包含各种系统后台守护进程日志信息。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;dpkg.log&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;包括安装或dpkg命令清除软件包的日志。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;&lt;strong&gt;kern.log&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;包含内核产生的日志，有助于在定制内核时解决问题。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;lastlog&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;记录所有用户的最近信息。这不是一个ASCII文件，因此需要用lastlog命令查看内容&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;user.log&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;记录所有等级用户信息的日志。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;alternatives.log&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;更新替代信息都记录在这个文件中。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;btmp&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;记录所有失败登录信息。使用last命令可以查看btmp文件。例如，”last -f /var/log/btmp \&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;anaconda.log&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;在安装Linux时，所有安装信息都储存在这个文件中。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;&lt;strong&gt;secure&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;包含验证和授权方面信息。例如，sshd会将所有信息记录（其中包括失败登录）在这里。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;wtmp ,utmp&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;包含登录信息。使用wtmp可以找出谁正在登陆进入系统，谁使用命令显示这个文件或信息等。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;faillog&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;包含用户登录失败信息。此外，错误登录命令也会记录在本文件中。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+
+&lt;hr&gt;
+
+&lt;h2 id=&quot;dev-devices-and-special-files&quot;&gt;/dev : Devices and special files&lt;/h2&gt;
+
+&lt;p&gt;The following devices must exist under /dev.&lt;/p&gt;
+
+&lt;table&gt;&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&quot;text-align: left&quot;&gt;Directory&lt;/th&gt;
+&lt;th style=&quot;text-align: left&quot;&gt;Description&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;null&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;All data written to this device is discarded. A read from this device will return an EOF condition.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;zero&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;This device is a source of zeroed out data. All data written to this device is discarded. A read from this device will return as many bytes containing the value zero as was requested.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;tty&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;This device is a synonym for the controlling terminal of a process. Once this device is opened, all reads and writes will behave as if the actual controlling terminal device had been opened.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+
+&lt;h3 id=&quot;普及硬盘的基础知识&quot;&gt;普及硬盘的基础知识&lt;/h3&gt;
+
+&lt;p&gt;　　　 在linux下面每个设备都被当成一个文件来对待，因硬盘接口的不同对应于/dev下面的文件名也不同下面表格可以拿来参考对照&lt;/p&gt;
+
+&lt;table&gt;&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&quot;text-align: left&quot;&gt;设备　&lt;/th&gt;
+&lt;th style=&quot;text-align: left&quot;&gt;设备在linux内的文件名&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;IDE硬盘　　　　　　　　&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;/dev/hd[a-d]&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;scsi, stat, usb硬盘&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;/dev/sd[a-p]&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;U盘　　　　　　&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;/dev/sd[a-p]&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;软驱&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;/dev/fd[0-1]&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;CD ROM&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;/dev/cdrom&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+
+&lt;p&gt;　　硬盘由许多盘片，机械手臂，磁头与主轴马达所组成，实际的数据都写在盘片上，　而读写主要通过机械手臂可伸展让读取头在盘片上面进行读写操作. 盘片上，以圆心以放射状的方式分割出最小的存储单位叫扇区(sector)，每个扇区512bytes,扇区所组成的圆叫磁道（track)，在所胡盘片上面的同一个磁道可以组成柱面(cylinder)，柱面也是一般我们分割硬盘的最小单位了。硬盘大小计算方式 head * cylinder * sector * 512 bytes&lt;br&gt;
+　　　　
+    每个硬盘的第一扇区都非常重要，主要记录了两个重要的信息：主引导分区(master boot record, MBR)，可以安装引导加载程序的地方，有446bytes。　分区表（partiion table），记录了整块硬盘分区的状态有64bytes,因为只有６４bytes所以只能存放４个分区，这四个分区被称为主(primary)分区或者扩展(extended)分区,　而扩展分区本身不不能被拿来格式化，可以在扩展分区上继续做分区，这些分区被称为逻辑(logical）分区。在linux系统中对应的文件名前四个预留给主分区或者扩展分区，逻辑分区必须从５开始，如图&lt;br&gt;
+&lt;img src=&quot;/images/deviec-partition.png&quot; alt=&quot;device partition&quot;&gt;&lt;br&gt;
+这里p1对应linux文件中的 /dev/hda1。 p2对应 /dev/hda2。 l1　对应 /dev/hda5。 l2　对应 /dev/hda6 等。&lt;/p&gt;
+
+&lt;p&gt;　　在/dev里面的设备，系统里的设备默认情况是无法访问的，需要进行挂载才可访问，比如如果需要访问/dev/sda1,就需要用一个入口与之关联,比如关联到／mnt 便需要用mount命令把sda1挂载到/mnt  &lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;mount -t ext4 /dev/sda1 /mnt
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;这里/mnt被挂载的目录就叫挂载点可以用 &lt;code&gt;df -h&lt;/code&gt; 来查看系统的分区情况,可以是通过配置/etc/fstab实现开机自动挂载  &lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;df -h
+#Filesystem      Size  Used Avail Use% Mounted on
+#/dev/sda3       6.6G  1.7G  4.6G  28% /
+#tmpfs           491M     0  491M   0% /dev/shm
+#/dev/sda1       190M   40M  141M  22% /boot
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;如果需要取消挂载，便可以用 &lt;code&gt;umount&lt;/code&gt; 命令. 这里需要退出到/mnt后才能操作&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;umount /mnt
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;/proc     内核与进程信息的的虚拟文件系统
+     /proc/meminfo
+     /proc/cpuinfo&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;     /proc/loadavg
+     内核：/proc/sys/net/ipv4/ip_forward对应/etc/sysctl.conf里的配置。
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;/var/spool/crom/root  定时任务的配置文件
+/var/spool/clientmpqueue &lt;/p&gt;
+
+&lt;p&gt;/proc/sys/net/ipv4&lt;/p&gt;
+</description>
+        <pubDate>Thu, 15 Oct 2015 07:55:05 +0800</pubDate>
+        <link>/linux/linux-filesystem</link>
+        <guid isPermaLink="true">/linux/linux-filesystem</guid>
+        
+        
+        <category>linux</category>
+        
+      </item>
+    
+      <item>
+        <title>Linux the three musketeers 三剑客</title>
+        <description>&lt;ul&gt;
+&lt;li&gt;content
+{:toc}&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;grep-global-regular-expression-print&quot;&gt;grep, Global Regular Expression Print&lt;/h2&gt;
+
+&lt;p&gt;　　grep指令用于查找内容包含指定的范本样式的文件，如果发现某文件的内容符合所指定的范本样式，预设grep指令会把含有范本样式的那一列显示出来。若不指定任何文件名称，或是所给予的文件名为&amp;quot;-&amp;quot;，则grep指令会从标准输入设备读取数据。筛取自己想要的东西&lt;br&gt;
+    语法：&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;grep [OPTIONS] PATTERN [FILE...]
+grep [OPTIONS] [-e PATTERN | -f FILE] [FILE...]
+grep [-abcEFGhHilLnqrsvVwxy][-A&amp;lt;显示列数&amp;gt;][-B&amp;lt;显示列数&amp;gt;][-C&amp;lt;显示列数&amp;gt;][-d&amp;lt;进行动作&amp;gt;][-e&amp;lt;范本样式&amp;gt;][-f&amp;lt;范本文件&amp;gt;][范本样式][文件或目录...]
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&quot;context-line-control&quot;&gt;Context Line Control&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;-A NUM,  --after-context=NUM  Print NUM lines of trailing context &lt;strong&gt;after&lt;/strong&gt; matching lines.&lt;br&gt;&lt;/li&gt;
+&lt;li&gt;-B NUM, --before-context=NUM  Print NUM lines of leading context &lt;strong&gt;before&lt;/strong&gt; matching lines.&lt;br&gt;&lt;/li&gt;
+&lt;li&gt;-C NUM, -NUM, --context=NUM   Print NUM lines of output context.　&lt;strong&gt;center&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;matcher-selection&quot;&gt;Matcher Selection&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;-E, --extended-regexp Interpret PATTERN as an extended  regular  expression  (ERE,  see below).  (-E is specified by POSIX.)&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;$ grep  -E &amp;#39;18|38&amp;#39; att.txt
+16 17 18 19 20 sandowboy
+36 37 38 39 40 magical
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;matching-control&quot;&gt;Matching Control&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;-i, --ignore-case Ignore  case  distinctions in both the PATTERN and the input files.  (-i is specified by POSIX.)&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;-v, --invert-match Invert the sense of matching, to select non-matching lines. (-v is specified by POSIX.)&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;-w, --word-regexp Select only those lines containing matches that form whole words. The test is that the matching substring must either be at the beginning of the line, or preceded by a non-word constituent character.  Similarly, it must be either at the end of the line or followed by a non-word constituent character. Word-constituent characters are letters, digits, and the underscore.-x, --line-regexp Select  only  those  matches  that exactly match the whole line.  (-x is specified by POSIX.)Obsolete synonym for -i.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;output-line-prefix-control&quot;&gt;Output Line Prefix Control&lt;/h3&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;-n, --line-number Prefix  each  line of output with the 1-based line number within its input file.  (-n is specified by POSIX.)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;$ grep -n &amp;#39;18&amp;#39; att.txt
+4:16 17 18 19 20 sandowboy&lt;/p&gt;
+
+&lt;p&gt;-a或--text 不要忽略二进制的数据。
+-b或--byte-offset Print the 0-based byte offset within the input file before each line of output在显示符合范本样式的那一行之前，标示出该行第一个字符的位编号。&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;$ grep -b &amp;#39;18&amp;#39; att.txt
+36:16 17 18 19 20
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;-c或--count 计算符合范本样式的列数。
+    $ grep -c &amp;#39;18&amp;#39; att.txt
+1   &lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;$ grep -v oldboy att.txt
+     -v 排除
+$ grep oldboy att.txt
+只选取oldboy
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;$ grep -E &amp;#39;3|4|7&amp;#39; att.txt
+3
+4
+7
+$ grep -vE &amp;#39;1|2|4|5|7&amp;#39; ett.txt3&lt;/p&gt;
+
+&lt;p&gt;find  /oldboy -type f -name &amp;quot;&lt;em&gt;.sh&amp;quot; |xargs sed -i &amp;#39;s#oldboy#oldgirl#g&amp;#39;
+find  /oldboy -type f -name &amp;quot;&lt;/em&gt;.sh&amp;quot; |xargs   cat
+sed -i &amp;#39;s#oldgirl#oldboy#g&amp;#39; &lt;code&gt;find /oldboy -type f -name &amp;quot;*.sh&amp;quot;&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;[root@oldboy data]# ifconfig eth0|awk -F &amp;quot;[ :]+&amp;quot; &amp;#39;NR==2 {print $4}&amp;#39;
+10.0.0.8
+[root@oldboy data]# ifconfig eth0|sed -nr &amp;#39;s#^.&lt;em&gt;dr:(.&lt;/em&gt;) Bc.*$#\1#gp&amp;#39;
+10.0.0.8&lt;/p&gt;
+
+&lt;p&gt;ifconfig eth0 | sed -nr &amp;#39;s#^.#dr#g&lt;/p&gt;
+
+&lt;h2 id=&quot;sed-stream-editor-for-filtering-and-transforming-text&quot;&gt;sed - stream editor for filtering and transforming text&lt;/h2&gt;
+
+&lt;p&gt;sed  &amp;#39;/oldboy/d&amp;#39;  text.txt      %把oldboy整行删除    //之间过滤的内容 ，  d 是删除
+                       替换： sed -e &amp;#39;s#oldboy#xubushi#g&amp;quot; a.txt   % -e 不改原文件  -i  修改原文件&lt;/p&gt;
+
+&lt;p&gt;具
+sed -n &amp;#39;20,30p&amp;#39; ett.txt     %-n  取消默认输出， p 打印输出&lt;/p&gt;
+
+&lt;p&gt;sed -n l tab_space.txt&lt;br&gt;
+tab符会用\n显示，空格还是原样。&lt;/p&gt;
+
+&lt;h2 id=&quot;gawk-pattern-scanning-and-processing-language&quot;&gt;gawk - pattern scanning and processing language&lt;/h2&gt;
+
+&lt;p&gt;gawk [ POSIX or GNU style options ] -f program-file [ -- ] file ...
+gawk [ POSIX or GNU style options ] [ -- ] program-text file ...
+pgawk [ POSIX or GNU style options ] -f program-file [ -- ] file ...
+pgawk [ POSIX or GNU style options ] [ -- ] program-text file ...&lt;/p&gt;
+
+&lt;p&gt;Arrays
+Arrays are subscripted with an expression between square brackets ([ and ]).  If the expression is an expression list (expr, expr ...)  then the array subscript is a string consisting of the concatenation of the (string) value of each expression, separated by the value of the SUBSEP  variable.  This facility is used to simulate multiply dimensioned arrays.  For example:
+i = &amp;quot;A&amp;quot;; j = &amp;quot;B&amp;quot;; k = &amp;quot;C&amp;quot;
+x[i, j, k] = &amp;quot;hello, world\n&amp;quot;
+assigns the string &amp;quot;hello, world\n&amp;quot; to the element of the array x which is  indexed  by  the string &amp;quot;A\034B\034C&amp;quot;.  All arrays in AWK are associative, i.e. indexed by string values. The special operator in may be used to test if an array has an index consisting of a particular value.
+if (val in array)
+print array[val]
+If the array has multiple subscripts, use (i, j) in array.The in construct may also be used in a for loop to iterate  over  all  the  elements  of  an array. An  element  may  be deleted from an array using the delete statement.  The delete statement may also be used to delete the entire contents of an array, just  by  specifying  the  array name without a subscript.
+Numeric Functions
+       AWK has the following built-in arithmetic functions:
+       atan2(y, x)   Returns the arctangent of y/x in radians.
+       cos(expr)     Returns the cosine of expr, which is in radians.
+       exp(expr)     The exponential function.
+       int(expr)     Truncates to integer.
+       log(expr)     The natural logarithm function.
+       rand()        Returns a random number N, between 0 and 1, such that 0 â‰¤ N &amp;lt; 1.
+       sin(expr)     Returns the sine of expr, which is in radians.
+       sqrt(expr)    The square root function.
+       srand([expr]) Uses expr as a new seed for the random number generator.  If no expr  is  pro-
+                     vided, the time of day is used.  The return value is the previous seed for the
+                     random number generator.&lt;/p&gt;
+
+&lt;p&gt;String Functions
+       Gawk has the following built-in string functions:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;   asort(s [, d])          Returns the number of elements in the source array s.  The  contents
+                           of  s are sorted using gawkâ™s normal rules for comparing values, and
+                           the indices of the sorted values of s are replaced  with  sequential
+                           integers  starting  with  1.  If the optional destination array d is
+                           specified, then s is first duplicated into d, and then d is  sorted,
+                           leaving the indices of the source array s unchanged.
+
+   asorti(s [, d])         Returns  the number of elements in the source array s.  The behavior
+                           is the same as that of asort(), except that the  array  indices  are
+                           used  for  sorting,  not  the array values.  When done, the array is
+                           indexed numerically, and  the  values  are  those  of  the  original
+                           indices.   The original values are lost; thus provide a second array
+                           if you wish to preserve the original.
+
+   gensub(r, s, h [, t])   Search the target string t for matches of the regular expression  r.
+                           If  h is a string beginning with g or G, then replace all matches of
+                           r with s.  Otherwise, h is a number indicating which match of  r  to
+                           replace.   If  t  is  not  supplied, $0 is used instead.  Within the
+                           replacement text s, the sequence \n, where n is a digit from 1 to 9,
+                           may  be  used to indicate just the text that matched the nâ™th paren-
+                           thesized subexpression.   The  sequence  \0  represents  the  entire
+                           matched text, as does the character &amp;amp;.  Unlike sub() and gsub(), the
+                           modified string is returned as the result of the function,  and  the
+                           original target string is not changed.
+
+   gsub(r, s [, t])        For  each  substring matching the regular expression r in the string
+                           t, substitute the string s, and return the number of  substitutions.
+                           If  t  is  not  supplied,  use  $0.  An &amp;amp; in the replacement text is
+                           replaced with the text that was actually matched.  Use \&amp;amp; to  get  a
+                           literal  &amp;amp;.   (This  must be typed as &amp;quot;\\&amp;amp;&amp;quot;; see GAWK: Effective AWK
+                           Programming for a fuller discussion of the rules for &amp;amp;â™s  and  back-
+                           slashes in the replacement text of sub(), gsub(), and gensub().)
+
+   index(s, t)             Returns  the index of the string t in the string s, or 0 if t is not
+                           present.  (This implies that character indices start at one.)
+
+   length([s])             Returns the length of the string s, or the length of $0 if s is  not
+                           supplied.  Starting with version 3.1.5, as a non-standard extension,
+                           with an array argument, length() returns the number of  elements  in
+                           the array.
+
+   match(s, r [, a])       Returns  the position in s where the regular expression r occurs, or
+                           0 if r is not present, and sets the values of  RSTART  and  RLENGTH.
+                           Note  that the argument order is the same as for the ~ operator: str
+                           ~ re.  If array a is provided, a is  cleared  and  then  elements  1
+                           through  n  are  filled with the portions of s that match the corre-
+                           sponding parenthesized subexpression in r.  The 0â™th  element  of  a
+                           contains  the  portion of s matched by the entire regular expression
+                           r.  Subscripts a[n, &amp;quot;start&amp;quot;], and a[n, &amp;quot;length&amp;quot;] provide the  start-
+                           ing  index  in  the string and length respectively, of each matching
+                           substring.
+
+   split(s, a [, r])       Splits the string s into the array a on the  regular  expression  r,
+                           and  returns  the  number  of  fields.   If r is omitted, FS is used
+                           instead.  The array a is cleared first.  Splitting  behaves  identi-
+                           cally to field splitting, described above.
+
+   sprintf(fmt, expr-list) Prints expr-list according to fmt, and returns the resulting string.
+
+   strtonum(str)           Examines str, and returns its numeric value.  If str begins  with  a
+                           leading  0,  strtonum() assumes that str is an octal number.  If str
+                           begins with a leading 0x or 0X, strtonum() assumes  that  str  is  a
+                           hexadecimal number.
+
+   sub(r, s [, t])         Just like gsub(), but only the first matching substring is replaced.
+
+   substr(s, i [, n])      Returns the at most n-character substring of s starting at i.  If  n
+                           is omitted, the rest of s is used.
+
+   tolower(str)            Returns a copy of the string str, with all the upper-case characters
+                           in str translated to their  corresponding  lower-case  counterparts.
+                           Non-alphabetic characters are left unchanged.
+
+   toupper(str)            Returns a copy of the string str, with all the lower-case characters
+                           in str translated to their  corresponding  upper-case  counterparts.
+                           Non-alphabetic characters are left unchanged.
+
+   As  of  version 3.1.5, gawk is multibyte aware.  This means that index(), length(), substr()
+   and match() all work in terms of characters, not bytes.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Time Functions
+       Since one of the primary uses of AWK programs is processing  log  files  that  contain  time
+       stamp  information, gawk provides the following functions for obtaining time stamps and for-
+       matting them.&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;   mktime(datespec)
+             Turns datespec into a time stamp of the same form as returned by  systime().   The
+             datespec  is  a string of the form YYYY MM DD HH MM SS[ DST].  The contents of the
+             string are six or seven numbers representing respectively the full year  including
+             century,  the  month  from 1 to 12, the day of the month from 1 to 31, the hour of
+             the day from 0 to 23, the minute from 0 to 59, and the second from 0 to 60, and an
+             optional daylight saving flag.  The values of these numbers need not be within the
+             ranges specified; for example, an hour of -1 means 1 hour  before  midnight.   The
+             origin-zero  Gregorian  calendar is assumed, with year 0 preceding year 1 and year
+             -1 preceding year 0.  The time is assumed to be in the  local  timezone.   If  the
+             daylight  saving flag is positive, the time is assumed to be daylight saving time;
+             if zero, the time is assumed to be standard time; and if negative  (the  default),
+             mktime()  attempts  to determine whether daylight saving time is in effect for the
+             specified time.  If datespec does not contain enough elements or if the  resulting
+             time is out of range, mktime() returns -1.
+
+   strftime([format [, timestamp[, utc-flag]]])
+             Formats  timestamp  according  to  the  specification  in  format.  If utc-flag is
+             present and is non-zero or non-null, the result is in UTC, otherwise the result is
+             in local time.  The timestamp should be of the same form as returned by systime().
+             If timestamp is missing, the current time of day is used.  If format is missing, a
+             default format equivalent to the output of date(1) is used.  See the specification
+             for the strftime() function in ANSI C for the format conversions that are  guaran-
+             teed to be available.
+
+   systime() Returns  the  current  time  of  day  as  the  number  of  seconds since the Epoch
+             (1970-01-01 00:00:00 UTC on POSIX systems).
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Bit Manipulations Functions
+       Starting with version 3.1 of gawk, the following bit manipulation functions  are  available.
+       They  work by converting double-precision floating point values to uintmax_t integers, doing
+       the operation, and then converting the result back to floating point.  The functions are:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;   and(v1, v2)         Return the bitwise AND of the values provided by v1 and v2.
+
+   compl(val)          Return the bitwise complement of val.
+
+   lshift(val, count)  Return the value of val, shifted left by count bits.
+
+   or(v1, v2)          Return the bitwise OR of the values provided by v1 and v2.
+
+   rshift(val, count)  Return the value of val, shifted right by count bits.
+
+   xor(v1, v2)         Return the bitwise XOR of the values provided by v1 and v2.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Internationalization Functions
+       Starting with version 3.1 of gawk, the following functions may be used from within your  AWK
+       program for translating strings at run-time.  For full details, see GAWK: Effective AWK Pro-
+       gramming.&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;   bindtextdomain(directory [, domain])
+          Specifies the directory where gawk looks for the .mo files, in case they will not  or
+          cannot  be  placed  in the â˜â˜standardâ™â™ locations (e.g., during testing).  It returns
+          the directory where domain is â˜â˜bound.â™â™
+          The default domain is the value of TEXTDOMAIN.  If directory is the null string (&amp;quot;&amp;quot;),
+          then bindtextdomain() returns the current binding for the given domain.
+
+   dcgettext(string [, domain [, category]])
+          Returns the translation of string in text domain domain for locale category category.
+          The default value for domain is the current value of TEXTDOMAIN.  The  default  value
+          for category is &amp;quot;LC_MESSAGES&amp;quot;.
+          If  you  supply  a  value for category, it must be a string equal to one of the known
+          locale categories described in GAWK: Effective AWK Programming.  You must also supply
+          a text domain.  Use TEXTDOMAIN if you want to use the current domain.
+
+   dcngettext(string1 , string2 , number [, domain [, category]])
+          Returns  the plural form used for number of the translation of string1 and string2 in
+          text domain domain for locale category category.  The default value for domain is the
+          current value of TEXTDOMAIN.  The default value for category is &amp;quot;LC_MESSAGES&amp;quot;.
+          If  you  supply  a  value for category, it must be a string equal to one of the known
+          locale categories described in GAWK: Effective AWK Programming.  You must also supply
+          a text domain.  Use TEXTDOMAIN if you want to use the current domain.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;USER-DEFINED FUNCTIONS
+       Functions in AWK are defined as follows:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;          function name(parameter list) { statements }
+
+   Functions  are  executed  when they are called from within expressions in either patterns or
+   actions.  Actual parameters supplied in the function call are used to instantiate the formal
+   parameters  declared  in  the function.  Arrays are passed by reference, other variables are
+   passed by value.
+
+   Since functions were not originally part of the AWK language, the provision for local  vari-
+   ables  is  rather  clumsy: They are declared as extra parameters in the parameter list.  The
+   convention is to separate local variables from real parameters by extra spaces in the param-
+   eter list.  For example:
+
+          function  f(p, q,     a, b)   # a and b are local
+          {
+               ...
+          }
+
+          /abc/     { ... ; f(1, 2) ; ... }
+
+   The left parenthesis in a function call is required to immediately follow the function name,
+   without any intervening white space.  This avoids a syntactic ambiguity with the  concatena-
+   tion operator.  This restriction does not apply to the built-in functions listed above.
+
+   Functions may call each other and may be recursive.  Function parameters used as local vari-
+   ables are initialized to the null string and the number zero upon function invocation.
+
+   Use return expr to return a value from a function.  The return  value  is  undefined  if  no
+   value is provided, or if the function returns by âœfalling offâ the end.
+
+   If  --lint  has  been provided, gawk warns about calls to undefined functions at parse time,
+   instead of at run time.  Calling an undefined function at run time is a fatal error.
+
+   The word func may be used in place of function.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;DYNAMICALLY LOADING NEW FUNCTIONS
+       Beginning with version 3.1 of gawk, you can dynamically add new built-in  functions  to  the
+       running  gawk  interpreter.   The full details are beyond the scope of this manual page; see
+       GAWK: Effective AWK Programming for the details.&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;   extension(object, function)
+           Dynamically link the shared object file named by object, and invoke function in that
+           object,  to  perform  initialization.   These  should  both  be provided as strings.
+           Returns the value returned by function.
+
+   This function is provided and documented in GAWK: Effective AWK Programming, but  everything
+   about  this  feature  is likely to change eventually.  We STRONGLY recommend that you do not
+   use this feature for anything that you arenâ™t willing to redo.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;SIGNALS
+       pgawk accepts two signals.  SIGUSR1 causes it to dump a profile and function call  stack  to
+       the profile file, which is either awkprof.out, or whatever file was named with the --profile
+       option.  It then continues to run.  SIGHUP causes pgawk to dump  the  profile  and  function
+       call stack and then exit.&lt;/p&gt;
+
+&lt;p&gt;awk  一门语言，擅长取列，取行，过滤 （grep)
+$ awk -F &amp;quot;:&amp;quot; &amp;#39;{print $1}&amp;#39;  /etc/passward 
+%打印第一列$1 第二列 全部 $0   -F  指定分隔符 行号NR 最后一列$NF&lt;/p&gt;
+
+&lt;p&gt;$ awk -F &amp;quot;:&amp;quot; &amp;#39;{print $1,$2,$3}&amp;#39;  /etc/passward 
+$ awk -F &amp;quot;:&amp;quot; &amp;#39;NR==2 {print $1,$2,$3}&amp;#39;  /etc/passward 
+$ awk &amp;#39;19&amp;lt;NR &amp;amp;&amp;amp; NR&amp;lt;31&amp;#39; att.txt 
+ % NR行号， &lt;/p&gt;
+</description>
+        <pubDate>Thu, 15 Oct 2015 04:06:05 +0800</pubDate>
+        <link>/linux/the-three-musketeers</link>
+        <guid isPermaLink="true">/linux/the-three-musketeers</guid>
+        
+        
+        <category>linux</category>
+        
+      </item>
+    
+      <item>
+        <title>linux问题小总结</title>
+        <description>&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;已知oldboy.txt里面内容为：&lt;strong&gt;inet addr:10.0.0.8 Bcast:10.0.0.255 Mask:255.255.255.0&lt;/strong&gt; .现在只想打印出下面内容：　10.0.0.8 10.0.0.255 255.255.255.0。&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;$ sed -nr &amp;#39;s#^.*dr:(.*) Bc.*:(.*) M.*k:(.*)#\1 \2 \3#gp&amp;#39; oldboy.txt
+$ grep -Eo &amp;#39;[0-9.]+&amp;#39; oldboy.txt|xargs -n3
+$ awk -F &amp;quot;[: ]&amp;quot; &amp;#39;{print $3, $5, $7}&amp;#39; oldboy.txt
+$ ifconfig eth0|sed -rn &amp;#39;2s#^.*:([0-9.]+).*:([0-9.]+).*:([0-9.]+)$#\1 \2 \3#gp&amp;#39;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;上使用awk取passwd文件的第10行到20行的第三列重定向到/tmp/oldboy/test.txt文件里。&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;$ awk -F &amp;#39;:&amp;#39; ‘{if(NR&amp;gt;10 &amp;amp;&amp;amp; NR &amp;lt;21) print $3}’ /etc/passwd &amp;gt;/tmp/oldboy/test.txt
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;禁止使用rm，并使该效果永久生效。&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;$ echo alias rm=&amp;#39;echo &amp;quot;Do note use rm command&amp;quot;&amp;#39; &amp;gt;&amp;gt;/etc/profile
+$ . /etc/profile
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;请用awk,grep,sed,head,tail分别取出passwd文件中的第2-5行&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;$ awk ‘{if(NR&amp;lt;6 &amp;amp;&amp;amp; NR&amp;gt;1 ) pirnt $0}’passwd
+$ head -5 passwd | tail -4
+$ sed –n ‘2,5p’passwd
+$ grep ‘bin:x’-A4 passwd
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;使用命令调换passwd文件里root位置和/bin/bash位置？即调换所有的第一列和最后一列位置调换？
+例：默认：root:x:0:0:root:/root:/bin/bash. 修改后：/bin/bash:x:0:0:root:/root:root  &lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;$ sed -r &amp;#39;s#([^:]+)(:.*:)(/.*$)#\3 \2 \1 #g&amp;#39; /etc/passwd
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;把/data目录及其子目录下所有以扩展名.txt结尾的文件中包含oldgirl的字符串全部替换为oldboy。&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;$ Find /data –type f –name “*.txt” |xargs sed ‘s#oldboy#oldgirl#g’
+$ sed -i ‘s#oldboy#oldgirl#g’ `find /data –name *.txt`
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;如何过滤出已知当前目录下oldboy中的所有一级目录(提示:不包含oldboy目录下面目录的子目录及隐藏目录，即只能是一级目录)？  &lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;方法一：&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;    $ ls -l |grep ^d
+    drwxr-xr-x  2 sandow sandow 4096 Oct 13 06:13 Desktop
+    drwxr-xr-x  2 sandow sandow 4096 Oct 11 07:41 Documents
+    drwxr-xr-x  2 sandow sandow 4096 Oct  9 19:30 Downloads
+
+    $ ls -F|grep /$
+    Desktop/
+    Documents/
+    Downloads/          
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;方法二：&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;    $ find . -maxdepth 1 -type d ! -name &amp;quot;.&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;方法三:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;    $ tree -Ldi 1
+    $ ls -l|sed -n &amp;#39;/^d/p&amp;#39;
+    $ ls -l|awk &amp;#39;/^d/&amp;#39;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;一个目录中有很多文件（ls -l 查看时好多屏），想用一条命令最快速度查看到最近更新的文件。如何看？  &lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;$ ls -lrt
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;在配置apache时 执行了./configure --prefix=/application/apache2.2.17 来编译apche，在make 
+install 完成后，希望用户访问 apache 路径更简单，需要给/application/apache2.2.17 目录做一个软链接/application/apache，使得内部开发或管理人员通过/application/apache 就可以访问到 apache 的安装目录/application/apache2.2.17 下的内容，请你给出实现的命令。（提示：apache 为一个 web 服务） &lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;$ ln –s /application/apache2.2.17 /application/apache
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;已知 apache 服务的访问日志按天记录在服务器本地目录/app/logs 下，由于磁盘空间紧张，现在要求只能保留最近 7 天的访问日志！请问如何解决？ 请给出解决办法或配置或处理命令。（提示：可以从 apache 服务配置上着手，也可以从生成出来的日志上着手。）&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;for n in `seq 15`
+do
+    date -s &amp;quot;2015/10/$n&amp;quot;
+    touch access_www_`(date +%F)`.log
+done
+
+$ find /app/logs -type f -name &amp;quot;access*.log&amp;quot; -mtime +7 exec rm -f {} \;
+$ find /app/logs -type f -name &amp;quot;access*.log&amp;quot; -mtime +7 |xargs rm -f
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;调试系统服务时，希望能实时查看/var/log/messages 系统日志的更新,如何做？  &lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;$ for n in `seq 19999`;do echo $n &amp;gt;&amp;gt;/var/log/messages;usleep 5000;done
+$ tail -f /var/log/messages
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;打印轻量级 web 服务的配置文件 nginx.conf 内容的行号及内容，该如何做？&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;$ cat -n nginx.conf
+$ less -N nginx.conf
+$ awk &amp;#39;{print NR.$0}&amp;#39; nginx.conf
+$ sed = nginx.conf| sed &amp;#39;N;s/\n/ /&amp;#39;
+$ grep -n &amp;quot;.*&amp;quot; nginx.conf
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;装完 Centos 系统后，希望网络文件共享服务 NFS，仅在 3 级别上开机自启动，该如何做？&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;$ chkconfig NFS –-level 3 on
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;/etc/目录为 linux 系统的默认的配置文件及服务启动命令的目录&lt;br&gt;
+a.请用 tar 打包/etc 整个目录（打包及压缩）&lt;br&gt;
+b.请用 tar 打包/etc 整个目录（打包及压缩，但需要排除/etc/services 文件）&lt;br&gt;
+c.请把 a 点命令的压缩包，解压到/tmp 指定目录下（最好只用 tar 命令实现）  &lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;$ tar -zcvf a.tar /etc
+$ find /etc/ ! -name /etc/services exec tar -cvf a.tar {} \;
+$ cd /tmp &amp;amp;&amp;amp; tar –xvf a.tar 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;如何查看/etc/services 文件内容有多少行？&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;wc -l /etc/services
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;过滤出/etc/services 文件包含 3306 或 1521 两数据库端口的行的内容。&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;$ grep -E &amp;quot;3306|1521&amp;quot; /etc/services
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;echo &amp;#39;i am oldboy myqq is 31333741&amp;#39; &amp;gt;&amp;gt;oldboy.txt取出oldboy, 31333741&lt;/p&gt;
+
+&lt;p&gt;awk &amp;quot;{print $3, $6}&amp;quot; oldboy.txt
+cut -d &amp;quot; &amp;quot; -f3,6 oldboy.txt
+cut -c 6-11, 20- oldboy.txt&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+        <pubDate>Thu, 15 Oct 2015 02:06:05 +0800</pubDate>
+        <link>/linux/somequestion-about-linux</link>
+        <guid isPermaLink="true">/linux/somequestion-about-linux</guid>
+        
+        
+        <category>linux</category>
+        
+      </item>
+    
+      <item>
+        <title>教父</title>
+        <description>&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;教父
+{:toc}
+&lt;img src=&quot;/images/thegodfathe_2.jpg&quot; alt=&quot;海报&quot;&gt;&lt;img src=&quot;/images/thegodfathe_1r.jpg&quot; alt=&quot;父子&quot;&gt;&lt;br&gt;
+《教父》是派拉蒙影业公司出品的一部黑帮题材的电影，改编自马里奥·普佐的同名小说，由弗朗西斯·福特·科波拉执导，马龙·白兰度、阿尔·帕西诺等主演。虽是黑邦电影但它对家庭，对生活，对原则的做出了更好诠释。共有三部，前两部在IMDB电影排行榜中分别排第二与第三. 并且分别获得46，47届奥斯卡。&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;老教父维托·唐·科莱昂&lt;/strong&gt;，家族的建立者，在意大利被don ciccio追杀被逼逃到美国，在美国认识了Genco（后来的军师）。老教父能做到这个地位。Genco起了巨大作用。与他的邻居clemenza（小偷） 后来成为老教父最得力的杀手。他有三个儿子桑尼，弗雷多，迈克。 老教父十分看重迈克，自从那次枪枪击案发生后便对弗雷多十分厌恶。一个女儿，此女人本十分讨厌，所以就不多说了。&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;大儿子桑尼&lt;/strong&gt;。 桑尼在家族中有自己的军团，除了脾气有一点暴之外，还是一个十分能干的人，十分注重家庭观念，对亲人特别关心。也十分好色，在书中有介绍。一个人如果无法沉着冷静的拥有一个暴脾气的话，是很容易被人利用的. &lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;二儿子费雷多&lt;/strong&gt;， 他就是一个好孩子，善良，无心机。换句话说便是无能，自己连自己的女人都管不住，随随便便被打还不坑声,甘愿被人利用，懦夫一个。那次枪击事件发生后老教父便把他派出去再没让他回来。&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;小儿子迈克&lt;/strong&gt; 老教父最器重的便是他了。后来也成了老教父那般的人，强硬，冷静的人。他曾去海军参过军，参加过二战。因为枪杀警察在西西里避难的时候认识了啊波罗尼亚一位美丽的女神，看着好喜欢啊。经历两次婚姻是不幸福的，对于一个意大利人，家庭观念十分强的人更是如此，迈克也许就注定了不会幸福，这也许与他的性格有关吧,有什么心事都藏在心里。第二次的凯说真的很差，毫无家庭观念，而且最重要的是她不是一个西西里人。喜欢迈克的眼神，强硬，冷气逼人。&lt;br&gt;
+&lt;img src=&quot;/images/thegodfathe_5.jpg&quot; alt=&quot;迈克1&quot;&gt;&lt;img src=&quot;/images/thegodfathe_7.jpg&quot; alt=&quot;迈克2&quot;&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr&gt;
+
+&lt;p&gt;一些经典语录&lt;br&gt;
+Behind every great fortune,there is a crime 财富背后都是罪恶&lt;/p&gt;
+
+&lt;p&gt;Don’t hate your enemy, or you will make wrong judgment.不要恨你的敌人，那样会让你做错误的决定&lt;/p&gt;
+
+&lt;p&gt;keep your friends close, but your enemies closer，与你的朋友保持亲近，但要与你的敌人更亲近&lt;/p&gt;
+
+&lt;p&gt;Don’t let anybody know what you are thinking. 不要让别人知道你在想什么&lt;/p&gt;
+
+&lt;p&gt;Never tell anybody outside the family what you are thinking again 不要让家庭以外的人知道你在想什么&lt;/p&gt;
+
+&lt;p&gt;Great men are not born great,they grow great 伟大的人不是天生的，而是后天形成的&lt;/p&gt;
+
+&lt;p&gt;You make the choice, and this is your price.你每做一个决定，就有代价&lt;/p&gt;
+
+&lt;p&gt;Everything I do with my power, including something criminal, I just want to protect my family and my friends .
+我用我的权力做的每一件事（包括犯罪），仅仅是想保护我的家庭和我的朋友&lt;/p&gt;
+
+&lt;p&gt;I don’t care what you did is right or wrong, I want you know only me have the right to make decision, cause I am the godfather until my death.  我并不关心你做的对还是错，我只想要你知道只有我才有权做出决定，因为直到我死之前都是教父&lt;/p&gt;
+
+&lt;p&gt;I will never do anything guilty. 我从来都没有感觉到愧疚&lt;/p&gt;
+
+&lt;p&gt;Do you spend time with your family? Good. Because a man that doesn&amp;#39;t spend time with his family can never be a real man.  &lt;/p&gt;
+
+&lt;p&gt;I spent my whole life trying not to be careless. Women and children can be careless. But not men.我试着不去精心，只有女人与小孩才可以精心。&lt;/p&gt;
+
+&lt;p&gt;I&amp;#39;m gonna make him an offer he can&amp;#39;t refuse. 我出的价格他是无法拒绝的&lt;/p&gt;
+
+&lt;p&gt;I never wanted this for you. I work my whole life — I don&amp;#39;t apologize — to take care of my family, and I refused to be a fool, dancing on the string held by all those big shots. I don&amp;#39;t apologize — that&amp;#39;s my life — but I thought that, that when it was your time, that you would be the one to hold the string. Senator &lt;/p&gt;
+</description>
+        <pubDate>Tue, 13 Oct 2015 07:30:05 +0800</pubDate>
+        <link>/movie/the-god-father</link>
+        <guid isPermaLink="true">/movie/the-god-father</guid>
+        
+        
+        <category>movie</category>
+        
+      </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,208 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="安装PAC，以及出的错误">
+
+<title>在ubuntu下面安装SSH客户端PAC Manager</title>
+
+<!-- favicon -->
+<link rel="shortcut icon" href="./favicon.ico" type="image/icon">
+<link rel="icon" href="./favicon.ico" type="/image/icon">
+<link rel="stylesheet" type="text/css" href="/stylesheets/base.css">
+<link rel="stylesheet" type="text/css" href="/stylesheets/simplePagination.css">
+
+<script type="text/javascript" src="/javascripts/jquery.js"></script>
+
+<!--[if lt IE 9]>
+<script src="/javascripts/html5shiv.js"></script>
+<![endif]-->
+
+    <link rel="stylesheet" type="text/css" href="/stylesheets/markdownreader.css">
+<link rel="stylesheet" type="text/css" href="/stylesheets/pygments_monokai.css">
+<link rel="stylesheet" type="text/css" href="/stylesheets/code_block.css">
+</head>
+
+<body>
+    <header id="l-header">
+    <div class="container">
+        <div class="row logo">
+            <div class="col-lg-7">
+                <h1>SanDow</h1>
+            </div>
+
+
+            <div class="col-lg-5">
+                <p>On the way to death</p>
+                <p>On the way of learning</p>
+            </div>
+        </div>
+
+        <div class="row navicon">
+            <a href=""><i class="fa fa-navicon"></i></a>
+        </div>
+
+        <div class="row navbar">
+            <nav class="col-lg-8 col-md-8 col-xs-12">
+                <ul class="row">
+                    <li class="col-lg-3"><a href="/">HOME</a></li>
+                    <li class="col-lg-3">
+                        <ul class="subnav">
+                            <a href="javascript:void(0)">POST</a>
+                            <li><a href="/category">CATEGORY</a></li>
+                            <li><a href="/tag">TAG</a></li>
+                        </ul>
+                    </li>
+                    <li class="col-lg-3"><a href="/about">ABOUT</a></li>
+                    <li class="col-lg-3"><a href="/building">PLAY GROUND</a></li>
+                </ul>
+            </nav>
+
+            <div class="search col-lg-4 col-md-4 col-xs-12">
+                <label for="search"></label>
+                <input id="search" name="serach" type="text" placeholder="Dummy Search">
+                <i class="fa fa-search"></i>
+            </div>
+        </div>
+    </div>
+</header>
+
+    <div class="container">
+        <div class="row">
+            <div id="markdown-container" class="col-lg-9">
+                <header>
+                    <p id="postTitle">在ubuntu下面安装SSH客户端PAC Manager</p>
+                    
+                    <ul class="tags clearfix">
+                        
+                    </ul>
+                    
+                    <p id="postMeta">posted on 19 Oct 2015 under category <a href="/category/">ubuntu</a></p>
+
+                </header>
+
+                <h2 id="安装pac-manager">安装PAC Manager</h2>
+
+<p>近日开始放弃WIN10转而用Ubuntu，原因很简单，因为自己在搭建环境的时候在windows下相当不顺手，而且总出错，每个包都需要自己一个个下一个个安装，累了，真的累了。果断换成Ubuntu,一行命令便可搞定所有问题。 上一次说到在Ubuntu里面安装了VMware但是如果用Terminal输入命令<code>ssh -p22 sandow@10.0.0.19</code> 这样连接虽然是完全OK的，但每天都这样输也是个麻烦事，如果用alias做了别名后又不能连别的IP，而且还不能批量管理多个虚拟机，百度搜到有一个Ubuntu下的CRT，但是官网已经不支持下载更何况要怎么破解呢。后来发现了一个替代CRT的程序，那就是PAC Manager 下面便记录下是如何安装并且使用之的。  </p>
+
+<p>首先去官网下载PAC manage <img src="http://sourceforge.net/projects/pacmanager/" alt="PAC Manager官网">
+下载下来后是*.deb这样的格式，需要用下面命令来安装PAC，</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">sudo dpkg -i pac-*.deb
+</code></pre></div>
+<p>发现提示错误，提示信息显示依赖关系未被配置，</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">(正在读取数据库 ... 系统当前共安装有 199158 个文件和目录。)
+正准备解包 pac-4.5.5.5-all.deb  ...
+正在将 pac (4.5.5.5) 解包到 (4.5.3.2) 上 ...
+dpkg: 依赖关系问题使得 pac 的配置工作不能继续：
+ pac 依赖于 libgtk2-unique-perl；然而：
+  未安装软件包 libgtk2-unique-perl。
+
+dpkg: 处理软件包 pac (--install)时出错：
+ 依赖关系问题 - 仍未被配置
+正在处理用于 man-db (2.7.0.2-5) 的触发器 ...
+正在处理用于 gnome-menus (3.10.1-0ubuntu5) 的触发器 ...
+正在处理用于 desktop-file-utils (0.22-1ubuntu3) 的触发器 ...
+正在处理用于 bamfdaemon (0.5.1+15.04.20150202-0ubuntu1) 的触发器 ...
+Rebuilding /usr/share/applications/bamf-2.index...
+正在处理用于 mime-support (3.58ubuntu1) 的触发器 ...
+在处理时有错误发生：
+ pac
+</code></pre></div>
+<p>这个怎么整呢，可能是还有很多支持包未安装，</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">sudo apt-get -f install
+</code></pre></div>
+<p>将会看到下面信息：</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">将会安装下列额外的软件包：
+  libgtk2-unique-perl libunique-1.0-0
+下列【新】软件包将被安装：
+  libgtk2-unique-perl libunique-1.0-0
+</code></pre></div>
+<p>这时便可以修复依赖关系。但如果出现错误完法可能需要清理下包了</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">sudo apt-get -f clean
+</code></pre></div>
+<p>然后再执行上面的命令，完美解决问题，等安装完成后便输入<code>pac</code>便可以进入PAC Manager界面了。之后若PAC用的顺手再来谈PAC的的心得。</p>
+
+            </div>
+
+            <div id="markdown-outline" class="col-lg-3">
+            </div>
+
+            <div id="disqus_thread"></div>
+<script>
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+     */
+    /*
+    var disqus_config = function () {
+        this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() {  // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        
+        s.src = '//magdre.disqus.com/embed.js';
+        
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
+        </div>
+    </div>
+
+    
+<footer id="l-footer">
+    <div class="container">
+        <div class="row">
+            <div id="contact" class="col-lg-6 col-lg-offset-1 col-md-6 col-md-offset-1 col-sm-9">
+                <h3>CONTACT</h3>
+                <div class="row">
+                    <address id="address" class="col-lg-6 col-md-6 col-sm-6">
+                        China 北京 <br>
+                        海淀, 10000<br>
+                        上地<br>
+                        <br>
+                    </address>
+
+                    <ul class="col-lg-6 col-md-6 col-sm-6">
+                        <li class="qq"><i class="fa fa-qq"></i> &nbsp;&nbsp;921070747</li>
+                        <li class="email"><i class="fa fa-envelope"></i> <a href="mailto:j.k.yulei@gmail.com"> &nbsp;&nbsp;j.k.yulei@gmail.com</a></li>
+                        <li class="tel"><i class="fa fa-mobile"></i> <a href="tel:18010073860">&nbsp;&nbsp; 18010073860</a></li>
+                        <li class="github"><i class="fa fa-github"></i> <a href="http://www.github.com/magdre"> &nbsp;&nbsp;http://www.github.com/magdre</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div id="rss" class="col-lg-2 col-md-2 col-sm-2">
+                    <h3>SUBSCRIBE<br></h3>
+                <a href="feed.xml">
+                    <i class="rss fa fa-rss-square"></i>
+                </a>
+            </div>
+        </div>
+
+        <p id="legal">
+            Copyright (c) 2015 sandow | Powered by <a href="http://jekyllrb.com">Jekyll</a> &amp; <a href="http://github.com">GitHub</a> | designed &amp; build by <a href="http://unifreak.github.io">UniFreak</a>
+        </p>
+    </div>
+</footer>
+
+<script type="text/javascript" src="/javascripts/base.js"></script>
+<!--
+
+<!-- 百度统计 -->
+<script type="text/javascript" src="/javascripts/baidu_statistics.js"></script>
+
+-->
+
+
+    <script type="text/javascript" src="/javascripts/markdownreader.js"></script>
+</body>
+</html>
