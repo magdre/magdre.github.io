@@ -6,7 +6,7 @@
     <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="S">
+<meta name="description" content="本文主要指在利用checkio网站的问题来学习python的基础概念 list, dict, 等。。">
 
 <title>python基础</title>
 
@@ -79,37 +79,32 @@
                     
                     <ul class="tags clearfix">
                         
+                        <li><i class="fa fa-tag"></i> checkio</li>
+                        
                     </ul>
                     
                     <p id="postMeta">posted on 20 Oct 2015 under category <a href="/category/">python</a></p>
 
                 </header>
 
-                <ul>
-<li>content
-{:toc}</li>
-</ul>
-
-<hr>
-
-<ol>
+                <ol>
 <li>在一个列表中去除出现次数为1的数字。给定例子有[1,2,3,1,3], [3,4,5,7,4,7].</li>
 </ol>
 
 <p>方法一</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">def checkio(data):
-    data1 = []
-    for element in data:
-        if data.count(element) &gt; 1:
-            data1.append(element)
-    return data1
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">checkio</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+    <span class="n">data1</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">data</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">element</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">data1</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">element</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">data1</span>
 </code></pre></div>
 <p>方法二</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">def checkio(data):
-    return [x for x in data if data.count(x) &gt; 1]
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">checkio</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">data</span> <span class="k">if</span> <span class="n">data</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">]</span>
 </code></pre></div>
 <p>方法三</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">checkio = lambda data: [x for x in data if data.count(x)&gt;1]
+<div class="highlight"><pre><code class="language-python" data-lang="python">    <span class="n">checkio</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">data</span><span class="p">:</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">data</span> <span class="k">if</span> <span class="n">data</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">&gt;</span><span class="mi">1</span><span class="p">]</span>
 </code></pre></div>
 <ol>
 <li>找出列表中位数, （如果长度为奇数那么就是中间那个数字，如果是偶数便是中间两个的平均数）</li>

@@ -79,20 +79,15 @@
                     
                     <ul class="tags clearfix">
                         
+                        <li><i class="fa fa-tag"></i> ubuntu</li>
+                        
                     </ul>
                     
                     <p id="postMeta">posted on 20 Oct 2015 under category <a href="/category/">ubuntu</a></p>
 
                 </header>
 
-                <ul>
-<li>content
-{:toc}</li>
-</ul>
-
-<p>之前在windows环境下在VMWARE里安装过一次CentOs,因自己在windows下搭建编程环境过于麻烦，昨日脑袋一发热便把window直接换成了Ubuntu，且在Ubuntu, 并安装VM用来搭建服务器测试环境。  </p>
-
-<hr>
+                <p>之前在windows环境下在VMWARE里安装过一次CentOs,因自己在windows下搭建编程环境过于麻烦，昨日脑袋一发热便把window直接换成了Ubuntu，且在Ubuntu, 并安装VM用来搭建服务器测试环境。  </p>
 
 <h2 id="安装vmware">安装VMWARE</h2>
 
@@ -112,16 +107,26 @@
 
 <p>然后便是图形化界面的按照自己的意愿下一步下一步就OK，要注意记住HTTP port是443. 但是安装之后打开程序创建虚拟网卡时出错，一个解决办法是把vmnet.tar替换掉，链接之后附上。然后顺利进入vmware，接下来便可以安装centos了。</p>
 
-<hr>
-
 <h2 id="安装centos">安装centos</h2>
 
 <p>新建虚拟机，载入ISO，开机。进入安装界面后前几项都按照默认既可。在which type of installation would you like里选择create  custom layout. 对磁盘进行分区
 首先可以给/boot以及swap分区</p>
 
-<p>|:----------|:--------|
-| /boot 存放引导程序| 100-200M|
-| swap 虚拟内存     | 物理内存<8G，SWAP就实际内存*1.5,物理内存>8G，SWAP就 8G|</p>
+<table><thead>
+<tr>
+<th style="text-align: left">分区</th>
+<th style="text-align: left">大小</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">/boot 存放引导程序</td>
+<td style="text-align: left">100-200M</td>
+</tr>
+<tr>
+<td style="text-align: left">swap 虚拟内存</td>
+<td style="text-align: left">物理内存<8G，SWAP就实际内存\*1.5,物理内存>8G，SWAP就 8G</td>
+</tr>
+</tbody></table>
 
 <p>后面按不同的场景来划分利剩余的空间</p>
 
@@ -154,8 +159,6 @@
 <p><img src="/images/format-divers1.jpg" alt="format-divers"><br>
 <img src="/images/selection-package1.jpg" alt="selection-package1"><br>
 <img src="/images/selection-package2.jpg" alt="selection-package2">  </p>
-
-<hr>
 
 <h2 id="配置网络">配置网络</h2>
 

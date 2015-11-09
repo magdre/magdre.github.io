@@ -3,17 +3,14 @@ layout: post
 title:  "优化系统"
 date:   2015-10-19 18:06:05
 category: linux
+tags: [SELinux, iptables, descriptor]
 excerpt: "SELinux,iptables,SSH,系统字符集,文件描述符,服务器时间同步"
 ---
 
-* content
-{:toc}
 
----
 
 本文对系统做出视频优化， 针对刚入门linux的人来说了解其如何配置是必要的，之后在需要的时候也可适当配置。
 
----
 
 ## SELinux
 

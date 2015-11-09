@@ -3,16 +3,14 @@ layout: post
 title:  "在ubuntu下面安装centos"
 date:   2015-10-19 18:06:05
 category: ubuntu
+tags: [ubuntu]
 excerpt: "在ubuntu下安装vmware,虚拟机里centos的安装，及安装后的网络配置"
 ---
 
 
-* content
-{:toc}
 
   之前在windows环境下在VMWARE里安装过一次CentOs,因自己在windows下搭建编程环境过于麻烦，昨日脑袋一发热便把window直接换成了Ubuntu，且在Ubuntu, 并安装VM用来搭建服务器测试环境。  
 
----
 
 ## 安装VMWARE
 
@@ -33,16 +31,16 @@ excerpt: "在ubuntu下安装vmware,虚拟机里centos的安装，及安装后的
 
 然后便是图形化界面的按照自己的意愿下一步下一步就OK，要注意记住HTTP port是443. 但是安装之后打开程序创建虚拟网卡时出错，一个解决办法是把vmnet.tar替换掉，链接之后附上。然后顺利进入vmware，接下来便可以安装centos了。
 
----
 
 ## 安装centos
 
 新建虚拟机，载入ISO，开机。进入安装界面后前几项都按照默认既可。在which type of installation would you like里选择create  custom layout. 对磁盘进行分区
 首先可以给/boot以及swap分区
 
+|分区|大小|
 |:----------|:--------|
 | /boot 存放引导程序| 100-200M|
-| swap 虚拟内存     | 物理内存<8G，SWAP就实际内存*1.5,物理内存>8G，SWAP就 8G|
+| swap 虚拟内存     | 物理内存<8G，SWAP就实际内存\*1.5,物理内存>8G，SWAP就 8G|
 
 后面按不同的场景来划分利剩余的空间
 
@@ -63,7 +61,6 @@ excerpt: "在ubuntu下安装vmware,虚拟机里centos的安装，及安装后的
 ![selection-package2](/images/selection-package2.jpg)  
 
 
----
 
 ## 配置网络 
 

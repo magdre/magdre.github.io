@@ -6,7 +6,7 @@
     <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="文件类型, 索引节点, 用户与组, 软硬链接.">
+<meta name="description" content="文件类型, 文件权限，索引节点, 用户与组, 软硬链接.">
 
 <title>文件属性详细介绍</title>
 
@@ -79,18 +79,17 @@
                     
                     <ul class="tags clearfix">
                         
+                        <li><i class="fa fa-tag"></i> linux</li>
+                        
+                        <li><i class="fa fa-tag"></i> permissions</li>
+                        
                     </ul>
                     
                     <p id="postMeta">posted on 17 Oct 2015 under category <a href="/category/">linux</a></p>
 
                 </header>
 
-                <ul>
-<li>content
-{:toc}</li>
-</ul>
-
-<p>在linux 系统下一切皆文件,而文件的属性众多,所以本文便对文件属性做简单介绍,我们知道可以用 <code>ls -lhi</code>  查看文件的信息,下面是所有内容.</p>
+                <p>在linux 系统下一切皆文件,而文件的属性众多,所以本文便对文件属性做简单介绍,我们知道可以用 <code>ls -lhi</code>  查看文件的信息,下面是所有内容.</p>
 <div class="highlight"><pre><code class="language-text" data-lang="text">$ ll -ih
 total 52K
 7079756 drwxrwxr-x 11 sandow sandow 4096 10月 18 02:44 magdre.github.io
@@ -280,9 +279,10 @@ group identify GID</p>
 
 <p>symbolic links or soft likn  软链接或符号链接. 软链接的文件类型是l, 这个文件中包含有软链接指向另一源文件的位置信息内容.  </p>
 
-<p>通过读取软链接里的原文件绝对路径的源文件名来访问原文件.删除源文件,软件链接文件依然存在,但无法防问源文件内容, 但在原位置重新创建一个文件,软链接可继续访问此文件.软链接文件拥有不同的Inode，而且在查看文件时，其最后会指向所链接的实际文件路径。  </p>
-
-<p>ln -s  [源文件] [链接文件]</p>
+<p>通过读取软链接里的原文件绝对路径的源文件名来访问原文件.删除源文件,软件链接文件依然存在,但无法防问源文件内容, 但在原位置重新创建一个文件,软链接可继续访问此文件.软链接文件拥有不同的Inode，而且在查看文件时，其最后会指向所链接的实际文件路径。<br>
+<code>
+ln -s  [源文件] [链接文件]
+</code></p>
 
 <p>注意目录硬链接无法跨越文件系统,但可以创建软链接, 工作中经常用到的是给目录创建软链接.</p>
 <div class="highlight"><pre><code class="language-text" data-lang="text">$ ll 
@@ -298,10 +298,13 @@ total 8.0K
 
 <p>文件属性中有三种时间</p>
 
-<p>|access  访问时间  | 对应find -atime|
-|modify  修改时间 ls 默认显示修改时间| 对应 find -mtime|
-|change  改变属性权限|对应 find -ctime|
-可以主用--time-style 来修改ls显示的时间样式,可以项有long-iso,  full-iso</p>
+<ul>
+<li>access  访问时间,   对应find -atime</li>
+<li>modify  修改时间 ls 默认显示修改时间, 对应 find -mtime</li>
+<li>change  改变属性权限|对应 find -ctime</li>
+</ul>
+
+<p>可以主用--time-style 来修改ls显示的时间样式,可以项有long-iso,  full-iso</p>
 <div class="highlight"><pre><code class="language-text" data-lang="text">ls -l --time-style=long-iso 
 </code></pre></div>
 <h2 id="通配符">通配符</h2>
@@ -361,13 +364,13 @@ total 8.0K
 </tbody></table>
 
 <p>简单举例</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">mkdir /etc/{bbc, blog}
-echo {a..z}
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">mkdir</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="p">{</span><span class="n">bbc</span><span class="p">,</span> <span class="n">blog</span><span class="p">}</span>
+<span class="n">echo</span> <span class="p">{</span><span class="n">a</span><span class="o">..</span><span class="n">z</span><span class="p">}</span>
 
-a=1
-printf &quot;$a\n&quot;     #输出是1
-printf &#39;$a\n&#39;     #输出结果是 $a
-echo `date`       #输出结果是当时时间长格式
+<span class="n">a</span><span class="o">=</span><span class="mi">1</span>
+<span class="n">printf</span> <span class="s">&quot;$a</span><span class="se">\n</span><span class="s">&quot;</span>     <span class="c">#输出是1</span>
+<span class="n">printf</span> <span class="s">&#39;$a</span><span class="se">\n</span><span class="s">&#39;</span>     <span class="c">#输出结果是 $a</span>
+<span class="n">echo</span> <span class="sb">`date`</span>       <span class="c">#输出结果是当时时间长格式</span>
 </code></pre></div>
             </div>
 

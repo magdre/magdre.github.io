@@ -7,7 +7,7 @@
 //linux/somequestion-about-linux
 //linux/linux-filesystem
 //movie/the-god-father
-//the-three-musketeers
+//linux/the-three-musketeers
 //linux/system-command
 //python/regular-expressions
 //linux/manage-the-directory-command
