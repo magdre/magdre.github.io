@@ -1,12 +1,10 @@
 ---
 layout: post
 title:  "linux文件目录结构"
-date:   2015-10-14 23:55:05
-categories: linux
+category: linux
+tags: [command, linux]
 excerpt:  目录结构参照FHS2.3，鸟哥. 并简单介绍硬盘的结构
 ---
-* 文件目录结构
-{:toc}
 
 ## Linux 文件系统大览
   linux下的所有的目录都是按照一定的类别有规律的组织和命名，每个目录数据可以跨越不同的磁盘分区或者不同的磁盘设备，所有目录都可以按两个类别来分：静态的与动态的，或者可共享的与不可共享的。可共享一个用户储存的文件可以被其它用户查看。静态的文件包括binaries, libraries, documenttation和其它在超级管理员不更改的情况下处于不变的文件。
@@ -20,9 +18,10 @@ excerpt:  目录结构参照FHS2.3，鸟哥. 并简单介绍硬盘的结构
 
 Linux 系统的所有目录是一个有层次的倒着的树状目录结构，"／"  根是所有目录的起点可以用   
 
+
 	$ tree -L 1 /
-
-
+|命令|描述|
+|:---:|:---|
 |**/bin** | Essential command binaries 存放着所有用户都可以用的二进制命令.  
 |**/boot** | Static files of the boot loader 内核及系统引导程序所需的文件目录.  
 |**/dev** |  Device files.  

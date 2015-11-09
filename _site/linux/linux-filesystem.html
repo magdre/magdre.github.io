@@ -79,18 +79,17 @@
                     
                     <ul class="tags clearfix">
                         
+                        <li><i class="fa fa-tag"></i> command</li>
+                        
+                        <li><i class="fa fa-tag"></i> linux</li>
+                        
                     </ul>
                     
-                    <p id="postMeta">posted on 15 Oct 2015 under category <a href="/category/">linux</a></p>
+                    <p id="postMeta">posted on 14 Oct 2015 under category <a href="/category/">linux</a></p>
 
                 </header>
 
-                <ul>
-<li>文件目录结构
-{:toc}</li>
-</ul>
-
-<h2 id="linux-文件系统大览">Linux 文件系统大览</h2>
+                <h2 id="linux-文件系统大览">Linux 文件系统大览</h2>
 
 <p>linux下的所有的目录都是按照一定的类别有规律的组织和命名，每个目录数据可以跨越不同的磁盘分区或者不同的磁盘设备，所有目录都可以按两个类别来分：静态的与动态的，或者可共享的与不可共享的。可共享一个用户储存的文件可以被其它用户查看。静态的文件包括binaries, libraries, documenttation和其它在超级管理员不更改的情况下处于不变的文件。</p>
 
@@ -126,23 +125,81 @@
 <p>Linux 系统的所有目录是一个有层次的倒着的树状目录结构，&quot;／&quot;  根是所有目录的起点可以用   </p>
 <div class="highlight"><pre><code class="language-text" data-lang="text">$ tree -L 1 /
 </code></pre></div>
-<p>|<strong>/bin</strong> | Essential command binaries 存放着所有用户都可以用的二进制命令.<br>
-|<strong>/boot</strong> | Static files of the boot loader 内核及系统引导程序所需的文件目录.<br>
-|<strong>/dev</strong> |  Device files.<br>
-|<strong>/etc</strong> | Host-specific system configuration,配置文件的默认路径.<br>
-|<strong>/lib/lib64</strong> | Essential shared libraries and kernel modules,库文件的目录.<br>
-|<strong>/lost+found</strong> | 系统突然崩溃突然关机，系统产生的一些文件碎片在这里  fsck检查修复
-|<strong>/media</strong> | Mount point for removeable media.<br>
-|<strong>/mnt</strong> | Mount point for mounting a filesystem temporarily,文件系统的临时挂载点.
-|<strong>/opt</strong> | Add-on application software packages，可选的第三方软件的安装目录.<br>
-|<strong>/proc</strong> | Kernel and process information virtual filesystem,内核与进程信息的虚拟文件系统.<br>
-|<strong>/root</strong> | Home directory for the root user (optional), 超级管理员的家目录.<br>
-|<strong>/home</strong> | User home directories (optional)，普通用户的家目录.<br>
-|<strong>/sbin</strong> | Essential system binaries,系统二进制命令文件.<br>
-|<strong>/srv</strong> | Data for services provided by this system.<br>
-|<strong>/tmp</strong> | Temporary files 临时文件存放目录.<br>
-|<strong>/usr</strong> | Secondary hierarchy 第二层次结构, 存放系统程序以及用户安装程序的目录.<br>
-|<strong>/var</strong> | Variable data 可变的数据.  </p>
+<table><thead>
+<tr>
+<th style="text-align: center">命令</th>
+<th style="text-align: left">描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: center"><strong>/bin</strong></td>
+<td style="text-align: left">Essential command binaries 存放着所有用户都可以用的二进制命令.</td>
+</tr>
+<tr>
+<td style="text-align: center"><strong>/boot</strong></td>
+<td style="text-align: left">Static files of the boot loader 内核及系统引导程序所需的文件目录.</td>
+</tr>
+<tr>
+<td style="text-align: center"><strong>/dev</strong></td>
+<td style="text-align: left">Device files.</td>
+</tr>
+<tr>
+<td style="text-align: center"><strong>/etc</strong></td>
+<td style="text-align: left">Host-specific system configuration,配置文件的默认路径.</td>
+</tr>
+<tr>
+<td style="text-align: center"><strong>/lib/lib64</strong></td>
+<td style="text-align: left">Essential shared libraries and kernel modules,库文件的目录.</td>
+</tr>
+<tr>
+<td style="text-align: center"><strong>/lost+found</strong></td>
+<td style="text-align: left">系统突然崩溃突然关机，系统产生的一些文件碎片在这里  fsck检查修复</td>
+</tr>
+<tr>
+<td style="text-align: center"><strong>/media</strong></td>
+<td style="text-align: left">Mount point for removeable media.</td>
+</tr>
+<tr>
+<td style="text-align: center"><strong>/mnt</strong></td>
+<td style="text-align: left">Mount point for mounting a filesystem temporarily,文件系统的临时挂载点.</td>
+</tr>
+<tr>
+<td style="text-align: center"><strong>/opt</strong></td>
+<td style="text-align: left">Add-on application software packages，可选的第三方软件的安装目录.</td>
+</tr>
+<tr>
+<td style="text-align: center"><strong>/proc</strong></td>
+<td style="text-align: left">Kernel and process information virtual filesystem,内核与进程信息的虚拟文件系统.</td>
+</tr>
+<tr>
+<td style="text-align: center"><strong>/root</strong></td>
+<td style="text-align: left">Home directory for the root user (optional), 超级管理员的家目录.</td>
+</tr>
+<tr>
+<td style="text-align: center"><strong>/home</strong></td>
+<td style="text-align: left">User home directories (optional)，普通用户的家目录.</td>
+</tr>
+<tr>
+<td style="text-align: center"><strong>/sbin</strong></td>
+<td style="text-align: left">Essential system binaries,系统二进制命令文件.</td>
+</tr>
+<tr>
+<td style="text-align: center"><strong>/srv</strong></td>
+<td style="text-align: left">Data for services provided by this system.</td>
+</tr>
+<tr>
+<td style="text-align: center"><strong>/tmp</strong></td>
+<td style="text-align: left">Temporary files 临时文件存放目录.</td>
+</tr>
+<tr>
+<td style="text-align: center"><strong>/usr</strong></td>
+<td style="text-align: left">Secondary hierarchy 第二层次结构, 存放系统程序以及用户安装程序的目录.</td>
+</tr>
+<tr>
+<td style="text-align: center"><strong>/var</strong></td>
+<td style="text-align: left">Variable data 可变的数据.</td>
+</tr>
+</tbody></table>
 
 <hr>
 
@@ -584,7 +641,7 @@ sbin 包含了一些系统启动，修复命令。</p></li>
                         <li class="qq"><i class="fa fa-qq"></i> &nbsp;&nbsp;921070747</li>
                         <li class="email"><i class="fa fa-envelope"></i> <a href="mailto:j.k.yulei@gmail.com"> &nbsp;&nbsp;j.k.yulei@gmail.com</a></li>
                         <li class="tel"><i class="fa fa-mobile"></i> <a href="tel:18010073860">&nbsp;&nbsp; 18010073860</a></li>
-                        <li class="github"><i class="fa fa-github"></i> <a href="http://www.github.com/magdre"> &nbsp;&nbsp;http://www.github.com/magdre</a></li>
+                        <li class="github"><i class="fa fa-github"></i> <a href="http://magdre.github.io/about"> &nbsp;&nbsp;http://magdre.github.io/about</a></li>
                     </ul>
                 </div>
             </div>

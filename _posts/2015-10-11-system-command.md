@@ -1,15 +1,10 @@
 ---
 layout: post
-title:  "系统管理以及系统设置的命令."
-date: 2015-10-11 15:08:58 
-categories: linux
+title:  "系统管理以及系统设置的命令"
+category: linux
+tags: [command, linux]
 excerpt: "chkconfig inittab"
-
 ---
-
-* content
-{:toc}
-
 
 
 ## 系统设置命令
@@ -238,32 +233,9 @@ excerpt: "chkconfig inittab"
        sedes the version described here.  Please refer to your  shell's  docu‐
        mentation for details about the options it supports.
 
-AUTHOR
-       Written by Michael Meskes.
-
-REPORTING BUGS
-       GNU coreutils online help: <http://www.gnu.org/software/coreutils/>
-       Report stat translation bugs to <http://translationproject.org/team/>
-
-COPYRIGHT
-       Copyright  ©  2014  Free Software Foundation, Inc.  License GPLv3+: GNU
-       GPL version 3 or later <http://gnu.org/licenses/gpl.html>.
-       This is free software: you are free  to  change  and  redistribute  it.
-       There is NO WARRANTY, to the extent permitted by law.
-
-SEE ALSO
-       stat(2)
-
-       Full documentation at: <http://www.gnu.org/software/coreutils/stat>
-       or available locally via: info '(coreutils) stat invocation'
 
 
 
-
-date +%F
-date +%y-%m-$d\ %H:%M:%S
-
-date +%F\ %T
 
 
 

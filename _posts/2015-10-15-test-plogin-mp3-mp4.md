@@ -2,7 +2,7 @@
 layout: post
 title:  "试着在里观看音视频"
 date:   2015-10-15 20:06:05
-categories: movie
+category: movie
 excerpt: 测试插入音视频方法
 ---
 

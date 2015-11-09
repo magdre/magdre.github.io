@@ -1,16 +1,14 @@
 ---
 layout: post
 title:  "linux文件管理命令"
-date:   2015-10-11 12:06:05
-tags: [linux]
-categories: linux
+tags: [command, linux]
+category: linux
 excerpt: "主要介绍一些linux系统是基本的文件管理命令 diff vimdiff more less head tail cat xargs seq cut wc chattr lsattr stat chgrp chown chmod which whereis touch "
 ---
 
 
----
 
-## diff,逐行比较两个文件
+## diff逐行比较两个文件
 **描述**：, 以逐行的方式比较给定的两个文本文件的不同处
 
 ```
@@ -35,9 +33,8 @@ $ diff a.txt b.txt
 diff [OPTION]... FILES
 ```
 
----
 	
-## vimdiff, 用VIM比较多个文件 
+## vimdiff用VIM比较多个文件 
 
 **描述**：用vim编辑器同时打开两到四个不同版本的文件，并且在不同之处高亮显示  
 	
@@ -45,9 +42,8 @@ diff [OPTION]... FILES
 ```
 vimdiff [options] file1 file2 [file3 [file4]]
 ```
----
 
-## more，交互式查看文件内容
+## more交互式查看文件内容
 
 **描述**：用来查看一个文本文件的内容，当填满一屏后停下，可以用快捷键来控制显示内容  
 	
@@ -67,9 +63,8 @@ vimdiff [options] file1 file2 [file3 [file4]]
 |v                     |  在当前行启动 /usr/bin/vi     |
 |.                     |  重复前一命令                  |
 
----
 
-## less, 比more功能更强大的内容查看
+## lesse比more功能更强大
 
   **描述**： less 和more非常像，但是less支持用户向前向后浏览文件，可以用pageup，pagedown 来上下翻页。
   
@@ -85,9 +80,8 @@ vimdiff [options] file1 file2 [file3 [file4]]
 | -N         |  显示行号            |
 | -i		 |  搜索时忽略大小写    |
 
----
 
-## head，查看文件前10行内容
+## head查看文件前10行内容
 
 **描述**：打印出文件的前10（默认）行内容
 
@@ -102,9 +96,8 @@ vimdiff [options] file1 file2 [file3 [file4]]
 head [OPTION]... [FILE]...
 ```
 
----
 
-##  tail，查看文件后10行内容
+##  tail查看文件后10行内容
 
 **描述**： , 打印文件最后10行的内容
 
@@ -115,7 +108,7 @@ head [OPTION]... [FILE]...
 tail [OPTION]... [FILE]... 
 ```
 
-## cat，查看文件内容
+## cat查看文件内容
 
 **描述**： 连接文件并打印到标准输出设备上，用来显示文件的内容，内容会全部显示。  
 
@@ -159,7 +152,6 @@ name name
 $ find /tmp -name core -type f -print | xargs /bin/rm -f
 ```
 
----
 
 ## seq，打印序列
 **描述**： 打印从first到last步找为increment连续的整数
@@ -207,8 +199,8 @@ $ seq -s '< ' 10 |xargs -n 3
 	sandow   pts/1        2015-10-21 11:27 (10.0.0.1)
 
 	$ who |cut -b -5,10
-	sandop
-	sandop
+	sandow
+	sandow
 
 可以看到-5就是从开关显示到第五，同理5-, 在取英文的时候 -b -c都一样，但是取中文的话只能用-c，用-b便会出现乱码，因为中文一个字占两个字节。
 
@@ -255,7 +247,6 @@ $ seq -s '< ' 10 |xargs -n 3
 	$ cat /etc/passwd |wc -c
 	1154
 
----
 
 ##  chattr, 修改文件属性
 
@@ -264,7 +255,8 @@ $ seq -s '< ' 10 |xargs -n 3
 
 	chattr [ -RVf ] +-=[acdeijstuADST] [ -v version ] [ mode ] files...
 
-+是给文件增加属性，-是移除文件属性，=是更新指定属性  ‘acdeijstuADST’ 的各自意思是 append only (a), compressed  (c),  no  dump  (d),  extent  format  (e),     immutable (i), data journalling (j), secure deletion (s), no tail-merging (t), undeletable (u), no atime updates (A),  synchronous  directory updates  (D),  synchronous  updates (S), and top of directory hierarchy(T).  
++是给文件增加属性，-是移除文件属性，=是更新指定属性  ‘acdeijstuADST’ 的各自意思是: 
+append only (a), compressed  (c),  no  dump  (d),  extent  format  (e),     immutable (i), data journalling (j), secure deletion (s), no tail-merging (t), undeletable (u), no atime updates (A),  synchronous  directory updates  (D),  synchronous  updates (S), and top of directory hierarchy(T).  
 
  A 文件或者目录的atime不可修改，这是预防手提电脑I/O错误的发生  
  c 设定文件是否通过内核自动压缩后储存  
@@ -283,7 +275,6 @@ $ seq -s '< ' 10 |xargs -n 3
 	lsattr /etc/passwd
 	----i--------e- /etc/passwd
 
----
 
 ## lsattr 查看文件属性
 
@@ -303,7 +294,6 @@ $ seq -s '< ' 10 |xargs -n 3
 	$ lsattr a.txt 
 	-------A-----e- a.txt
 
----
 
 ##  stat, 查看文件权限属性
 **描述**：display file or file system status 显示文件或者文件系统的状态，包括I-node里的所有信息。
@@ -356,8 +346,6 @@ $ seq -s '< ' 10 |xargs -n 3
 %X     time of last access, seconds since Epoch  
 %y     time of last data modification, human-readable  
 %Z     time of last status change, seconds since Epoch  
-
----
 
 ##  chgrp, 修改文件属组
 **描述**：Change  the  group of each FILE to GROUP.  更改每个文件的GROUP
@@ -438,17 +426,3 @@ $ seq -s '< ' 10 |xargs -n 3
 		修改文件的时间属性(若不存在)； 创建名为”testfile”的新空白文件
 	touch /tmp/stu{1..12}.txt
 		批量创建多个文件
-
-
-
-
-
-
-
-
-
-
-
-
-
-

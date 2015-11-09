@@ -2,7 +2,7 @@
 layout: post
 title:  "python基础"
 date:   2015-10-19 18:06:05
-categories: python
+category: python
 excerpt: "S"
 ---
 

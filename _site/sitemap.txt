@@ -1,19 +1,18 @@
-/python/learning-python-checkio
-/linux/optimize-system
-/ubuntu/install-centos-onubuntu
-/ubuntu/install-crt-inubuntu
-/linux/file-attribute
-/movie/test-plogin-mp3-mp4
-/linux/linux-filesystem
-/linux/the-three-musketeers
-/linux/somequestion-about-linux
-/movie/the-god-father
-/linux/system-command
-/python/regular-expressions
-/linux/networking-command
-/linux/manage-file-command
-/linux/manage-the-directory-command
-/translation/understanding-the-diff-command-in-unix
+//python/learning-python-checkio
+//linux/optimize-system
+//ubuntu/install-centos-onubuntu
+//ubuntu/install-crt-inubuntu
+//linux/file-attribute
+//movie/test-plogin-mp3-mp4
+//linux/somequestion-about-linux
+//linux/linux-filesystem
+//movie/the-god-father
+//the-three-musketeers
+//linux/system-command
+//python/regular-expressions
+//linux/manage-the-directory-command
+//linux/manage-file-command
+//linux/understanding-the-diff-command-in-unix
 
 
 

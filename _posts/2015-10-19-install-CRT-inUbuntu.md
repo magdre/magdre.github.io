@@ -2,7 +2,7 @@
 layout: post
 title:  "在ubuntu下面安装SSH客户端PAC Manager"
 date:   2015-10-19 12:06:05
-categories: ubuntu
+category: ubuntu
 excerpt: "安装PAC，以及出的错误"
 ---
 

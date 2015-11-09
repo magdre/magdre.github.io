@@ -79,6 +79,8 @@
                     
                     <ul class="tags clearfix">
                         
+                        <li><i class="fa fa-tag"></i> command</li>
+                        
                         <li><i class="fa fa-tag"></i> linux</li>
                         
                     </ul>
@@ -87,9 +89,7 @@
 
                 </header>
 
-                <hr>
-
-<h2 id="diff-逐行比较两个文件">diff,逐行比较两个文件</h2>
+                <h2 id="diff逐行比较两个文件">diff逐行比较两个文件</h2>
 
 <p><strong>描述</strong>：, 以逐行的方式比较给定的两个文本文件的不同处</p>
 <div class="highlight"><pre><code class="language-text" data-lang="text">$ diff a.txt b.txt 
@@ -111,19 +111,16 @@
 <p><strong>语法</strong></p>
 <div class="highlight"><pre><code class="language-text" data-lang="text">diff [OPTION]... FILES
 </code></pre></div>
-<hr>
-
-<h2 id="vimdiff-用vim比较多个文件">vimdiff, 用VIM比较多个文件</h2>
+<h2 id="vimdiff用vim比较多个文件">vimdiff用VIM比较多个文件</h2>
 
 <p><strong>描述</strong>：用vim编辑器同时打开两到四个不同版本的文件，并且在不同之处高亮显示  </p>
 
 <p><strong>语法</strong><br>
-```
-vimdiff [options] file1 file2 [file3 [file4]]</p>
+<code>
+vimdiff [options] file1 file2 [file3 [file4]]
+</code></p>
 
-<h2 id=">```</h2>
-
-<h2 id="more，交互式查看文件内容">more，交互式查看文件内容</h2>
+<h2 id="more交互式查看文件内容">more交互式查看文件内容</h2>
 
 <p><strong>描述</strong>：用来查看一个文本文件的内容，当填满一屏后停下，可以用快捷键来控制显示内容  </p>
 
@@ -181,9 +178,7 @@ vimdiff [options] file1 file2 [file3 [file4]]</p>
 </tr>
 </tbody></table>
 
-<hr>
-
-<h2 id="less-比more功能更强大的内容查看">less, 比more功能更强大的内容查看</h2>
+<h2 id="lesse比more功能更强大">lesse比more功能更强大</h2>
 
 <p><strong>描述</strong>： less 和more非常像，但是less支持用户向前向后浏览文件，可以用pageup，pagedown 来上下翻页。</p>
 
@@ -225,9 +220,7 @@ vimdiff [options] file1 file2 [file3 [file4]]</p>
 </tr>
 </tbody></table>
 
-<hr>
-
-<h2 id="head，查看文件前10行内容">head，查看文件前10行内容</h2>
+<h2 id="head查看文件前10行内容">head查看文件前10行内容</h2>
 
 <p><strong>描述</strong>：打印出文件的前10（默认）行内容</p>
 
@@ -241,9 +234,7 @@ vimdiff [options] file1 file2 [file3 [file4]]</p>
 <p><strong>语法</strong></p>
 <div class="highlight"><pre><code class="language-text" data-lang="text">head [OPTION]... [FILE]...
 </code></pre></div>
-<hr>
-
-<h2 id="tail，查看文件后10行内容">tail，查看文件后10行内容</h2>
+<h2 id="tail查看文件后10行内容">tail查看文件后10行内容</h2>
 
 <p><strong>描述</strong>： , 打印文件最后10行的内容</p>
 
@@ -251,7 +242,7 @@ vimdiff [options] file1 file2 [file3 [file4]]</p>
 <strong>语法</strong></p>
 <div class="highlight"><pre><code class="language-text" data-lang="text">tail [OPTION]... [FILE]... 
 </code></pre></div>
-<h2 id="cat，查看文件内容">cat，查看文件内容</h2>
+<h2 id="cat查看文件内容">cat查看文件内容</h2>
 
 <p><strong>描述</strong>： 连接文件并打印到标准输出设备上，用来显示文件的内容，内容会全部显示。  </p>
 
@@ -290,8 +281,6 @@ name name
 name name
 $ find /tmp -name core -type f -print | xargs /bin/rm -f
 </code></pre></div>
-<hr>
-
 <h2 id="seq，打印序列">seq，打印序列</h2>
 
 <p><strong>描述</strong>： 打印从first到last步找为increment连续的整数</p>
@@ -335,8 +324,8 @@ sandow   pts/0        2015-10-21 09:36 (10.0.0.1)
 sandow   pts/1        2015-10-21 11:27 (10.0.0.1)
 
 $ who |cut -b -5,10
-sandop
-sandop
+sandow
+sandow
 </code></pre></div>
 <p>可以看到-5就是从开关显示到第五，同理5-, 在取英文的时候 -b -c都一样，但是取中文的话只能用-c，用-b便会出现乱码，因为中文一个字占两个字节。</p>
 <div class="highlight"><pre><code class="language-text" data-lang="text">$ cat /etc/passwd|head -5
@@ -382,15 +371,14 @@ $ cat /etc/passwd |wc -w
 $ cat /etc/passwd |wc -c
 1154
 </code></pre></div>
-<hr>
-
 <h2 id="chattr-修改文件属性">chattr, 修改文件属性</h2>
 
 <p><strong>描述</strong>：change file attributes修改linux文件系统里的文件属性<br>
 <strong>语法</strong>: </p>
 <div class="highlight"><pre><code class="language-text" data-lang="text">chattr [ -RVf ] +-=[acdeijstuADST] [ -v version ] [ mode ] files...
 </code></pre></div>
-<p>+是给文件增加属性，-是移除文件属性，=是更新指定属性  ‘acdeijstuADST’ 的各自意思是 append only (a), compressed  (c),  no  dump  (d),  extent  format  (e),     immutable (i), data journalling (j), secure deletion (s), no tail-merging (t), undeletable (u), no atime updates (A),  synchronous  directory updates  (D),  synchronous  updates (S), and top of directory hierarchy(T).  </p>
+<p>+是给文件增加属性，-是移除文件属性，=是更新指定属性  ‘acdeijstuADST’ 的各自意思是: 
+append only (a), compressed  (c),  no  dump  (d),  extent  format  (e),     immutable (i), data journalling (j), secure deletion (s), no tail-merging (t), undeletable (u), no atime updates (A),  synchronous  directory updates  (D),  synchronous  updates (S), and top of directory hierarchy(T).  </p>
 
 <p>A 文件或者目录的atime不可修改，这是预防手提电脑I/O错误的发生<br>
  c 设定文件是否通过内核自动压缩后储存<br>
@@ -410,8 +398,6 @@ $ cat /etc/passwd |wc -c
 lsattr /etc/passwd
 ----i--------e- /etc/passwd
 </code></pre></div>
-<hr>
-
 <h2 id="lsattr-查看文件属性">lsattr 查看文件属性</h2>
 
 <p><strong>描述</strong>：list file attributes on a Linux second extended file system 列出linux  EXT2文件系统的属性<br>
@@ -430,8 +416,6 @@ lsattr /etc/passwd
 <div class="highlight"><pre><code class="language-text" data-lang="text">$ lsattr a.txt 
 -------A-----e- a.txt
 </code></pre></div>
-<hr>
-
 <h2 id="stat-查看文件权限属性">stat, 查看文件权限属性</h2>
 
 <p><strong>描述</strong>：display file or file system status 显示文件或者文件系统的状态，包括I-node里的所有信息。</p>
@@ -483,8 +467,6 @@ Change: 2015-10-21 13:02:52.982024877 +0800
 %X     time of last access, seconds since Epoch<br>
 %y     time of last data modification, human-readable<br>
 %Z     time of last status change, seconds since Epoch  </p>
-
-<hr>
 
 <h2 id="chgrp-修改文件属组">chgrp, 修改文件属组</h2>
 
@@ -616,7 +598,7 @@ touch /tmp/stu{1..12}.txt
                         <li class="qq"><i class="fa fa-qq"></i> &nbsp;&nbsp;921070747</li>
                         <li class="email"><i class="fa fa-envelope"></i> <a href="mailto:j.k.yulei@gmail.com"> &nbsp;&nbsp;j.k.yulei@gmail.com</a></li>
                         <li class="tel"><i class="fa fa-mobile"></i> <a href="tel:18010073860">&nbsp;&nbsp; 18010073860</a></li>
-                        <li class="github"><i class="fa fa-github"></i> <a href="http://www.github.com/magdre"> &nbsp;&nbsp;http://www.github.com/magdre</a></li>
+                        <li class="github"><i class="fa fa-github"></i> <a href="http://magdre.github.io/about"> &nbsp;&nbsp;http://magdre.github.io/about</a></li>
                     </ul>
                 </div>
             </div>

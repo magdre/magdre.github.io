@@ -2,7 +2,7 @@
 layout: post
 title:  "在ubuntu下面安装centos"
 date:   2015-10-19 18:06:05
-categories: ubuntu
+category: ubuntu
 excerpt: "在ubuntu下安装vmware,虚拟机里centos的安装，及安装后的网络配置"
 ---
 

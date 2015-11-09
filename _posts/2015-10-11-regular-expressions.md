@@ -1,16 +1,13 @@
 ---
 layout: post
-title: "Regular Expressions(正则表达式）"
-date:   2015-10-11 15:06:05
-categories: python
-excerpt: 介绍基本的正则表达式，以及在python下的一些用法
+title: "Regular Expressions"
+category: python
+tags: [RE, python]
+excerpt: "全面介绍正则表达式的语法.以及在python下的一些用法,并对python中的re中的函数做简单介绍"
 ---
-* contens 
-{:toc}
+
  正则表达式是为处理大量字符串而定义的方法。
  正则表达式分基本正则表达式（Basic Regular Expressions,BERs）和扩展正则表达式（Extended Regular Expressions,EREs）. EREs基本包含BERs，而且还包含更多功能. EREs现在已经被应用于 Apache, PERL, PHP, python. 以及VI，emac,grep awk和sed...ERES现在基本已成流行，也是本文主要关注的重点   
-
----
 
 ## 通用的定义
 
@@ -51,38 +48,26 @@ excerpt: 介绍基本的正则表达式，以及在python下的一些用法
 ### metacharacters
   在RE中经常会用到很多特殊字符，每个字符在不同的位置拥有不同的意思，下面简单介绍几个常用的metacharacters
 
-1. 基本的 metacharacters
-* \[ \]  
-  **square brackets( [] )** 匹配在square brackets里面的任意1个字符. `[12]` 便只会匹配1或者2, \[0-9] 便会匹配任意一个数字, 在square brackets里面的特殊字符将失去他的特殊意义。
-* \-  
- **dash(-)** 在square brackets 里面的意思是range separator, 例如`[0-9]` 的意思就是\[0123456789]
-* caret(^)  
-  **circumflex or caret(^)** 在square brackets 里便是取反. `[^Ff]` 的意思便是匹配除了f(大写与小写)的任意字符. 当不用在square brackets里时,意思是只查找开头是literal的字符比如 `^Win` 便不会从Windows里找到, 而`^Moz`会从 'Mozilla' 中找到.
-* $  
-  **dollar($)** 在目标字符串中只匹配结尾是literal的字符. `fox$` 便会从 'silver fox' 中找到
-* .  
- period(.) 在这个位置的任意字符. `ton.` 便会从 'tonneau' 中找到**tons** , 但不会从'wanton' 里找到.
+一些基本的元字符及各自的意思
 
-2. iteration metacharacters
-* ?  
-  **question mark**  匹配前面的一个字符出现0次或者1次， `colou?r` 便会找到**color**和**colour** 
-* \*  
-  **asterisk or star** 匹配前面的一个字符出现0次或者多次， `tre*` 便会找到 **tr**, **tre**, **tree**,
-* \+  
-  **plus** 匹配前面的一个字符出现1次或者多次
-* {n}  
-  **curly brackets**匹配前面的字符或者出现n次 `[1-9]{3}-[0-9]{4}` 便用找到像123-4567形式的数字,或者电话
-* {n,m} {n,}  
-  第一个是匹配前面的字符至少出现n次至多出现m次，第二个是匹配前面的字符至少出现nuqw 
-* {n,m}? ,+?, *?, ??
-  因为{n,m}, *, +, ?会匹配前面的字符出现足够多次的字符(greedy)如果想匹配尽可能少的字符那么就可以在后面加一个"?"(non-greed)，比如字符串'aaaaa', a{3,4}将会匹配５个a，　而a{3,5}?便只会匹配３个a 
+|元字符|特殊意义|例子|
+|:---:|:---|:----|
+|**[ ]**  | 匹配在方括号里面的任意1个字符   | `[12]` 便只会匹配1或者2, [0-9] 便会匹配任意一个数字|
+| **-** | 在方括号里面dash的意思是range separator | [0-9]` 相当于[0123456789] |
+| **^** | 在放括號里caret是取反,不在中括号里是最开头 | `[^Ff]` 匹配除了f(大写与小写)的任意字符。`^Moz` 以Woz开头字符会从 'Mozilla' 中找到 |
+|**$**  | 只匹配结尾是literal的字符 |`fox$` 便会从 'silver fox' 中找到|
+|**.**  | 在这个位置的任意字符      |`ton.` 便会从 'tonneau' 中找到**tons** , 但不会从'wanton' 里找到|
+|**?**  | 匹配前面的一个字符出现0次或者1次 | `colou?r` 便会找到**color**和**colour**| 
+| * | 匹配前面的一个字符出现0次或者多次| `tre\*` (请忽略\ )便会找到 `tr`, `tre`, `tree` 。|
+|**+**  | 匹配前面的一个字符出现1次或者多次||
+| {n}   | 匹配前面的字符或者出现n次 |`[1-9]{3}-[0-9]{4}` 便用找到像123-4567形式的数字|
+|{n,m}  | 匹配前面的字符至少出现n到m次|| 
+| {n,m}? ,+?, *?, ??| 让{n,m}, *, +, ?非貪婪匹配(non-greed)|字符串'aaaaa', a{3,4}将会匹配５个a，　而a{3,5}?便只会匹配３个a |
+| ()    |子表达式| 可以向后引用|
+| 竖线  |可以匹配前面的字符或者后面的字符 | |  
 
 
-2. 扩展的metacharacters
-* ()  
-  括号经常与表达式一起用，有时候我们把它叫做子表达式。
-* \|  
-  **vertical bar or pipe** 可以匹配前面的字符或者后面的字符`gr(a|e)y`可以找到 'gray' 或 'grey', 也可以这样用`gr(a|e(|i)y)`除了匹配前面的字符还可以匹配 'griy'  
+gr(a|e)y`可以找到 'gray' 或 'grey'
 
  举例  
 
@@ -94,13 +79,14 @@ excerpt: 介绍基本的正则表达式，以及在python下的一些用法
 |[^A-M]in       | 会从Windows里找到 **Win**         | 因为排队A－M所以不会匹配到Linux |
 |[a-z]\)$       | 会从 DigiExt)里找到**t）**        | 因为结尾是数字所以不会匹配到   |
 |.in            | 会从 Windows 里打到 **Win**       | 会从Linux里找到**Lin**        |
-|\(.*l          | 会匹配到**(compatibl**            | "("后面没有l所以不会匹配到     |
+|\(.\*l          | 会匹配到**(compatibl**            | "("后面没有l所以不会匹配到     |
 |[Xx][0-9a-z]{2}| 无匹配虽然有小x但是后面t并没有重复两次| 会找到X11                   |
 |^([L-Z]in)     | 没有以L-Z开头的字符所以无匹配      | Lin不在字符串的开头无匹配       |
-|(W\|L)in        | 从Windows里找到了Win             | 从Linux下找到了Win                   |
-|((4\.[0-3])\|(2\.[0-3]))| 会找到4.0                | 会找到2.2                      |
 
----
+
+
+`((4\.[0-3])\|(2\.[0-3]))` 可以在字符串1中找到4.0，在字符串2中找到2.2
+
 
 ### POSIX Character Class Definitions
 
@@ -144,71 +130,83 @@ excerpt: 介绍基本的正则表达式，以及在python下的一些用法
 ## python 中的re包，
 　python里的re使用方法, 后面的语法是结合complie使用pos是position的缩写意思是从什么位置开始匹配，什么位置结束。
 
-* `re.compile(pattern, flags=0) ,   
-先把pattern编译然后再用正则表达式的方法调用  
+* **re.compile(pattern, flags=0)**   先把pattern编译然后再用正则表达式的方法调用  
 
-		prog = re.compile(pattern)
-		result = prog.match(string)
+```python
+import re
 
-	相当于
+>>> prog = re.compile(pattern)
+>>> result = prog.match(string)
+```
 
-		result = re.match(pattern, string)
+相当于
 
+```python
+>>> result = re.match(pattern, string)
+```
 
-* `re.search(pattern, string, flags=0) , regex.search(string[, pos[, endpos]]) `  
+* **re.search(pattern, string, flags=0) , regex.search(string[, pos[, endpos]])**
  扫描整个字符串找到第一个regular expression pattern 匹配到的位置然后返回符合pattern的match object,　如果未找到便返回　None .
 
-* `re.match(pattern, string, flags=0)　　regex.match(string[, pos[, endpos]]) `  
+* **re.match(pattern, string, flags=0)　　regex.match(string[, pos[, endpos]])**   
   如果在这个string的开始匹配到字符，那么就返回相应的match object,　匹配不到便会返回　None  
 
-		>>> m=re.search("a\w+","bcdfa\na1b2c3")
-		>>> n=re.match("a\w+","bcdfa\na1b2c3")
-		>>> m.group()
-		'a1b2c3'
-		>>> print(n)
-		None
+```python
+>>> m=re.search("a\w+","bcdfa\na1b2c3")
+>>> n=re.match("a\w+","bcdfa\na1b2c3")
+>>> m.group()
+'a1b2c3'
+>>> print(n)
+None
+```
 
-* `re.split(pattern, string, maxsplit=0, flags=0)，　regex.split(string, maxsplit=0) `   
+
+* **re.split(pattern, string, maxsplit=0, flags=0)，　regex.split(string, maxsplit=0)**  
   用能够匹配到的字符来分隔字符串，maxsplit默认是最大分隔，指定数字后为最大分隔数
 
-		>>> re.split('\W+', 'Words, words, words.')
-		['Words', 'words', 'words', '']
-		>>> re.split('(\W+)', 'Words, words, words.')
-		['Words', ', ', 'words', ', ', 'words', '.', '']
-		>>> re.split('\W+', 'Words, words, words.', 1)
-		['Words', 'words, words.']
-		>>> re.split('[a-f]+', '0a3B9', flags=re.IGNORECASE)
-		['0', '3', '9']
+```python
+>>> re.split('\W+', 'Words, words, words.')
+['Words', 'words', 'words', '']
+>>> re.split('(\W+)', 'Words, words, words.')
+['Words', ', ', 'words', ', ', 'words', '.', '']
+>>> re.split('\W+', 'Words, words, words.', 1)
+['Words', 'words, words.']
+>>> re.split('[a-f]+', '0a3B9', flags=re.IGNORECASE)
+['0', '3', '9']
+```
 
-  如果有字符串的形状找到一个或者多个分隔符，那么在结果中便会以一个空字符开始，结尾有字符也是一样的
+如果有字符串的形状找到一个或者多个分隔符，那么在结果中便会以一个空字符开始，结尾有字符也是一样的
 
-		>>> re.split('(\W+)', '...words, words...')
-		['', '...', 'words', ', ', 'words', '...', '']
+```python
+>>> re.split('(\W+)', '...words, words...')
+['', '...', 'words', ', ', 'words', '...', '']
+```
 
-
-* `re.findall(pattern, string, flags=0), regex.findall(string[, pos[, endpos]])  `  
+* **re.findall(pattern, string, flags=0), regex.findall(string[, pos[, endpos]])**  
   用列表的方式返回匹配到的字符，
 
-* `re.finditer(pattern, string, flags=0), regex.finditer(string[, pos[, endpos]])  `  
+* **re.finditer(pattern, string, flags=0), regex.finditer(string[, pos[, endpos]])** 
   用迭代的方式返回匹配到的字符，
 
-* `re.sub(pattern, repl, string, count=0, flags=0), regex.sub(repl, string, count=0) `   
+* **re.sub(pattern, repl, string, count=0, flags=0), regex.sub(repl, string, count=0)**
   把用样式匹配到的字符换成repl。如果没有匹配到字符便返回原string。　repl可以是字符，也可以是函数，当repl是一个字符串时，可以使用\id或\g\<id\>、\g\<name\>引用分组，但不能使用编号0。 
 
+```python
+def dashrepl(matchobj):
+	if matchobj.group(0) == '-': 
+		return ' '
+	else: 
+		return '-'
+>>> re.sub('-{1,2}', dashrepl, 'pro----gram-files')
+'pro--gram files'
+>>> re.sub(r'\sAND\s', ' & ', 'Baked Beans And Spam', flags=re.IGNORECASE)
+'Baked Beans & Spam'
+```
 
-		def dashrepl(matchobj):
-			if matchobj.group(0) == '-': return ' '
-			else: return '-'
-		>>> re.sub('-{1,2}', dashrepl, 'pro----gram-files')
-		'pro--gram files'
+* **re.subn(pattern, repl, string, count=0, flags=0)**
+  与sub用法一亲但是返回一个数组(new_string, number_of_subs_made).
 
-		>>> re.sub(r'\sAND\s', ' & ', 'Baked Beans And Spam', flags=re.IGNORECASE)
-		'Baked Beans & Spam'
-
-* `re.subn(pattern, repl, string, count=0, flags=0)` 
-  与sbu用法一亲但是返回一个数组(new_string, number_of_subs_made).
-
-* `re.escape(string) `
+* **re.escape(string)**
 Escape all the characters in pattern except ASCII letters, numbers and '_'. This is useful if you want to match an arbitrary literal string that may have regular expression metacharacters in it.
 
 
@@ -216,68 +214,60 @@ Escape all the characters in pattern except ASCII letters, numbers and '_'. This
 ### Match Objects
   match object提供了很多方法与属性
 
-* `match.expand(template) ` 将匹配到的分组代入template中然后返回。template中可以使用\id或\g\<id\>、\g\<name\>引用分组，但不能使用编号0。\id与\g\<id\>是等价的；但\10将被认为是第10个分组，如果你想表达\1之后是字符'0'，只能使用\g\<1\>0。
+* **match.expand(template)** 将匹配到的分组代入template中然后返回。template中可以使用\id或\g\<id\>、\g\<name\>引用分组，但不能使用编号0。\id与\g\<id\>是等价的；但\10将被认为是第10个分组，如果你想表达\1之后是字符'0'，只能使用\g\<1\>0。
 
 
-* `match.group([group1, ...])` 获得一个或多个分组截获的字符串；指定多个参数时将以元组形式返回。如果里面无参数默认为０，返回所有匹配的子符串
+* **match.group([group1, ...])** 获得一个或多个分组截获的字符串；指定多个参数时将以元组形式返回。如果里面无参数默认为０，返回所有匹配的子符串
 
-		>>> m = re.match(r"(\w+) (\w+)", "Isaac Newton, physicist")
-		>>> m.group(0)       # The entire match
-		'Isaac Newton'
-		>>> m.group(1)       # The first parenthesized subgroup.
-		'Isaac'
-		>>> m.group(2)       # The second parenthesized subgroup.
-		'Newton'
-		>>> m.group(1, 2)    # Multiple arguments give us a tuple.
-		('Isaac', 'Newton')
+```python
+>>> m = re.match(r"(\w+) (\w+)", "Isaac Newton, physicist")
+>>> m.group(0)       # The entire match
+'Isaac Newton'
+>>> m.group(1)       # The first parenthesized subgroup.
+'Isaac'
+>>> m.group(2)       # The second parenthesized subgroup.
+'Newton'
+>>> m.group(1, 2)    # Multiple arguments give us a tuple.
+('Isaac', 'Newton')
+```
 
-  如果使用(?P\<name\>...)表达式，那么便会吧每个子组用name来命名，
+如果使用(?P\<name\>...)表达式，那么便会吧每个子组用name来命名，
 
-		>>> m = re.match(r"(?P<first_name>\w+) (?P<last_name>\w+)", "Malcolm Reynolds")
-		>>> m.group('first_name')
-		'Malcolm'
-		>>> m.group('last_name')
-		'Reynolds'
+```python
+>>> m = re.match(r"(?P<first_name>\w+) (?P<last_name>\w+)", "Malcolm Reynolds")
+>>> m.group('first_name')
+'Malcolm'
+>>> m.group('last_name')
+'Reynolds'
+```
 
-   这里也可以用数字来提取
+这里也可以用数字来提取
 
-		>>> m.group(1)
-		'Malcolm'
-		>>> m.group(2)
-		'Reynolds'
+```python
+>>> m.group(1)
+'Malcolm'
+>>> m.group(2)
+'Reynolds'
+```
 
+* **match.groups(default=None)** 将所有匹配到的子组用tuple 的方式返回，
 
-* `match.groups(default=None) ` 将所有匹配到的子组用tuple 的方式返回，
+```python
+>>> m = re.match(r"(\d+)\.(\d+)", "24.1632")
+>>> m.groups()
+('24', '1632')
+```
 
-		>>> m = re.match(r"(\d+)\.(\d+)", "24.1632")
-		>>> m.groups()
-		('24', '1632')
+* **match.groupdict(default=None)**  将所有匹配到的子组用dic　的方式返回，key 是子组的名字.
 
-* `match.groupdict(default=None) ` 将所有匹配到的子组用dic　的方式返回，key 是子组的名字.
-
-		>>> m = re.match(r"(?P<first_name>\w+) (?P<last_name>\w+)", "Malcolm Reynolds")
-		>>> m.groupdict()
-		{'first_name': 'Malcolm', 'last_name': 'Reynolds'}
-
+```python
+>>> m = re.match(r"(?P<first_name>\w+) (?P<last_name>\w+)", "Malcolm Reynolds")
+>>> m.groupdict()
+{'first_name': 'Malcolm', 'last_name': 'Reynolds'}
+```
 
 ## re in linux
-
-调整别名， alias grep="grep --color=auto"
-调整字符集， export LC_ALL=C
-
-	grep "^m" retest.txt
-
-. 代表当前目录
-  使得文件生效相当于sources
-  隐藏文件
-  任意一个字符
-
-（）  分组匹配。
-
- 本文未完，待续
-
-egrep "[[:uppear:]]" a.txt
-
+在linux中使用re请参见另一篇文章 linux三剑客
 
 [1]: http://www.zytrax.com/tech/web/regex.htm#intro
 

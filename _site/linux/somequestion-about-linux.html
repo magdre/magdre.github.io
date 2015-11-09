@@ -79,6 +79,8 @@
                     
                     <ul class="tags clearfix">
                         
+                        <li><i class="fa fa-tag"></i> command</li>
+                        
                     </ul>
                     
                     <p id="postMeta">posted on 15 Oct 2015 under category <a href="/category/">linux</a></p>
@@ -178,13 +180,12 @@ $ cd /tmp &amp;&amp; tar –xvf a.tar
 <li><p>过滤出/etc/services 文件包含 3306 或 1521 两数据库端口的行的内容。</p>
 <div class="highlight"><pre><code class="language-text" data-lang="text">$ grep -E &quot;3306|1521&quot; /etc/services
 </code></pre></div></li>
-<li><p>echo &#39;i am oldboy myqq is 31333741&#39; &gt;&gt;oldboy.txt取出oldboy, 31333741</p>
-
-<p>awk &quot;{print $3, $6}&quot; oldboy.txt
-cut -d &quot; &quot; -f3,6 oldboy.txt
-cut -c 6-11, 20- oldboy.txt</p></li>
+<li><p>echo &#39;i am oldboy myqq is 31333741&#39; &gt;&gt;oldboy.txt取出oldboy, 31333741</p></li>
 </ol>
-
+<div class="highlight"><pre><code class="language-text" data-lang="text">awk &quot;{print $3, $6}&quot; oldboy.txt
+cut -d &quot; &quot; -f3,6 oldboy.txt
+cut -c 6-11, 20- oldboy.txt
+</code></pre></div>
             </div>
 
             <div id="markdown-outline" class="col-lg-3">
@@ -234,7 +235,7 @@ cut -c 6-11, 20- oldboy.txt</p></li>
                         <li class="qq"><i class="fa fa-qq"></i> &nbsp;&nbsp;921070747</li>
                         <li class="email"><i class="fa fa-envelope"></i> <a href="mailto:j.k.yulei@gmail.com"> &nbsp;&nbsp;j.k.yulei@gmail.com</a></li>
                         <li class="tel"><i class="fa fa-mobile"></i> <a href="tel:18010073860">&nbsp;&nbsp; 18010073860</a></li>
-                        <li class="github"><i class="fa fa-github"></i> <a href="http://www.github.com/magdre"> &nbsp;&nbsp;http://www.github.com/magdre</a></li>
+                        <li class="github"><i class="fa fa-github"></i> <a href="http://magdre.github.io/about"> &nbsp;&nbsp;http://magdre.github.io/about</a></li>
                     </ul>
                 </div>
             </div>

@@ -2,7 +2,8 @@
 layout: post
 title:  "linux问题小总结"
 date:   2015-10-14 18:06:05
-categories: linux
+category: linux
+tags: [command]
 excerpt: 本文会重点涉及：chkconfig cat ls tail ln find wc tar cut grep egrep 
 
 ---
@@ -123,10 +124,11 @@ install 完成后，希望用户访问 apache 路径更简单，需要给/applic
 
 16. echo 'i am oldboy myqq is 31333741' >>oldboy.txt取出oldboy, 31333741
 
-	awk "{print $3, $6}" oldboy.txt
-	cut -d " " -f3,6 oldboy.txt
-	cut -c 6-11, 20- oldboy.txt
-
+```
+awk "{print $3, $6}" oldboy.txt
+cut -d " " -f3,6 oldboy.txt
+cut -c 6-11, 20- oldboy.txt
+```
 
 
 

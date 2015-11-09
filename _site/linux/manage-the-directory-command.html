@@ -79,6 +79,8 @@
                     
                     <ul class="tags clearfix">
                         
+                        <li><i class="fa fa-tag"></i> command</li>
+                        
                         <li><i class="fa fa-tag"></i> linux</li>
                         
                     </ul>
@@ -364,71 +366,75 @@ find ./ -type f -o -name &quot;*.txt&quot;
 </code></pre></div>
 <h1 id="tar-打包或解包">tar 打包或解包</h1>
 
-<p>打包  tar zcvf [路径] [相对路径]</p>
+<p><strong>描述</strong> tar 命令用来打包，解包。但是tar仅是打包而并非压缩，所以打包后可以用gzip来压缩
+<strong>语法</strong>*</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">tar [OPTION...] [FILE]...
+</code></pre></div>
+<p><strong>参数</strong>
+- -A, 向已存在的包内增加文件
+- -c --create, 打包， 新建立一个备份包
+- -x --extract,解包， 从已有的备份包内还原文件
+- -z --compress, 打包时进行压缩
+- -v --verbose, 显示过程
+- -r 添加文件到已经压缩的文件
+- -p 保持原来属性
+- -t 查看压缩包内容
+- --exclude --exclude-from,排除符合样式的文件
+- -f 指定备份文件
+- -j 支持bzip2解压文件
+- -j (bzip) -z(gzip) 压缩    -f 指定文件</p>
 
-<p>-j (bzip) -z(gzip) 压缩  -v 详细输出  -c 创建文件  -f 指定文件
--x  解压缩  --exclude  排除  --exclude-from (-X)  从文件排除
--p   保持属性  -C 指定解压的目录 -t 查看压缩包内容</p>
-
-<p>tar zcvf /tmp/etc.tar.gz ./etc  把当前路径下面的etc打包到/tmp/etc.tar.gz</p>
-
-<p>查看包</p>
+<p><strong>举例</strong></p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">tar zcvf /tmp/etc.tar.gz ./etc  
+</code></pre></div>
+<p>把当前路径下面的etc打包到/tmp/etc.tar.gz</p>
 
 <p>tar tf etc.tar.gz   查看包的内容</p>
 
-<p>-t 查看内容
--f 文件</p>
-
-<p>解包
-tar zxvf /tmp/etc.tar.gz</p>
-
-<p>x 解包</p>
-
+<p>把etc.tar.gz解压到当前目录</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">tar zxvf /tmp/etc.tar.gz
+</code></pre></div>
 <p>排除oldboy下面的2并打包.</p>
-
-<p>tar zcvf oldboy.tar.gz ./oldboy --exclude=oldboy/2</p>
-
-<p>seq 1 2 10 &gt;excloud.txt
-tar zcvfX 0123.tar.gx exclude.txt /etc
-把exclude里的内容排除了再打包.</p>
-
-<p>解包到指定的目录
-tar zxvf ol2.tar.gz -C /opt/2</p>
-
+<div class="highlight"><pre><code class="language-text" data-lang="text">tar zcvf oldboy.tar.gz ./oldboy --exclude=oldboy/2
+</code></pre></div>
 <p>tar zcvf oldboy_$(date +%F).tar.gz ./oldboy</p>
 
-<p>tar zcvf oldboy_<code>date +%F</code>.tar.gz ./oldboy</p>
-
+<p>最简单的记忆方法</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">压缩： tar -zcvf filename.tar.gz src
+查询： tar -ztvf filename.tar.gz
+解压缩： tar -zxvf filename.tar.gz dic
+</code></pre></div>
 <h1 id="date-显示或修改时间">date 显示或修改时间</h1>
 
-<p>引用命令：
-$(date +%F)
-<code>date +%F</code>  用反引号和单引号太像不如用$</p>
+<p><strong>描述</strong> date命令主要用于显示指定样式的指定日期
+<strong>参数</strong>
+- -d ，显示指定字符串的日期与时间，字符串必须用双引号</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">$ date -d &quot;20151010&quot; +%F
+2015-10-10
+</code></pre></div>
+<p>-d 指定日期的样式可以有多种，计算方式便是在对应的位上执行加减算法
+&quot;+1 day&quot; 
+&quot;-1 day&quot;
+&quot;+1 month&quot;
+&quot;+1 year&quot;</p>
+
+<p>日期格式列表</p>
+
+<p>%H 24小时制时间(0-23)
+%I 12小时制时间(01-12)
+%M 分钟(00-59)
+%p 显示AM或PM
+%S 显示秒(00-59)
+%T 显示时间(hh:mm:ss,10:58:32)
+%X 10时58分44秒
+%a 星期简称
+%A 星期全称
+%d 天数(01-31)
+%x,%D 日期 (2015年11月09日,11/09/15)
+%F 日期 2015-11-09</p>
 
 <p>date -%F -d &quot;+9day&quot; 比当前天多9天
 date -%F -d &quot;-9day&quot; 比当前天少9天</p>
-
-<p>[sandow@sandow ~]$ export PATH=&quot;/oldboy:$PATH&quot;
-[sandow@sandow ~]$ export PATH=&quot;/oldboy:/usr/local/bin:/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/sbin:/home/sandow/bin&quot;
-[sandow@sandow ~]$ echo $PATH
-/oldboy:/usr/local/bin:/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/sbin:/home/sandow/bin</p>
-
-<p>which</p>
-
-<p>whereis 查看命令的相关信息</p>
-
-<p>locate 查找文件（通过数据库，需要用updatedb更新）</p>
-
-<p>tr  转换或者删除字符</p>
-
-<p>stat 显示文件及文件系统状态。</p>
-
-<p>课后作业，</p>
-
-<p>linux 正则表达式，三剑客的应用。
-第三关的总结。包括命令。
-linux权限体系。
-定时任务</p>
 
             </div>
 
@@ -479,7 +485,7 @@ linux权限体系。
                         <li class="qq"><i class="fa fa-qq"></i> &nbsp;&nbsp;921070747</li>
                         <li class="email"><i class="fa fa-envelope"></i> <a href="mailto:j.k.yulei@gmail.com"> &nbsp;&nbsp;j.k.yulei@gmail.com</a></li>
                         <li class="tel"><i class="fa fa-mobile"></i> <a href="tel:18010073860">&nbsp;&nbsp; 18010073860</a></li>
-                        <li class="github"><i class="fa fa-github"></i> <a href="http://www.github.com/magdre"> &nbsp;&nbsp;http://www.github.com/magdre</a></li>
+                        <li class="github"><i class="fa fa-github"></i> <a href="http://magdre.github.io/about"> &nbsp;&nbsp;http://magdre.github.io/about</a></li>
                     </ul>
                 </div>
             </div>

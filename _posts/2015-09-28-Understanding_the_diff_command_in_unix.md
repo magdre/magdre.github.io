@@ -1,7 +1,7 @@
 ---
 title: "理解 diff 命令"
 layout: post
-category: translation
+category: linux
 tags: [linux]
 excerpt: "Unix 系统管理员来经常需要去知道两个文件之间有什么差异. diff 命令就是干这个的. 我现在就准备讲讲 diff. 它是一个经常被用到却不是很被了解的命令. 我希望 Unix 使用者在读完这篇文章之后能够正确了解这个命令的用途并从中获益."
 ---

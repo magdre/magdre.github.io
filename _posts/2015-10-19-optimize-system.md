@@ -2,7 +2,7 @@
 layout: post
 title:  "优化系统"
 date:   2015-10-19 18:06:05
-categories: linux
+category: linux
 excerpt: "SELinux,iptables,SSH,系统字符集,文件描述符,服务器时间同步"
 ---
 

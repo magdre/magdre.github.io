@@ -3,10 +3,10 @@
   <channel>
     <title>sandow | Another yet unique freak is showing a freakshow</title>
     <description>sandow&#39;s personal weblog, on coding or such stuff</description>
-    <link>/</link>
-    <atom:link href="/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 09 Nov 2015 08:52:23 +0800</pubDate>
-    <lastBuildDate>Mon, 09 Nov 2015 08:52:23 +0800</lastBuildDate>
+    <link>//</link>
+    <atom:link href="//feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Mon, 09 Nov 2015 15:01:27 +0800</pubDate>
+    <lastBuildDate>Mon, 09 Nov 2015 15:01:27 +0800</lastBuildDate>
     <generator>Jekyll v3.0.0</generator>
     
       <item>
@@ -42,8 +42,8 @@
 &lt;/ol&gt;
 </description>
         <pubDate>Tue, 20 Oct 2015 02:06:05 +0800</pubDate>
-        <link>/python/learning-python-checkio</link>
-        <guid isPermaLink="true">/python/learning-python-checkio</guid>
+        <link>//python/learning-python-checkio</link>
+        <guid isPermaLink="true">//python/learning-python-checkio</guid>
         
         
         <category>python</category>
@@ -89,8 +89,8 @@ SELINUXTYPE=targeted
 *&lt;/p&gt;
 </description>
         <pubDate>Tue, 20 Oct 2015 02:06:05 +0800</pubDate>
-        <link>/linux/optimize-system</link>
-        <guid isPermaLink="true">/linux/optimize-system</guid>
+        <link>//linux/optimize-system</link>
+        <guid isPermaLink="true">//linux/optimize-system</guid>
         
         
         <category>linux</category>
@@ -191,8 +191,8 @@ SELINUXTYPE=targeted
 &lt;p&gt;之后便可以顺利上网了。&lt;/p&gt;
 </description>
         <pubDate>Tue, 20 Oct 2015 02:06:05 +0800</pubDate>
-        <link>/ubuntu/install-centos-onubuntu</link>
-        <guid isPermaLink="true">/ubuntu/install-centos-onubuntu</guid>
+        <link>//ubuntu/install-centos-onubuntu</link>
+        <guid isPermaLink="true">//ubuntu/install-centos-onubuntu</guid>
         
         
         <category>ubuntu</category>
@@ -243,8 +243,8 @@ Rebuilding /usr/share/applications/bamf-2.index...
 &lt;p&gt;然后再执行上面的命令，完美解决问题，等安装完成后便输入&lt;code&gt;pac&lt;/code&gt;便可以进入PAC Manager界面了。之后若PAC用的顺手再来谈PAC的的心得。&lt;/p&gt;
 </description>
         <pubDate>Mon, 19 Oct 2015 20:06:05 +0800</pubDate>
-        <link>/ubuntu/install-crt-inubuntu</link>
-        <guid isPermaLink="true">/ubuntu/install-crt-inubuntu</guid>
+        <link>//ubuntu/install-crt-inubuntu</link>
+        <guid isPermaLink="true">//ubuntu/install-crt-inubuntu</guid>
         
         
         <category>ubuntu</category>
@@ -538,8 +538,8 @@ printf &amp;#39;$a\n&amp;#39;     #输出结果是 $a
 echo `date`       #输出结果是当时时间长格式
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
         <pubDate>Sat, 17 Oct 2015 07:06:05 +0800</pubDate>
-        <link>/linux/file-attribute</link>
-        <guid isPermaLink="true">/linux/file-attribute</guid>
+        <link>//linux/file-attribute</link>
+        <guid isPermaLink="true">//linux/file-attribute</guid>
         
         
         <category>linux</category>
@@ -575,8 +575,8 @@ echo `date`       #输出结果是当时时间长格式
     &lt;/video&gt;
 </description>
         <pubDate>Fri, 16 Oct 2015 04:06:05 +0800</pubDate>
-        <link>/movie/test-plogin-mp3-mp4</link>
-        <guid isPermaLink="true">/movie/test-plogin-mp3-mp4</guid>
+        <link>//movie/test-plogin-mp3-mp4</link>
+        <guid isPermaLink="true">//movie/test-plogin-mp3-mp4</guid>
         
         
         <category>movie</category>
@@ -584,13 +584,120 @@ echo `date`       #输出结果是当时时间长格式
       </item>
     
       <item>
-        <title>linux文件目录结构</title>
-        <description>&lt;ul&gt;
-&lt;li&gt;文件目录结构
-{:toc}&lt;/li&gt;
-&lt;/ul&gt;
+        <title>linux问题小总结</title>
+        <description>&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;已知oldboy.txt里面内容为：&lt;strong&gt;inet addr:10.0.0.8 Bcast:10.0.0.255 Mask:255.255.255.0&lt;/strong&gt; .现在只想打印出下面内容：　10.0.0.8 10.0.0.255 255.255.255.0。&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;$ sed -nr &amp;#39;s#^.*dr:(.*) Bc.*:(.*) M.*k:(.*)#\1 \2 \3#gp&amp;#39; oldboy.txt
+$ grep -Eo &amp;#39;[0-9.]+&amp;#39; oldboy.txt|xargs -n3
+$ awk -F &amp;quot;[: ]&amp;quot; &amp;#39;{print $3, $5, $7}&amp;#39; oldboy.txt
+$ ifconfig eth0|sed -rn &amp;#39;2s#^.*:([0-9.]+).*:([0-9.]+).*:([0-9.]+)$#\1 \2 \3#gp&amp;#39;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;上使用awk取passwd文件的第10行到20行的第三列重定向到/tmp/oldboy/test.txt文件里。&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;$ awk -F &amp;#39;:&amp;#39; ‘{if(NR&amp;gt;10 &amp;amp;&amp;amp; NR &amp;lt;21) print $3}’ /etc/passwd &amp;gt;/tmp/oldboy/test.txt
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;禁止使用rm，并使该效果永久生效。&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;$ echo alias rm=&amp;#39;echo &amp;quot;Do note use rm command&amp;quot;&amp;#39; &amp;gt;&amp;gt;/etc/profile
+$ . /etc/profile
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;请用awk,grep,sed,head,tail分别取出passwd文件中的第2-5行&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;$ awk ‘{if(NR&amp;lt;6 &amp;amp;&amp;amp; NR&amp;gt;1 ) pirnt $0}’passwd
+$ head -5 passwd | tail -4
+$ sed –n ‘2,5p’passwd
+$ grep ‘bin:x’-A4 passwd
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;使用命令调换passwd文件里root位置和/bin/bash位置？即调换所有的第一列和最后一列位置调换？
+例：默认：root:x:0:0:root:/root:/bin/bash. 修改后：/bin/bash:x:0:0:root:/root:root  &lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;$ sed -r &amp;#39;s#([^:]+)(:.*:)(/.*$)#\3 \2 \1 #g&amp;#39; /etc/passwd
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;把/data目录及其子目录下所有以扩展名.txt结尾的文件中包含oldgirl的字符串全部替换为oldboy。&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;$ Find /data –type f –name “*.txt” |xargs sed ‘s#oldboy#oldgirl#g’
+$ sed -i ‘s#oldboy#oldgirl#g’ `find /data –name *.txt`
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;如何过滤出已知当前目录下oldboy中的所有一级目录(提示:不包含oldboy目录下面目录的子目录及隐藏目录，即只能是一级目录)？  &lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;方法一：&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;    $ ls -l |grep ^d
+    drwxr-xr-x  2 sandow sandow 4096 Oct 13 06:13 Desktop
+    drwxr-xr-x  2 sandow sandow 4096 Oct 11 07:41 Documents
+    drwxr-xr-x  2 sandow sandow 4096 Oct  9 19:30 Downloads
 
-&lt;h2 id=&quot;linux-文件系统大览&quot;&gt;Linux 文件系统大览&lt;/h2&gt;
+    $ ls -F|grep /$
+    Desktop/
+    Documents/
+    Downloads/          
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;方法二：&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;    $ find . -maxdepth 1 -type d ! -name &amp;quot;.&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;方法三:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;    $ tree -Ldi 1
+    $ ls -l|sed -n &amp;#39;/^d/p&amp;#39;
+    $ ls -l|awk &amp;#39;/^d/&amp;#39;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;一个目录中有很多文件（ls -l 查看时好多屏），想用一条命令最快速度查看到最近更新的文件。如何看？  &lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;$ ls -lrt
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;在配置apache时 执行了./configure --prefix=/application/apache2.2.17 来编译apche，在make 
+install 完成后，希望用户访问 apache 路径更简单，需要给/application/apache2.2.17 目录做一个软链接/application/apache，使得内部开发或管理人员通过/application/apache 就可以访问到 apache 的安装目录/application/apache2.2.17 下的内容，请你给出实现的命令。（提示：apache 为一个 web 服务） &lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;$ ln –s /application/apache2.2.17 /application/apache
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;已知 apache 服务的访问日志按天记录在服务器本地目录/app/logs 下，由于磁盘空间紧张，现在要求只能保留最近 7 天的访问日志！请问如何解决？ 请给出解决办法或配置或处理命令。（提示：可以从 apache 服务配置上着手，也可以从生成出来的日志上着手。）&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;for n in `seq 15`
+do
+    date -s &amp;quot;2015/10/$n&amp;quot;
+    touch access_www_`(date +%F)`.log
+done
+
+$ find /app/logs -type f -name &amp;quot;access*.log&amp;quot; -mtime +7 exec rm -f {} \;
+$ find /app/logs -type f -name &amp;quot;access*.log&amp;quot; -mtime +7 |xargs rm -f
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;调试系统服务时，希望能实时查看/var/log/messages 系统日志的更新,如何做？  &lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;$ for n in `seq 19999`;do echo $n &amp;gt;&amp;gt;/var/log/messages;usleep 5000;done
+$ tail -f /var/log/messages
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;打印轻量级 web 服务的配置文件 nginx.conf 内容的行号及内容，该如何做？&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;$ cat -n nginx.conf
+$ less -N nginx.conf
+$ awk &amp;#39;{print NR.$0}&amp;#39; nginx.conf
+$ sed = nginx.conf| sed &amp;#39;N;s/\n/ /&amp;#39;
+$ grep -n &amp;quot;.*&amp;quot; nginx.conf
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;装完 Centos 系统后，希望网络文件共享服务 NFS，仅在 3 级别上开机自启动，该如何做？&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;$ chkconfig NFS –-level 3 on
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;/etc/目录为 linux 系统的默认的配置文件及服务启动命令的目录&lt;br&gt;
+a.请用 tar 打包/etc 整个目录（打包及压缩）&lt;br&gt;
+b.请用 tar 打包/etc 整个目录（打包及压缩，但需要排除/etc/services 文件）&lt;br&gt;
+c.请把 a 点命令的压缩包，解压到/tmp 指定目录下（最好只用 tar 命令实现）  &lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;$ tar -zcvf a.tar /etc
+$ find /etc/ ! -name /etc/services exec tar -cvf a.tar {} \;
+$ cd /tmp &amp;amp;&amp;amp; tar –xvf a.tar 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;如何查看/etc/services 文件内容有多少行？&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;wc -l /etc/services
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;过滤出/etc/services 文件包含 3306 或 1521 两数据库端口的行的内容。&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;$ grep -E &amp;quot;3306|1521&amp;quot; /etc/services
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;echo &amp;#39;i am oldboy myqq is 31333741&amp;#39; &amp;gt;&amp;gt;oldboy.txt取出oldboy, 31333741&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;awk &amp;quot;{print $3, $6}&amp;quot; oldboy.txt
+cut -d &amp;quot; &amp;quot; -f3,6 oldboy.txt
+cut -c 6-11, 20- oldboy.txt
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+        <pubDate>Thu, 15 Oct 2015 02:06:05 +0800</pubDate>
+        <link>//linux/somequestion-about-linux</link>
+        <guid isPermaLink="true">//linux/somequestion-about-linux</guid>
+        
+        <category>command</category>
+        
+        
+        <category>linux</category>
+        
+      </item>
+    
+      <item>
+        <title>linux文件目录结构</title>
+        <description>&lt;h2 id=&quot;linux-文件系统大览&quot;&gt;Linux 文件系统大览&lt;/h2&gt;
 
 &lt;p&gt;linux下的所有的目录都是按照一定的类别有规律的组织和命名，每个目录数据可以跨越不同的磁盘分区或者不同的磁盘设备，所有目录都可以按两个类别来分：静态的与动态的，或者可共享的与不可共享的。可共享一个用户储存的文件可以被其它用户查看。静态的文件包括binaries, libraries, documenttation和其它在超级管理员不更改的情况下处于不变的文件。&lt;/p&gt;
 
@@ -626,23 +733,81 @@ echo `date`       #输出结果是当时时间长格式
 &lt;p&gt;Linux 系统的所有目录是一个有层次的倒着的树状目录结构，&amp;quot;／&amp;quot;  根是所有目录的起点可以用   &lt;/p&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;$ tree -L 1 /
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;|&lt;strong&gt;/bin&lt;/strong&gt; | Essential command binaries 存放着所有用户都可以用的二进制命令.&lt;br&gt;
-|&lt;strong&gt;/boot&lt;/strong&gt; | Static files of the boot loader 内核及系统引导程序所需的文件目录.&lt;br&gt;
-|&lt;strong&gt;/dev&lt;/strong&gt; |  Device files.&lt;br&gt;
-|&lt;strong&gt;/etc&lt;/strong&gt; | Host-specific system configuration,配置文件的默认路径.&lt;br&gt;
-|&lt;strong&gt;/lib/lib64&lt;/strong&gt; | Essential shared libraries and kernel modules,库文件的目录.&lt;br&gt;
-|&lt;strong&gt;/lost+found&lt;/strong&gt; | 系统突然崩溃突然关机，系统产生的一些文件碎片在这里  fsck检查修复
-|&lt;strong&gt;/media&lt;/strong&gt; | Mount point for removeable media.&lt;br&gt;
-|&lt;strong&gt;/mnt&lt;/strong&gt; | Mount point for mounting a filesystem temporarily,文件系统的临时挂载点.
-|&lt;strong&gt;/opt&lt;/strong&gt; | Add-on application software packages，可选的第三方软件的安装目录.&lt;br&gt;
-|&lt;strong&gt;/proc&lt;/strong&gt; | Kernel and process information virtual filesystem,内核与进程信息的虚拟文件系统.&lt;br&gt;
-|&lt;strong&gt;/root&lt;/strong&gt; | Home directory for the root user (optional), 超级管理员的家目录.&lt;br&gt;
-|&lt;strong&gt;/home&lt;/strong&gt; | User home directories (optional)，普通用户的家目录.&lt;br&gt;
-|&lt;strong&gt;/sbin&lt;/strong&gt; | Essential system binaries,系统二进制命令文件.&lt;br&gt;
-|&lt;strong&gt;/srv&lt;/strong&gt; | Data for services provided by this system.&lt;br&gt;
-|&lt;strong&gt;/tmp&lt;/strong&gt; | Temporary files 临时文件存放目录.&lt;br&gt;
-|&lt;strong&gt;/usr&lt;/strong&gt; | Secondary hierarchy 第二层次结构, 存放系统程序以及用户安装程序的目录.&lt;br&gt;
-|&lt;strong&gt;/var&lt;/strong&gt; | Variable data 可变的数据.  &lt;/p&gt;
+&lt;table&gt;&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&quot;text-align: center&quot;&gt;命令&lt;/th&gt;
+&lt;th style=&quot;text-align: left&quot;&gt;描述&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: center&quot;&gt;&lt;strong&gt;/bin&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;Essential command binaries 存放着所有用户都可以用的二进制命令.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: center&quot;&gt;&lt;strong&gt;/boot&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;Static files of the boot loader 内核及系统引导程序所需的文件目录.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: center&quot;&gt;&lt;strong&gt;/dev&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;Device files.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: center&quot;&gt;&lt;strong&gt;/etc&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;Host-specific system configuration,配置文件的默认路径.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: center&quot;&gt;&lt;strong&gt;/lib/lib64&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;Essential shared libraries and kernel modules,库文件的目录.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: center&quot;&gt;&lt;strong&gt;/lost+found&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;系统突然崩溃突然关机，系统产生的一些文件碎片在这里  fsck检查修复&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: center&quot;&gt;&lt;strong&gt;/media&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;Mount point for removeable media.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: center&quot;&gt;&lt;strong&gt;/mnt&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;Mount point for mounting a filesystem temporarily,文件系统的临时挂载点.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: center&quot;&gt;&lt;strong&gt;/opt&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;Add-on application software packages，可选的第三方软件的安装目录.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: center&quot;&gt;&lt;strong&gt;/proc&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;Kernel and process information virtual filesystem,内核与进程信息的虚拟文件系统.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: center&quot;&gt;&lt;strong&gt;/root&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;Home directory for the root user (optional), 超级管理员的家目录.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: center&quot;&gt;&lt;strong&gt;/home&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;User home directories (optional)，普通用户的家目录.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: center&quot;&gt;&lt;strong&gt;/sbin&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;Essential system binaries,系统二进制命令文件.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: center&quot;&gt;&lt;strong&gt;/srv&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;Data for services provided by this system.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: center&quot;&gt;&lt;strong&gt;/tmp&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;Temporary files 临时文件存放目录.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: center&quot;&gt;&lt;strong&gt;/usr&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;Secondary hierarchy 第二层次结构, 存放系统程序以及用户安装程序的目录.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: center&quot;&gt;&lt;strong&gt;/var&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;Variable data 可变的数据.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
 
 &lt;hr&gt;
 
@@ -1035,467 +1200,13 @@ sbin 包含了一些系统启动，修复命令。&lt;/p&gt;&lt;/li&gt;
 
 &lt;p&gt;/proc/sys/net/ipv4&lt;/p&gt;
 </description>
-        <pubDate>Thu, 15 Oct 2015 07:55:05 +0800</pubDate>
-        <link>/linux/linux-filesystem</link>
-        <guid isPermaLink="true">/linux/linux-filesystem</guid>
+        <pubDate>Wed, 14 Oct 2015 00:00:00 +0800</pubDate>
+        <link>//linux/linux-filesystem</link>
+        <guid isPermaLink="true">//linux/linux-filesystem</guid>
         
-        
-        <category>linux</category>
-        
-      </item>
-    
-      <item>
-        <title>Linux the three musketeers 三剑客</title>
-        <description>&lt;ul&gt;
-&lt;li&gt;content
-{:toc}&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;grep-global-regular-expression-print&quot;&gt;grep, Global Regular Expression Print&lt;/h2&gt;
-
-&lt;p&gt;　　grep指令用于查找内容包含指定的范本样式的文件，如果发现某文件的内容符合所指定的范本样式，预设grep指令会把含有范本样式的那一列显示出来。若不指定任何文件名称，或是所给予的文件名为&amp;quot;-&amp;quot;，则grep指令会从标准输入设备读取数据。筛取自己想要的东西&lt;br&gt;
-    语法：&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;grep [OPTIONS] PATTERN [FILE...]
-grep [OPTIONS] [-e PATTERN | -f FILE] [FILE...]
-grep [-abcEFGhHilLnqrsvVwxy][-A&amp;lt;显示列数&amp;gt;][-B&amp;lt;显示列数&amp;gt;][-C&amp;lt;显示列数&amp;gt;][-d&amp;lt;进行动作&amp;gt;][-e&amp;lt;范本样式&amp;gt;][-f&amp;lt;范本文件&amp;gt;][范本样式][文件或目录...]
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h3 id=&quot;context-line-control&quot;&gt;Context Line Control&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;-A NUM,  --after-context=NUM  Print NUM lines of trailing context &lt;strong&gt;after&lt;/strong&gt; matching lines.&lt;br&gt;&lt;/li&gt;
-&lt;li&gt;-B NUM, --before-context=NUM  Print NUM lines of leading context &lt;strong&gt;before&lt;/strong&gt; matching lines.&lt;br&gt;&lt;/li&gt;
-&lt;li&gt;-C NUM, -NUM, --context=NUM   Print NUM lines of output context.　&lt;strong&gt;center&lt;/strong&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;matcher-selection&quot;&gt;Matcher Selection&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;-E, --extended-regexp Interpret PATTERN as an extended  regular  expression  (ERE,  see below).  (-E is specified by POSIX.)&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;$ grep  -E &amp;#39;18|38&amp;#39; att.txt
-16 17 18 19 20 sandowboy
-36 37 38 39 40 magical
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;matching-control&quot;&gt;Matching Control&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;-i, --ignore-case Ignore  case  distinctions in both the PATTERN and the input files.  (-i is specified by POSIX.)&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;-v, --invert-match Invert the sense of matching, to select non-matching lines. (-v is specified by POSIX.)&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;-w, --word-regexp Select only those lines containing matches that form whole words. The test is that the matching substring must either be at the beginning of the line, or preceded by a non-word constituent character.  Similarly, it must be either at the end of the line or followed by a non-word constituent character. Word-constituent characters are letters, digits, and the underscore.-x, --line-regexp Select  only  those  matches  that exactly match the whole line.  (-x is specified by POSIX.)Obsolete synonym for -i.&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;output-line-prefix-control&quot;&gt;Output Line Prefix Control&lt;/h3&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;-n, --line-number Prefix  each  line of output with the 1-based line number within its input file.  (-n is specified by POSIX.)
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;$ grep -n &amp;#39;18&amp;#39; att.txt
-4:16 17 18 19 20 sandowboy&lt;/p&gt;
-
-&lt;p&gt;-a或--text 不要忽略二进制的数据。
--b或--byte-offset Print the 0-based byte offset within the input file before each line of output在显示符合范本样式的那一行之前，标示出该行第一个字符的位编号。&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;$ grep -b &amp;#39;18&amp;#39; att.txt
-36:16 17 18 19 20
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;-c或--count 计算符合范本样式的列数。
-    $ grep -c &amp;#39;18&amp;#39; att.txt
-1   &lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;$ grep -v oldboy att.txt
-     -v 排除
-$ grep oldboy att.txt
-只选取oldboy
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;$ grep -E &amp;#39;3|4|7&amp;#39; att.txt
-3
-4
-7
-$ grep -vE &amp;#39;1|2|4|5|7&amp;#39; ett.txt3&lt;/p&gt;
-
-&lt;p&gt;find  /oldboy -type f -name &amp;quot;&lt;em&gt;.sh&amp;quot; |xargs sed -i &amp;#39;s#oldboy#oldgirl#g&amp;#39;
-find  /oldboy -type f -name &amp;quot;&lt;/em&gt;.sh&amp;quot; |xargs   cat
-sed -i &amp;#39;s#oldgirl#oldboy#g&amp;#39; &lt;code&gt;find /oldboy -type f -name &amp;quot;*.sh&amp;quot;&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;[root@oldboy data]# ifconfig eth0|awk -F &amp;quot;[ :]+&amp;quot; &amp;#39;NR==2 {print $4}&amp;#39;
-10.0.0.8
-[root@oldboy data]# ifconfig eth0|sed -nr &amp;#39;s#^.&lt;em&gt;dr:(.&lt;/em&gt;) Bc.*$#\1#gp&amp;#39;
-10.0.0.8&lt;/p&gt;
-
-&lt;p&gt;ifconfig eth0 | sed -nr &amp;#39;s#^.#dr#g&lt;/p&gt;
-
-&lt;h2 id=&quot;sed-stream-editor-for-filtering-and-transforming-text&quot;&gt;sed - stream editor for filtering and transforming text&lt;/h2&gt;
-
-&lt;p&gt;sed  &amp;#39;/oldboy/d&amp;#39;  text.txt      %把oldboy整行删除    //之间过滤的内容 ，  d 是删除
-                       替换： sed -e &amp;#39;s#oldboy#xubushi#g&amp;quot; a.txt   % -e 不改原文件  -i  修改原文件&lt;/p&gt;
-
-&lt;p&gt;具
-sed -n &amp;#39;20,30p&amp;#39; ett.txt     %-n  取消默认输出， p 打印输出&lt;/p&gt;
-
-&lt;p&gt;sed -n l tab_space.txt&lt;br&gt;
-tab符会用\n显示，空格还是原样。&lt;/p&gt;
-
-&lt;h2 id=&quot;gawk-pattern-scanning-and-processing-language&quot;&gt;gawk - pattern scanning and processing language&lt;/h2&gt;
-
-&lt;p&gt;gawk [ POSIX or GNU style options ] -f program-file [ -- ] file ...
-gawk [ POSIX or GNU style options ] [ -- ] program-text file ...
-pgawk [ POSIX or GNU style options ] -f program-file [ -- ] file ...
-pgawk [ POSIX or GNU style options ] [ -- ] program-text file ...&lt;/p&gt;
-
-&lt;p&gt;Arrays
-Arrays are subscripted with an expression between square brackets ([ and ]).  If the expression is an expression list (expr, expr ...)  then the array subscript is a string consisting of the concatenation of the (string) value of each expression, separated by the value of the SUBSEP  variable.  This facility is used to simulate multiply dimensioned arrays.  For example:
-i = &amp;quot;A&amp;quot;; j = &amp;quot;B&amp;quot;; k = &amp;quot;C&amp;quot;
-x[i, j, k] = &amp;quot;hello, world\n&amp;quot;
-assigns the string &amp;quot;hello, world\n&amp;quot; to the element of the array x which is  indexed  by  the string &amp;quot;A\034B\034C&amp;quot;.  All arrays in AWK are associative, i.e. indexed by string values. The special operator in may be used to test if an array has an index consisting of a particular value.
-if (val in array)
-print array[val]
-If the array has multiple subscripts, use (i, j) in array.The in construct may also be used in a for loop to iterate  over  all  the  elements  of  an array. An  element  may  be deleted from an array using the delete statement.  The delete statement may also be used to delete the entire contents of an array, just  by  specifying  the  array name without a subscript.
-Numeric Functions
-       AWK has the following built-in arithmetic functions:
-       atan2(y, x)   Returns the arctangent of y/x in radians.
-       cos(expr)     Returns the cosine of expr, which is in radians.
-       exp(expr)     The exponential function.
-       int(expr)     Truncates to integer.
-       log(expr)     The natural logarithm function.
-       rand()        Returns a random number N, between 0 and 1, such that 0 â‰¤ N &amp;lt; 1.
-       sin(expr)     Returns the sine of expr, which is in radians.
-       sqrt(expr)    The square root function.
-       srand([expr]) Uses expr as a new seed for the random number generator.  If no expr  is  pro-
-                     vided, the time of day is used.  The return value is the previous seed for the
-                     random number generator.&lt;/p&gt;
-
-&lt;p&gt;String Functions
-       Gawk has the following built-in string functions:&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;   asort(s [, d])          Returns the number of elements in the source array s.  The  contents
-                           of  s are sorted using gawkâ™s normal rules for comparing values, and
-                           the indices of the sorted values of s are replaced  with  sequential
-                           integers  starting  with  1.  If the optional destination array d is
-                           specified, then s is first duplicated into d, and then d is  sorted,
-                           leaving the indices of the source array s unchanged.
-
-   asorti(s [, d])         Returns  the number of elements in the source array s.  The behavior
-                           is the same as that of asort(), except that the  array  indices  are
-                           used  for  sorting,  not  the array values.  When done, the array is
-                           indexed numerically, and  the  values  are  those  of  the  original
-                           indices.   The original values are lost; thus provide a second array
-                           if you wish to preserve the original.
-
-   gensub(r, s, h [, t])   Search the target string t for matches of the regular expression  r.
-                           If  h is a string beginning with g or G, then replace all matches of
-                           r with s.  Otherwise, h is a number indicating which match of  r  to
-                           replace.   If  t  is  not  supplied, $0 is used instead.  Within the
-                           replacement text s, the sequence \n, where n is a digit from 1 to 9,
-                           may  be  used to indicate just the text that matched the nâ™th paren-
-                           thesized subexpression.   The  sequence  \0  represents  the  entire
-                           matched text, as does the character &amp;amp;.  Unlike sub() and gsub(), the
-                           modified string is returned as the result of the function,  and  the
-                           original target string is not changed.
-
-   gsub(r, s [, t])        For  each  substring matching the regular expression r in the string
-                           t, substitute the string s, and return the number of  substitutions.
-                           If  t  is  not  supplied,  use  $0.  An &amp;amp; in the replacement text is
-                           replaced with the text that was actually matched.  Use \&amp;amp; to  get  a
-                           literal  &amp;amp;.   (This  must be typed as &amp;quot;\\&amp;amp;&amp;quot;; see GAWK: Effective AWK
-                           Programming for a fuller discussion of the rules for &amp;amp;â™s  and  back-
-                           slashes in the replacement text of sub(), gsub(), and gensub().)
-
-   index(s, t)             Returns  the index of the string t in the string s, or 0 if t is not
-                           present.  (This implies that character indices start at one.)
-
-   length([s])             Returns the length of the string s, or the length of $0 if s is  not
-                           supplied.  Starting with version 3.1.5, as a non-standard extension,
-                           with an array argument, length() returns the number of  elements  in
-                           the array.
-
-   match(s, r [, a])       Returns  the position in s where the regular expression r occurs, or
-                           0 if r is not present, and sets the values of  RSTART  and  RLENGTH.
-                           Note  that the argument order is the same as for the ~ operator: str
-                           ~ re.  If array a is provided, a is  cleared  and  then  elements  1
-                           through  n  are  filled with the portions of s that match the corre-
-                           sponding parenthesized subexpression in r.  The 0â™th  element  of  a
-                           contains  the  portion of s matched by the entire regular expression
-                           r.  Subscripts a[n, &amp;quot;start&amp;quot;], and a[n, &amp;quot;length&amp;quot;] provide the  start-
-                           ing  index  in  the string and length respectively, of each matching
-                           substring.
-
-   split(s, a [, r])       Splits the string s into the array a on the  regular  expression  r,
-                           and  returns  the  number  of  fields.   If r is omitted, FS is used
-                           instead.  The array a is cleared first.  Splitting  behaves  identi-
-                           cally to field splitting, described above.
-
-   sprintf(fmt, expr-list) Prints expr-list according to fmt, and returns the resulting string.
-
-   strtonum(str)           Examines str, and returns its numeric value.  If str begins  with  a
-                           leading  0,  strtonum() assumes that str is an octal number.  If str
-                           begins with a leading 0x or 0X, strtonum() assumes  that  str  is  a
-                           hexadecimal number.
-
-   sub(r, s [, t])         Just like gsub(), but only the first matching substring is replaced.
-
-   substr(s, i [, n])      Returns the at most n-character substring of s starting at i.  If  n
-                           is omitted, the rest of s is used.
-
-   tolower(str)            Returns a copy of the string str, with all the upper-case characters
-                           in str translated to their  corresponding  lower-case  counterparts.
-                           Non-alphabetic characters are left unchanged.
-
-   toupper(str)            Returns a copy of the string str, with all the lower-case characters
-                           in str translated to their  corresponding  upper-case  counterparts.
-                           Non-alphabetic characters are left unchanged.
-
-   As  of  version 3.1.5, gawk is multibyte aware.  This means that index(), length(), substr()
-   and match() all work in terms of characters, not bytes.
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Time Functions
-       Since one of the primary uses of AWK programs is processing  log  files  that  contain  time
-       stamp  information, gawk provides the following functions for obtaining time stamps and for-
-       matting them.&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;   mktime(datespec)
-             Turns datespec into a time stamp of the same form as returned by  systime().   The
-             datespec  is  a string of the form YYYY MM DD HH MM SS[ DST].  The contents of the
-             string are six or seven numbers representing respectively the full year  including
-             century,  the  month  from 1 to 12, the day of the month from 1 to 31, the hour of
-             the day from 0 to 23, the minute from 0 to 59, and the second from 0 to 60, and an
-             optional daylight saving flag.  The values of these numbers need not be within the
-             ranges specified; for example, an hour of -1 means 1 hour  before  midnight.   The
-             origin-zero  Gregorian  calendar is assumed, with year 0 preceding year 1 and year
-             -1 preceding year 0.  The time is assumed to be in the  local  timezone.   If  the
-             daylight  saving flag is positive, the time is assumed to be daylight saving time;
-             if zero, the time is assumed to be standard time; and if negative  (the  default),
-             mktime()  attempts  to determine whether daylight saving time is in effect for the
-             specified time.  If datespec does not contain enough elements or if the  resulting
-             time is out of range, mktime() returns -1.
-
-   strftime([format [, timestamp[, utc-flag]]])
-             Formats  timestamp  according  to  the  specification  in  format.  If utc-flag is
-             present and is non-zero or non-null, the result is in UTC, otherwise the result is
-             in local time.  The timestamp should be of the same form as returned by systime().
-             If timestamp is missing, the current time of day is used.  If format is missing, a
-             default format equivalent to the output of date(1) is used.  See the specification
-             for the strftime() function in ANSI C for the format conversions that are  guaran-
-             teed to be available.
-
-   systime() Returns  the  current  time  of  day  as  the  number  of  seconds since the Epoch
-             (1970-01-01 00:00:00 UTC on POSIX systems).
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Bit Manipulations Functions
-       Starting with version 3.1 of gawk, the following bit manipulation functions  are  available.
-       They  work by converting double-precision floating point values to uintmax_t integers, doing
-       the operation, and then converting the result back to floating point.  The functions are:&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;   and(v1, v2)         Return the bitwise AND of the values provided by v1 and v2.
-
-   compl(val)          Return the bitwise complement of val.
-
-   lshift(val, count)  Return the value of val, shifted left by count bits.
-
-   or(v1, v2)          Return the bitwise OR of the values provided by v1 and v2.
-
-   rshift(val, count)  Return the value of val, shifted right by count bits.
-
-   xor(v1, v2)         Return the bitwise XOR of the values provided by v1 and v2.
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Internationalization Functions
-       Starting with version 3.1 of gawk, the following functions may be used from within your  AWK
-       program for translating strings at run-time.  For full details, see GAWK: Effective AWK Pro-
-       gramming.&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;   bindtextdomain(directory [, domain])
-          Specifies the directory where gawk looks for the .mo files, in case they will not  or
-          cannot  be  placed  in the â˜â˜standardâ™â™ locations (e.g., during testing).  It returns
-          the directory where domain is â˜â˜bound.â™â™
-          The default domain is the value of TEXTDOMAIN.  If directory is the null string (&amp;quot;&amp;quot;),
-          then bindtextdomain() returns the current binding for the given domain.
-
-   dcgettext(string [, domain [, category]])
-          Returns the translation of string in text domain domain for locale category category.
-          The default value for domain is the current value of TEXTDOMAIN.  The  default  value
-          for category is &amp;quot;LC_MESSAGES&amp;quot;.
-          If  you  supply  a  value for category, it must be a string equal to one of the known
-          locale categories described in GAWK: Effective AWK Programming.  You must also supply
-          a text domain.  Use TEXTDOMAIN if you want to use the current domain.
-
-   dcngettext(string1 , string2 , number [, domain [, category]])
-          Returns  the plural form used for number of the translation of string1 and string2 in
-          text domain domain for locale category category.  The default value for domain is the
-          current value of TEXTDOMAIN.  The default value for category is &amp;quot;LC_MESSAGES&amp;quot;.
-          If  you  supply  a  value for category, it must be a string equal to one of the known
-          locale categories described in GAWK: Effective AWK Programming.  You must also supply
-          a text domain.  Use TEXTDOMAIN if you want to use the current domain.
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;USER-DEFINED FUNCTIONS
-       Functions in AWK are defined as follows:&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;          function name(parameter list) { statements }
-
-   Functions  are  executed  when they are called from within expressions in either patterns or
-   actions.  Actual parameters supplied in the function call are used to instantiate the formal
-   parameters  declared  in  the function.  Arrays are passed by reference, other variables are
-   passed by value.
-
-   Since functions were not originally part of the AWK language, the provision for local  vari-
-   ables  is  rather  clumsy: They are declared as extra parameters in the parameter list.  The
-   convention is to separate local variables from real parameters by extra spaces in the param-
-   eter list.  For example:
-
-          function  f(p, q,     a, b)   # a and b are local
-          {
-               ...
-          }
-
-          /abc/     { ... ; f(1, 2) ; ... }
-
-   The left parenthesis in a function call is required to immediately follow the function name,
-   without any intervening white space.  This avoids a syntactic ambiguity with the  concatena-
-   tion operator.  This restriction does not apply to the built-in functions listed above.
-
-   Functions may call each other and may be recursive.  Function parameters used as local vari-
-   ables are initialized to the null string and the number zero upon function invocation.
-
-   Use return expr to return a value from a function.  The return  value  is  undefined  if  no
-   value is provided, or if the function returns by âœfalling offâ the end.
-
-   If  --lint  has  been provided, gawk warns about calls to undefined functions at parse time,
-   instead of at run time.  Calling an undefined function at run time is a fatal error.
-
-   The word func may be used in place of function.
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;DYNAMICALLY LOADING NEW FUNCTIONS
-       Beginning with version 3.1 of gawk, you can dynamically add new built-in  functions  to  the
-       running  gawk  interpreter.   The full details are beyond the scope of this manual page; see
-       GAWK: Effective AWK Programming for the details.&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;   extension(object, function)
-           Dynamically link the shared object file named by object, and invoke function in that
-           object,  to  perform  initialization.   These  should  both  be provided as strings.
-           Returns the value returned by function.
-
-   This function is provided and documented in GAWK: Effective AWK Programming, but  everything
-   about  this  feature  is likely to change eventually.  We STRONGLY recommend that you do not
-   use this feature for anything that you arenâ™t willing to redo.
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;SIGNALS
-       pgawk accepts two signals.  SIGUSR1 causes it to dump a profile and function call  stack  to
-       the profile file, which is either awkprof.out, or whatever file was named with the --profile
-       option.  It then continues to run.  SIGHUP causes pgawk to dump  the  profile  and  function
-       call stack and then exit.&lt;/p&gt;
-
-&lt;p&gt;awk  一门语言，擅长取列，取行，过滤 （grep)
-$ awk -F &amp;quot;:&amp;quot; &amp;#39;{print $1}&amp;#39;  /etc/passward 
-%打印第一列$1 第二列 全部 $0   -F  指定分隔符 行号NR 最后一列$NF&lt;/p&gt;
-
-&lt;p&gt;$ awk -F &amp;quot;:&amp;quot; &amp;#39;{print $1,$2,$3}&amp;#39;  /etc/passward 
-$ awk -F &amp;quot;:&amp;quot; &amp;#39;NR==2 {print $1,$2,$3}&amp;#39;  /etc/passward 
-$ awk &amp;#39;19&amp;lt;NR &amp;amp;&amp;amp; NR&amp;lt;31&amp;#39; att.txt 
- % NR行号， &lt;/p&gt;
-</description>
-        <pubDate>Thu, 15 Oct 2015 04:06:05 +0800</pubDate>
-        <link>/linux/the-three-musketeers</link>
-        <guid isPermaLink="true">/linux/the-three-musketeers</guid>
-        
+        <category>command</category>
         
         <category>linux</category>
-        
-      </item>
-    
-      <item>
-        <title>linux问题小总结</title>
-        <description>&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;已知oldboy.txt里面内容为：&lt;strong&gt;inet addr:10.0.0.8 Bcast:10.0.0.255 Mask:255.255.255.0&lt;/strong&gt; .现在只想打印出下面内容：　10.0.0.8 10.0.0.255 255.255.255.0。&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;$ sed -nr &amp;#39;s#^.*dr:(.*) Bc.*:(.*) M.*k:(.*)#\1 \2 \3#gp&amp;#39; oldboy.txt
-$ grep -Eo &amp;#39;[0-9.]+&amp;#39; oldboy.txt|xargs -n3
-$ awk -F &amp;quot;[: ]&amp;quot; &amp;#39;{print $3, $5, $7}&amp;#39; oldboy.txt
-$ ifconfig eth0|sed -rn &amp;#39;2s#^.*:([0-9.]+).*:([0-9.]+).*:([0-9.]+)$#\1 \2 \3#gp&amp;#39;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;上使用awk取passwd文件的第10行到20行的第三列重定向到/tmp/oldboy/test.txt文件里。&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;$ awk -F &amp;#39;:&amp;#39; ‘{if(NR&amp;gt;10 &amp;amp;&amp;amp; NR &amp;lt;21) print $3}’ /etc/passwd &amp;gt;/tmp/oldboy/test.txt
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;禁止使用rm，并使该效果永久生效。&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;$ echo alias rm=&amp;#39;echo &amp;quot;Do note use rm command&amp;quot;&amp;#39; &amp;gt;&amp;gt;/etc/profile
-$ . /etc/profile
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;请用awk,grep,sed,head,tail分别取出passwd文件中的第2-5行&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;$ awk ‘{if(NR&amp;lt;6 &amp;amp;&amp;amp; NR&amp;gt;1 ) pirnt $0}’passwd
-$ head -5 passwd | tail -4
-$ sed –n ‘2,5p’passwd
-$ grep ‘bin:x’-A4 passwd
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;使用命令调换passwd文件里root位置和/bin/bash位置？即调换所有的第一列和最后一列位置调换？
-例：默认：root:x:0:0:root:/root:/bin/bash. 修改后：/bin/bash:x:0:0:root:/root:root  &lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;$ sed -r &amp;#39;s#([^:]+)(:.*:)(/.*$)#\3 \2 \1 #g&amp;#39; /etc/passwd
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;把/data目录及其子目录下所有以扩展名.txt结尾的文件中包含oldgirl的字符串全部替换为oldboy。&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;$ Find /data –type f –name “*.txt” |xargs sed ‘s#oldboy#oldgirl#g’
-$ sed -i ‘s#oldboy#oldgirl#g’ `find /data –name *.txt`
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;如何过滤出已知当前目录下oldboy中的所有一级目录(提示:不包含oldboy目录下面目录的子目录及隐藏目录，即只能是一级目录)？  &lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;方法一：&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;    $ ls -l |grep ^d
-    drwxr-xr-x  2 sandow sandow 4096 Oct 13 06:13 Desktop
-    drwxr-xr-x  2 sandow sandow 4096 Oct 11 07:41 Documents
-    drwxr-xr-x  2 sandow sandow 4096 Oct  9 19:30 Downloads
-
-    $ ls -F|grep /$
-    Desktop/
-    Documents/
-    Downloads/          
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;方法二：&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;    $ find . -maxdepth 1 -type d ! -name &amp;quot;.&amp;quot;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;方法三:&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;    $ tree -Ldi 1
-    $ ls -l|sed -n &amp;#39;/^d/p&amp;#39;
-    $ ls -l|awk &amp;#39;/^d/&amp;#39;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;一个目录中有很多文件（ls -l 查看时好多屏），想用一条命令最快速度查看到最近更新的文件。如何看？  &lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;$ ls -lrt
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;在配置apache时 执行了./configure --prefix=/application/apache2.2.17 来编译apche，在make 
-install 完成后，希望用户访问 apache 路径更简单，需要给/application/apache2.2.17 目录做一个软链接/application/apache，使得内部开发或管理人员通过/application/apache 就可以访问到 apache 的安装目录/application/apache2.2.17 下的内容，请你给出实现的命令。（提示：apache 为一个 web 服务） &lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;$ ln –s /application/apache2.2.17 /application/apache
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;已知 apache 服务的访问日志按天记录在服务器本地目录/app/logs 下，由于磁盘空间紧张，现在要求只能保留最近 7 天的访问日志！请问如何解决？ 请给出解决办法或配置或处理命令。（提示：可以从 apache 服务配置上着手，也可以从生成出来的日志上着手。）&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;for n in `seq 15`
-do
-    date -s &amp;quot;2015/10/$n&amp;quot;
-    touch access_www_`(date +%F)`.log
-done
-
-$ find /app/logs -type f -name &amp;quot;access*.log&amp;quot; -mtime +7 exec rm -f {} \;
-$ find /app/logs -type f -name &amp;quot;access*.log&amp;quot; -mtime +7 |xargs rm -f
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;调试系统服务时，希望能实时查看/var/log/messages 系统日志的更新,如何做？  &lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;$ for n in `seq 19999`;do echo $n &amp;gt;&amp;gt;/var/log/messages;usleep 5000;done
-$ tail -f /var/log/messages
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;打印轻量级 web 服务的配置文件 nginx.conf 内容的行号及内容，该如何做？&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;$ cat -n nginx.conf
-$ less -N nginx.conf
-$ awk &amp;#39;{print NR.$0}&amp;#39; nginx.conf
-$ sed = nginx.conf| sed &amp;#39;N;s/\n/ /&amp;#39;
-$ grep -n &amp;quot;.*&amp;quot; nginx.conf
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;装完 Centos 系统后，希望网络文件共享服务 NFS，仅在 3 级别上开机自启动，该如何做？&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;$ chkconfig NFS –-level 3 on
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;/etc/目录为 linux 系统的默认的配置文件及服务启动命令的目录&lt;br&gt;
-a.请用 tar 打包/etc 整个目录（打包及压缩）&lt;br&gt;
-b.请用 tar 打包/etc 整个目录（打包及压缩，但需要排除/etc/services 文件）&lt;br&gt;
-c.请把 a 点命令的压缩包，解压到/tmp 指定目录下（最好只用 tar 命令实现）  &lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;$ tar -zcvf a.tar /etc
-$ find /etc/ ! -name /etc/services exec tar -cvf a.tar {} \;
-$ cd /tmp &amp;amp;&amp;amp; tar –xvf a.tar 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;如何查看/etc/services 文件内容有多少行？&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;wc -l /etc/services
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;过滤出/etc/services 文件包含 3306 或 1521 两数据库端口的行的内容。&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;$ grep -E &amp;quot;3306|1521&amp;quot; /etc/services
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;echo &amp;#39;i am oldboy myqq is 31333741&amp;#39; &amp;gt;&amp;gt;oldboy.txt取出oldboy, 31333741&lt;/p&gt;
-
-&lt;p&gt;awk &amp;quot;{print $3, $6}&amp;quot; oldboy.txt
-cut -d &amp;quot; &amp;quot; -f3,6 oldboy.txt
-cut -c 6-11, 20- oldboy.txt&lt;/p&gt;&lt;/li&gt;
-&lt;/ol&gt;
-</description>
-        <pubDate>Thu, 15 Oct 2015 02:06:05 +0800</pubDate>
-        <link>/linux/somequestion-about-linux</link>
-        <guid isPermaLink="true">/linux/somequestion-about-linux</guid>
         
         
         <category>linux</category>
@@ -1504,19 +1215,24 @@ cut -c 6-11, 20- oldboy.txt&lt;/p&gt;&lt;/li&gt;
     
       <item>
         <title>教父</title>
-        <description>&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;教父
-{:toc}
-&lt;img src=&quot;/images/thegodfathe_2.jpg&quot; alt=&quot;海报&quot;&gt;&lt;img src=&quot;/images/thegodfathe_1r.jpg&quot; alt=&quot;父子&quot;&gt;&lt;br&gt;
-《教父》是派拉蒙影业公司出品的一部黑帮题材的电影，改编自马里奥·普佐的同名小说，由弗朗西斯·福特·科波拉执导，马龙·白兰度、阿尔·帕西诺等主演。虽是黑邦电影但它对家庭，对生活，对原则的做出了更好诠释。共有三部，前两部在IMDB电影排行榜中分别排第二与第三. 并且分别获得46，47届奥斯卡。&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;老教父维托·唐·科莱昂&lt;/strong&gt;，家族的建立者，在意大利被don ciccio追杀被逼逃到美国，在美国认识了Genco（后来的军师）。老教父能做到这个地位。Genco起了巨大作用。与他的邻居clemenza（小偷） 后来成为老教父最得力的杀手。他有三个儿子桑尼，弗雷多，迈克。 老教父十分看重迈克，自从那次枪枪击案发生后便对弗雷多十分厌恶。一个女儿，此女人本十分讨厌，所以就不多说了。&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;大儿子桑尼&lt;/strong&gt;。 桑尼在家族中有自己的军团，除了脾气有一点暴之外，还是一个十分能干的人，十分注重家庭观念，对亲人特别关心。也十分好色，在书中有介绍。一个人如果无法沉着冷静的拥有一个暴脾气的话，是很容易被人利用的. &lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;二儿子费雷多&lt;/strong&gt;， 他就是一个好孩子，善良，无心机。换句话说便是无能，自己连自己的女人都管不住，随随便便被打还不坑声,甘愿被人利用，懦夫一个。那次枪击事件发生后老教父便把他派出去再没让他回来。&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;小儿子迈克&lt;/strong&gt; 老教父最器重的便是他了。后来也成了老教父那般的人，强硬，冷静的人。他曾去海军参过军，参加过二战。因为枪杀警察在西西里避难的时候认识了啊波罗尼亚一位美丽的女神，看着好喜欢啊。经历两次婚姻是不幸福的，对于一个意大利人，家庭观念十分强的人更是如此，迈克也许就注定了不会幸福，这也许与他的性格有关吧,有什么心事都藏在心里。第二次的凯说真的很差，毫无家庭观念，而且最重要的是她不是一个西西里人。喜欢迈克的眼神，强硬，冷气逼人。&lt;br&gt;
-&lt;img src=&quot;/images/thegodfathe_5.jpg&quot; alt=&quot;迈克1&quot;&gt;&lt;img src=&quot;/images/thegodfathe_7.jpg&quot; alt=&quot;迈克2&quot;&gt;&lt;/p&gt;&lt;/li&gt;
+        <description>&lt;p&gt;&lt;img src=&quot;/images/thegodfathe_2.jpg&quot; alt=&quot;海报&quot;&gt;&lt;img src=&quot;/images/thegodfathe_1r.jpg&quot; alt=&quot;父子&quot;&gt;&lt;br&gt;
+《教父》是派拉蒙影业公司出品的一部黑帮题材的电影，改编自马里奥·普佐的同名小说，由弗朗西斯·福特·科波拉执导，马龙·白兰度、阿尔·帕西诺等主演。虽是黑邦电影但它对家庭，对生活，对原则的做出了更好诠释。共有三部，前两部在IMDB电影排行榜中分别排第二与第三. 并且分别获得46，47届奥斯卡。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;老教父维托·唐·科莱昂&lt;/strong&gt;，家族的建立者，在意大利被don ciccio追杀被逼逃到美国，在美国认识了Genco（后来的军师）。老教父能做到这个地位。Genco起了巨大作用。与他的邻居clemenza（小偷） 后来成为老教父最得力的杀手。他有三个儿子桑尼，弗雷多，迈克。 老教父十分看重迈克，自从那次枪枪击案发生后便对弗雷多十分厌恶。一个女儿，此女人本十分讨厌，所以就不多说了。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;大儿子桑尼&lt;/strong&gt;。 桑尼在家族中有自己的军团，除了脾气有一点暴之外，还是一个十分能干的人，十分注重家庭观念，对亲人特别关心。也十分好色，在书中有介绍。一个人如果无法沉着冷静的拥有一个暴脾气的话，是很容易被人利用的. &lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;二儿子费雷多&lt;/strong&gt;， 他就是一个好孩子，善良，无心机。换句话说便是无能，自己连自己的女人都管不住，随随便便被打还不坑声,甘愿被人利用，懦夫一个。那次枪击事件发生后老教父便把他派出去再没让他回来。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;小儿子迈克&lt;/strong&gt; 老教父最器重的便是他了。后来也成了老教父那般的人，强硬，冷静的人。他曾去海军参过军，参加过二战。因为枪杀警察在西西里避难的时候认识了啊波罗尼亚一位美丽的女神，看着好喜欢啊。经历两次婚姻是不幸福的，对于一个意大利人，家庭观念十分强的人更是如此，迈克也许就注定了不会幸福，这也许与他的性格有关吧,有什么心事都藏在心里。第二次的凯说真的很差，毫无家庭观念，而且最重要的是她不是一个西西里人。喜欢迈克的眼神，强硬，冷气逼人。&lt;br&gt;
+&lt;img src=&quot;/images/thegodfathe_5.jpg&quot; alt=&quot;迈克1&quot;&gt;&lt;img src=&quot;/images/thegodfathe_7.jpg&quot; alt=&quot;迈克2&quot;&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;hr&gt;
+
+&lt;p&gt;speak softely love 是我最喜欢的一首歌，也许是因为自己在心情低落的时候看的这部电影，而其中的音乐每次听着都特别伤心，特别心痛。介绍给你们。&lt;/p&gt;
+
+&lt;iframe src=&quot;http://www.tudou.com/programs/view/html5embed.action?type=0&amp;code=7lqAMEScZS0&amp;lcode=&amp;resourceId=418557855_06_05_99&quot; allowtransparency=&quot;true&quot; allowfullscreen=&quot;true&quot; allowfullscreenInteractive=&quot;true&quot; scrolling=&quot;no&quot; border=&quot;0&quot; frameborder=&quot;0&quot; style=&quot;width:90%;&quot;&gt;&lt;/iframe&gt;
+
+&lt;p&gt;&lt;embed src=&quot;http://www.tudou.com/v/7lqAMEScZS0/&amp;bid=05&amp;rpid=418557855&amp;resourceId=418557855_05_05_99/v.swf&quot; type=&quot;application/x-shockwave-flash&quot; allowscriptaccess=&quot;always&quot; allowfullscreen=&quot;true&quot; wmode=&quot;opaque&quot; width=&quot;90%&quot; &gt;&lt;/embed&gt;&lt;/p&gt;
 
 &lt;p&gt;一些经典语录&lt;br&gt;
 Behind every great fortune,there is a crime 财富背后都是罪恶&lt;/p&gt;
@@ -1548,12 +1264,44 @@ Behind every great fortune,there is a crime 财富背后都是罪恶&lt;/p&gt;
 
 &lt;p&gt;I never wanted this for you. I work my whole life — I don&amp;#39;t apologize — to take care of my family, and I refused to be a fool, dancing on the string held by all those big shots. I don&amp;#39;t apologize — that&amp;#39;s my life — but I thought that, that when it was your time, that you would be the one to hold the string. Senator &lt;/p&gt;
 </description>
-        <pubDate>Tue, 13 Oct 2015 07:30:05 +0800</pubDate>
-        <link>/movie/the-god-father</link>
-        <guid isPermaLink="true">/movie/the-god-father</guid>
+        <pubDate>Mon, 12 Oct 2015 00:00:00 +0800</pubDate>
+        <link>//movie/the-god-father</link>
+        <guid isPermaLink="true">//movie/the-god-father</guid>
+        
+        <category>godfather</category>
         
         
         <category>movie</category>
+        
+      </item>
+    
+      <item>
+        <title>The Three Musketeers</title>
+        <description>&lt;p&gt;djflsd
+sd
+af
+s
+da
+f
+asd
+fa
+sd
+f
+as
+dg
+category: linux
+sa
+df
+sa
+df
+as
+df
+a&lt;/p&gt;
+</description>
+        <pubDate>Sun, 11 Oct 2015 00:00:00 +0800</pubDate>
+        <link>//the-three-musketeers</link>
+        <guid isPermaLink="true">//the-three-musketeers</guid>
+        
         
       </item>
     

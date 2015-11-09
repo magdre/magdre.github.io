@@ -5,98 +5,92 @@
         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
     
     <url>
-        <loc>/python/learning-python-checkio</loc>
-        <lastmod>2015-11-09T08:52:23+08:00</lastmod>
+        <loc>//python/learning-python-checkio</loc>
+        <lastmod>2015-11-09T15:01:27+08:00</lastmod>
         <changefreq>weekly</changefreq>
     </url>
     
     <url>
-        <loc>/linux/optimize-system</loc>
-        <lastmod>2015-11-09T08:52:23+08:00</lastmod>
+        <loc>//linux/optimize-system</loc>
+        <lastmod>2015-11-09T15:01:27+08:00</lastmod>
         <changefreq>weekly</changefreq>
     </url>
     
     <url>
-        <loc>/ubuntu/install-centos-onubuntu</loc>
-        <lastmod>2015-11-09T08:52:23+08:00</lastmod>
+        <loc>//ubuntu/install-centos-onubuntu</loc>
+        <lastmod>2015-11-09T15:01:27+08:00</lastmod>
         <changefreq>weekly</changefreq>
     </url>
     
     <url>
-        <loc>/ubuntu/install-crt-inubuntu</loc>
-        <lastmod>2015-11-09T08:52:23+08:00</lastmod>
+        <loc>//ubuntu/install-crt-inubuntu</loc>
+        <lastmod>2015-11-09T15:01:27+08:00</lastmod>
         <changefreq>weekly</changefreq>
     </url>
     
     <url>
-        <loc>/linux/file-attribute</loc>
-        <lastmod>2015-11-09T08:52:23+08:00</lastmod>
+        <loc>//linux/file-attribute</loc>
+        <lastmod>2015-11-09T15:01:27+08:00</lastmod>
         <changefreq>weekly</changefreq>
     </url>
     
     <url>
-        <loc>/movie/test-plogin-mp3-mp4</loc>
-        <lastmod>2015-11-09T08:52:23+08:00</lastmod>
+        <loc>//movie/test-plogin-mp3-mp4</loc>
+        <lastmod>2015-11-09T15:01:27+08:00</lastmod>
         <changefreq>weekly</changefreq>
     </url>
     
     <url>
-        <loc>/linux/linux-filesystem</loc>
-        <lastmod>2015-11-09T08:52:23+08:00</lastmod>
+        <loc>//linux/somequestion-about-linux</loc>
+        <lastmod>2015-11-09T15:01:27+08:00</lastmod>
         <changefreq>weekly</changefreq>
     </url>
     
     <url>
-        <loc>/linux/the-three-musketeers</loc>
-        <lastmod>2015-11-09T08:52:23+08:00</lastmod>
+        <loc>//linux/linux-filesystem</loc>
+        <lastmod>2015-11-09T15:01:27+08:00</lastmod>
         <changefreq>weekly</changefreq>
     </url>
     
     <url>
-        <loc>/linux/somequestion-about-linux</loc>
-        <lastmod>2015-11-09T08:52:23+08:00</lastmod>
+        <loc>//movie/the-god-father</loc>
+        <lastmod>2015-11-09T15:01:27+08:00</lastmod>
         <changefreq>weekly</changefreq>
     </url>
     
     <url>
-        <loc>/movie/the-god-father</loc>
-        <lastmod>2015-11-09T08:52:23+08:00</lastmod>
+        <loc>//the-three-musketeers</loc>
+        <lastmod>2015-11-09T15:01:27+08:00</lastmod>
         <changefreq>weekly</changefreq>
     </url>
     
     <url>
-        <loc>/linux/system-command</loc>
-        <lastmod>2015-11-09T08:52:23+08:00</lastmod>
+        <loc>//linux/system-command</loc>
+        <lastmod>2015-11-09T15:01:27+08:00</lastmod>
         <changefreq>weekly</changefreq>
     </url>
     
     <url>
-        <loc>/python/regular-expressions</loc>
-        <lastmod>2015-11-09T08:52:23+08:00</lastmod>
+        <loc>//python/regular-expressions</loc>
+        <lastmod>2015-11-09T15:01:27+08:00</lastmod>
         <changefreq>weekly</changefreq>
     </url>
     
     <url>
-        <loc>/linux/networking-command</loc>
-        <lastmod>2015-11-09T08:52:23+08:00</lastmod>
+        <loc>//linux/manage-the-directory-command</loc>
+        <lastmod>2015-11-09T15:01:27+08:00</lastmod>
         <changefreq>weekly</changefreq>
     </url>
     
     <url>
-        <loc>/linux/manage-file-command</loc>
-        <lastmod>2015-11-09T08:52:23+08:00</lastmod>
+        <loc>//linux/manage-file-command</loc>
+        <lastmod>2015-11-09T15:01:27+08:00</lastmod>
         <changefreq>weekly</changefreq>
     </url>
     
     <url>
-        <loc>/linux/manage-the-directory-command</loc>
-        <lastmod>2015-11-09T08:52:23+08:00</lastmod>
-        <changefreq>weekly</changefreq>
-    </url>
-    
-    <url>
-        <loc>/translation/understanding-the-diff-command-in-unix</loc>
-        <lastmod>2015-11-09T08:52:23+08:00</lastmod>
+        <loc>//linux/understanding-the-diff-command-in-unix</loc>
+        <lastmod>2015-11-09T15:01:27+08:00</lastmod>
         <changefreq>weekly</changefreq>
     </url>
     

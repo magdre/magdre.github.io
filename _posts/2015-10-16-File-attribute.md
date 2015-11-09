@@ -2,7 +2,7 @@
 layout: post
 title:  "文件属性详细介绍"
 date:   2015-10-16 23:06:05
-categories: linux
+category: linux
 excerpt: "文件类型, 索引节点, 用户与组, 软硬链接."
 ---
 

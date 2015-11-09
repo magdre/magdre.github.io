@@ -6,9 +6,9 @@
     <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="介绍基本的正则表达式，以及在python下的一些用法">
+<meta name="description" content="全面介绍正则表达式的语法.以及在python下的一些用法,并对python中的re中的函数做简单介绍">
 
-<title>Regular Expressions(正则表达式）</title>
+<title>Regular Expressions</title>
 
 <!-- favicon -->
 <link rel="shortcut icon" href="./favicon.ico" type="image/icon">
@@ -75,9 +75,13 @@
         <div class="row">
             <div id="markdown-container" class="col-lg-9">
                 <header>
-                    <p id="postTitle">Regular Expressions(正则表达式）</p>
+                    <p id="postTitle">Regular Expressions</p>
                     
                     <ul class="tags clearfix">
+                        
+                        <li><i class="fa fa-tag"></i> RE</li>
+                        
+                        <li><i class="fa fa-tag"></i> python</li>
                         
                     </ul>
                     
@@ -85,14 +89,8 @@
 
                 </header>
 
-                <ul>
-<li>contens 
-{:toc}
-正则表达式是为处理大量字符串而定义的方法。
-正则表达式分基本正则表达式（Basic Regular Expressions,BERs）和扩展正则表达式（Extended Regular Expressions,EREs）. EREs基本包含BERs，而且还包含更多功能. EREs现在已经被应用于 Apache, PERL, PHP, python. 以及VI，emac,grep awk和sed...ERES现在基本已成流行，也是本文主要关注的重点<br></li>
-</ul>
-
-<hr>
+                <p>正则表达式是为处理大量字符串而定义的方法。
+ 正则表达式分基本正则表达式（Basic Regular Expressions,BERs）和扩展正则表达式（Extended Regular Expressions,EREs）. EREs基本包含BERs，而且还包含更多功能. EREs现在已经被应用于 Apache, PERL, PHP, python. 以及VI，emac,grep awk和sed...ERES现在基本已成流行，也是本文主要关注的重点   </p>
 
 <h2 id="通用的定义">通用的定义</h2>
 
@@ -152,37 +150,83 @@ target string 便是我们想要查找或者匹配到的内容</p></li>
 
 <p>在RE中经常会用到很多特殊字符，每个字符在不同的位置拥有不同的意思，下面简单介绍几个常用的metacharacters</p>
 
-<ol>
-<li>基本的 metacharacters</li>
-<li>[ ]<br>
-<strong>square brackets( [] )</strong> 匹配在square brackets里面的任意1个字符. <code>[12]</code> 便只会匹配1或者2, [0-9] 便会匹配任意一个数字, 在square brackets里面的特殊字符将失去他的特殊意义。</li>
-<li>-<br>
-<strong>dash(-)</strong> 在square brackets 里面的意思是range separator, 例如<code>[0-9]</code> 的意思就是[0123456789]</li>
-<li>caret(^)<br>
-<strong>circumflex or caret(^)</strong> 在square brackets 里便是取反. <code>[^Ff]</code> 的意思便是匹配除了f(大写与小写)的任意字符. 当不用在square brackets里时,意思是只查找开头是literal的字符比如 <code>^Win</code> 便不会从Windows里找到, 而<code>^Moz</code>会从 &#39;Mozilla&#39; 中找到.</li>
-<li>$<br>
-<strong>dollar($)</strong> 在目标字符串中只匹配结尾是literal的字符. <code>fox$</code> 便会从 &#39;silver fox&#39; 中找到</li>
-<li><p>.<br>
-period(.) 在这个位置的任意字符. <code>ton.</code> 便会从 &#39;tonneau&#39; 中找到<strong>tons</strong> , 但不会从&#39;wanton&#39; 里找到.</p></li>
-<li><p>iteration metacharacters</p></li>
-<li><p>?<br>
-<strong>question mark</strong>  匹配前面的一个字符出现0次或者1次， <code>colou?r</code> 便会找到<strong>color</strong>和<strong>colour</strong> </p></li>
-<li><p>*<br>
-<strong>asterisk or star</strong> 匹配前面的一个字符出现0次或者多次， <code>tre*</code> 便会找到 <strong>tr</strong>, <strong>tre</strong>, <strong>tree</strong>,</p></li>
-<li><p>+<br>
-<strong>plus</strong> 匹配前面的一个字符出现1次或者多次</p></li>
-<li><p>{n}<br>
-<strong>curly brackets</strong>匹配前面的字符或者出现n次 <code>[1-9]{3}-[0-9]{4}</code> 便用找到像123-4567形式的数字,或者电话</p></li>
-<li><p>{n,m} {n,}<br>
-第一个是匹配前面的字符至少出现n次至多出现m次，第二个是匹配前面的字符至少出现nuqw </p></li>
-<li><p>{n,m}? ,+?, *?, ??
-因为{n,m}, *, +, ?会匹配前面的字符出现足够多次的字符(greedy)如果想匹配尽可能少的字符那么就可以在后面加一个&quot;?&quot;(non-greed)，比如字符串&#39;aaaaa&#39;, a{3,4}将会匹配５个a，　而a{3,5}?便只会匹配３个a </p></li>
-<li><p>扩展的metacharacters</p></li>
-<li><p>()<br>
-括号经常与表达式一起用，有时候我们把它叫做子表达式。</p></li>
-<li><p>|<br>
-<strong>vertical bar or pipe</strong> 可以匹配前面的字符或者后面的字符<code>gr(a|e)y</code>可以找到 &#39;gray&#39; 或 &#39;grey&#39;, 也可以这样用<code>gr(a|e(|i)y)</code>除了匹配前面的字符还可以匹配 &#39;griy&#39;  </p></li>
-</ol>
+<p>一些基本的元字符及各自的意思</p>
+
+<table><thead>
+<tr>
+<th style="text-align: center">元字符</th>
+<th style="text-align: left">特殊意义</th>
+<th style="text-align: left">例子</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: center"><strong>[ ]</strong></td>
+<td style="text-align: left">匹配在方括号里面的任意1个字符</td>
+<td style="text-align: left"><code>[12]</code> 便只会匹配1或者2, [0-9] 便会匹配任意一个数字</td>
+</tr>
+<tr>
+<td style="text-align: center"><strong>-</strong></td>
+<td style="text-align: left">在方括号里面dash的意思是range separator</td>
+<td style="text-align: left">[0-9]` 相当于[0123456789]</td>
+</tr>
+<tr>
+<td style="text-align: center"><strong>^</strong></td>
+<td style="text-align: left">在放括號里caret是取反,不在中括号里是最开头</td>
+<td style="text-align: left"><code>[^Ff]</code> 匹配除了f(大写与小写)的任意字符。<code>^Moz</code> 以Woz开头字符会从 &#39;Mozilla&#39; 中找到</td>
+</tr>
+<tr>
+<td style="text-align: center"><strong>$</strong></td>
+<td style="text-align: left">只匹配结尾是literal的字符</td>
+<td style="text-align: left"><code>fox$</code> 便会从 &#39;silver fox&#39; 中找到</td>
+</tr>
+<tr>
+<td style="text-align: center"><strong>.</strong></td>
+<td style="text-align: left">在这个位置的任意字符</td>
+<td style="text-align: left"><code>ton.</code> 便会从 &#39;tonneau&#39; 中找到<strong>tons</strong> , 但不会从&#39;wanton&#39; 里找到</td>
+</tr>
+<tr>
+<td style="text-align: center"><strong>?</strong></td>
+<td style="text-align: left">匹配前面的一个字符出现0次或者1次</td>
+<td style="text-align: left"><code>colou?r</code> 便会找到<strong>color</strong>和<strong>colour</strong></td>
+</tr>
+<tr>
+<td style="text-align: center">*</td>
+<td style="text-align: left">匹配前面的一个字符出现0次或者多次</td>
+<td style="text-align: left"><code>tre\*</code> (请忽略\ )便会找到 <code>tr</code>, <code>tre</code>, <code>tree</code> 。</td>
+</tr>
+<tr>
+<td style="text-align: center"><strong>+</strong></td>
+<td style="text-align: left">匹配前面的一个字符出现1次或者多次</td>
+<td style="text-align: left"></td>
+</tr>
+<tr>
+<td style="text-align: center">{n}</td>
+<td style="text-align: left">匹配前面的字符或者出现n次</td>
+<td style="text-align: left"><code>[1-9]{3}-[0-9]{4}</code> 便用找到像123-4567形式的数字</td>
+</tr>
+<tr>
+<td style="text-align: center">{n,m}</td>
+<td style="text-align: left">匹配前面的字符至少出现n到m次</td>
+<td style="text-align: left"></td>
+</tr>
+<tr>
+<td style="text-align: center">{n,m}? ,+?, *?, ??</td>
+<td style="text-align: left">让{n,m}, *, +, ?非貪婪匹配(non-greed)</td>
+<td style="text-align: left">字符串&#39;aaaaa&#39;, a{3,4}将会匹配５个a，　而a{3,5}?便只会匹配３个a</td>
+</tr>
+<tr>
+<td style="text-align: center">()</td>
+<td style="text-align: left">子表达式</td>
+<td style="text-align: left">可以向后引用</td>
+</tr>
+<tr>
+<td style="text-align: center">竖线</td>
+<td style="text-align: left">可以匹配前面的字符或者后面的字符</td>
+<td style="text-align: left"></td>
+</tr>
+</tbody></table>
+
+<p>gr(a|e)y`可以找到 &#39;gray&#39; 或 &#39;grey&#39;</p>
 
 <p>举例  </p>
 
@@ -228,19 +272,9 @@ period(.) 在这个位置的任意字符. <code>ton.</code> 便会从 &#39;tonne
 <td style="text-align: left">没有以L-Z开头的字符所以无匹配</td>
 <td style="text-align: left">Lin不在字符串的开头无匹配</td>
 </tr>
-<tr>
-<td style="text-align: center">(W\</td>
-<td style="text-align: left">L)in</td>
-<td style="text-align: left">从Windows里找到了Win</td>
-</tr>
-<tr>
-<td style="text-align: center">((4.[0-3])\</td>
-<td style="text-align: left">(2.[0-3]))</td>
-<td style="text-align: left">会找到4.0</td>
-</tr>
 </tbody></table>
 
-<hr>
+<p><code>((4\.[0-3])\|(2\.[0-3]))</code> 可以在字符串1中找到4.0，在字符串2中找到2.2</p>
 
 <h3 id="posix-character-class-definitions">POSIX Character Class Definitions</h3>
 
@@ -287,61 +321,68 @@ period(.) 在这个位置的任意字符. <code>ton.</code> 便会从 &#39;tonne
 <p>　python里的re使用方法, 后面的语法是结合complie使用pos是position的缩写意思是从什么位置开始匹配，什么位置结束。</p>
 
 <ul>
-<li><p>`re.compile(pattern, flags=0) ,<br>
-先把pattern编译然后再用正则表达式的方法调用  </p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">prog = re.compile(pattern)
-result = prog.match(string)
+<li><strong>re.compile(pattern, flags=0)</strong>   先把pattern编译然后再用正则表达式的方法调用<br></li>
+</ul>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">re</span>
+
+<span class="o">&gt;&gt;&gt;</span> <span class="n">prog</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">pattern</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">result</span> <span class="o">=</span> <span class="n">prog</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">string</span><span class="p">)</span>
 </code></pre></div>
 <p>相当于</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">result = re.match(pattern, string)
-</code></pre></div></li>
-<li><p><code>re.search(pattern, string, flags=0) , regex.search(string[, pos[, endpos]])</code><br>
-扫描整个字符串找到第一个regular expression pattern 匹配到的位置然后返回符合pattern的match object,　如果未找到便返回　None .</p></li>
-<li><p><code>re.match(pattern, string, flags=0)　　regex.match(string[, pos[, endpos]])</code><br>
-如果在这个string的开始匹配到字符，那么就返回相应的match object,　匹配不到便会返回　None  </p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">&gt;&gt;&gt; m=re.search(&quot;a\w+&quot;,&quot;bcdfa\na1b2c3&quot;)
-&gt;&gt;&gt; n=re.match(&quot;a\w+&quot;,&quot;bcdfa\na1b2c3&quot;)
-&gt;&gt;&gt; m.group()
-&#39;a1b2c3&#39;
-&gt;&gt;&gt; print(n)
-None
-</code></pre></div></li>
-<li><p><code>re.split(pattern, string, maxsplit=0, flags=0)，　regex.split(string, maxsplit=0)</code><br>
-用能够匹配到的字符来分隔字符串，maxsplit默认是最大分隔，指定数字后为最大分隔数</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">&gt;&gt;&gt; re.split(&#39;\W+&#39;, &#39;Words, words, words.&#39;)
-[&#39;Words&#39;, &#39;words&#39;, &#39;words&#39;, &#39;&#39;]
-&gt;&gt;&gt; re.split(&#39;(\W+)&#39;, &#39;Words, words, words.&#39;)
-[&#39;Words&#39;, &#39;, &#39;, &#39;words&#39;, &#39;, &#39;, &#39;words&#39;, &#39;.&#39;, &#39;&#39;]
-&gt;&gt;&gt; re.split(&#39;\W+&#39;, &#39;Words, words, words.&#39;, 1)
-[&#39;Words&#39;, &#39;words, words.&#39;]
-&gt;&gt;&gt; re.split(&#39;[a-f]+&#39;, &#39;0a3B9&#39;, flags=re.IGNORECASE)
-[&#39;0&#39;, &#39;3&#39;, &#39;9&#39;]
-</code></pre></div></li>
-</ul>
-
-<p>如果有字符串的形状找到一个或者多个分隔符，那么在结果中便会以一个空字符开始，结尾有字符也是一样的</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">    &gt;&gt;&gt; re.split(&#39;(\W+)&#39;, &#39;...words, words...&#39;)
-    [&#39;&#39;, &#39;...&#39;, &#39;words&#39;, &#39;, &#39;, &#39;words&#39;, &#39;...&#39;, &#39;&#39;]
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="o">&gt;&gt;&gt;</span> <span class="n">result</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">pattern</span><span class="p">,</span> <span class="n">string</span><span class="p">)</span>
 </code></pre></div>
 <ul>
-<li><p><code>re.findall(pattern, string, flags=0), regex.findall(string[, pos[, endpos]])</code><br>
+<li><p><strong>re.search(pattern, string, flags=0) , regex.search(string[, pos[, endpos]])</strong>
+扫描整个字符串找到第一个regular expression pattern 匹配到的位置然后返回符合pattern的match object,　如果未找到便返回　None .</p></li>
+<li><p><strong>re.match(pattern, string, flags=0)　　regex.match(string[, pos[, endpos]])</strong><br>
+如果在这个string的开始匹配到字符，那么就返回相应的match object,　匹配不到便会返回　None  </p></li>
+</ul>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="o">&gt;&gt;&gt;</span> <span class="n">m</span><span class="o">=</span><span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s">&quot;a\w+&quot;</span><span class="p">,</span><span class="s">&quot;bcdfa</span><span class="se">\n</span><span class="s">a1b2c3&quot;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">n</span><span class="o">=</span><span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s">&quot;a\w+&quot;</span><span class="p">,</span><span class="s">&quot;bcdfa</span><span class="se">\n</span><span class="s">a1b2c3&quot;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">()</span>
+<span class="s">&#39;a1b2c3&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+<span class="bp">None</span>
+</code></pre></div>
+<ul>
+<li><strong>re.split(pattern, string, maxsplit=0, flags=0)，　regex.split(string, maxsplit=0)</strong><br>
+用能够匹配到的字符来分隔字符串，maxsplit默认是最大分隔，指定数字后为最大分隔数</li>
+</ul>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="o">&gt;&gt;&gt;</span> <span class="n">re</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&#39;\W+&#39;</span><span class="p">,</span> <span class="s">&#39;Words, words, words.&#39;</span><span class="p">)</span>
+<span class="p">[</span><span class="s">&#39;Words&#39;</span><span class="p">,</span> <span class="s">&#39;words&#39;</span><span class="p">,</span> <span class="s">&#39;words&#39;</span><span class="p">,</span> <span class="s">&#39;&#39;</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">re</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&#39;(\W+)&#39;</span><span class="p">,</span> <span class="s">&#39;Words, words, words.&#39;</span><span class="p">)</span>
+<span class="p">[</span><span class="s">&#39;Words&#39;</span><span class="p">,</span> <span class="s">&#39;, &#39;</span><span class="p">,</span> <span class="s">&#39;words&#39;</span><span class="p">,</span> <span class="s">&#39;, &#39;</span><span class="p">,</span> <span class="s">&#39;words&#39;</span><span class="p">,</span> <span class="s">&#39;.&#39;</span><span class="p">,</span> <span class="s">&#39;&#39;</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">re</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&#39;\W+&#39;</span><span class="p">,</span> <span class="s">&#39;Words, words, words.&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="p">[</span><span class="s">&#39;Words&#39;</span><span class="p">,</span> <span class="s">&#39;words, words.&#39;</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">re</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&#39;[a-f]+&#39;</span><span class="p">,</span> <span class="s">&#39;0a3B9&#39;</span><span class="p">,</span> <span class="n">flags</span><span class="o">=</span><span class="n">re</span><span class="o">.</span><span class="n">IGNORECASE</span><span class="p">)</span>
+<span class="p">[</span><span class="s">&#39;0&#39;</span><span class="p">,</span> <span class="s">&#39;3&#39;</span><span class="p">,</span> <span class="s">&#39;9&#39;</span><span class="p">]</span>
+</code></pre></div>
+<p>如果有字符串的形状找到一个或者多个分隔符，那么在结果中便会以一个空字符开始，结尾有字符也是一样的</p>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="o">&gt;&gt;&gt;</span> <span class="n">re</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&#39;(\W+)&#39;</span><span class="p">,</span> <span class="s">&#39;...words, words...&#39;</span><span class="p">)</span>
+<span class="p">[</span><span class="s">&#39;&#39;</span><span class="p">,</span> <span class="s">&#39;...&#39;</span><span class="p">,</span> <span class="s">&#39;words&#39;</span><span class="p">,</span> <span class="s">&#39;, &#39;</span><span class="p">,</span> <span class="s">&#39;words&#39;</span><span class="p">,</span> <span class="s">&#39;...&#39;</span><span class="p">,</span> <span class="s">&#39;&#39;</span><span class="p">]</span>
+</code></pre></div>
+<ul>
+<li><p><strong>re.findall(pattern, string, flags=0), regex.findall(string[, pos[, endpos]])</strong><br>
 用列表的方式返回匹配到的字符，</p></li>
-<li><p><code>re.finditer(pattern, string, flags=0), regex.finditer(string[, pos[, endpos]])</code><br>
+<li><p><strong>re.finditer(pattern, string, flags=0), regex.finditer(string[, pos[, endpos]])</strong> 
 用迭代的方式返回匹配到的字符，</p></li>
-<li><p><code>re.sub(pattern, repl, string, count=0, flags=0), regex.sub(repl, string, count=0)</code><br>
-把用样式匹配到的字符换成repl。如果没有匹配到字符便返回原string。　repl可以是字符，也可以是函数，当repl是一个字符串时，可以使用\id或\g&lt;id&gt;、\g&lt;name&gt;引用分组，但不能使用编号0。 </p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">def dashrepl(matchobj):
-    if matchobj.group(0) == &#39;-&#39;: return &#39; &#39;
-    else: return &#39;-&#39;
-&gt;&gt;&gt; re.sub(&#39;-{1,2}&#39;, dashrepl, &#39;pro----gram-files&#39;)
-&#39;pro--gram files&#39;
-
-&gt;&gt;&gt; re.sub(r&#39;\sAND\s&#39;, &#39; &amp; &#39;, &#39;Baked Beans And Spam&#39;, flags=re.IGNORECASE)
-&#39;Baked Beans &amp; Spam&#39;
-</code></pre></div></li>
-<li><p><code>re.subn(pattern, repl, string, count=0, flags=0)</code> 
-与sbu用法一亲但是返回一个数组(new_string, number_of_subs_made).</p></li>
-<li><p><code>re.escape(string)</code>
+<li><p><strong>re.sub(pattern, repl, string, count=0, flags=0), regex.sub(repl, string, count=0)</strong>
+把用样式匹配到的字符换成repl。如果没有匹配到字符便返回原string。　repl可以是字符，也可以是函数，当repl是一个字符串时，可以使用\id或\g&lt;id&gt;、\g&lt;name&gt;引用分组，但不能使用编号0。 </p></li>
+</ul>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">dashrepl</span><span class="p">(</span><span class="n">matchobj</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">matchobj</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">==</span> <span class="s">&#39;-&#39;</span><span class="p">:</span> 
+        <span class="k">return</span> <span class="s">&#39; &#39;</span>
+    <span class="k">else</span><span class="p">:</span> 
+        <span class="k">return</span> <span class="s">&#39;-&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s">&#39;-{1,2}&#39;</span><span class="p">,</span> <span class="n">dashrepl</span><span class="p">,</span> <span class="s">&#39;pro----gram-files&#39;</span><span class="p">)</span>
+<span class="s">&#39;pro--gram files&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s">r&#39;\sAND\s&#39;</span><span class="p">,</span> <span class="s">&#39; &amp; &#39;</span><span class="p">,</span> <span class="s">&#39;Baked Beans And Spam&#39;</span><span class="p">,</span> <span class="n">flags</span><span class="o">=</span><span class="n">re</span><span class="o">.</span><span class="n">IGNORECASE</span><span class="p">)</span>
+<span class="s">&#39;Baked Beans &amp; Spam&#39;</span>
+</code></pre></div>
+<ul>
+<li><p><strong>re.subn(pattern, repl, string, count=0, flags=0)</strong>
+与sub用法一亲但是返回一个数组(new_string, number_of_subs_made).</p></li>
+<li><p><strong>re.escape(string)</strong>
 Escape all the characters in pattern except ASCII letters, numbers and &#39;_&#39;. This is useful if you want to match an arbitrary literal string that may have regular expression metacharacters in it.</p></li>
 </ul>
 
@@ -350,62 +391,49 @@ Escape all the characters in pattern except ASCII letters, numbers and &#39;_&#3
 <p>match object提供了很多方法与属性</p>
 
 <ul>
-<li><p><code>match.expand(template)</code> 将匹配到的分组代入template中然后返回。template中可以使用\id或\g&lt;id&gt;、\g&lt;name&gt;引用分组，但不能使用编号0。\id与\g&lt;id&gt;是等价的；但\10将被认为是第10个分组，如果你想表达\1之后是字符&#39;0&#39;，只能使用\g&lt;1&gt;0。</p></li>
-<li><p><code>match.group([group1, ...])</code> 获得一个或多个分组截获的字符串；指定多个参数时将以元组形式返回。如果里面无参数默认为０，返回所有匹配的子符串</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">&gt;&gt;&gt; m = re.match(r&quot;(\w+) (\w+)&quot;, &quot;Isaac Newton, physicist&quot;)
-&gt;&gt;&gt; m.group(0)       # The entire match
-&#39;Isaac Newton&#39;
-&gt;&gt;&gt; m.group(1)       # The first parenthesized subgroup.
-&#39;Isaac&#39;
-&gt;&gt;&gt; m.group(2)       # The second parenthesized subgroup.
-&#39;Newton&#39;
-&gt;&gt;&gt; m.group(1, 2)    # Multiple arguments give us a tuple.
-(&#39;Isaac&#39;, &#39;Newton&#39;)
-</code></pre></div></li>
+<li><p><strong>match.expand(template)</strong> 将匹配到的分组代入template中然后返回。template中可以使用\id或\g&lt;id&gt;、\g&lt;name&gt;引用分组，但不能使用编号0。\id与\g&lt;id&gt;是等价的；但\10将被认为是第10个分组，如果你想表达\1之后是字符&#39;0&#39;，只能使用\g&lt;1&gt;0。</p></li>
+<li><p><strong>match.group([group1, ...])</strong> 获得一个或多个分组截获的字符串；指定多个参数时将以元组形式返回。如果里面无参数默认为０，返回所有匹配的子符串</p></li>
 </ul>
-
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="o">&gt;&gt;&gt;</span> <span class="n">m</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s">r&quot;(\w+) (\w+)&quot;</span><span class="p">,</span> <span class="s">&quot;Isaac Newton, physicist&quot;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>       <span class="c"># The entire match</span>
+<span class="s">&#39;Isaac Newton&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>       <span class="c"># The first parenthesized subgroup.</span>
+<span class="s">&#39;Isaac&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>       <span class="c"># The second parenthesized subgroup.</span>
+<span class="s">&#39;Newton&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>    <span class="c"># Multiple arguments give us a tuple.</span>
+<span class="p">(</span><span class="s">&#39;Isaac&#39;</span><span class="p">,</span> <span class="s">&#39;Newton&#39;</span><span class="p">)</span>
+</code></pre></div>
 <p>如果使用(?P&lt;name&gt;...)表达式，那么便会吧每个子组用name来命名，</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">    &gt;&gt;&gt; m = re.match(r&quot;(?P&lt;first_name&gt;\w+) (?P&lt;last_name&gt;\w+)&quot;, &quot;Malcolm Reynolds&quot;)
-    &gt;&gt;&gt; m.group(&#39;first_name&#39;)
-    &#39;Malcolm&#39;
-    &gt;&gt;&gt; m.group(&#39;last_name&#39;)
-    &#39;Reynolds&#39;
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="o">&gt;&gt;&gt;</span> <span class="n">m</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s">r&quot;(?P&lt;first_name&gt;\w+) (?P&lt;last_name&gt;\w+)&quot;</span><span class="p">,</span> <span class="s">&quot;Malcolm Reynolds&quot;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="s">&#39;first_name&#39;</span><span class="p">)</span>
+<span class="s">&#39;Malcolm&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="s">&#39;last_name&#39;</span><span class="p">)</span>
+<span class="s">&#39;Reynolds&#39;</span>
 </code></pre></div>
 <p>这里也可以用数字来提取</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">    &gt;&gt;&gt; m.group(1)
-    &#39;Malcolm&#39;
-    &gt;&gt;&gt; m.group(2)
-    &#39;Reynolds&#39;
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="o">&gt;&gt;&gt;</span> <span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="s">&#39;Malcolm&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="s">&#39;Reynolds&#39;</span>
 </code></pre></div>
 <ul>
-<li><p><code>match.groups(default=None)</code> 将所有匹配到的子组用tuple 的方式返回，</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">&gt;&gt;&gt; m = re.match(r&quot;(\d+)\.(\d+)&quot;, &quot;24.1632&quot;)
-&gt;&gt;&gt; m.groups()
-(&#39;24&#39;, &#39;1632&#39;)
-</code></pre></div></li>
-<li><p><code>match.groupdict(default=None)</code> 将所有匹配到的子组用dic　的方式返回，key 是子组的名字.</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">&gt;&gt;&gt; m = re.match(r&quot;(?P&lt;first_name&gt;\w+) (?P&lt;last_name&gt;\w+)&quot;, &quot;Malcolm Reynolds&quot;)
-&gt;&gt;&gt; m.groupdict()
-{&#39;first_name&#39;: &#39;Malcolm&#39;, &#39;last_name&#39;: &#39;Reynolds&#39;}
-</code></pre></div></li>
+<li><strong>match.groups(default=None)</strong> 将所有匹配到的子组用tuple 的方式返回，</li>
 </ul>
-
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="o">&gt;&gt;&gt;</span> <span class="n">m</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s">r&quot;(\d+)\.(\d+)&quot;</span><span class="p">,</span> <span class="s">&quot;24.1632&quot;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">m</span><span class="o">.</span><span class="n">groups</span><span class="p">()</span>
+<span class="p">(</span><span class="s">&#39;24&#39;</span><span class="p">,</span> <span class="s">&#39;1632&#39;</span><span class="p">)</span>
+</code></pre></div>
+<ul>
+<li><strong>match.groupdict(default=None)</strong>  将所有匹配到的子组用dic　的方式返回，key 是子组的名字.</li>
+</ul>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="o">&gt;&gt;&gt;</span> <span class="n">m</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s">r&quot;(?P&lt;first_name&gt;\w+) (?P&lt;last_name&gt;\w+)&quot;</span><span class="p">,</span> <span class="s">&quot;Malcolm Reynolds&quot;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">m</span><span class="o">.</span><span class="n">groupdict</span><span class="p">()</span>
+<span class="p">{</span><span class="s">&#39;first_name&#39;</span><span class="p">:</span> <span class="s">&#39;Malcolm&#39;</span><span class="p">,</span> <span class="s">&#39;last_name&#39;</span><span class="p">:</span> <span class="s">&#39;Reynolds&#39;</span><span class="p">}</span>
+</code></pre></div>
 <h2 id="re-in-linux">re in linux</h2>
 
-<p>调整别名， alias grep=&quot;grep --color=auto&quot;
-调整字符集， export LC_ALL=C</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">grep &quot;^m&quot; retest.txt
-</code></pre></div>
-<p>. 代表当前目录
-  使得文件生效相当于sources
-  隐藏文件
-  任意一个字符</p>
-
-<p>（）  分组匹配。</p>
-
-<p>本文未完，待续</p>
-
-<p>egrep &quot;[[:uppear:]]&quot; a.txt</p>
+<p>在linux中使用re请参见另一篇文章 linux三剑客</p>
 
             </div>
 
@@ -456,7 +484,7 @@ Escape all the characters in pattern except ASCII letters, numbers and &#39;_&#3
                         <li class="qq"><i class="fa fa-qq"></i> &nbsp;&nbsp;921070747</li>
                         <li class="email"><i class="fa fa-envelope"></i> <a href="mailto:j.k.yulei@gmail.com"> &nbsp;&nbsp;j.k.yulei@gmail.com</a></li>
                         <li class="tel"><i class="fa fa-mobile"></i> <a href="tel:18010073860">&nbsp;&nbsp; 18010073860</a></li>
-                        <li class="github"><i class="fa fa-github"></i> <a href="http://www.github.com/magdre"> &nbsp;&nbsp;http://www.github.com/magdre</a></li>
+                        <li class="github"><i class="fa fa-github"></i> <a href="http://magdre.github.io/about"> &nbsp;&nbsp;http://magdre.github.io/about</a></li>
                     </ul>
                 </div>
             </div>
