@@ -1,0 +1,372 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="编程离不开VIM，他是一个非常高效的文本编辑器，慢慢练习下，以后就用它了">
+
+<title>vim常用操作</title>
+
+<!-- favicon -->
+<link rel="shortcut icon" href="./favicon.ico" type="image/icon">
+<link rel="icon" href="./favicon.ico" type="/image/icon">
+<link rel="stylesheet" type="text/css" href="/stylesheets/base.css">
+<link rel="stylesheet" type="text/css" href="/stylesheets/simplePagination.css">
+
+<script type="text/javascript" src="/javascripts/jquery.js"></script>
+
+<!--[if lt IE 9]>
+<script src="/javascripts/html5shiv.js"></script>
+<![endif]-->
+
+    <link rel="stylesheet" type="text/css" href="/stylesheets/markdownreader.css">
+<link rel="stylesheet" type="text/css" href="/stylesheets/pygments_monokai.css">
+<link rel="stylesheet" type="text/css" href="/stylesheets/code_block.css">
+</head>
+
+<body>
+    <header id="l-header">
+    <div class="container">
+        <div class="row logo">
+            <div class="col-lg-7">
+                <h1>SanDow</h1>
+            </div>
+
+
+            <div class="col-lg-5">
+                <p>On the way to death</p>
+                <p>On the way of learning</p>
+            </div>
+        </div>
+
+        <div class="row navicon">
+            <a href=""><i class="fa fa-navicon"></i></a>
+        </div>
+
+        <div class="row navbar">
+            <nav class="col-lg-8 col-md-8 col-xs-12">
+                <ul class="row">
+                    <li class="col-lg-3"><a href="/">HOME</a></li>
+                    <li class="col-lg-3">
+                        <ul class="subnav">
+                            <a href="javascript:void(0)">POST</a>
+                            <li><a href="/category">CATEGORY</a></li>
+                            <li><a href="/tag">TAG</a></li>
+                        </ul>
+                    </li>
+                    <li class="col-lg-3"><a href="/about">ABOUT</a></li>
+                    <li class="col-lg-3"><a href="/building">PLAY GROUND</a></li>
+                </ul>
+            </nav>
+
+            <div class="search col-lg-4 col-md-4 col-xs-12">
+                <label for="search"></label>
+                <input id="search" name="serach" type="text" placeholder="Dummy Search">
+                <i class="fa fa-search"></i>
+            </div>
+        </div>
+    </div>
+</header>
+
+    <div class="container">
+        <div class="row">
+            <div id="markdown-container" class="col-lg-9">
+                <header>
+                    <p id="postTitle">vim常用操作</p>
+                    
+                    <ul class="tags clearfix">
+                        
+                        <li><i class="fa fa-tag"></i> linux</li>
+                        
+                    </ul>
+                    
+                    <p id="postMeta">posted on 09 Nov 2015 under category <a href="/category/">linux</a></p>
+
+                </header>
+
+                <h1 id="vim语法总结">VIM语法总结</h1>
+
+<p><strong>命令模式下的编辑</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: center">语法</th>
+<th style="text-align: left">描述</th>
+<th style="text-align: center">语法</th>
+<th style="text-align: left">描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: center">：wq!</td>
+<td style="text-align: left">强制保存</td>
+<td style="text-align: center">：q!</td>
+<td style="text-align: left">强制退出不保存</td>
+</tr>
+<tr>
+<td style="text-align: center">:set nu</td>
+<td style="text-align: left">显示行号</td>
+<td style="text-align: center">:set nonu</td>
+<td style="text-align: left">取消显示行号</td>
+</tr>
+<tr>
+<td style="text-align: center">u</td>
+<td style="text-align: left">undo</td>
+<td style="text-align: center">ctrl + r</td>
+<td style="text-align: left">redo</td>
+</tr>
+<tr>
+<td style="text-align: center">.</td>
+<td style="text-align: left">重复前面命令</td>
+<td style="text-align: center">2.</td>
+<td style="text-align: left">重复前面命令2次</td>
+</tr>
+<tr>
+<td style="text-align: center">dd</td>
+<td style="text-align: left">向下删除一行</td>
+<td style="text-align: center">2dd</td>
+<td style="text-align: left">删除两行</td>
+</tr>
+<tr>
+<td style="text-align: center">dt\</td>
+<td style="text-align: left">删除行之后内容直到遇到“\”</td>
+<td style="text-align: center"></td>
+<td style="text-align: left"></td>
+</tr>
+<tr>
+<td style="text-align: center">ye或 yw</td>
+<td style="text-align: left">从当前位置拷贝到本单词的最后一个字符</td>
+<td style="text-align: center">gu(gU)</td>
+<td style="text-align: left">换成小写(大写)字母</td>
+</tr>
+</tbody></table>
+
+<p><strong>如何移动</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: center">语法</th>
+<th style="text-align: left">描述</th>
+<th style="text-align: center">语法</th>
+<th style="text-align: left">描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: center">w</td>
+<td style="text-align: left">移动到单词开头</td>
+<td style="text-align: center">e</td>
+<td style="text-align: left">移动到单词结尾</td>
+</tr>
+<tr>
+<td style="text-align: center">gg</td>
+<td style="text-align: left">移动到的第一行</td>
+<td style="text-align: center">G</td>
+<td style="text-align: left">移动到最后一行</td>
+</tr>
+<tr>
+<td style="text-align: center">0</td>
+<td style="text-align: left">移动到行的开头</td>
+<td style="text-align: center">$</td>
+<td style="text-align: left">动到行的结尾</td>
+</tr>
+<tr>
+<td style="text-align: center">^</td>
+<td style="text-align: left">移动到行的开头非blank字符</td>
+<td style="text-align: center">g_</td>
+<td style="text-align: left">动到行的结尾非blank字符</td>
+</tr>
+<tr>
+<td style="text-align: center">fa</td>
+<td style="text-align: left">到下一个a出现的位置</td>
+<td style="text-align: center">3fa</td>
+<td style="text-align: left">第3次出现a的位置</td>
+</tr>
+<tr>
+<td style="text-align: center">2g</td>
+<td style="text-align: left">移动到第二行</td>
+<td style="text-align: center">%</td>
+<td style="text-align: left">匹配括号移动，包括 (, {, [.</td>
+</tr>
+<tr>
+<td style="text-align: center">*</td>
+<td style="text-align: left">匹配光标当前所在单词移到到下一个匹配到的单词</td>
+<td style="text-align: center">#</td>
+<td style="text-align: left">移动到上一个匹配到的单词</td>
+</tr>
+<tr>
+<td style="text-align: center">/patten</td>
+<td style="text-align: left">搜索，按n继续向下搜索</td>
+<td style="text-align: center">N</td>
+<td style="text-align: left">按N继续向上搜索</td>
+</tr>
+</tbody></table>
+
+<p>ctrl + o 跳到上一次修改的地方</p>
+
+<p><img src="/images/word_moves.jpg" alt="word_moves">
+<img src="/images/line_moves.jpg" alt="line_moves"></p>
+
+<p><strong>以什么样的形式进入插入模式</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: center">语法</th>
+<th style="text-align: left">描述</th>
+<th style="text-align: center"></th>
+<th style="text-align: center">语法</th>
+<th style="text-align: left">描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: center">A</td>
+<td style="text-align: left">移动到行未并进入插入模式</td>
+<td style="text-align: center"></td>
+<td style="text-align: center">x</td>
+<td style="text-align: left">删除光标所在位置的字符</td>
+</tr>
+<tr>
+<td style="text-align: center">I</td>
+<td style="text-align: left">移到到行首并进入插入模式</td>
+<td style="text-align: center"></td>
+<td style="text-align: center">X</td>
+<td style="text-align: left">删除光标所在位置之前的字符</td>
+</tr>
+<tr>
+<td style="text-align: center">o</td>
+<td style="text-align: left">在当前行之后新建一行并进入插入模式</td>
+<td style="text-align: center"></td>
+<td style="text-align: center"></td>
+<td style="text-align: left"></td>
+</tr>
+</tbody></table>
+
+<p><strong>区域选择</strong></p>
+
+<p>其格式为 <code>&lt;action&gt;a&lt;object&gt;</code> 和 <code>&lt;action&gt;i&lt;object&gt;</code></p>
+
+<ul>
+<li>action可以是任何的命令，如 d (删除), y (拷贝), v (可以视模式选择)。</li>
+<li>object 可能是： w 一个单词， W 一个以空格为分隔的单词， s 一个句字， p 一个段落。也可以是一个特别的字符：&quot;、 &#39;、 )、 }、 ]。</li>
+</ul>
+
+<p>举例： <code>daw</code> 删除一个单词</p>
+
+<p><strong>块操作</strong></p>
+
+<p>命令模式下按 <strong>ctrl + v</strong> 移动光标选中需要修改的行（区域），
+然后按<strong>x</strong> 或者 <strong>d</strong> 删除该内容</p>
+
+<p>批量在行首增加内容：
+ <code>ctrl + v</code> &gt;&gt; <code>0</code> &gt;&gt; <code>I</code> &gt;&gt; 写下想增加的内容 &gt;&gt;<code>Esc</code></p>
+
+<p><img src="/images/rectangular-blocks.gif" alt="rectangular-blocks"></p>
+
+<p>批量在行尾增加内容：</p>
+
+<p><code>ctrl + v</code> &gt;&gt; <code>$</code> &gt;&gt; <code>A</code> &gt;&gt; 写下想增加的内容 &gt;&gt;<code>Esc</code></p>
+
+<p>块移动  <code>&lt;</code> , <code>&gt;</code> 左右缩进 。 <code>=</code> 自动给缩进。 </p>
+
+<p><strong>自动补全</strong></p>
+
+<p>vim 下在编辑模式下也有自动补全功能便不是tab键，而是 <code>ctrl + n</code>， <code>ctrl + p</code> 如果匹配到多个可以按多次来找到自己想要的单词</p>
+
+<p><strong>宏录制</strong></p>
+
+<p><code>qa</code>  开始录制宏，并把宏的名字取名为a
+<code>q</code>  停止录制宏
+<code>@a</code>  用@来调用宏并执行
+<code>@@</code>  快捷的执行最新操作的宏</p>
+
+<p><img src="/images/macros.gif" alt="macros"></p>
+
+<p><code>qa</code>  &gt;&gt;<code>Y</code> &gt;&gt; <code>p</code> &gt;&gt; <code>ctrl + a</code> &gt;&gt; <code>q</code> &gt;&gt; <code>@a</code> &gt;&gt; <code>100@@</code></p>
+
+<p>最后来一张图，基本的语法就完全OK了</p>
+
+<p><img src="/images/Vim-mindmap.png" alt="vim-midmap"></p>
+
+<p><strong>结语</strong>：不论什么命令都可以在前面加数字来表示重复n次该命令</p>
+
+            </div>
+
+            <div id="markdown-outline" class="col-lg-3">
+            </div>
+
+            <div id="disqus_thread"></div>
+<script>
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+     */
+    /*
+    var disqus_config = function () {
+        this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() {  // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        
+        s.src = '//magdre.disqus.com/embed.js';
+        
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
+        </div>
+    </div>
+
+    
+<footer id="l-footer">
+    <div class="container">
+        <div class="row">
+            <div id="contact" class="col-lg-6 col-lg-offset-1 col-md-6 col-md-offset-1 col-sm-9">
+                <h3>CONTACT</h3>
+                <div class="row">
+                    <address id="address" class="col-lg-6 col-md-6 col-sm-6">
+                        China 北京 <br>
+                        海淀, 10000<br>
+                        上地<br>
+                        <br>
+                    </address>
+
+                    <ul class="col-lg-6 col-md-6 col-sm-6">
+                        <li class="qq"><i class="fa fa-qq"></i> &nbsp;&nbsp;921070747</li>
+                        <li class="email"><i class="fa fa-envelope"></i> <a href="mailto:j.k.yulei@gmail.com"> &nbsp;&nbsp;j.k.yulei@gmail.com</a></li>
+                        <li class="tel"><i class="fa fa-mobile"></i> <a href="tel:18010073860">&nbsp;&nbsp; 18010073860</a></li>
+                        <li class="github"><i class="fa fa-github"></i> <a href="http://magdre.github.io/about"> &nbsp;&nbsp;http://magdre.github.io/about</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div id="rss" class="col-lg-2 col-md-2 col-sm-2">
+                    <h3>SUBSCRIBE<br></h3>
+                <a href="feed.xml">
+                    <i class="rss fa fa-rss-square"></i>
+                </a>
+            </div>
+        </div>
+
+        <p id="legal">
+            Copyright (c) 2015 sandow | Powered by <a href="http://jekyllrb.com">Jekyll</a> &amp; <a href="http://github.com">GitHub</a> | designed &amp; build by <a href="http://unifreak.github.io">UniFreak</a>
+        </p>
+    </div>
+</footer>
+
+<script type="text/javascript" src="/javascripts/base.js"></script>
+<!--
+
+<!-- 百度统计 -->
+<script type="text/javascript" src="/javascripts/baidu_statistics.js"></script>
+
+-->
+
+
+    <script type="text/javascript" src="/javascripts/markdownreader.js"></script>
+</body>
+</html>

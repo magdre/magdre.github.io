@@ -2,7 +2,7 @@
 layout: post
 title: "Regular Expressions"
 category: python
-tags: [RE, python]
+tags: [linux, python]
 excerpt: "全面介绍正则表达式的语法.以及在python下的一些用法,并对python中的re中的函数做简单介绍"
 ---
 

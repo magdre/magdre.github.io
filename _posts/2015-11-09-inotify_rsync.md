@@ -432,7 +432,12 @@ vi inotify_exclude.lst
 ```
 
 --formfile 的file只能使用绝对路径，@表示排除。
-用正则排除 `--exclude '(.*/*\.log|.*/*\.swp)$|^/tmp/src/mail/(2014|201.*/cache.*)'`
+用正则排除 
+
+```
+--exclude '(.*/*\.log|.*/*\.swp)$|^/tmp/src/mail/(2014|201.*/cache.*)'
+```
+
 正则很明子了吧。 排除所有目录下以**.log**, **.swp** 结尾的文件，和所有在/tmp/src/mail下面2014这个目录和201*目录下的cache开头的文件或目录
 在rsync里排除，这里指定file排除时用相对路径。
 

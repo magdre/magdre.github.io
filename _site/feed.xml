@@ -5,9 +5,225 @@
     <description>sandow&#39;s personal weblog, on coding or such stuff</description>
     <link>//</link>
     <atom:link href="//feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 09 Nov 2015 19:59:36 +0800</pubDate>
-    <lastBuildDate>Mon, 09 Nov 2015 19:59:36 +0800</lastBuildDate>
+    <pubDate>Mon, 09 Nov 2015 20:43:14 +0800</pubDate>
+    <lastBuildDate>Mon, 09 Nov 2015 20:43:14 +0800</lastBuildDate>
     <generator>Jekyll v3.0.0</generator>
+    
+      <item>
+        <title>vim常用操作</title>
+        <description>&lt;h1 id=&quot;vim语法总结&quot;&gt;VIM语法总结&lt;/h1&gt;
+
+&lt;p&gt;&lt;strong&gt;命令模式下的编辑&lt;/strong&gt;&lt;/p&gt;
+
+&lt;table&gt;&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&quot;text-align: center&quot;&gt;语法&lt;/th&gt;
+&lt;th style=&quot;text-align: left&quot;&gt;描述&lt;/th&gt;
+&lt;th style=&quot;text-align: center&quot;&gt;语法&lt;/th&gt;
+&lt;th style=&quot;text-align: left&quot;&gt;描述&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: center&quot;&gt;：wq!&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;强制保存&lt;/td&gt;
+&lt;td style=&quot;text-align: center&quot;&gt;：q!&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;强制退出不保存&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: center&quot;&gt;:set nu&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;显示行号&lt;/td&gt;
+&lt;td style=&quot;text-align: center&quot;&gt;:set nonu&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;取消显示行号&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: center&quot;&gt;u&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;undo&lt;/td&gt;
+&lt;td style=&quot;text-align: center&quot;&gt;ctrl + r&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;redo&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: center&quot;&gt;.&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;重复前面命令&lt;/td&gt;
+&lt;td style=&quot;text-align: center&quot;&gt;2.&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;重复前面命令2次&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: center&quot;&gt;dd&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;向下删除一行&lt;/td&gt;
+&lt;td style=&quot;text-align: center&quot;&gt;2dd&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;删除两行&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: center&quot;&gt;dt\&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;删除行之后内容直到遇到“\”&lt;/td&gt;
+&lt;td style=&quot;text-align: center&quot;&gt;&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: center&quot;&gt;ye或 yw&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;从当前位置拷贝到本单词的最后一个字符&lt;/td&gt;
+&lt;td style=&quot;text-align: center&quot;&gt;gu(gU)&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;换成小写(大写)字母&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+
+&lt;p&gt;&lt;strong&gt;如何移动&lt;/strong&gt;&lt;/p&gt;
+
+&lt;table&gt;&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&quot;text-align: center&quot;&gt;语法&lt;/th&gt;
+&lt;th style=&quot;text-align: left&quot;&gt;描述&lt;/th&gt;
+&lt;th style=&quot;text-align: center&quot;&gt;语法&lt;/th&gt;
+&lt;th style=&quot;text-align: left&quot;&gt;描述&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: center&quot;&gt;w&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;移动到单词开头&lt;/td&gt;
+&lt;td style=&quot;text-align: center&quot;&gt;e&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;移动到单词结尾&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: center&quot;&gt;gg&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;移动到的第一行&lt;/td&gt;
+&lt;td style=&quot;text-align: center&quot;&gt;G&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;移动到最后一行&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;移动到行的开头&lt;/td&gt;
+&lt;td style=&quot;text-align: center&quot;&gt;$&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;动到行的结尾&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: center&quot;&gt;^&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;移动到行的开头非blank字符&lt;/td&gt;
+&lt;td style=&quot;text-align: center&quot;&gt;g_&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;动到行的结尾非blank字符&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: center&quot;&gt;fa&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;到下一个a出现的位置&lt;/td&gt;
+&lt;td style=&quot;text-align: center&quot;&gt;3fa&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;第3次出现a的位置&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: center&quot;&gt;2g&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;移动到第二行&lt;/td&gt;
+&lt;td style=&quot;text-align: center&quot;&gt;%&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;匹配括号移动，包括 (, {, [.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: center&quot;&gt;*&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;匹配光标当前所在单词移到到下一个匹配到的单词&lt;/td&gt;
+&lt;td style=&quot;text-align: center&quot;&gt;#&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;移动到上一个匹配到的单词&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: center&quot;&gt;/patten&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;搜索，按n继续向下搜索&lt;/td&gt;
+&lt;td style=&quot;text-align: center&quot;&gt;N&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;按N继续向上搜索&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+
+&lt;p&gt;ctrl + o 跳到上一次修改的地方&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/word_moves.jpg&quot; alt=&quot;word_moves&quot;&gt;
+&lt;img src=&quot;/images/line_moves.jpg&quot; alt=&quot;line_moves&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;以什么样的形式进入插入模式&lt;/strong&gt;&lt;/p&gt;
+
+&lt;table&gt;&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&quot;text-align: center&quot;&gt;语法&lt;/th&gt;
+&lt;th style=&quot;text-align: left&quot;&gt;描述&lt;/th&gt;
+&lt;th style=&quot;text-align: center&quot;&gt;&lt;/th&gt;
+&lt;th style=&quot;text-align: center&quot;&gt;语法&lt;/th&gt;
+&lt;th style=&quot;text-align: left&quot;&gt;描述&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: center&quot;&gt;A&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;移动到行未并进入插入模式&lt;/td&gt;
+&lt;td style=&quot;text-align: center&quot;&gt;&lt;/td&gt;
+&lt;td style=&quot;text-align: center&quot;&gt;x&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;删除光标所在位置的字符&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: center&quot;&gt;I&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;移到到行首并进入插入模式&lt;/td&gt;
+&lt;td style=&quot;text-align: center&quot;&gt;&lt;/td&gt;
+&lt;td style=&quot;text-align: center&quot;&gt;X&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;删除光标所在位置之前的字符&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: center&quot;&gt;o&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;在当前行之后新建一行并进入插入模式&lt;/td&gt;
+&lt;td style=&quot;text-align: center&quot;&gt;&lt;/td&gt;
+&lt;td style=&quot;text-align: center&quot;&gt;&lt;/td&gt;
+&lt;td style=&quot;text-align: left&quot;&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+
+&lt;p&gt;&lt;strong&gt;区域选择&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;其格式为 &lt;code&gt;&amp;lt;action&amp;gt;a&amp;lt;object&amp;gt;&lt;/code&gt; 和 &lt;code&gt;&amp;lt;action&amp;gt;i&amp;lt;object&amp;gt;&lt;/code&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;action可以是任何的命令，如 d (删除), y (拷贝), v (可以视模式选择)。&lt;/li&gt;
+&lt;li&gt;object 可能是： w 一个单词， W 一个以空格为分隔的单词， s 一个句字， p 一个段落。也可以是一个特别的字符：&amp;quot;、 &amp;#39;、 )、 }、 ]。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;举例： &lt;code&gt;daw&lt;/code&gt; 删除一个单词&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;块操作&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;命令模式下按 &lt;strong&gt;ctrl + v&lt;/strong&gt; 移动光标选中需要修改的行（区域），
+然后按&lt;strong&gt;x&lt;/strong&gt; 或者 &lt;strong&gt;d&lt;/strong&gt; 删除该内容&lt;/p&gt;
+
+&lt;p&gt;批量在行首增加内容：
+ &lt;code&gt;ctrl + v&lt;/code&gt; &amp;gt;&amp;gt; &lt;code&gt;0&lt;/code&gt; &amp;gt;&amp;gt; &lt;code&gt;I&lt;/code&gt; &amp;gt;&amp;gt; 写下想增加的内容 &amp;gt;&amp;gt;&lt;code&gt;Esc&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/rectangular-blocks.gif&quot; alt=&quot;rectangular-blocks&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;批量在行尾增加内容：&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;ctrl + v&lt;/code&gt; &amp;gt;&amp;gt; &lt;code&gt;$&lt;/code&gt; &amp;gt;&amp;gt; &lt;code&gt;A&lt;/code&gt; &amp;gt;&amp;gt; 写下想增加的内容 &amp;gt;&amp;gt;&lt;code&gt;Esc&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;块移动  &lt;code&gt;&amp;lt;&lt;/code&gt; , &lt;code&gt;&amp;gt;&lt;/code&gt; 左右缩进 。 &lt;code&gt;=&lt;/code&gt; 自动给缩进。 &lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;自动补全&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;vim 下在编辑模式下也有自动补全功能便不是tab键，而是 &lt;code&gt;ctrl + n&lt;/code&gt;， &lt;code&gt;ctrl + p&lt;/code&gt; 如果匹配到多个可以按多次来找到自己想要的单词&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;宏录制&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;qa&lt;/code&gt;  开始录制宏，并把宏的名字取名为a
+&lt;code&gt;q&lt;/code&gt;  停止录制宏
+&lt;code&gt;@a&lt;/code&gt;  用@来调用宏并执行
+&lt;code&gt;@@&lt;/code&gt;  快捷的执行最新操作的宏&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/macros.gif&quot; alt=&quot;macros&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;qa&lt;/code&gt;  &amp;gt;&amp;gt;&lt;code&gt;Y&lt;/code&gt; &amp;gt;&amp;gt; &lt;code&gt;p&lt;/code&gt; &amp;gt;&amp;gt; &lt;code&gt;ctrl + a&lt;/code&gt; &amp;gt;&amp;gt; &lt;code&gt;q&lt;/code&gt; &amp;gt;&amp;gt; &lt;code&gt;@a&lt;/code&gt; &amp;gt;&amp;gt; &lt;code&gt;100@@&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;最后来一张图，基本的语法就完全OK了&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/Vim-mindmap.png&quot; alt=&quot;vim-midmap&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;结语&lt;/strong&gt;：不论什么命令都可以在前面加数字来表示重复n次该命令&lt;/p&gt;
+</description>
+        <pubDate>Mon, 09 Nov 2015 00:00:00 +0800</pubDate>
+        <link>//linux/vim</link>
+        <guid isPermaLink="true">//linux/vim</guid>
+        
+        <category>linux</category>
+        
+        
+        <category>linux</category>
+        
+      </item>
     
       <item>
         <title>rsync + inotify 实现实时同步</title>
@@ -437,8 +653,10 @@ inotifywati排队监控目录有 --exclude &lt;pattern\&gt; --formfile &lt;file\
 @/tmp/src/2014
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;--formfile 的file只能使用绝对路径，@表示排除。
-用正则排除 &lt;code&gt;--exclude &amp;#39;(.*/*\.log|.*/*\.swp)$|^/tmp/src/mail/(2014|201.*/cache.*)&amp;#39;&lt;/code&gt;
-正则很明子了吧。 排除所有目录下以&lt;strong&gt;.log&lt;/strong&gt;, &lt;strong&gt;.swp&lt;/strong&gt; 结尾的文件，和所有在/tmp/src/mail下面2014这个目录和201*目录下的cache开头的文件或目录
+用正则排除 &lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;--exclude &amp;#39;(.*/*\.log|.*/*\.swp)$|^/tmp/src/mail/(2014|201.*/cache.*)&amp;#39;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;正则很明子了吧。 排除所有目录下以&lt;strong&gt;.log&lt;/strong&gt;, &lt;strong&gt;.swp&lt;/strong&gt; 结尾的文件，和所有在/tmp/src/mail下面2014这个目录和201*目录下的cache开头的文件或目录
 在rsync里排除，这里指定file排除时用相对路径。&lt;/p&gt;
 
 &lt;p&gt;写一个角本&lt;strong&gt;inotifywait.sh&lt;/strong&gt;放到backup目录下面,执行便可以实时同步，以下是几个版本
@@ -1197,7 +1415,7 @@ total 8.0K
         <link>//movie/test-plogin-mp3-mp4</link>
         <guid isPermaLink="true">//movie/test-plogin-mp3-mp4</guid>
         
-        <category>video</category>
+        <category>movie</category>
         
         
         <category>movie</category>
@@ -1831,66 +2049,6 @@ sbin 包含了一些系统启动，修复命令。&lt;/p&gt;&lt;/li&gt;
         
         
         <category>linux</category>
-        
-      </item>
-    
-      <item>
-        <title>教父</title>
-        <description>&lt;p&gt;&lt;img src=&quot;/images/thegodfathe_2.jpg&quot; alt=&quot;海报&quot;&gt;&lt;img src=&quot;/images/thegodfathe_1r.jpg&quot; alt=&quot;父子&quot;&gt;&lt;br&gt;
-《教父》是派拉蒙影业公司出品的一部黑帮题材的电影，改编自马里奥·普佐的同名小说，由弗朗西斯·福特·科波拉执导，马龙·白兰度、阿尔·帕西诺等主演。虽是黑邦电影但它对家庭，对生活，对原则的做出了更好诠释。共有三部，前两部在IMDB电影排行榜中分别排第二与第三. 并且分别获得46，47届奥斯卡。&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;老教父维托·唐·科莱昂&lt;/strong&gt;，家族的建立者，在意大利被don ciccio追杀被逼逃到美国，在美国认识了Genco（后来的军师）。老教父能做到这个地位。Genco起了巨大作用。与他的邻居clemenza（小偷） 后来成为老教父最得力的杀手。他有三个儿子桑尼，弗雷多，迈克。 老教父十分看重迈克，自从那次枪枪击案发生后便对弗雷多十分厌恶。一个女儿，此女人本十分讨厌，所以就不多说了。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;大儿子桑尼&lt;/strong&gt;。 桑尼在家族中有自己的军团，除了脾气有一点暴之外，还是一个十分能干的人，十分注重家庭观念，对亲人特别关心。也十分好色，在书中有介绍。一个人如果无法沉着冷静的拥有一个暴脾气的话，是很容易被人利用的. &lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;二儿子费雷多&lt;/strong&gt;， 他就是一个好孩子，善良，无心机。换句话说便是无能，自己连自己的女人都管不住，随随便便被打还不坑声,甘愿被人利用，懦夫一个。那次枪击事件发生后老教父便把他派出去再没让他回来。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;小儿子迈克&lt;/strong&gt; 老教父最器重的便是他了。后来也成了老教父那般的人，强硬，冷静的人。他曾去海军参过军，参加过二战。因为枪杀警察在西西里避难的时候认识了啊波罗尼亚一位美丽的女神，看着好喜欢啊。经历两次婚姻是不幸福的，对于一个意大利人，家庭观念十分强的人更是如此，迈克也许就注定了不会幸福，这也许与他的性格有关吧,有什么心事都藏在心里。第二次的凯说真的很差，毫无家庭观念，而且最重要的是她不是一个西西里人。喜欢迈克的眼神，强硬，冷气逼人。&lt;br&gt;
-&lt;img src=&quot;/images/thegodfathe_5.jpg&quot; alt=&quot;迈克1&quot;&gt;&lt;img src=&quot;/images/thegodfathe_7.jpg&quot; alt=&quot;迈克2&quot;&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;hr&gt;
-
-&lt;p&gt;speak softely love 是我最喜欢的一首歌，也许是因为自己在心情低落的时候看的这部电影，而其中的音乐每次听着都特别伤心，特别心痛。介绍给你们。&lt;/p&gt;
-
-&lt;iframe src=&quot;http://www.tudou.com/programs/view/html5embed.action?type=0&amp;code=7lqAMEScZS0&amp;lcode=&amp;resourceId=418557855_06_05_99&quot; allowtransparency=&quot;true&quot; allowfullscreen=&quot;true&quot; allowfullscreenInteractive=&quot;true&quot; scrolling=&quot;no&quot; border=&quot;0&quot; frameborder=&quot;0&quot; style=&quot;width:99%;height:400px;&quot;&gt;&lt;/iframe&gt;
-
-&lt;p&gt;一些经典语录&lt;br&gt;
-Behind every great fortune,there is a crime 财富背后都是罪恶&lt;/p&gt;
-
-&lt;p&gt;Don’t hate your enemy, or you will make wrong judgment.不要恨你的敌人，那样会让你做错误的决定&lt;/p&gt;
-
-&lt;p&gt;keep your friends close, but your enemies closer，与你的朋友保持亲近，但要与你的敌人更亲近&lt;/p&gt;
-
-&lt;p&gt;Don’t let anybody know what you are thinking. 不要让别人知道你在想什么&lt;/p&gt;
-
-&lt;p&gt;Never tell anybody outside the family what you are thinking again 不要让家庭以外的人知道你在想什么&lt;/p&gt;
-
-&lt;p&gt;Great men are not born great,they grow great 伟大的人不是天生的，而是后天形成的&lt;/p&gt;
-
-&lt;p&gt;You make the choice, and this is your price.你每做一个决定，就有代价&lt;/p&gt;
-
-&lt;p&gt;Everything I do with my power, including something criminal, I just want to protect my family and my friends .
-我用我的权力做的每一件事（包括犯罪），仅仅是想保护我的家庭和我的朋友&lt;/p&gt;
-
-&lt;p&gt;I don’t care what you did is right or wrong, I want you know only me have the right to make decision, cause I am the godfather until my death.  我并不关心你做的对还是错，我只想要你知道只有我才有权做出决定，因为直到我死之前都是教父&lt;/p&gt;
-
-&lt;p&gt;I will never do anything guilty. 我从来都没有感觉到愧疚&lt;/p&gt;
-
-&lt;p&gt;Do you spend time with your family? Good. Because a man that doesn&amp;#39;t spend time with his family can never be a real man.  &lt;/p&gt;
-
-&lt;p&gt;I spent my whole life trying not to be careless. Women and children can be careless. But not men.我试着不去精心，只有女人与小孩才可以精心。&lt;/p&gt;
-
-&lt;p&gt;I&amp;#39;m gonna make him an offer he can&amp;#39;t refuse. 我出的价格他是无法拒绝的&lt;/p&gt;
-
-&lt;p&gt;I never wanted this for you. I work my whole life — I don&amp;#39;t apologize — to take care of my family, and I refused to be a fool, dancing on the string held by all those big shots. I don&amp;#39;t apologize — that&amp;#39;s my life — but I thought that, that when it was your time, that you would be the one to hold the string. Senator &lt;/p&gt;
-</description>
-        <pubDate>Mon, 12 Oct 2015 00:00:00 +0800</pubDate>
-        <link>//movie/the-god-father</link>
-        <guid isPermaLink="true">//movie/the-god-father</guid>
-        
-        <category>godfather</category>
-        
-        
-        <category>movie</category>
         
       </item>
     

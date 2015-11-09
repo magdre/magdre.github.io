@@ -2,7 +2,7 @@
 layout: post
 title:  "教父"
 category: movie
-tags: [godfather]
+tags: [movie]
 excerpt: 改编自马里奥·普佐的同名黑帮小说，一共有三部，是我最喜欢的一部电影，同名的小说也非常不错。虽为黑帮电影，但对家庭，对原则做出了很好诠释。明白什么是责任，
 ---
 ![海报](/images/thegodfathe_2.jpg)![父子](/images/thegodfathe_1r.jpg)  

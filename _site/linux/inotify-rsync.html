@@ -513,8 +513,10 @@ inotifywati排队监控目录有 --exclude <pattern\> --formfile <file\> 前面�
 @/tmp/src/2014
 </code></pre></div>
 <p>--formfile 的file只能使用绝对路径，@表示排除。
-用正则排除 <code>--exclude &#39;(.*/*\.log|.*/*\.swp)$|^/tmp/src/mail/(2014|201.*/cache.*)&#39;</code>
-正则很明子了吧。 排除所有目录下以<strong>.log</strong>, <strong>.swp</strong> 结尾的文件，和所有在/tmp/src/mail下面2014这个目录和201*目录下的cache开头的文件或目录
+用正则排除 </p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">--exclude &#39;(.*/*\.log|.*/*\.swp)$|^/tmp/src/mail/(2014|201.*/cache.*)&#39;
+</code></pre></div>
+<p>正则很明子了吧。 排除所有目录下以<strong>.log</strong>, <strong>.swp</strong> 结尾的文件，和所有在/tmp/src/mail下面2014这个目录和201*目录下的cache开头的文件或目录
 在rsync里排除，这里指定file排除时用相对路径。</p>
 
 <p>写一个角本<strong>inotifywait.sh</strong>放到backup目录下面,执行便可以实时同步，以下是几个版本
