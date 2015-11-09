@@ -249,7 +249,7 @@
             
         
             
-                <a href="page3">3</a>
+                <a href="page3" id="pagenum">3</a>
             
         
 
@@ -257,8 +257,13 @@
             <a href="/page3">»</a>
         
     
-
+    <script type="text/javascript">
+    var pageUrl = document.getElementById("pagenum");
+    var newUrl = "/"+pageUrl.getAttribute("href");
+    pageUrl.setAttribute("href", newUrl);
+    </script>
 </div>
+
 
 
 

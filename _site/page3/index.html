@@ -137,7 +137,7 @@
             
         
             
-                <a href="page2">2</a>
+                <a href="page2" id="pagenum">2</a>
             
         
             
@@ -147,8 +147,13 @@
 
         
     
-
+    <script type="text/javascript">
+    var pageUrl = document.getElementById("pagenum");
+    var newUrl = "/"+pageUrl.getAttribute("href");
+    pageUrl.setAttribute("href", newUrl);
+    </script>
 </div>
+
 
 
 

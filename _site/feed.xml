@@ -5,8 +5,8 @@
     <description>sandow&#39;s personal weblog, on coding or such stuff</description>
     <link>/</link>
     <atom:link href="/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 08 Nov 2015 22:22:20 +0800</pubDate>
-    <lastBuildDate>Sun, 08 Nov 2015 22:22:20 +0800</lastBuildDate>
+    <pubDate>Mon, 09 Nov 2015 08:52:23 +0800</pubDate>
+    <lastBuildDate>Mon, 09 Nov 2015 08:52:23 +0800</lastBuildDate>
     <generator>Jekyll v3.0.0</generator>
     
       <item>
@@ -548,11 +548,13 @@ echo `date`       #输出结果是当时时间长格式
     
       <item>
         <title>试着在里观看音视频</title>
-        <description>&lt;p&gt;轻松一刻  &lt;/p&gt;
+        <description>&lt;h1 id=&quot;轻松一刻&quot;&gt;轻松一刻&lt;/h1&gt;
 
 &lt;hr&gt;
 
-&lt;audio src=&quot;/images/Colbie_Caillat_Try.wma&quot; controls preload&gt;&lt;/audio&gt; 
+&lt;p&gt;Try, very like it&lt;/p&gt;
+
+&lt;audio src=&quot;/images/Colbie_Caillat_Try.mp3&quot; controls preload&gt;&lt;/audio&gt; 
 
 &lt;hr&gt;
 
@@ -564,8 +566,6 @@ echo `date`       #输出结果是当时时间长格式
     &lt;/video&gt;
 
 &lt;hr&gt;
-
-&lt;iframe width=&quot;420&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/-8fv1CUqJBA&quot; frameborder=&quot;0&quot; allowfullscreen&gt;&lt;/iframe&gt;
 
 &lt;hr&gt;
 

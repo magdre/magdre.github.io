@@ -11,7 +11,9 @@ excerpt: 测试插入音视频方法
 
 ---
 
-<audio src="/images/Colbie_Caillat_Try.wma" controls preload></audio> 
+Try, very like it
+
+<audio src="/images/Colbie_Caillat_Try.mp3" controls preload></audio> 
 
 ---
 	
@@ -24,8 +26,6 @@ excerpt: 测试插入音视频方法
 
 ---
 
-
-<iframe width="420" height="315" src="https://www.youtube.com/embed/-8fv1CUqJBA" frameborder="0" allowfullscreen></iframe>
 
 ---
 

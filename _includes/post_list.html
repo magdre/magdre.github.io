@@ -26,7 +26,7 @@
             {% elsif page == 1 %}
                 <a href="/">{{ page }}</a>
             {% else %}
-                <a href="{{ site.paginate_path | replace: ':num', page }}">{{ page }}</a>
+                <a href="{{ site.paginate_path | replace: ':num', page }}" id="pagenum">{{ page }}</a>
             {% endif %}
         {% endfor %}
 
@@ -38,7 +38,12 @@
         <script type="text/javascript" src="/javascripts/listAndPagi.js"></script>
         {% assign jsPagiLoaded = true %}
     {% endif %}
-
+    <script type="text/javascript">
+    var pageUrl = document.getElementById("pagenum");
+    var newUrl = "/"+pageUrl.getAttribute("href");
+    pageUrl.setAttribute("href", newUrl);
+    </script>
 </div>
 {% endif %}
 {% assign displayPagi = false %}
+
