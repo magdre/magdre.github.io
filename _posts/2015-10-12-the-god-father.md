@@ -20,9 +20,9 @@ excerpt: 改编自马里奥·普佐的同名黑帮小说，一共有三部，是
 
 speak softely love 是我最喜欢的一首歌，也许是因为自己在心情低落的时候看的这部电影，而其中的音乐每次听着都特别伤心，特别心痛。介绍给你们。
 
-<iframe src="http://www.tudou.com/programs/view/html5embed.action?type=0&code=7lqAMEScZS0&lcode=&resourceId=418557855_06_05_99" allowtransparency="true" allowfullscreen="true" allowfullscreenInteractive="true" scrolling="no" border="0" frameborder="0" style="width:90%;"></iframe>
+<iframe src="http://www.tudou.com/programs/view/html5embed.action?type=0&code=7lqAMEScZS0&lcode=&resourceId=418557855_06_05_99" allowtransparency="true" allowfullscreen="true" allowfullscreenInteractive="true" scrolling="no" border="0" frameborder="0" style="width:95%;height:400px;"></iframe>
 
-<embed src="http://www.tudou.com/v/7lqAMEScZS0/&bid=05&rpid=418557855&resourceId=418557855_05_05_99/v.swf" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" wmode="opaque" width="90%" ></embed>
+<embed src="http://www.tudou.com/v/7lqAMEScZS0/&bid=05&rpid=418557855&resourceId=418557855_05_05_99/v.swf" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" wmode="opaque" width="480" height="400"></embed>
 
 一些经典语录  
 Behind every great fortune,there is a crime 财富背后都是罪恶
