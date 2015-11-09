@@ -4446,7 +4446,7 @@ ul {
   border-bottom: 3px solid #1C3340;
 }
 #l-main #about section#intro h2 {
-  font-size: 7rem;
+  font-size: 5rem;
   margin-left: 21.2rem;
   margin-top: -2rem;
   border-bottom: none;
@@ -4473,8 +4473,8 @@ ul {
 }
 #l-main #about section#findme li {
   display: inline;
-  font-size: 6rem;
-  margin-right: 3rem;
+  font-size: 5rem;
+  margin-right: 1rem;
 }
 #l-main #about section#action {
   font-size: 2rem;

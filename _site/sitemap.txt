@@ -1,3 +1,4 @@
+//linux/inotify-rsync
 //python/learning-python-checkio
 //linux/optimize-system
 //ubuntu/install-centos-onubuntu

@@ -17,13 +17,13 @@ mode: product
 url: /
 devurl: http://localhost:4000/
 name: SanDow
-title: sandow | Another yet unique freak is showing a freakshow
+title: sandow 
 description: "sandow's personal weblog, on coding or such stuff"
 
 my:
     displayName: sandow
     realName: 
-    realName_cn: "sandow"
+    realName_cn: 
     jobTitle: "Data Mining"
     contact:
         qq: 921070747
