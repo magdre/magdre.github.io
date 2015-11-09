@@ -22,8 +22,6 @@ speak softely love 是我最喜欢的一首歌，也许是因为自己在心情�
 
 <iframe src="http://www.tudou.com/programs/view/html5embed.action?type=0&code=7lqAMEScZS0&lcode=&resourceId=418557855_06_05_99" allowtransparency="true" allowfullscreen="true" allowfullscreenInteractive="true" scrolling="no" border="0" frameborder="0" style="width:95%;height:400px;"></iframe>
 
-<embed src="http://www.tudou.com/v/7lqAMEScZS0/&bid=05&rpid=418557855&resourceId=418557855_05_05_99/v.swf" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" wmode="opaque" width="480" height="400"></embed>
-
 一些经典语录  
 Behind every great fortune,there is a crime 财富背后都是罪恶
 
