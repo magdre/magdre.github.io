@@ -72,17 +72,17 @@ rsync 参数说明：
 
 ```ruby
 #排除单个文件：
-$ rsync -auvrtzopgP --progress --exclude=a /backup/ rsync_backup@172.16.1.41::backup --password-file=/etc/rsync.password
+rsync -auvrtzopgP --progress --exclude=a /backup/ rsync_backup@172.16.1.41::backup --password-file=/etc/rsync.password
 
 #排除多个文件：
-$ rsync -avz --exclude={a,b} /backup/ rsync_backup@172.16.1.41::backup --password-file=/etc/rsync.password
+rsync -avz --exclude={a,b} /backup/ rsync_backup@172.16.1.41::backup --password-file=/etc/rsync.password
 
-$ rsync -avz --exclude-from=paichu.log /backup/ rsync_backup@172.16.1.41::backup --password-file=/etc/rsync.password 
+rsync -avz --exclude-from=paichu.log /backup/ rsync_backup@172.16.1.41::backup --password-file=/etc/rsync.password 
 ```
 ### 本地备份
 本地 模式，相当于copy 或者rm
 比如
-```ruby
+```
 $ rsync -auvrtzopgP /tmp/ /backup/
 ```
 此命令就会把tmp目录下的文件全部复制到backup目录下面， 如果加上`--delete`，此参数的意思是把目标目录与源目录同步，当目标目录里有多于源目录的文件就会删除，也就是源目录是啥样，目标目录就是啥样。如果源目录为空，目标目录也会被清空。我们一般都会在目录后面加`/`意思是目录下面，如果不加就直接把目录复制过去了，在远程的时候也是一样的。
@@ -92,7 +92,7 @@ $ rsync -auvrtzopgP /tmp/ /backup/
 ### 通过shell远程传输(remote)
 远程拷贝；相当于ssh带的scp命令，但又优于scp命令的功能。scp每次都是全量拷贝。rsync可以增量拷贝。 当源路径，或目的路径后面包含一个卡号
 
-```ruby
+```
 $ rsync -avz -e 'ssh -p 22' root@172.16.1.41:/tmp/ /tmp/
 The authenticity of host '172.16.1.41 (172.16.1.41)' can't be established.
 RSA key fingerprint is 97:b9:1f:95:8b:7d:ae:59:27:4a:d4:b3:98:ae:c1:77.
@@ -113,7 +113,7 @@ total size is 220  speedup is 1.00
 
 这里有个问题，如果我们用其它用户推或者拉，的时候需要共享文件的所属主与所属组都对该用户对应
 
-```ruby
+```
 [root@NFS tmp]$ rsync -avz /data/ sandow@172.16.1.41:/data/
 ```
 
@@ -127,7 +127,7 @@ daemon模式需要配置文件，使用`rsync --daemon`启动进程，使用独�
 #### 服务端的配置
 首先我们来配置rsync的主配置文件 rsyncd.conf，默认情况下该文件不存在需要创建，我们也可以使用`man rsyncd.conf`来查看主配置文件里的参数与说明。
 
-```ruby
+```c
 [root@backup ~]$ cat /etc/rsyncd.conf
 #Rsync server
 #created by sandow at 2015-11-05
@@ -160,7 +160,7 @@ secrets file=/etc/rsync.password
 
 配置好rsyncd.conf后便接下来就可以创建对应用户、目录与密码文件
 
-```ruby
+```
 [root@backup ~]$ useradd rsync -s /sbin/nologin -M
 [root@backup ~]$ id rsync
 uid=504(rsync) gid=504(rsync) groups=504(rsync)
@@ -172,7 +172,7 @@ drwxr-xr-t. 3 rsync rsync 4096 Nov 12 06:53 /backup/
 
 创建密码文件，并且修改属性为600
 
-```ruby
+```
 [root@backup ~]$ echo "rsync_backup:oldboy" >/etc/rsync.password
 [root@backup ~]$ cat /etc/rsync.password
 rsync_backup:oldboy
@@ -183,7 +183,7 @@ rsync_backup:oldboy
 
 修改/etc/xinetd.d/rsync 文件，把disable 改为no,这应该是最新版本的linux才会有此文件。所以没有的可以不配置
 
-```ruby
+```c
 # default: off
 # description: The rsync server is a good addition to an ftp server, as it \
 #	allows crc checksumming etc.
@@ -202,7 +202,7 @@ service rsync
 
 配置好后便可以启动rsync daemon守护进程了
 
-```ruby
+```
 [sandow@backup tmp]$ rsync --daemon
 
 [sandow@backup tmp]$ ps -ef|grep rsync |grep -v grep
@@ -216,13 +216,13 @@ tcp        0      0 :::873                      :::*                        LIST
 
 然后让rsync开机自动启动：
 
-```ruby
+```
 echo "/usr/bin/rsync --daemon" >>/etc/rc.local
 ```
 
 这里需要注意的是要让端口873通过防火墙
 
-```ruby
+```
 $ iptables -A INPUT -p tcp -m state --state NEW  -m tcp --dport 873 -j ACCEPT
 $ iptables -L  查看一下防火墙是不是打开了 873端口
 ```
@@ -230,7 +230,7 @@ $ iptables -L  查看一下防火墙是不是打开了 873端口
 #### 客户端的配置
 客户端的配置很简单，仅需要增加一个密码文件并把权限改为600
 
-```ruby
+```
 [root@NFS tmp]$ echo "oldboy" >/etc/rsync.password
 [root@NFS tmp]$ chmod 600 /etc/rsync.password 
 [root@NFS tmp]$ ll /etc/rsync.password 
@@ -242,25 +242,25 @@ oldboy
 #### 备份数据以及自动备份
 向服务器推送数据：
 
-```ruby
+```
 rsync -auvrtzopgP --progress  /backup/ rsync_backup@172.16.1.41::backup --password-file=/etc/rsync.password
 ```
 
 或者
 
-```ruby
+```
 rsync -auvrtzopgP --progress  /backup/ rsync://rsync_backup@172.16.1.41/backup --password-file=/etc/rsync.password
 ```
 
 从服务器拉回数据
 
-```ruby
+```
 rsync -avz   rsync_backup@172.16.1.41::backup /backup/ --password-file=/etc/rsync.password
 ```
 
 或者
 
-```ruby
+```
 rsync -avz   rsync://rsync_backup@172.16.1.41/backup  /backup/ --password-file=/etc/rsync.password
 ```
 
@@ -271,7 +271,7 @@ rsync -avz   rsync://rsync_backup@172.16.1.41/backup  /backup/ --password-file=/
 
 重启rsync就必须杀掉进程
 
-```ruby
+```
 [root@backup backup]$ kill `cat /var/run/rsyncd.pid`
 [root@backup backup]$ lsof -i :873
 [root@backup backup]$ pkill rsync
@@ -308,7 +308,7 @@ rsync原理理解
 ## crontab + rsync 定时推送
 定时任务一般都新建一个目录专门用来存放定时任务的sh.我一般呢会存放在**/server/scripts/**目录下面。 新建一个sh 命名为rsync.dailyBackup.sh. 增加好下内容
 
-```ruby
+```
 $ cat rsync.dailyBackup.sh
 #! /bin/sh
 # backup /backup  to 172.16.1.41:/backup
@@ -322,7 +322,7 @@ rsync -az ${path}/ rsync_backup@172.16.1.41::backup/ --password-file=/etc/rsync.
 ```
 首先测试是否成功执行任务，并推送到rsync服务器。然后便写入crontab 
 
-```ruby
+```
 $ crontab -l
 #######time sync by lzy at 2015-11-02
 */5 * * * * /usr/sbin/ntpdate time.nist.gov >/dev/null 2>&1
@@ -342,7 +342,7 @@ inotify + rsync 实时复制  osersync
 
 查看系统是否支持inotify，如果没有下列文件便表示不支持
 
-```ruby
+```
 $ ll /proc/sys/fs/inotify/
 total 0
 -rw-r--r-- 1 root root 0 Nov  9 17:39 max_queued_events
@@ -358,7 +358,7 @@ total 0
 安装inotify-tools
 方法一
 
-```ruby
+```
 
 $ rpm -ivh /apps/crm/soft_src/inotify-tools-3.14-1.el6.x86_64.rpm 
 warning: /apps/crm/soft_src/inotify-tools-3.14-1.el6.x86_64.rpm: Header V3 DSA/SHA1 Signature, key ID 4026433f: NOKEY
@@ -370,7 +370,7 @@ inotify-tools-3.14-1.el5.x86_64
 
 方法二
 
-```ruby
+```
 wget http://github.com/downloads/rvoicilas/inotify-tools/inotify-tools-3.14.tar.gz
 tar zxvf inotify-tools-3.14.tar.gz
 cd inotify-tools-3.14
@@ -383,7 +383,7 @@ make install
 如果文件或者目录变更，那么就会调用inotify命令。是一个非常高效的工具。
 其语法格式是
 
-```ruby
+```
 inotifywait [-hcmrq] [-e <event> ] [-t <seconds> ] [--format <fmt> ] [--timefmt <fmt> ] <file> [ ... ]
 ```
 
@@ -397,14 +397,14 @@ inotifywait [-hcmrq] [-e <event> ] [-t <seconds> ] [--format <fmt> ] [--timefmt 
   - delete ,create,close_write,modify 
 - --timefmt <fmt> 设置一个时间样式
 
-```ruby
+```
 inotifywait -mrq --timefmt '%d/%m/%y %H:%M' --format '%T %w %f' -e create /backup  
 inotifywait -mrq --timefmt '%d/%m/%y %H:%M' --format '%T %w %f' -e create,delete,close_write /backup
 ```
 
 执行第二个命令后的结果格式结果是
 
-```ruby
+```
 09/11/15 17:47 /backup/ a
 09/11/15 17:47 /backup/ a
 09/11/15 17:47 /backup/ a.txt
@@ -425,7 +425,7 @@ inotifywait -mrq --timefmt '%d/%m/%y %H:%M' --format '%T %w %f' -e create,delete
 刚才注意到 创建一个文件产生的临时文件也都会被记录下来。而且还有重复。为了同步时减少带宽与CPU消耗，就需要使用排除，来排除指定的文件。排除一般有两种方法：1，使用rsync排除; 2,使用inotify排除，同时加入rsync排除,我们一般使用第二种
 inotifywati排队监控目录有 --exclude <pattern\> --formfile <file\> 前面可以用正则，后者只能是具体的目录或文件
 
-```ruby
+```
 vi inotify_exclude.lst
 /tmp/src/pdf
 @/tmp/src/2014
@@ -434,7 +434,7 @@ vi inotify_exclude.lst
 --formfile 的file只能使用绝对路径，@表示排除。
 用正则排除 
 
-```ruby
+```
 --exclude '(.*/*\.log|.*/*\.swp)$|^/tmp/src/mail/(2014|201.*/cache.*)'
 ```
 
@@ -445,41 +445,38 @@ vi inotify_exclude.lst
 写一个角本**inotifywait.sh**放到backup目录下面,执行便可以实时同步，以下是几个版本
 粗糙版，每次都会让rsync比对所有文件然后再同步
 
-```ruby
-#! /bin/bash
-/usr/bin/inotifywait -mrq  --format '%w%f' -e create,close_write,delete /backup | \
-while read file
+```
+#!/bin/bash
+/usr/bin/inotifywait -mrq  --format '%w%f' -e create,close_write,delete /backup \
+|while read file
 do
-  	cd /backup && \
-  	rsync -az ./ --delete rsync_backup@172.16.1.41::backup --password-file=/etc/rsync.password
+  cd /backup &&
+  rsync -az ./ --delete rsync_backup@172.16.1.41::backup \
+  --password-file=/etc/rsync.password
 done
 ```
 
 精准版
 
-```ruby
-#! /bin/sh
-FullPath="/usr/bin/inotifywait"
-
-${FullPath} -mrq --format '%w%f' -e create,close_write,delete /backup | \
-	while read Line
-	do
-  	[ ! -e  "$line" ]  &&\
-  rsync -az --delete ./ rsync_backup@172.16.1.41::backup --password-file=/etc/rsync.password && \
-	continue
-  rsync -az --delete ${Line} rsync_backup@172.16.1.41::backup --password-file=/etc/rsync.password
-	done
 ```
+fullPath="/usr/bin/inotifywait"
 
-![python](/images/python.png)
+$fullPath -mrq --format '%w%f' -e create,close_write,delete /backup |\
+while read line
+do
+  [ ! -e  "$line" ]  &&\
+  rsync -az --delete ./ rsync_backup@172.16.1.41::backup --password-file=/etc/rsync.password && continue
+  rsync -az --delete $line rsync_backup@172.16.1.41::backup --password-file=/etc/rsync.password
+done
+```
 
 上面的是不是很简单，那么再来一个更全面的客户端配置文件
 
-```ruby
+```c
 #rsync auto sync script with inotify
 #2015-11-09 sandow
 #variables
-Current_date=$(date +%Y%m%d_%H%M%S)
+current_date=$(date +%Y%m%d_%H%M%S)
 source_path=/backup/
 log_file=/var/log/rsync_client.log
 #rsync
@@ -487,8 +484,8 @@ rsync_server=172.16.1.41
 rsync_user=rsync_backup
 rsync_pwd=/etc/rsync.password
 rsync_module=backup
-INOTIFY_EXCLUDE="(.*/*\.log|.*/*\.swp)$|^/tmp/src/mail/(2014|20.*/.*che.*)"
-RSYNC_EXCLUDE=/etc/rsyncd.d/rsync_exclude.lst
+INOTIFY_EXCLUDE='(.*/*\.log|.*/*\.swp)$|^/tmp/src/mail/(2014|20.*/.*che.*)'
+RSYNC_EXCLUDE='/etc/rsyncd.d/rsync_exclude.lst'
 #rsync client pwd check
 if [ ! -e ${rsync_pwd} ];then
     echo -e "rsync client passwod file ${rsync_pwd} does not exist!"
@@ -497,8 +494,8 @@ fi
 #inotify_function
 inotify_fun(){
     /usr/bin/inotifywait -mrq --timefmt '%Y/%m/%d-%H:%M:%S' --format '%T %w %f' \
-          --exclude ${INOTIFY_EXCLUDE}  -e modify,delete,create,move,attrib ${source_path} | \
-      while read file
+          --exclude ${INOTIFY_EXCLUDE}  -e modify,delete,create,move,attrib ${source_path} \
+          | while read file
       do
           /usr/bin/rsync -auvrtzopgP --exclude-from=${RSYNC_EXCLUDE} --progress --bwlimit=200 --password-file=${rsync_pwd} ${source_path} ${rsync_user}@${rsync_server}::${rsync_module} 
       done

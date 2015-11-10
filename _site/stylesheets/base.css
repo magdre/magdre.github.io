@@ -201,7 +201,6 @@ hr {
 pre {
   overflow: auto;
 }
-
 /**
  * Address odd `em`-unit font size rendering in all browsers.
  */
@@ -211,6 +210,7 @@ pre,
 samp {
   font-family: monospace, monospace;
   font-size: 1em;
+  color: rgb(255,0,0);
 }
 
 /* Forms

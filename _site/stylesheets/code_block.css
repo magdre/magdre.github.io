@@ -8,8 +8,8 @@ td.linenos {
 div.highlight {
     width: 97%;
     margin-left: 1px;
-    background: #49483e url('../images/monokaibg.jpg') top left;
-    color: white;
+    background: #F5F5F5;
+    color: #060606;
     padding: 5px 5px 5px 15px;
     border-radius: 5px;
 }
