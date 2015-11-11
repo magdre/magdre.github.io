@@ -92,11 +92,11 @@
                 <h2 id="diff逐行比较两个文件">diff逐行比较两个文件</h2>
 
 <p><strong>描述</strong>：, 以逐行的方式比较给定的两个文本文件的不同处</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">$ diff a.txt b.txt 
-1c1
-&lt; 123456
----
-&gt; 123457
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="err">$</span> <span class="n">diff</span> <span class="n">a</span><span class="o">.</span><span class="n">txt</span> <span class="n">b</span><span class="o">.</span><span class="n">txt</span> 
+<span class="mi">1</span><span class="n">c1</span>
+<span class="o">&lt;</span> <span class="mi">123456</span>
+<span class="o">---</span>
+<span class="o">&gt;</span> <span class="mi">123457</span>
 </code></pre></div>
 <p><strong>参数</strong>： </p>
 
@@ -109,14 +109,14 @@
 </ul>
 
 <p><strong>语法</strong></p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">diff [OPTION]... FILES
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">diff</span> <span class="p">[</span><span class="n">OPTION</span><span class="p">]</span><span class="o">...</span> <span class="n">FILES</span>
 </code></pre></div>
 <h2 id="vimdiff用vim比较多个文件">vimdiff用VIM比较多个文件</h2>
 
 <p><strong>描述</strong>：用vim编辑器同时打开两到四个不同版本的文件，并且在不同之处高亮显示  </p>
 
 <p><strong>语法</strong><br>
-<code>
+<code>python
 vimdiff [options] file1 file2 [file3 [file4]]
 </code></p>
 
@@ -232,7 +232,7 @@ vimdiff [options] file1 file2 [file3 [file4]]
 </ul>
 
 <p><strong>语法</strong></p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">head [OPTION]... [FILE]...
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">head</span> <span class="p">[</span><span class="n">OPTION</span><span class="p">]</span><span class="o">...</span> <span class="p">[</span><span class="n">FILE</span><span class="p">]</span><span class="o">...</span>
 </code></pre></div>
 <h2 id="tail查看文件后10行内容">tail查看文件后10行内容</h2>
 
@@ -240,7 +240,7 @@ vimdiff [options] file1 file2 [file3 [file4]]
 
 <p><strong>参数</strong>： 同head<br>
 <strong>语法</strong></p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">tail [OPTION]... [FILE]... 
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">tail</span> <span class="p">[</span><span class="n">OPTION</span><span class="p">]</span><span class="o">...</span> <span class="p">[</span><span class="n">FILE</span><span class="p">]</span><span class="o">...</span> 
 </code></pre></div>
 <h2 id="cat查看文件内容">cat查看文件内容</h2>
 

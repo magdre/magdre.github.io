@@ -10,7 +10,7 @@ excerpt: "对rsync做详细介绍，并结合inotify-tools实现实时同步，�
 # 主机规划
 
 |服务器|外网IP||内网IP|主机名称|
-|:----:|:----:|:-----:|:----|:---:|
+|:----|:----|:-----|:----|:---|
 |A1-nginx 负载服务器|10.0.0.5/24||127.16.1.5/24|lb01|
 |A2-nginx 负载服务器|10.0.0.6/24||127.16.1.6/24|lb02|
 |B1-apache软件web服务器|10.0.0.7/24||127.16.1.7/24|web02|
@@ -20,7 +20,8 @@ excerpt: "对rsync做详细介绍，并结合inotify-tools实现实时同步，�
 |C2-rsync 数据库服务器|`10.0.0.41/24`||127.16.1.41/24|Backup|
 |X-管理服务器|`10.0.0.61/24`||127.16.1.61/24|m01|
 
-提示： 灰色仅为虚拟机中测试所用，在机房根据实际需求配置
+> 红色仅为虚拟机中测试所用 <br/>
+> 机房根据实际需求配置
 
 ## 克隆虚拟机并配置网卡
 1. 编辑eth0的配置文件：`vi /etc/sysconfig/network-scripts/ifcfg-eth0`，删除HWADDR地址那一行及UUID的行如下：
@@ -37,7 +38,7 @@ rsync, (remote synchronize) 是一个实现同步功能的软件，它在同步�
 
 首先检查rsync看是否安装，及安装的版本
 
-```ruby
+```python
 $ rpm -qa rsync
 rsync-3.0.6-12.el6.x86_64
 ```
@@ -70,7 +71,7 @@ rsync 参数说明：
 - --partial               keep partially transferred files 断点续传
 
 
-```ruby
+```python
 #排除单个文件：
 $ rsync -auvrtzopgP --progress --exclude=a /backup/ rsync_backup@172.16.1.41::backup --password-file=/etc/rsync.password
 
@@ -81,18 +82,14 @@ $ rsync -avz --exclude-from=paichu.log /backup/ rsync_backup@172.16.1.41::backup
 ```
 ### 本地备份
 本地 模式，相当于copy 或者rm
-比如
-```ruby
-$ rsync -auvrtzopgP /tmp/ /backup/
-```
-此命令就会把tmp目录下的文件全部复制到backup目录下面， 如果加上`--delete`，此参数的意思是把目标目录与源目录同步，当目标目录里有多于源目录的文件就会删除，也就是源目录是啥样，目标目录就是啥样。如果源目录为空，目标目录也会被清空。我们一般都会在目录后面加`/`意思是目录下面，如果不加就直接把目录复制过去了，在远程的时候也是一样的。
-
-保持属性： -avz  相当于 cp -rp
-
+比如`$ rsync -auvrtzopgP /tmp/ /backup/` <br/>
+此命令就会把tmp目录下的文件全部复制到backup目录下面， 如果加上`--delete`，此参数的意思是把目标目录与源目录同步，当目标目录里有多于源目录的文件就会删除，也就是源目录是啥样，目标目录就是啥样。如果源目录为空，目标目录也会被清空。我们一般都会在目录后面加`/`意思是目录下面，如果不加就直接把目录复制过去了，在远程的时候也是一样的。<br/>
+保持属性： -avz  相当于 cp -rp<br/>
+<br/>
 ### 通过shell远程传输(remote)
 远程拷贝；相当于ssh带的scp命令，但又优于scp命令的功能。scp每次都是全量拷贝。rsync可以增量拷贝。 当源路径，或目的路径后面包含一个卡号
 
-```ruby
+```python
 $ rsync -avz -e 'ssh -p 22' root@172.16.1.41:/tmp/ /tmp/
 The authenticity of host '172.16.1.41 (172.16.1.41)' can't be established.
 RSA key fingerprint is 97:b9:1f:95:8b:7d:ae:59:27:4a:d4:b3:98:ae:c1:77.
@@ -108,7 +105,7 @@ hosts
 sent 37 bytes  received 184 bytes  9.02 bytes/sec
 total size is 220  speedup is 1.00
 ```
-
+<br/>
 此命令便是把ip为172.16.1.41的主机里tmp目录下的文件传到本地的/tmp/下。这里 `ssh -p 22`命令用于指定端口，默认就是22，-e 这个参数可以不写直接 `rsync -avz root@172.16.1.41:/tmp/ /tmp/`便可以把41的文件复制过来。且这里是交互式，手动备份与推送，十分不方便。
 
 这里有个问题，如果我们用其它用户推或者拉，的时候需要共享文件的所属主与所属组都对该用户对应
@@ -127,7 +124,7 @@ daemon模式需要配置文件，使用`rsync --daemon`启动进程，使用独�
 #### 服务端的配置
 首先我们来配置rsync的主配置文件 rsyncd.conf，默认情况下该文件不存在需要创建，我们也可以使用`man rsyncd.conf`来查看主配置文件里的参数与说明。
 
-```ruby
+```python
 [root@backup ~]$ cat /etc/rsyncd.conf
 #Rsync server
 #created by sandow at 2015-11-05
@@ -242,27 +239,19 @@ oldboy
 #### 备份数据以及自动备份
 向服务器推送数据：
 
-```ruby
-rsync -auvrtzopgP --progress  /backup/ rsync_backup@172.16.1.41::backup --password-file=/etc/rsync.password
-```
+`rsync -auvrtzopgP --progress  /backup/ rsync_backup@172.16.1.41::backup --password-file=/etc/rsync.password`
 
 或者
 
-```ruby
-rsync -auvrtzopgP --progress  /backup/ rsync://rsync_backup@172.16.1.41/backup --password-file=/etc/rsync.password
-```
+`rsync -auvrtzopgP --progress  /backup/ rsync://rsync_backup@172.16.1.41/backup --password-file=/etc/rsync.password`
 
 从服务器拉回数据
 
-```ruby
-rsync -avz   rsync_backup@172.16.1.41::backup /backup/ --password-file=/etc/rsync.password
-```
+`rsync -avz   rsync_backup@172.16.1.41::backup /backup/ --password-file=/etc/rsync.password`
 
 或者
 
-```ruby
-rsync -avz   rsync://rsync_backup@172.16.1.41/backup  /backup/ --password-file=/etc/rsync.password
-```
+`rsync -avz   rsync://rsync_backup@172.16.1.41/backup  /backup/ --password-file=/etc/rsync.password`
 
 ### 小结
 配置步骤回顾
@@ -471,7 +460,6 @@ ${FullPath} -mrq --format '%w%f' -e create,close_write,delete /backup | \
 	done
 ```
 
-![python](/images/python.png)
 
 上面的是不是很简单，那么再来一个更全面的客户端配置文件
 
@@ -507,11 +495,11 @@ inotify_fun(){
 inotify_fun >> ${log_file} 2>&1 &
 ```
 
-来点链接，深入研究的话可以上去查看
-[How Rsync Works A Practical Overview](https://rsync.samba.org/how-rsync-works.html)
-[用 inotify 监控 Linux 文件系统事件](https://www.ibm.com/developerworks/cn/linux/l-inotify/)
-[inotify: 高效、实时的Linux文件系统事件监控框架](http://www.infoq.com/cn/articles/inotify-linux-file-system-event-monitoring)
-[rsync 的核心算法](http://coolshell.cn/articles/7425.html)
+来点链接，深入研究的话可以上去查看 <br/>
+> [How Rsync Works A Practical Overview](https://rsync.samba.org/how-rsync-works.html) <br/>
+> [用 inotify 监控 Linux 文件系统事件](https://www.ibm.com/developerworks/cn/linux/l-inotify/) <br/>
+> [inotify: 高效、实时的Linux文件系统事件监控框架](http://www.infoq.com/cn/articles/inotify-linux-file-system-event-monitoring) <br/>
+> [rsync 的核心算法](http://coolshell.cn/articles/7425.html)
 
 ## sersync
 
@@ -553,7 +541,7 @@ Q：我需要在防火墙上开放哪些端口以适应rsync？
 	
  - 视情况而定。rsync可以直接通过873端口的tcp连接传文件，也可以通过22端口的ssh来进行文件传递，但你也可以通过下列命令改变它的端口：
 
-```
+```python
 $ iptables -A INPUT -p tcp -m state --state NEW  -m tcp --dport 873 -j ACCEPT  
 ```
 
@@ -577,7 +565,7 @@ Q：绑定端口873失败是怎么回事？
 Q：为什么我认证失败？	
  - 从你的命令行看来：你用的是
 
-```
+```python
 bash$ rsync -a 144.16.251.213::test test
 Password:
 @ERROR: auth failed on module test 
@@ -587,7 +575,7 @@ Password:
 
 Q: 出现以下这个讯息, 是怎么一回事?	
 
-```
+```python
 @ERROR: auth failed on module xxxxx
 rsync: connection unexpectedly closed (90 bytes read so far)
 rsync error: error in rsync protocol data stream (code 12) at io.c(150)
@@ -597,7 +585,7 @@ rsync error: error in rsync protocol data stream (code 12) at io.c(150)
 
 Q: 出现以下这个讯息, 是怎么一回事?	
 
-```
+```python
 password file must not be other-accessible 
 continuing without password file 
 Password:
@@ -607,7 +595,7 @@ Password:
 
 Q: 出现以下这个讯息, 是怎么一回事?
 
-```
+```python
 @ERROR: chroot failed
 rsync: connection unexpectedly closed (75 bytes read so far)
 rsync error: error in rsync protocol data stream (code 12) at io.c(150)
@@ -623,4 +611,10 @@ rsync error: error in rsync protocol data stream (code 12) at io.c(150)
 3。 第三方软件的同步功能， mysql, oracle, mongodb
 4.。 程序双写
 5。业务逻辑解决。（读写分离，备读不到，读主）
+
+
+
+
+
+
 

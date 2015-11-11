@@ -11,7 +11,7 @@ excerpt: "主要介绍一些linux系统是基本的文件管理命令 diff vimdi
 ## diff逐行比较两个文件
 **描述**：, 以逐行的方式比较给定的两个文本文件的不同处
 
-```
+```python
 $ diff a.txt b.txt 
 1c1
 < 123456
@@ -29,7 +29,7 @@ $ diff a.txt b.txt
 
 **语法**
 
-```
+```python
 diff [OPTION]... FILES
 ```
 
@@ -39,7 +39,7 @@ diff [OPTION]... FILES
 **描述**：用vim编辑器同时打开两到四个不同版本的文件，并且在不同之处高亮显示  
 	
 **语法**  
-```
+```python
 vimdiff [options] file1 file2 [file3 [file4]]
 ```
 
@@ -92,7 +92,7 @@ vimdiff [options] file1 file2 [file3 [file4]]
 
 **语法**
 
-```
+```python
 head [OPTION]... [FILE]...
 ```
 
@@ -104,7 +104,7 @@ head [OPTION]... [FILE]...
 **参数**： 同head  
 **语法**
 
-```
+```python
 tail [OPTION]... [FILE]... 
 ```
 

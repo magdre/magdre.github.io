@@ -91,72 +91,75 @@
 
 <table><thead>
 <tr>
-<th style="text-align: center">服务器</th>
-<th style="text-align: center">外网IP</th>
-<th style="text-align: center"></th>
+<th style="text-align: left">服务器</th>
+<th style="text-align: left">外网IP</th>
+<th style="text-align: left"></th>
 <th style="text-align: left">内网IP</th>
-<th style="text-align: center">主机名称</th>
+<th style="text-align: left">主机名称</th>
 </tr>
 </thead><tbody>
 <tr>
-<td style="text-align: center">A1-nginx 负载服务器</td>
-<td style="text-align: center">10.0.0.5/24</td>
-<td style="text-align: center"></td>
+<td style="text-align: left">A1-nginx 负载服务器</td>
+<td style="text-align: left">10.0.0.5/24</td>
+<td style="text-align: left"></td>
 <td style="text-align: left">127.16.1.5/24</td>
-<td style="text-align: center">lb01</td>
+<td style="text-align: left">lb01</td>
 </tr>
 <tr>
-<td style="text-align: center">A2-nginx 负载服务器</td>
-<td style="text-align: center">10.0.0.6/24</td>
-<td style="text-align: center"></td>
+<td style="text-align: left">A2-nginx 负载服务器</td>
+<td style="text-align: left">10.0.0.6/24</td>
+<td style="text-align: left"></td>
 <td style="text-align: left">127.16.1.6/24</td>
-<td style="text-align: center">lb02</td>
+<td style="text-align: left">lb02</td>
 </tr>
 <tr>
-<td style="text-align: center">B1-apache软件web服务器</td>
-<td style="text-align: center">10.0.0.7/24</td>
-<td style="text-align: center"></td>
+<td style="text-align: left">B1-apache软件web服务器</td>
+<td style="text-align: left">10.0.0.7/24</td>
+<td style="text-align: left"></td>
 <td style="text-align: left">127.16.1.7/24</td>
-<td style="text-align: center">web02</td>
+<td style="text-align: left">web02</td>
 </tr>
 <tr>
-<td style="text-align: center">B2-apache软件web服务器</td>
-<td style="text-align: center">10.0.0.8/24</td>
-<td style="text-align: center"></td>
+<td style="text-align: left">B2-apache软件web服务器</td>
+<td style="text-align: left">10.0.0.8/24</td>
+<td style="text-align: left"></td>
 <td style="text-align: left">127.16.1.8/24</td>
-<td style="text-align: center">web01</td>
+<td style="text-align: left">web01</td>
 </tr>
 <tr>
-<td style="text-align: center">C3-My Sql 数据库服务器</td>
-<td style="text-align: center"><code>10.0.0.51/24</code></td>
-<td style="text-align: center"></td>
+<td style="text-align: left">C3-My Sql 数据库服务器</td>
+<td style="text-align: left"><code>10.0.0.51/24</code></td>
+<td style="text-align: left"></td>
 <td style="text-align: left">127.16.1.51/24</td>
-<td style="text-align: center">Db01</td>
+<td style="text-align: left">Db01</td>
 </tr>
 <tr>
-<td style="text-align: center">C1-NFS 存储服务器</td>
-<td style="text-align: center"><code>10.0.0.31/24</code></td>
-<td style="text-align: center"></td>
+<td style="text-align: left">C1-NFS 存储服务器</td>
+<td style="text-align: left"><code>10.0.0.31/24</code></td>
+<td style="text-align: left"></td>
 <td style="text-align: left">127.16.1.31/24</td>
-<td style="text-align: center">NFS01</td>
+<td style="text-align: left">NFS01</td>
 </tr>
 <tr>
-<td style="text-align: center">C2-rsync 数据库服务器</td>
-<td style="text-align: center"><code>10.0.0.41/24</code></td>
-<td style="text-align: center"></td>
+<td style="text-align: left">C2-rsync 数据库服务器</td>
+<td style="text-align: left"><code>10.0.0.41/24</code></td>
+<td style="text-align: left"></td>
 <td style="text-align: left">127.16.1.41/24</td>
-<td style="text-align: center">Backup</td>
+<td style="text-align: left">Backup</td>
 </tr>
 <tr>
-<td style="text-align: center">X-管理服务器</td>
-<td style="text-align: center"><code>10.0.0.61/24</code></td>
-<td style="text-align: center"></td>
+<td style="text-align: left">X-管理服务器</td>
+<td style="text-align: left"><code>10.0.0.61/24</code></td>
+<td style="text-align: left"></td>
 <td style="text-align: left">127.16.1.61/24</td>
-<td style="text-align: center">m01</td>
+<td style="text-align: left">m01</td>
 </tr>
 </tbody></table>
 
-<p>提示： 灰色仅为虚拟机中测试所用，在机房根据实际需求配置</p>
+<blockquote>
+<p>红色仅为虚拟机中测试所用 <br/>
+机房根据实际需求配置</p>
+</blockquote>
 
 <h2 id="克隆虚拟机并配置网卡">克隆虚拟机并配置网卡</h2>
 
@@ -174,8 +177,8 @@ UUID=cee39dbb-6a10-4425-9daf-768b6e79a9c9</p></li>
 <p>rsync, (remote synchronize) 是一个实现同步功能的软件，它在同步文件的同时，可以保持原来文件的权限，时间，软硬链接等附加信息。 rsync是用rsync 算法提供了一个客户机和远程文件服务器的文件同步的快速方法，而且可以通过ssh方式来传输文件，这样保密也非常好。主要用于远程数据备份与同步。 可以实现全备及增量备份，也可以本地数据同步。 在Centos5中rsync的版本是2.X，是把所有文件比对一遍后进行同步。在CentOs6中rsync的版本是3.0，是一边比对差异一边进行同步。而这里我们用的是3.0</p>
 
 <p>首先检查rsync看是否安装，及安装的版本</p>
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="err">$</span> <span class="n">rpm</span> <span class="o">-</span><span class="n">qa</span> <span class="n">rsync</span>
-<span class="n">rsync</span><span class="o">-</span><span class="mi">3</span><span class="o">.</span><span class="mi">0</span><span class="o">.</span><span class="mi">6</span><span class="o">-</span><span class="mi">12</span><span class="o">.</span><span class="n">el6</span><span class="o">.</span><span class="n">x86_64</span>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="err">$</span> <span class="n">rpm</span> <span class="o">-</span><span class="n">qa</span> <span class="n">rsync</span>
+<span class="n">rsync</span><span class="o">-</span><span class="mf">3.0</span><span class="o">.</span><span class="mi">6</span><span class="o">-</span><span class="mf">12.</span><span class="n">el6</span><span class="o">.</span><span class="n">x86_64</span>
 </code></pre></div>
 <p>rsync有三种模式，分别是本地，ssh远程同步，daemon模式</p>
 
@@ -211,44 +214,42 @@ UUID=cee39dbb-6a10-4425-9daf-768b6e79a9c9</p></li>
 <li>--bwlimit=KBPS          limit I/O bandwidth; KBytes per second </li>
 <li>--partial               keep partially transferred files 断点续传</li>
 </ul>
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="c1">#排除单个文件：</span>
-<span class="err">$</span> <span class="n">rsync</span> <span class="o">-</span><span class="n">auvrtzopgP</span> <span class="o">--</span><span class="n">progress</span> <span class="o">--</span><span class="n">exclude</span><span class="o">=</span><span class="n">a</span> <span class="sr">/backup/</span> <span class="n">rsync_backup</span><span class="err">@</span><span class="mi">172</span><span class="o">.</span><span class="mi">16</span><span class="o">.</span><span class="mi">1</span><span class="o">.</span><span class="mi">41</span><span class="o">::</span><span class="n">backup</span> <span class="o">--</span><span class="n">password</span><span class="o">-</span><span class="n">file</span><span class="o">=</span><span class="sr">/etc/</span><span class="n">rsync</span><span class="o">.</span><span class="n">password</span>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="c">#排除单个文件：</span>
+<span class="err">$</span> <span class="n">rsync</span> <span class="o">-</span><span class="n">auvrtzopgP</span> <span class="o">--</span><span class="n">progress</span> <span class="o">--</span><span class="n">exclude</span><span class="o">=</span><span class="n">a</span> <span class="o">/</span><span class="n">backup</span><span class="o">/</span> <span class="n">rsync_backup</span><span class="nd">@172.16.1.41</span><span class="p">::</span><span class="n">backup</span> <span class="o">--</span><span class="n">password</span><span class="o">-</span><span class="nb">file</span><span class="o">=/</span><span class="n">etc</span><span class="o">/</span><span class="n">rsync</span><span class="o">.</span><span class="n">password</span>
 
-<span class="c1">#排除多个文件：</span>
-<span class="err">$</span> <span class="n">rsync</span> <span class="o">-</span><span class="n">avz</span> <span class="o">--</span><span class="n">exclude</span><span class="o">=</span><span class="p">{</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">}</span> <span class="sr">/backup/</span> <span class="n">rsync_backup</span><span class="err">@</span><span class="mi">172</span><span class="o">.</span><span class="mi">16</span><span class="o">.</span><span class="mi">1</span><span class="o">.</span><span class="mi">41</span><span class="o">::</span><span class="n">backup</span> <span class="o">--</span><span class="n">password</span><span class="o">-</span><span class="n">file</span><span class="o">=</span><span class="sr">/etc/</span><span class="n">rsync</span><span class="o">.</span><span class="n">password</span>
+<span class="c">#排除多个文件：</span>
+<span class="err">$</span> <span class="n">rsync</span> <span class="o">-</span><span class="n">avz</span> <span class="o">--</span><span class="n">exclude</span><span class="o">=</span><span class="p">{</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">}</span> <span class="o">/</span><span class="n">backup</span><span class="o">/</span> <span class="n">rsync_backup</span><span class="nd">@172.16.1.41</span><span class="p">::</span><span class="n">backup</span> <span class="o">--</span><span class="n">password</span><span class="o">-</span><span class="nb">file</span><span class="o">=/</span><span class="n">etc</span><span class="o">/</span><span class="n">rsync</span><span class="o">.</span><span class="n">password</span>
 
-<span class="err">$</span> <span class="n">rsync</span> <span class="o">-</span><span class="n">avz</span> <span class="o">--</span><span class="n">exclude</span><span class="o">-</span><span class="n">from</span><span class="o">=</span><span class="n">paichu</span><span class="o">.</span><span class="n">log</span> <span class="sr">/backup/</span> <span class="n">rsync_backup</span><span class="err">@</span><span class="mi">172</span><span class="o">.</span><span class="mi">16</span><span class="o">.</span><span class="mi">1</span><span class="o">.</span><span class="mi">41</span><span class="o">::</span><span class="n">backup</span> <span class="o">--</span><span class="n">password</span><span class="o">-</span><span class="n">file</span><span class="o">=</span><span class="sr">/etc/</span><span class="n">rsync</span><span class="o">.</span><span class="n">password</span> 
+<span class="err">$</span> <span class="n">rsync</span> <span class="o">-</span><span class="n">avz</span> <span class="o">--</span><span class="n">exclude</span><span class="o">-</span><span class="n">from</span><span class="o">=</span><span class="n">paichu</span><span class="o">.</span><span class="n">log</span> <span class="o">/</span><span class="n">backup</span><span class="o">/</span> <span class="n">rsync_backup</span><span class="nd">@172.16.1.41</span><span class="p">::</span><span class="n">backup</span> <span class="o">--</span><span class="n">password</span><span class="o">-</span><span class="nb">file</span><span class="o">=/</span><span class="n">etc</span><span class="o">/</span><span class="n">rsync</span><span class="o">.</span><span class="n">password</span> 
 </code></pre></div>
 <h3 id="本地备份">本地备份</h3>
 
 <p>本地 模式，相当于copy 或者rm
-比如
-<code>ruby
-$ rsync -auvrtzopgP /tmp/ /backup/
-</code>
-此命令就会把tmp目录下的文件全部复制到backup目录下面， 如果加上<code>--delete</code>，此参数的意思是把目标目录与源目录同步，当目标目录里有多于源目录的文件就会删除，也就是源目录是啥样，目标目录就是啥样。如果源目录为空，目标目录也会被清空。我们一般都会在目录后面加<code>/</code>意思是目录下面，如果不加就直接把目录复制过去了，在远程的时候也是一样的。</p>
-
-<p>保持属性： -avz  相当于 cp -rp</p>
+比如<code>$ rsync -auvrtzopgP /tmp/ /backup/</code> <br/>
+此命令就会把tmp目录下的文件全部复制到backup目录下面， 如果加上<code>--delete</code>，此参数的意思是把目标目录与源目录同步，当目标目录里有多于源目录的文件就会删除，也就是源目录是啥样，目标目录就是啥样。如果源目录为空，目标目录也会被清空。我们一般都会在目录后面加<code>/</code>意思是目录下面，如果不加就直接把目录复制过去了，在远程的时候也是一样的。<br/>
+保持属性： -avz  相当于 cp -rp<br/>
+<br/></p>
 
 <h3 id="通过shell远程传输-remote">通过shell远程传输(remote)</h3>
 
 <p>远程拷贝；相当于ssh带的scp命令，但又优于scp命令的功能。scp每次都是全量拷贝。rsync可以增量拷贝。 当源路径，或目的路径后面包含一个卡号</p>
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="err">$</span> <span class="n">rsync</span> <span class="o">-</span><span class="n">avz</span> <span class="o">-</span><span class="n">e</span> <span class="s1">&#39;ssh -p 22&#39;</span> <span class="n">root</span><span class="err">@</span><span class="mi">172</span><span class="o">.</span><span class="mi">16</span><span class="o">.</span><span class="mi">1</span><span class="o">.</span><span class="mi">41</span><span class="ss">:/</span><span class="n">tmp</span><span class="o">/</span> <span class="sr">/tmp/</span>
-<span class="no">The</span> <span class="n">authenticity</span> <span class="n">of</span> <span class="n">host</span> <span class="s1">&#39;172.16.1.41 (172.16.1.41)&#39;</span> <span class="n">can</span><span class="s1">&#39;t be established.</span>
-<span class="s1">RSA key fingerprint is 97:b9:1f:95:8b:7d:ae:59:27:4a:d4:b3:98:ae:c1:77.</span>
-<span class="s1">Are you sure you want to continue connecting (yes/no)? yes</span>
-<span class="s1">Warning: Permanently added &#39;</span><span class="mi">172</span><span class="o">.</span><span class="mi">16</span><span class="o">.</span><span class="mi">1</span><span class="o">.</span><span class="mi">41</span><span class="s1">&#39; (RSA) to the list of known hosts.</span>
-<span class="s1">root@172.16.1.41&#39;</span><span class="n">s</span> <span class="ss">password</span><span class="p">:</span> 
-<span class="n">receiving</span> <span class="n">incremental</span> <span class="n">file</span> <span class="n">list</span>
-<span class="n">created</span> <span class="n">directory</span> <span class="sr">/temp</span>
-<span class="sr">./</span>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="err">$</span> <span class="n">rsync</span> <span class="o">-</span><span class="n">avz</span> <span class="o">-</span><span class="n">e</span> <span class="s">&#39;ssh -p 22&#39;</span> <span class="n">root</span><span class="nd">@172.16.1.41</span><span class="p">:</span><span class="o">/</span><span class="n">tmp</span><span class="o">/</span> <span class="o">/</span><span class="n">tmp</span><span class="o">/</span>
+<span class="n">The</span> <span class="n">authenticity</span> <span class="n">of</span> <span class="n">host</span> <span class="s">&#39;172.16.1.41 (172.16.1.41)&#39;</span> <span class="n">can</span><span class="s">&#39;t be established.</span>
+<span class="n">RSA</span> <span class="n">key</span> <span class="n">fingerprint</span> <span class="ow">is</span> <span class="mi">97</span><span class="p">:</span><span class="n">b9</span><span class="p">:</span><span class="mi">1</span><span class="n">f</span><span class="p">:</span><span class="mi">95</span><span class="p">:</span><span class="mi">8</span><span class="n">b</span><span class="p">:</span><span class="mi">7</span><span class="n">d</span><span class="p">:</span><span class="n">ae</span><span class="p">:</span><span class="mi">59</span><span class="p">:</span><span class="mi">27</span><span class="p">:</span><span class="mi">4</span><span class="n">a</span><span class="p">:</span><span class="n">d4</span><span class="p">:</span><span class="n">b3</span><span class="p">:</span><span class="mi">98</span><span class="p">:</span><span class="n">ae</span><span class="p">:</span><span class="n">c1</span><span class="p">:</span><span class="mf">77.</span>
+<span class="n">Are</span> <span class="n">you</span> <span class="n">sure</span> <span class="n">you</span> <span class="n">want</span> <span class="n">to</span> <span class="k">continue</span> <span class="n">connecting</span> <span class="p">(</span><span class="n">yes</span><span class="o">/</span><span class="n">no</span><span class="p">)</span><span class="err">?</span> <span class="n">yes</span>
+<span class="ne">Warning</span><span class="p">:</span> <span class="n">Permanently</span> <span class="n">added</span> <span class="s">&#39;172.16.1.41&#39;</span> <span class="p">(</span><span class="n">RSA</span><span class="p">)</span> <span class="n">to</span> <span class="n">the</span> <span class="nb">list</span> <span class="n">of</span> <span class="n">known</span> <span class="n">hosts</span><span class="o">.</span>
+<span class="n">root</span><span class="nd">@172.16.1.41</span><span class="s">&#39;s password: </span>
+<span class="n">receiving</span> <span class="n">incremental</span> <span class="nb">file</span> <span class="nb">list</span>
+<span class="n">created</span> <span class="n">directory</span> <span class="o">/</span><span class="n">temp</span>
+<span class="o">./</span>
 <span class="n">hosts</span>
 <span class="o">.</span><span class="n">ICE</span><span class="o">-</span><span class="n">unix</span><span class="o">/</span>
 
-<span class="n">sent</span> <span class="mi">37</span> <span class="n">bytes</span>  <span class="n">received</span> <span class="mi">184</span> <span class="n">bytes</span>  <span class="mi">9</span><span class="o">.</span><span class="mo">02</span> <span class="n">bytes</span><span class="o">/</span><span class="n">sec</span>
-<span class="n">total</span> <span class="n">size</span> <span class="n">is</span> <span class="mi">220</span>  <span class="n">speedup</span> <span class="n">is</span> <span class="mi">1</span><span class="o">.</span><span class="mo">00</span>
+<span class="n">sent</span> <span class="mi">37</span> <span class="nb">bytes</span>  <span class="n">received</span> <span class="mi">184</span> <span class="nb">bytes</span>  <span class="mf">9.02</span> <span class="nb">bytes</span><span class="o">/</span><span class="n">sec</span>
+<span class="n">total</span> <span class="n">size</span> <span class="ow">is</span> <span class="mi">220</span>  <span class="n">speedup</span> <span class="ow">is</span> <span class="mf">1.00</span>
 </code></pre></div>
-<p>此命令便是把ip为172.16.1.41的主机里tmp目录下的文件传到本地的/tmp/下。这里 <code>ssh -p 22</code>命令用于指定端口，默认就是22，-e 这个参数可以不写直接 <code>rsync -avz root@172.16.1.41:/tmp/ /tmp/</code>便可以把41的文件复制过来。且这里是交互式，手动备份与推送，十分不方便。</p>
+<p><br/>
+此命令便是把ip为172.16.1.41的主机里tmp目录下的文件传到本地的/tmp/下。这里 <code>ssh -p 22</code>命令用于指定端口，默认就是22，-e 这个参数可以不写直接 <code>rsync -avz root@172.16.1.41:/tmp/ /tmp/</code>便可以把41的文件复制过来。且这里是交互式，手动备份与推送，十分不方便。</p>
 
 <p>这里有个问题，如果我们用其它用户推或者拉，的时候需要共享文件的所属主与所属组都对该用户对应</p>
 <div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="o">[</span><span class="n">root</span><span class="vi">@NFS</span> <span class="n">tmp</span><span class="o">]</span><span class="err">$</span> <span class="n">rsync</span> <span class="o">-</span><span class="n">avz</span> <span class="sr">/data/</span> <span class="n">sandow</span><span class="err">@</span><span class="mi">172</span><span class="o">.</span><span class="mi">16</span><span class="o">.</span><span class="mi">1</span><span class="o">.</span><span class="mi">41</span><span class="ss">:/</span><span class="n">data</span><span class="o">/</span>
@@ -264,34 +265,34 @@ $ rsync -auvrtzopgP /tmp/ /backup/
 <h4 id="服务端的配置">服务端的配置</h4>
 
 <p>首先我们来配置rsync的主配置文件 rsyncd.conf，默认情况下该文件不存在需要创建，我们也可以使用<code>man rsyncd.conf</code>来查看主配置文件里的参数与说明。</p>
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="o">[</span><span class="n">root</span><span class="vi">@backup</span> <span class="o">~]</span><span class="err">$</span> <span class="n">cat</span> <span class="sr">/etc/</span><span class="n">rsyncd</span><span class="o">.</span><span class="n">conf</span>
-<span class="c1">#Rsync server</span>
-<span class="c1">#created by sandow at 2015-11-05</span>
-<span class="c1">#rsyncd.conf start#</span>
-<span class="n">uid</span> <span class="o">=</span> <span class="n">rsync</span>     <span class="sr">//</span><span class="err">相当于</span><span class="n">nfsnobody</span> <span class="err">客户端连过来具备什么样的权限默认是不存在的</span>
-<span class="n">gid</span> <span class="o">=</span> <span class="n">rsync</span>     <span class="sr">//</span><span class="err">相当于</span><span class="n">nfsnobody</span>
-<span class="n">use</span> <span class="n">chroot</span> <span class="o">=</span> <span class="n">no</span>     <span class="sr">//</span>   <span class="err">程序出现问题就会开启</span> <span class="err">开启给个空目录就行</span>
-<span class="n">max</span> <span class="n">connections</span> <span class="o">=</span> <span class="mi">200</span>       <span class="o">//</span><span class="err">客户端连接数</span> <span class="err">可以同时</span>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="p">[</span><span class="n">root</span><span class="nd">@backup</span> <span class="o">~</span><span class="p">]</span><span class="err">$</span> <span class="n">cat</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">rsyncd</span><span class="o">.</span><span class="n">conf</span>
+<span class="c">#Rsync server</span>
+<span class="c">#created by sandow at 2015-11-05</span>
+<span class="c">#rsyncd.conf start#</span>
+<span class="n">uid</span> <span class="o">=</span> <span class="n">rsync</span>     <span class="o">//</span><span class="err">相当于</span><span class="n">nfsnobody</span> <span class="err">客户端连过来具备什么样的权限默认是不存在的</span>
+<span class="n">gid</span> <span class="o">=</span> <span class="n">rsync</span>     <span class="o">//</span><span class="err">相当于</span><span class="n">nfsnobody</span>
+<span class="n">use</span> <span class="n">chroot</span> <span class="o">=</span> <span class="n">no</span>     <span class="o">//</span>   <span class="err">程序出现问题就会开启</span> <span class="err">开启给个空目录就行</span>
+<span class="nb">max</span> <span class="n">connections</span> <span class="o">=</span> <span class="mi">200</span>       <span class="o">//</span><span class="err">客户端连接数</span> <span class="err">可以同时</span>
 <span class="n">timeout</span> <span class="o">=</span> <span class="mi">300</span>        <span class="o">//</span><span class="err">超时</span> <span class="err">这是服务端</span> <span class="err">客户端连过来最多多久后就断掉</span>
 <span class="n">strict</span> <span class="n">modes</span><span class="o">=</span><span class="n">yes</span>
 <span class="n">port</span><span class="o">=</span><span class="mi">873</span>
-<span class="n">pid</span> <span class="n">file</span> <span class="o">=</span> <span class="sr">/var/</span><span class="n">run</span><span class="o">/</span><span class="n">rstbcd</span><span class="o">.</span><span class="n">pid</span>  <span class="sr">//</span><span class="no">PID</span><span class="err">就是进程号唯一标识进程</span><span class="p">,</span><span class="err">进程号放文件里面</span>
-<span class="n">lock</span> <span class="n">file</span> <span class="o">=</span> <span class="sr">/var/</span><span class="n">run</span><span class="o">/</span><span class="n">rsync</span><span class="o">.</span><span class="n">lock</span>     <span class="sr">//</span><span class="err">锁文件</span>
-<span class="n">log</span> <span class="n">file</span> <span class="o">=</span> <span class="sr">/var/</span><span class="n">log</span><span class="o">/</span><span class="n">rsyncd</span><span class="o">.</span><span class="n">log</span>      <span class="sr">//</span><span class="err">日志文件，出问题在这里看</span>
-<span class="n">hosts</span> <span class="n">allow</span> <span class="o">=</span> <span class="mi">172</span><span class="o">.</span><span class="mi">16</span><span class="o">.</span><span class="mi">1</span><span class="o">.</span><span class="mi">0</span><span class="o">/</span><span class="mi">24</span>     <span class="o">//</span><span class="err">允许</span><span class="n">ip</span>
-<span class="n">hosts</span> <span class="n">deny</span> <span class="o">=</span> <span class="mi">0</span><span class="o">.</span><span class="mi">0</span><span class="o">.</span><span class="mi">0</span><span class="o">.</span><span class="mi">0</span><span class="o">/</span><span class="mi">32</span>     <span class="o">//</span><span class="err">拒绝</span>
-<span class="n">secrets</span> <span class="n">file</span> <span class="o">=</span> <span class="sr">/etc/</span><span class="n">rsync</span><span class="o">.</span><span class="n">password</span>      <span class="sr">//</span><span class="err">存放用户和密码文件</span>
+<span class="n">pid</span> <span class="nb">file</span> <span class="o">=</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">run</span><span class="o">/</span><span class="n">rstbcd</span><span class="o">.</span><span class="n">pid</span>  <span class="o">//</span><span class="n">PID</span><span class="err">就是进程号唯一标识进程</span><span class="p">,</span><span class="err">进程号放文件里面</span>
+<span class="n">lock</span> <span class="nb">file</span> <span class="o">=</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">run</span><span class="o">/</span><span class="n">rsync</span><span class="o">.</span><span class="n">lock</span>     <span class="o">//</span><span class="err">锁文件</span>
+<span class="n">log</span> <span class="nb">file</span> <span class="o">=</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">log</span><span class="o">/</span><span class="n">rsyncd</span><span class="o">.</span><span class="n">log</span>      <span class="o">//</span><span class="err">日志文件，出问题在这里看</span>
+<span class="n">hosts</span> <span class="n">allow</span> <span class="o">=</span> <span class="mf">172.16</span><span class="o">.</span><span class="mf">1.0</span><span class="o">/</span><span class="mi">24</span>     <span class="o">//</span><span class="err">允许</span><span class="n">ip</span>
+<span class="n">hosts</span> <span class="n">deny</span> <span class="o">=</span> <span class="mf">0.0</span><span class="o">.</span><span class="mf">0.0</span><span class="o">/</span><span class="mi">32</span>     <span class="o">//</span><span class="err">拒绝</span>
+<span class="n">secrets</span> <span class="nb">file</span> <span class="o">=</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">rsync</span><span class="o">.</span><span class="n">password</span>      <span class="o">//</span><span class="err">存放用户和密码文件</span>
 
-<span class="o">[</span><span class="n">backup</span><span class="o">]</span>        <span class="sr">//</span><span class="err">模块，调用下面服务</span>
+<span class="p">[</span><span class="n">backup</span><span class="p">]</span>        <span class="o">//</span><span class="err">模块，调用下面服务</span>
 <span class="n">comment</span><span class="o">=</span><span class="n">backup</span> <span class="n">server</span> <span class="n">by</span> <span class="n">liuchunhao</span> <span class="n">at</span> <span class="mi">2015</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mo">05</span>       <span class="o">//</span><span class="err">注释</span>
-<span class="n">path</span> <span class="o">=</span> <span class="sr">/backup      /</span><span class="o">/</span><span class="err">共享目录</span>
-<span class="n">read</span> <span class="n">only</span> <span class="o">=</span> <span class="kp">false</span>       <span class="sr">//</span><span class="err">可读写</span>
-<span class="n">ignore</span> <span class="n">errors</span>       <span class="sr">//</span><span class="err">忽略错误</span>
-<span class="n">auth</span> <span class="n">users</span> <span class="o">=</span> <span class="n">rsync_backup</span>       <span class="sr">//</span><span class="err">远程连接的用户，虚拟用户和系统用户没关系</span>
+<span class="n">path</span> <span class="o">=</span> <span class="o">/</span><span class="n">backup</span>      <span class="o">//</span><span class="err">共享目录</span>
+<span class="n">read</span> <span class="n">only</span> <span class="o">=</span> <span class="n">false</span>       <span class="o">//</span><span class="err">可读写</span>
+<span class="n">ignore</span> <span class="n">errors</span>       <span class="o">//</span><span class="err">忽略错误</span>
+<span class="n">auth</span> <span class="n">users</span> <span class="o">=</span> <span class="n">rsync_backup</span>       <span class="o">//</span><span class="err">远程连接的用户，虚拟用户和系统用户没关系</span>
 <span class="n">uid</span><span class="o">=</span><span class="n">rsync_backup</span>
 <span class="n">gid</span><span class="o">=</span><span class="n">rsync_backup</span>
-<span class="n">list</span> <span class="o">=</span> <span class="kp">false</span>        <span class="sr">//</span><span class="err">不让远程列表，不让看服务端有什么</span>
-<span class="n">secrets</span> <span class="n">file</span><span class="o">=</span><span class="sr">/etc/</span><span class="n">rsync</span><span class="o">.</span><span class="n">password</span>
+<span class="nb">list</span> <span class="o">=</span> <span class="n">false</span>        <span class="o">//</span><span class="err">不让远程列表，不让看服务端有什么</span>
+<span class="n">secrets</span> <span class="nb">file</span><span class="o">=/</span><span class="n">etc</span><span class="o">/</span><span class="n">rsync</span><span class="o">.</span><span class="n">password</span>
 </code></pre></div>
 <p>配置好rsyncd.conf后便接下来就可以创建对应用户、目录与密码文件</p>
 <div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="o">[</span><span class="n">root</span><span class="vi">@backup</span> <span class="o">~]</span><span class="err">$</span> <span class="n">useradd</span> <span class="n">rsync</span> <span class="o">-</span><span class="n">s</span> <span class="sr">/sbin/no</span><span class="n">login</span> <span class="o">-</span><span class="n">M</span>
@@ -356,17 +357,21 @@ $ rsync -auvrtzopgP /tmp/ /backup/
 <h4 id="备份数据以及自动备份">备份数据以及自动备份</h4>
 
 <p>向服务器推送数据：</p>
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">rsync</span> <span class="o">-</span><span class="n">auvrtzopgP</span> <span class="o">--</span><span class="n">progress</span>  <span class="sr">/backup/</span> <span class="n">rsync_backup</span><span class="err">@</span><span class="mi">172</span><span class="o">.</span><span class="mi">16</span><span class="o">.</span><span class="mi">1</span><span class="o">.</span><span class="mi">41</span><span class="o">::</span><span class="n">backup</span> <span class="o">--</span><span class="n">password</span><span class="o">-</span><span class="n">file</span><span class="o">=</span><span class="sr">/etc/</span><span class="n">rsync</span><span class="o">.</span><span class="n">password</span>
-</code></pre></div>
+
+<p><code>rsync -auvrtzopgP --progress  /backup/ rsync_backup@172.16.1.41::backup --password-file=/etc/rsync.password</code></p>
+
 <p>或者</p>
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">rsync</span> <span class="o">-</span><span class="n">auvrtzopgP</span> <span class="o">--</span><span class="n">progress</span>  <span class="sr">/backup/</span> <span class="ss">rsync</span><span class="p">:</span><span class="sr">//</span><span class="n">rsync_backup</span><span class="err">@</span><span class="mi">172</span><span class="o">.</span><span class="mi">16</span><span class="o">.</span><span class="mi">1</span><span class="o">.</span><span class="mi">41</span><span class="o">/</span><span class="n">backup</span> <span class="o">--</span><span class="n">password</span><span class="o">-</span><span class="n">file</span><span class="o">=</span><span class="sr">/etc/</span><span class="n">rsync</span><span class="o">.</span><span class="n">password</span>
-</code></pre></div>
+
+<p><code>rsync -auvrtzopgP --progress  /backup/ rsync://rsync_backup@172.16.1.41/backup --password-file=/etc/rsync.password</code></p>
+
 <p>从服务器拉回数据</p>
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">rsync</span> <span class="o">-</span><span class="n">avz</span>   <span class="n">rsync_backup</span><span class="err">@</span><span class="mi">172</span><span class="o">.</span><span class="mi">16</span><span class="o">.</span><span class="mi">1</span><span class="o">.</span><span class="mi">41</span><span class="o">::</span><span class="n">backup</span> <span class="sr">/backup/</span> <span class="o">--</span><span class="n">password</span><span class="o">-</span><span class="n">file</span><span class="o">=</span><span class="sr">/etc/</span><span class="n">rsync</span><span class="o">.</span><span class="n">password</span>
-</code></pre></div>
+
+<p><code>rsync -avz   rsync_backup@172.16.1.41::backup /backup/ --password-file=/etc/rsync.password</code></p>
+
 <p>或者</p>
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">rsync</span> <span class="o">-</span><span class="n">avz</span>   <span class="ss">rsync</span><span class="p">:</span><span class="sr">//</span><span class="n">rsync_backup</span><span class="err">@</span><span class="mi">172</span><span class="o">.</span><span class="mi">16</span><span class="o">.</span><span class="mi">1</span><span class="o">.</span><span class="mi">41</span><span class="o">/</span><span class="n">backup</span>  <span class="sr">/backup/</span> <span class="o">--</span><span class="n">password</span><span class="o">-</span><span class="n">file</span><span class="o">=</span><span class="sr">/etc/</span><span class="n">rsync</span><span class="o">.</span><span class="n">password</span>
-</code></pre></div>
+
+<p><code>rsync -avz   rsync://rsync_backup@172.16.1.41/backup  /backup/ --password-file=/etc/rsync.password</code></p>
+
 <h3 id="小结">小结</h3>
 
 <p>配置步骤回顾</p>
@@ -542,8 +547,6 @@ inotifywati排队监控目录有 --exclude <pattern\> --formfile <file\> 前面�
   <span class="n">rsync</span> <span class="o">-</span><span class="n">az</span> <span class="o">--</span><span class="n">delete</span> <span class="err">$</span><span class="p">{</span><span class="no">Line</span><span class="p">}</span> <span class="n">rsync_backup</span><span class="err">@</span><span class="mi">172</span><span class="o">.</span><span class="mi">16</span><span class="o">.</span><span class="mi">1</span><span class="o">.</span><span class="mi">41</span><span class="o">::</span><span class="n">backup</span> <span class="o">--</span><span class="n">password</span><span class="o">-</span><span class="n">file</span><span class="o">=</span><span class="sr">/etc/</span><span class="n">rsync</span><span class="o">.</span><span class="n">password</span>
     <span class="n">done</span>
 </code></pre></div>
-<p><img src="/images/python.png" alt="python"></p>
-
 <p>上面的是不是很简单，那么再来一个更全面的客户端配置文件</p>
 <div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="c1">#rsync auto sync script with inotify</span>
 <span class="c1">#2015-11-09 sandow</span>
@@ -575,11 +578,14 @@ inotifywati排队监控目录有 --exclude <pattern\> --formfile <file\> 前面�
 <span class="c1">#inotify log</span>
 <span class="n">inotify_fun</span> <span class="o">&gt;&gt;</span> <span class="err">$</span><span class="p">{</span><span class="n">log_file</span><span class="p">}</span> <span class="mi">2</span><span class="o">&gt;&amp;</span><span class="mi">1</span> <span class="o">&amp;</span>
 </code></pre></div>
-<p>来点链接，深入研究的话可以上去查看
-<a href="https://rsync.samba.org/how-rsync-works.html">How Rsync Works A Practical Overview</a>
-<a href="https://www.ibm.com/developerworks/cn/linux/l-inotify/">用 inotify 监控 Linux 文件系统事件</a>
-<a href="http://www.infoq.com/cn/articles/inotify-linux-file-system-event-monitoring">inotify: 高效、实时的Linux文件系统事件监控框架</a>
+<p>来点链接，深入研究的话可以上去查看 <br/></p>
+
+<blockquote>
+<p><a href="https://rsync.samba.org/how-rsync-works.html">How Rsync Works A Practical Overview</a> <br/>
+<a href="https://www.ibm.com/developerworks/cn/linux/l-inotify/">用 inotify 监控 Linux 文件系统事件</a> <br/>
+<a href="http://www.infoq.com/cn/articles/inotify-linux-file-system-event-monitoring">inotify: 高效、实时的Linux文件系统事件监控框架</a> <br/>
 <a href="http://coolshell.cn/articles/7425.html">rsync 的核心算法</a></p>
+</blockquote>
 
 <h2 id="sersync">sersync</h2>
 
@@ -626,7 +632,7 @@ inotifywati排队监控目录有 --exclude <pattern\> --formfile <file\> 前面�
 <ul>
 <li>视情况而定。rsync可以直接通过873端口的tcp连接传文件，也可以通过22端口的ssh来进行文件传递，但你也可以通过下列命令改变它的端口：</li>
 </ul>
-<div class="highlight"><pre><code class="language-text" data-lang="text">$ iptables -A INPUT -p tcp -m state --state NEW  -m tcp --dport 873 -j ACCEPT  
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="err">$</span> <span class="n">iptables</span> <span class="o">-</span><span class="n">A</span> <span class="n">INPUT</span> <span class="o">-</span><span class="n">p</span> <span class="n">tcp</span> <span class="o">-</span><span class="n">m</span> <span class="n">state</span> <span class="o">--</span><span class="n">state</span> <span class="n">NEW</span>  <span class="o">-</span><span class="n">m</span> <span class="n">tcp</span> <span class="o">--</span><span class="n">dport</span> <span class="mi">873</span> <span class="o">-</span><span class="n">j</span> <span class="n">ACCEPT</span>  
 </code></pre></div>
 <p><code>rsync --port 8730 otherhost::</code>或者<code>rsync -e &#39;ssh -p 2002&#39; otherhost:</code></p>
 
@@ -653,34 +659,34 @@ inotifywati排队监控目录有 --exclude <pattern\> --formfile <file\> 前面�
 
 <p>Q：为什么我认证失败？ 
  - 从你的命令行看来：你用的是</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">bash$ rsync -a 144.16.251.213::test test
-Password:
-@ERROR: auth failed on module test 
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">bash</span><span class="err">$</span> <span class="n">rsync</span> <span class="o">-</span><span class="n">a</span> <span class="mf">144.16</span><span class="o">.</span><span class="mf">251.213</span><span class="p">::</span><span class="n">test</span> <span class="n">test</span>
+<span class="n">Password</span><span class="p">:</span>
+<span class="nd">@ERROR</span><span class="p">:</span> <span class="n">auth</span> <span class="n">failed</span> <span class="n">on</span> <span class="n">module</span> <span class="n">test</span> 
 </code></pre></div>
 <p>应该是没有以你的用户名登陆导致的问题，试试rsync -a <a href="mailto:max@144.16.251.213">max@144.16.251.213</a>::test test</p>
 
 <p>Q: 出现以下这个讯息, 是怎么一回事?    </p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">@ERROR: auth failed on module xxxxx
-rsync: connection unexpectedly closed (90 bytes read so far)
-rsync error: error in rsync protocol data stream (code 12) at io.c(150)
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="nd">@ERROR</span><span class="p">:</span> <span class="n">auth</span> <span class="n">failed</span> <span class="n">on</span> <span class="n">module</span> <span class="n">xxxxx</span>
+<span class="n">rsync</span><span class="p">:</span> <span class="n">connection</span> <span class="n">unexpectedly</span> <span class="n">closed</span> <span class="p">(</span><span class="mi">90</span> <span class="nb">bytes</span> <span class="n">read</span> <span class="n">so</span> <span class="n">far</span><span class="p">)</span>
+<span class="n">rsync</span> <span class="n">error</span><span class="p">:</span> <span class="n">error</span> <span class="ow">in</span> <span class="n">rsync</span> <span class="n">protocol</span> <span class="n">data</span> <span class="n">stream</span> <span class="p">(</span><span class="n">code</span> <span class="mi">12</span><span class="p">)</span> <span class="n">at</span> <span class="n">io</span><span class="o">.</span><span class="n">c</span><span class="p">(</span><span class="mi">150</span><span class="p">)</span>
 </code></pre></div>
 <ul>
 <li>这是因为密码设错了, 无法登入成功, 请再检查一下 rsyncd.secrets 中的密码设定, 二端是否一致?</li>
 </ul>
 
 <p>Q: 出现以下这个讯息, 是怎么一回事?    </p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">password file must not be other-accessible 
-continuing without password file 
-Password:
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">password</span> <span class="nb">file</span> <span class="n">must</span> <span class="ow">not</span> <span class="n">be</span> <span class="n">other</span><span class="o">-</span><span class="n">accessible</span> 
+<span class="n">continuing</span> <span class="n">without</span> <span class="n">password</span> <span class="nb">file</span> 
+<span class="n">Password</span><span class="p">:</span>
 </code></pre></div>
 <ul>
 <li>这表示 rsyncd.secrets 的档案权限属性不对, 应设为 600。请下 chmod 600 rsyncd.secrets</li>
 </ul>
 
 <p>Q: 出现以下这个讯息, 是怎么一回事?</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">@ERROR: chroot failed
-rsync: connection unexpectedly closed (75 bytes read so far)
-rsync error: error in rsync protocol data stream (code 12) at io.c(150)
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="nd">@ERROR</span><span class="p">:</span> <span class="n">chroot</span> <span class="n">failed</span>
+<span class="n">rsync</span><span class="p">:</span> <span class="n">connection</span> <span class="n">unexpectedly</span> <span class="n">closed</span> <span class="p">(</span><span class="mi">75</span> <span class="nb">bytes</span> <span class="n">read</span> <span class="n">so</span> <span class="n">far</span><span class="p">)</span>
+<span class="n">rsync</span> <span class="n">error</span><span class="p">:</span> <span class="n">error</span> <span class="ow">in</span> <span class="n">rsync</span> <span class="n">protocol</span> <span class="n">data</span> <span class="n">stream</span> <span class="p">(</span><span class="n">code</span> <span class="mi">12</span><span class="p">)</span> <span class="n">at</span> <span class="n">io</span><span class="o">.</span><span class="n">c</span><span class="p">(</span><span class="mi">150</span><span class="p">)</span>
 </code></pre></div>
 <ul>
 <li>这通常是您的 rsyncd.conf 中的 path 路径所设的那个目录并不存在所致.请先用 mkdir开设好备份目录.</li>

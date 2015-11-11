@@ -1,0 +1,107 @@
+---
+title: "test markdown"
+layout: post
+category: linux
+tags: [linux]
+excerpt: "对rsync做详细介绍，并结合inotify-tools实现实时同步，并分析其缺点，然后对sersync做简单介绍，其实感觉并没什么鸟用，以后介绍更强大的实现同步工具吧"
+---
+
+对rsync做详细介绍，并结合inotify-tools实现实时同步，并分析其缺点，然后对sersync做简单介绍，其实感觉并没什么鸟用，以后介绍更强大的实现同步工具吧	
+	对rsync做详细介绍，并结合inotify-tools实现实时同步，并分析其缺点，然后对sersync做简单介绍，其实感觉并没什么鸟用，以后介绍更强大的实现同步工具吧	对rsync做详细介绍，并结合inotify-tools实现实时同步，并分析其缺点，然后对sersync做简单介绍，其实感觉并没什么鸟用，以后介绍更强大的实现同步工具吧	`对rsync做详细介绍，并结合inotify-tools实现实时同步，并分析其缺点，然后对sersync做简单介绍，其实感觉并没什么鸟用，以后介绍更强大的实现同步工具吧
+
+
+```latex
+$$v^{'}{computer} = v$$
+$$v^{'}{hardware} = (1-\alpha)v + \alpha v^{'}{computer}$$
+$$v^{'} = (1-\alpha)v_{keyboard} + \alpha v^{'}_{hardware}$$
+```
+<br/>
+
+
+```python
+#rsync auto sync script with inotify
+#2015-11-09 sandow
+#variables
+Current_date=$(date +%Y%m%d_%H%M%S)
+source_path=/backup/
+log_file=/var/log/rsync_client.log
+#rsync
+rsync_server=172.16.1.41
+rsync_user=rsync_backup
+rsync_pwd=/etc/rsync.password
+rsync_module=backup
+INOTIFY_EXCLUDE="(.*/*\.log|.*/*\.swp)$|^/tmp/src/mail/(2014|20.*/.*che.*)"
+RSYNC_EXCLUDE=/etc/rsyncd.d/rsync_exclude.lst
+#rsync client pwd check
+if [ ! -e ${rsync_pwd} ];then
+    echo -e "rsync client passwod file ${rsync_pwd} does not exist!"
+    exit 0
+fi
+#inotify_function
+inotify_fun(){
+    /usr/bin/inotifywait -mrq --timefmt '%Y/%m/%d-%H:%M:%S' --format '%T %w %f' \
+          --exclude ${INOTIFY_EXCLUDE}  -e modify,delete,create,move,attrib ${source_path} | \
+      while read file
+      do
+          /usr/bin/rsync -auvrtzopgP --exclude-from=${RSYNC_EXCLUDE} --progress --bwlimit=200 --password-file=${rsync_pwd} ${source_path} ${rsync_user}@${rsync_server}::${rsync_module} 
+      done
+}
+#inotify log
+inotify_fun >> ${log_file} 2>&1 &
+```
+
+afjkdlasjf<br/>jflsdjfladdddddddddddddddddddddddddddddddddddddddddddddddddddddaaaaaaaaaaaaaaaaaaaaaaaajdf<br/>jflsakjflajsfffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff<br/> <br/>
+
+
+```python
+$ vi inotify_exclude.lst
+/tmp/src/pdf
+@/tmp/src/2014
+```
+
+
+```python
+$ rpm -ivh /apps/crm/soft_src/inotify-tools-3.14-1.el6.x86_64.rpm 
+warning: /apps/crm/soft_src/inotify-tools-3.14-1.el6.x86_64.rpm: Header V3 DSA/SHA1 Signature, key ID 4026433f: NOKEY
+Preparing...                ########################################### [100%]
+   1:inotify-tools          ########################################### [100%]
+$ rpm -qa|grep inotify
+inotify-tools-3.14-1.el5.x86_64
+```
+
+<br/>
+
+```python
+def predict(self, x):
+    '''
+    预测的函数，根据输入和训练得到的权值和阀值计算输出。
+    :param x:
+    :return:
+    '''
+    w = 0  #先符值
+    for t in self.supportVec:
+        w += self.alpha[t] * self.Y[t] * self.kernel(self.X[:, t], x).flatten(1)
+    w += self.b
+    return self.sign(w)
+```
+
+<br/>
+![python](/images/python.png)
+
+
+<br/>
+
+`fdsjfalskjfl hello world `
+
+
+> 来测试下实现的怎么样 <br/>
+<br/>
+> 1. hahfhdhasdhf <br/>
+> 2. fjslfjldskajflh <br/>
+> 3. oiououoy <br/>
+
+
+
+
+
+

@@ -219,7 +219,6 @@ hr {
 
 pre {
   overflow: auto;
-  tab-size: 8;
 }
 
 /**

@@ -32,13 +32,15 @@
 #markdown-container a code,a:link code,a:visited code{color:#4183c4;}
 #markdown-container code {
     margin: 0;
-    font-size: 85%;
-    background-color: rgba(255,255,255,0);
+    background-color: rgb(249,242,244);
     border-radius: 3px;
+    word-spacing: 4px;
+    letter-spacing: 1px;
 }
 #markdown-container pre code {
     background-color: transparent;
     font-size: 100%;
+    white-space: pre;
 }
 #markdown-container h2,h3{margin:1em 0;}
 #markdown-container h1,
@@ -63,7 +65,7 @@
 #markdown-container ul ol,
 #markdown-container ol ol,
 #markdown-container ol ul{margin-top:0;margin-bottom:0;}
-#markdown-container blockquote{margin:1em 0;border-left:5px solid #ddd;padding-left:.6em;color:#555;}
+#markdown-container blockquote{margin:1em 0;background: #d5e9f6 url(/images/tab_info.png) no-repeat left top;padding-left:3em;color:#555; width: 97%;}
 #markdown-container dt{font-weight:bold;margin-left:1em;}
 #markdown-container dd{margin-left:2em;margin-bottom:1em;}
 
@@ -106,7 +108,7 @@
 /*table style*/
 
 #markdown-container table {
-    border-collapse:collapse !important;
+   /*  border-collapse:collapse !important;*/
     width: 97%;
 }
 #markdown-container table th,
@@ -120,6 +122,7 @@
 }
 #markdown-container table th{
     background: #EEE;
+    text-align:center;
 }
 #markdown-container table p{
     margin: 0;
